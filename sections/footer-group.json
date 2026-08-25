@@ -1,0 +1,17 @@
+{
+  "name": "Fußbereich",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "f1": { "type": "menu", "settings": { "heading": "Shop" } },
+        "f2": { "type": "menu", "settings": { "heading": "Hilfe" } },
+        "f3": { "type": "contact", "settings": { "heading": "Kontakt" } }
+      },
+      "block_order": ["f1", "f2", "f3"],
+      "settings": { "show_newsletter": true, "show_payment_icons": true }
+    }
+  },
+  "order": ["footer"]
+}

@@ -1,0 +1,188 @@
+{%- liquid
+  assign menu = section.settings.menu
+-%}
+<sb-header data-hide-on-scroll="{{ section.settings.hide_on_scroll }}">
+  <div class="header" style="--logo-width:{{ settings.logo_width }}px;">
+    <button
+      class="header__icon header__menu-toggle"
+      type="button"
+      data-drawer-open="NavDrawer"
+      aria-label="{{ 'sections.header.menu' | t }}"
+    >
+      {% render 'icon', icon: 'menu' %}
+    </button>
+
+    <nav class="header__nav" aria-label="{{ 'sections.header.menu' | t }}">
+      <ul class="nav">
+        {%- for link in menu.links -%}
+          {%- assign mega_block = null -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'mega' and block.settings.trigger == link.title -%}
+              {%- assign mega_block = block -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          <li class="nav__item"{% if link.links.size > 0 or mega_block %} data-mega{% endif %}>
+            {%- if link.links.size > 0 or mega_block -%}
+              <a
+                href="{{ link.url }}"
+                class="nav__link{% if link.title contains '*' %} nav__link--highlight{% endif %}"
+                data-mega-trigger
+                aria-expanded="false"
+              >
+                {{ link.title | remove: '*' }}
+                {% render 'icon', icon: 'chevron' %}
+              </a>
+
+              <div class="mega">
+                <div class="mega__grid">
+                  {%- if mega_block -%}
+                    {%- for i in (1..3) -%}
+                      {%- liquid
+                        assign title_key = 'col_' | append: i | append: '_title'
+                        assign menu_key = 'col_' | append: i | append: '_menu'
+                        assign col_title = mega_block.settings[title_key]
+                        assign col_menu = mega_block.settings[menu_key]
+                      -%}
+                      {%- if col_menu != blank -%}
+                        <div>
+                          {%- if col_title != blank -%}<p class="mega__col-title">{{ col_title }}</p>{%- endif -%}
+                          <ul class="mega__links">
+                            {%- for child in col_menu.links -%}
+                              <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- if mega_block.settings.feature_image != blank or mega_block.settings.feature_title != blank -%}
+                      <a class="mega__feature" href="{{ mega_block.settings.feature_link }}">
+                        {%- if mega_block.settings.feature_image -%}
+                          <div class="media media--landscape">
+                            <img src="{{ mega_block.settings.feature_image | image_url: width: 600 }}" alt="{{ mega_block.settings.feature_image.alt | escape }}" loading="lazy" width="600" height="400">
+                          </div>
+                        {%- endif -%}
+                        {%- if mega_block.settings.feature_title != blank -%}
+                          <span class="link-arrow">{{ mega_block.settings.feature_title }} {% render 'icon', icon: 'arrow' %}</span>
+                        {%- endif -%}
+                      </a>
+                    {%- endif -%}
+                  {%- else -%}
+                    {%- for child in link.links -%}
+                      <div>
+                        <p class="mega__col-title">{{ child.title }}</p>
+                        <ul class="mega__links">
+                          {%- if child.links.size > 0 -%}
+                            {%- for grandchild in child.links -%}
+                              <li><a href="{{ grandchild.url }}">{{ grandchild.title }}</a></li>
+                            {%- endfor -%}
+                          {%- else -%}
+                            <li><a href="{{ child.url }}">{{ 'general.continue_shopping' | t }}</a></li>
+                          {%- endif -%}
+                        </ul>
+                      </div>
+                    {%- endfor -%}
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- else -%}
+              <a href="{{ link.url }}" class="nav__link{% if link.title contains '*' %} nav__link--highlight{% endif %}">{{ link.title | remove: '*' }}</a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <a class="header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      {%- if settings.logo != blank -%}
+        <img
+          src="{{ settings.logo | image_url: width: 400 }}"
+          alt="{{ shop.name | escape }}"
+          width="{{ settings.logo.width }}"
+          height="{{ settings.logo.height }}"
+          {% if template.name == 'index' %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+        >
+      {%- else -%}
+        <span class="header__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <div class="header__actions">
+      <button class="header__icon" type="button" data-drawer-open="SearchDrawer" aria-label="{{ 'general.search.search' | t }}">
+        {% render 'icon', icon: 'search' %}
+      </button>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="header__icon hide-mobile" href="{{ routes.account_url }}" aria-label="{{ 'sections.header.account' | t }}">
+          {% render 'icon', icon: 'account' %}
+        </a>
+      {%- endif -%}
+
+      {%- if settings.cart_type == 'drawer' -%}
+        <button class="header__icon" type="button" data-drawer-open="CartDrawer" aria-label="{{ 'sections.header.cart' | t }}">
+          {% render 'icon', icon: 'cart' %}
+          {% render 'cart-count' %}
+        </button>
+      {%- else -%}
+        <a class="header__icon" href="{{ routes.cart_url }}" aria-label="{{ 'sections.header.cart' | t }}">
+          {% render 'icon', icon: 'cart' %}
+          {% render 'cart-count' %}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</sb-header>
+
+{% render 'header-drawer', menu: menu, section: section %}
+{% render 'search-drawer' %}
+
+{%- if section.settings.enable_structured_data -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      "url": {{ shop.url | append: page.url | json }}
+      {%- if settings.logo %},
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: 'https:' | json }}
+      {%- endif -%}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "shopify-section--header",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Hauptmenü", "default": "main-menu" },
+    { "type": "checkbox", "id": "hide_on_scroll", "label": "Header beim Runterscrollen ausblenden", "default": false },
+    { "type": "checkbox", "id": "enable_structured_data", "label": "Organization-Markup ausgeben", "default": true },
+    { "type": "header", "content": "Drawer-Menü" },
+    { "type": "text", "id": "drawer_note", "label": "Hinweis unten im Menü", "default": "Fragen? Wir antworten werktags innerhalb von 24 Stunden." },
+    { "type": "url", "id": "drawer_note_link", "label": "Link zum Hinweis" }
+  ],
+  "blocks": [
+    {
+      "type": "mega",
+      "name": "Mega-Menü",
+      "settings": [
+        { "type": "text", "id": "trigger", "label": "Menüpunkt (exakter Titel)", "info": "Muss genau dem Titel im Hauptmenü entsprechen." },
+        { "type": "text", "id": "col_1_title", "label": "Spalte 1 – Überschrift" },
+        { "type": "link_list", "id": "col_1_menu", "label": "Spalte 1 – Menü" },
+        { "type": "text", "id": "col_2_title", "label": "Spalte 2 – Überschrift" },
+        { "type": "link_list", "id": "col_2_menu", "label": "Spalte 2 – Menü" },
+        { "type": "text", "id": "col_3_title", "label": "Spalte 3 – Überschrift" },
+        { "type": "link_list", "id": "col_3_menu", "label": "Spalte 3 – Menü" },
+        { "type": "header", "content": "Teaser" },
+        { "type": "image_picker", "id": "feature_image", "label": "Bild" },
+        { "type": "text", "id": "feature_title", "label": "Teaser-Text" },
+        { "type": "url", "id": "feature_link", "label": "Teaser-Link" }
+      ]
+    }
+  ],
+  "enabled_on": { "groups": ["header"] }
+}
+{% endschema %}

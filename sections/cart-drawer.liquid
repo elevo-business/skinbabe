@@ -1,0 +1,74 @@
+<sb-drawer id="CartDrawer" class="cart-drawer">
+  <div class="drawer__overlay" data-drawer-overlay></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'cart.general.title' | t }}" tabindex="-1" data-drawer-panel>
+    <div class="drawer__head">
+      <span class="drawer__title">
+        {{ 'cart.general.title' | t }}
+        <span class="muted">({{ cart.item_count }})</span>
+      </span>
+      <button class="drawer__close" type="button" data-drawer-close aria-label="{{ 'general.accessibility.close' | t }}">
+        {% render 'icon', icon: 'close' %}
+      </button>
+    </div>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="drawer__body">
+        <div class="cart-empty">
+          <p class="h3">{{ 'cart.general.empty' | t }}</p>
+          <p class="muted small">{{ 'cart.general.empty_body' | t }}</p>
+          <a class="btn" href="{{ routes.all_products_collection_url }}" data-drawer-close>{{ 'general.continue_shopping' | t }}</a>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="drawer__body">
+        {% render 'cart-progress' %}
+        {% render 'cart-items' %}
+
+        {%- if settings.cart_show_note -%}
+          <details class="cart-note">
+            <summary>{{ 'cart.general.note' | t }}</summary>
+            <form action="{{ routes.cart_update_url }}" method="post">
+              <textarea name="note" placeholder="{{ 'cart.general.note_placeholder' | t }}" rows="3">{{ cart.note }}</textarea>
+              <button type="submit" class="btn btn--secondary btn--sm" style="margin-top:.6rem">{{ 'cart.general.update' | t }}</button>
+            </form>
+          </details>
+        {%- endif -%}
+      </div>
+
+      <div class="drawer__foot">
+        <form action="{{ routes.cart_url }}" method="post" id="CartDrawerForm">
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            <div class="cart-totals" style="margin-bottom:.75rem">
+              {%- for discount in cart.cart_level_discount_applications -%}
+                <div class="cart-totals__row small" style="color:var(--sb-accent)">
+                  <span>{{ discount.title }}</span>
+                  <span>−{{ discount.total_allocated_amount | money }}</span>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          <div class="cart-totals">
+            <div class="cart-totals__row cart-totals__row--total">
+              <span>{{ 'cart.general.total' | t }}</span>
+              <span>{{ cart.total_price | money }}</span>
+            </div>
+            <p class="small muted">{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}</p>
+          </div>
+
+          <button type="submit" name="checkout" class="btn btn--full btn--lg" style="margin-top:1rem">
+            {{ 'cart.general.checkout' | t }}
+          </button>
+        </form>
+
+        <p class="center" style="margin-top:.75rem">
+          <a href="{{ routes.cart_url }}" class="small muted link-underline">{{ 'cart.general.view_cart' | t }}</a>
+        </p>
+      </div>
+    {%- endif -%}
+  </div>
+</sb-drawer>
+
+{% schema %}
+{ "name": "Warenkorb-Drawer" }
+{% endschema %}

@@ -1,0 +1,29 @@
+<sb-drawer id="SearchDrawer" class="search-drawer">
+  <div class="drawer__overlay" data-drawer-overlay></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}" tabindex="-1" data-drawer-panel>
+    <div class="drawer__head">
+      <span class="drawer__title">{{ 'general.search.search' | t }}</span>
+      <button class="drawer__close" type="button" data-drawer-close aria-label="{{ 'general.accessibility.close' | t }}">
+        {% render 'icon', icon: 'close' %}
+      </button>
+    </div>
+
+    <div class="drawer__body">
+      <sb-predictive-search>
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search-drawer__form">
+          <label class="visually-hidden" for="SearchDrawerInput">{{ 'general.search.search' | t }}</label>
+          <input
+            id="SearchDrawerInput"
+            class="input"
+            type="search"
+            name="q"
+            placeholder="{{ 'general.search.placeholder' | t }}"
+            autocomplete="off"
+          >
+          <input type="hidden" name="options[prefix]" value="last">
+        </form>
+        <div class="search-drawer__results" data-search-results hidden></div>
+      </sb-predictive-search>
+    </div>
+  </div>
+</sb-drawer>

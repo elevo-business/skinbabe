@@ -1,0 +1,4 @@
+<span class="header__count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>
+  {{- cart.item_count -}}
+  <span class="visually-hidden">{{ 'cart.general.item_count' | t: count: cart.item_count }}</span>
+</span>

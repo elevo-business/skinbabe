@@ -1,0 +1,66 @@
+<sb-drawer id="NavDrawer" class="nav-drawer">
+  <div class="drawer__overlay" data-drawer-overlay></div>
+  <div class="drawer__panel drawer__panel--left" role="dialog" aria-modal="true" aria-label="{{ 'sections.header.menu' | t }}" tabindex="-1" data-drawer-panel>
+    <div class="drawer__head">
+      <span class="drawer__title">{{ 'sections.header.menu' | t }}</span>
+      <button class="drawer__close" type="button" data-drawer-close aria-label="{{ 'general.accessibility.close' | t }}">
+        {% render 'icon', icon: 'close' %}
+      </button>
+    </div>
+
+    <div class="drawer__body">
+      <ul class="nav-drawer__list">
+        {%- for link in menu.links -%}
+          <li>
+            {%- if link.links.size > 0 -%}
+              <details>
+                <summary class="nav-drawer__link">
+                  {{ link.title | remove: '*' }}
+                  {% render 'icon', icon: 'chevron' %}
+                </summary>
+                <div class="nav-drawer__sub">
+                  <a href="{{ link.url }}">Alles aus {{ link.title | remove: '*' }}</a>
+                  {%- for child in link.links -%}
+                    {%- if child.links.size > 0 -%}
+                      {%- for grandchild in child.links -%}
+                        <a href="{{ grandchild.url }}">{{ grandchild.title }}</a>
+                      {%- endfor -%}
+                    {%- else -%}
+                      <a href="{{ child.url }}">{{ child.title }}</a>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </details>
+            {%- else -%}
+              <a class="nav-drawer__link" href="{{ link.url }}">
+                {{ link.title | remove: '*' }}
+                {% render 'icon', icon: 'arrow' %}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="nav-drawer__footer">
+        {%- if section.settings.drawer_note != blank -%}
+          <p class="small muted">
+            {%- if section.settings.drawer_note_link != blank -%}
+              <a href="{{ section.settings.drawer_note_link }}" class="link-underline">{{ section.settings.drawer_note }}</a>
+            {%- else -%}
+              {{ section.settings.drawer_note }}
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        <div class="nav-drawer__meta">
+          {%- if shop.customer_accounts_enabled -%}
+            <a href="{{ routes.account_url }}" class="link-underline">{{ 'sections.header.account' | t }}</a>
+          {%- endif -%}
+          <a href="{{ routes.search_url }}" class="link-underline">{{ 'general.search.search' | t }}</a>
+        </div>
+
+        {% render 'social-links' %}
+      </div>
+    </div>
+  </div>
+</sb-drawer>

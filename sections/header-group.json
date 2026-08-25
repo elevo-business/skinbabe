@@ -1,0 +1,26 @@
+{
+  "name": "Kopfbereich",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "a1": { "type": "item", "settings": { "text": "Versandkostenfrei ab 50 €", "icon": "truck" } },
+        "a2": { "type": "item", "settings": { "text": "Lieferung in 2–4 Werktagen", "icon": "clock" } },
+        "a3": { "type": "item", "settings": { "text": "30 Tage Rückgaberecht", "icon": "return" } }
+      },
+      "block_order": ["a1", "a2", "a3"],
+      "settings": { "bg": "#16130F", "fg": "#FFFFFF" }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "hide_on_scroll": false,
+        "enable_structured_data": true,
+        "drawer_note": "Fragen? Wir antworten werktags innerhalb von 24 Stunden."
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}
