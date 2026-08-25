@@ -212,8 +212,15 @@ h1,h2,h3,h4{
 
 /* ---------- Scroll reveal ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--sb-ease),transform .7s var(--sb-ease);transition-delay:var(--reveal-delay,0ms)}
-  .reveal.is-visible{opacity:1;transform:none}
+  .reveal{
+    opacity:0;transform:translateY(18px);
+    transition:opacity .7s var(--sb-ease),transform .7s var(--sb-ease);
+    transition-delay:var(--reveal-delay,0ms);
+    /* Sicherheitsnetz: falls das JS nicht laedt, wird der Inhalt trotzdem sichtbar */
+    animation:sb-reveal-safety 0s linear 3s forwards;
+  }
+  .reveal.is-visible{opacity:1;transform:none;animation:none}
+  @keyframes sb-reveal-safety{to{opacity:1;transform:none}}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important;scroll-behavior:auto !important}

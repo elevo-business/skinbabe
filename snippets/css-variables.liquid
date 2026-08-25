@@ -30,7 +30,7 @@
     --sb-font-accent:{{ settings.type_accent_font.family }},{{ settings.type_accent_font.fallback_families }};
     --sb-body-weight:{{ settings.type_body_font.weight }};
     --sb-heading-weight:{{ settings.type_heading_font.weight }};
-    --sb-heading-tracking:{{ settings.type_heading_tracking }}em;
+    --sb-heading-tracking:{{ settings.type_heading_tracking | divided_by: 100.0 }}em;
     --sb-heading-case:{{ settings.type_heading_case }};
     --sb-text-base:{{ settings.type_body_size | divided_by: 16.0 }}rem;
 

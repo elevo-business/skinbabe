@@ -16,20 +16,50 @@
             <div class="facets__group">
               {%- if section.settings.enable_filtering -%}
                 {%- for filter in collection.filters -%}
-                  {%- if filter.type == 'list' -%}
-                    {%- for value in filter.values -%}
-                      <label class="facets__pill">
+                  {%- case filter.type -%}
+                    {%- when 'list' -%}
+                      {%- for value in filter.values -%}
+                        <label class="facets__pill">
+                          <input
+                            type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            {% if value.active %}checked{% endif %}
+                            {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                          >
+                          <span>{{ value.label }} <span class="muted">({{ value.count }})</span></span>
+                        </label>
+                      {%- endfor -%}
+
+                    {%- when 'price_range' -%}
+                      <div class="facets__group" style="gap:.35rem">
+                        <span class="small muted">{{ filter.label }}</span>
+                        <label class="visually-hidden" for="FilterMin-{{ forloop.index }}">{{ 'products.facets.from' | t }}</label>
                         <input
-                          type="checkbox"
-                          name="{{ value.param_name }}"
-                          value="{{ value.value }}"
-                          {% if value.active %}checked{% endif %}
-                          {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                          class="facets__select"
+                          style="width:6.5rem"
+                          type="number"
+                          id="FilterMin-{{ forloop.index }}"
+                          name="{{ filter.min_value.param_name }}"
+                          value="{{ filter.min_value.value | divided_by: 100.0 | ceil }}"
+                          min="0"
+                          max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+                          placeholder="{{ 'products.facets.from' | t }}"
                         >
-                        <span>{{ value.label }} <span class="muted">({{ value.count }})</span></span>
-                      </label>
-                    {%- endfor -%}
-                  {%- endif -%}
+                        <label class="visually-hidden" for="FilterMax-{{ forloop.index }}">{{ 'products.facets.to' | t }}</label>
+                        <input
+                          class="facets__select"
+                          style="width:6.5rem"
+                          type="number"
+                          id="FilterMax-{{ forloop.index }}"
+                          name="{{ filter.max_value.param_name }}"
+                          value="{{ filter.max_value.value | divided_by: 100.0 | ceil }}"
+                          min="0"
+                          max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+                          placeholder="{{ 'products.facets.to' | t }}"
+                        >
+                      </div>
+                  {%- endcase -%}
                 {%- endfor -%}
               {%- endif -%}
             </div>

@@ -122,12 +122,12 @@
       {
         "type": "range",
         "id": "type_heading_tracking",
-        "min": -0.05,
-        "max": 0.12,
-        "step": 0.005,
-        "unit": "em",
+        "min": -5,
+        "max": 12,
+        "step": 1,
+        "unit": "/100 em",
         "label": "Headline-Laufweite",
-        "default": -0.02
+        "default": -2
       },
       {
         "type": "font_picker",

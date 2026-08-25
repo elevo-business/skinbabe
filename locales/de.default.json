@@ -7,7 +7,10 @@
       "next_slide": "Weiter",
       "previous_slide": "Zurück",
       "loading": "Lädt",
-      "star_reviews_info": "{{ rating_value }} von {{ rating_max }} Sternen"
+      "star_reviews_info": "{{ rating_value }} von {{ rating_max }} Sternen",
+      "link_messages": {
+        "new_window": "Öffnet in einem neuen Fenster."
+      }
     },
     "search": {
       "search": "Suchen",
@@ -16,14 +19,26 @@
       "no_results": "Keine Treffer für „{{ terms }}“.",
       "reset": "Suche zurücksetzen"
     },
-    "pagination": { "label": "Seitennavigation", "previous": "Zurück", "next": "Weiter", "page": "Seite {{ number }}" },
+    "pagination": {
+      "label": "Seitennavigation",
+      "previous": "Zurück",
+      "next": "Weiter",
+      "page": "Seite {{ number }}"
+    },
     "newsletter_form": {
       "email_placeholder": "E-Mail-Adresse",
       "button_label": "Anmelden",
       "success": "Danke. Schau kurz in dein Postfach."
     },
-    "share": { "copy_link": "Link kopieren", "copied": "Link kopiert", "title": "Teilen" },
-    "continue_shopping": "Weiter stöbern"
+    "share": {
+      "copy_link": "Link kopieren",
+      "copied": "Link kopiert",
+      "title": "Teilen"
+    },
+    "continue_shopping": "Weiter stöbern",
+    "meta": {
+      "tags": "Markiert mit {{ tags }}"
+    }
   },
   "products": {
     "product": {
@@ -77,7 +92,10 @@
       "checkout": "Zur Kasse",
       "view_cart": "Warenkorb ansehen",
       "remove": "Entfernen",
-      "item_count": { "one": "{{ count }} Artikel", "other": "{{ count }} Artikel" },
+      "item_count": {
+        "one": "{{ count }} Artikel",
+        "other": "{{ count }} Artikel"
+      },
       "note": "Hinweis zur Bestellung",
       "note_placeholder": "Anmerkung für uns (optional)",
       "taxes_and_shipping_at_checkout": "Steuern inkl. Versandkosten werden an der Kasse berechnet.",
@@ -88,28 +106,141 @@
     }
   },
   "customer": {
-    "account": { "title": "Mein Konto", "details": "Kontodaten", "view_addresses": "Adressen ansehen", "return": "Zurück zum Konto", "orders": "Bestellungen", "no_orders": "Du hast noch keine Bestellung aufgegeben." },
-    "login": { "title": "Anmelden", "email": "E-Mail", "password": "Passwort", "forgot_password": "Passwort vergessen?", "sign_in": "Anmelden", "create_account": "Konto erstellen", "guest_continue": "Als Gast fortfahren", "cancel": "Abbrechen", "submit": "Absenden" },
-    "register": { "title": "Konto erstellen", "first_name": "Vorname", "last_name": "Nachname", "email": "E-Mail", "password": "Passwort", "submit": "Konto erstellen" },
-    "recover_password": { "title": "Passwort zurücksetzen", "subtext": "Wir schicken dir eine E-Mail zum Zurücksetzen.", "success": "E-Mail ist unterwegs." },
-    "reset_password": { "title": "Neues Passwort setzen", "password": "Passwort", "password_confirm": "Passwort bestätigen", "submit": "Speichern" },
-    "addresses": { "title": "Adressen", "add_new": "Neue Adresse", "edit": "Bearbeiten", "delete": "Löschen", "default": "Standardadresse", "delete_confirm": "Adresse wirklich löschen?", "first_name": "Vorname", "last_name": "Nachname", "company": "Firma", "address1": "Straße und Hausnummer", "address2": "Adresszusatz", "city": "Stadt", "country": "Land", "province": "Bundesland", "zip": "PLZ", "phone": "Telefon", "set_default": "Als Standard festlegen", "add": "Adresse speichern", "cancel": "Abbrechen" },
-    "orders": { "order_number": "Bestellung", "date": "Datum", "payment_status": "Zahlung", "fulfillment_status": "Versand", "total": "Summe", "product": "Produkt", "quantity": "Menge", "price": "Preis", "billing_address": "Rechnungsadresse", "shipping_address": "Lieferadresse", "subtotal": "Zwischensumme", "shipping": "Versand", "tax": "MwSt.", "discount": "Rabatt" },
-    "activate_account": { "title": "Konto aktivieren", "subtext": "Lege ein Passwort fest, um dein Konto zu aktivieren.", "submit": "Konto aktivieren", "decline": "Ablehnen" }
+    "account": {
+      "title": "Mein Konto",
+      "details": "Kontodaten",
+      "view_addresses": "Adressen ansehen",
+      "return": "Zurück zum Konto",
+      "orders": "Bestellungen",
+      "no_orders": "Du hast noch keine Bestellung aufgegeben."
+    },
+    "login": {
+      "title": "Anmelden",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "forgot_password": "Passwort vergessen?",
+      "sign_in": "Anmelden",
+      "create_account": "Konto erstellen",
+      "guest_continue": "Als Gast fortfahren",
+      "cancel": "Abbrechen",
+      "submit": "Absenden"
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "submit": "Konto erstellen"
+    },
+    "recover_password": {
+      "title": "Passwort zurücksetzen",
+      "subtext": "Wir schicken dir eine E-Mail zum Zurücksetzen.",
+      "success": "E-Mail ist unterwegs."
+    },
+    "reset_password": {
+      "title": "Neues Passwort setzen",
+      "password": "Passwort",
+      "password_confirm": "Passwort bestätigen",
+      "submit": "Speichern"
+    },
+    "addresses": {
+      "title": "Adressen",
+      "add_new": "Neue Adresse",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "default": "Standardadresse",
+      "delete_confirm": "Adresse wirklich löschen?",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "company": "Firma",
+      "address1": "Straße und Hausnummer",
+      "address2": "Adresszusatz",
+      "city": "Stadt",
+      "country": "Land",
+      "province": "Bundesland",
+      "zip": "PLZ",
+      "phone": "Telefon",
+      "set_default": "Als Standard festlegen",
+      "add": "Adresse speichern",
+      "cancel": "Abbrechen"
+    },
+    "orders": {
+      "order_number": "Bestellung",
+      "date": "Datum",
+      "payment_status": "Zahlung",
+      "fulfillment_status": "Versand",
+      "total": "Summe",
+      "product": "Produkt",
+      "quantity": "Menge",
+      "price": "Preis",
+      "billing_address": "Rechnungsadresse",
+      "shipping_address": "Lieferadresse",
+      "subtotal": "Zwischensumme",
+      "shipping": "Versand",
+      "tax": "MwSt.",
+      "discount": "Rabatt"
+    },
+    "activate_account": {
+      "title": "Konto aktivieren",
+      "subtext": "Lege ein Passwort fest, um dein Konto zu aktivieren.",
+      "submit": "Konto aktivieren",
+      "decline": "Ablehnen"
+    }
   },
   "blogs": {
-    "article": { "read_more": "Weiterlesen", "back_to_blog": "Alle Beiträge", "comments": { "one": "{{ count }} Kommentar", "other": "{{ count }} Kommentare" }, "moderated": "Kommentare werden vor der Veröffentlichung geprüft.", "success": "Danke, dein Kommentar ist online.", "success_moderated": "Danke. Dein Kommentar wird geprüft.", "name": "Name", "email": "E-Mail", "message": "Kommentar", "post": "Kommentar abschicken" }
+    "article": {
+      "read_more": "Weiterlesen",
+      "back_to_blog": "Alle Beiträge",
+      "comments": {
+        "one": "{{ count }} Kommentar",
+        "other": "{{ count }} Kommentare"
+      },
+      "moderated": "Kommentare werden vor der Veröffentlichung geprüft.",
+      "success": "Danke, dein Kommentar ist online.",
+      "success_moderated": "Danke. Dein Kommentar wird geprüft.",
+      "name": "Name",
+      "email": "E-Mail",
+      "message": "Kommentar",
+      "post": "Kommentar abschicken"
+    }
   },
   "contact": {
-    "form": { "name": "Name", "email": "E-Mail", "phone": "Telefon", "message": "Deine Nachricht", "send": "Nachricht senden", "post_success": "Danke. Wir melden uns." }
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "message": "Deine Nachricht",
+      "send": "Nachricht senden",
+      "post_success": "Danke. Wir melden uns."
+    }
   },
   "gift_cards": {
-    "issued": { "title": "Geschenkgutschein über {{ value }}", "subtext": "Dein Geschenkgutschein", "expires": "Gültig bis {{ expiry }}", "copy_code": "Code kopieren", "shop_link": "Jetzt einlösen", "print": "Drucken", "add_to_apple_wallet": "Zu Apple Wallet hinzufügen" }
+    "issued": {
+      "title": "Geschenkgutschein über {{ value }}",
+      "subtext": "Dein Geschenkgutschein",
+      "expires": "Gültig bis {{ expiry }}",
+      "copy_code": "Code kopieren",
+      "shop_link": "Jetzt einlösen",
+      "print": "Drucken",
+      "add_to_apple_wallet": "Zu Apple Wallet hinzufügen"
+    }
   },
   "sections": {
-    "header": { "cart": "Warenkorb", "account": "Konto", "menu": "Menü", "search": "Suchen", "announcement": "Ankündigung" },
-    "footer": { "payment_methods": "Zahlungsarten", "newsletter": "Newsletter" },
-    "quantity": { "label": "Menge" }
+    "header": {
+      "cart": "Warenkorb",
+      "account": "Konto",
+      "menu": "Menü",
+      "search": "Suchen",
+      "announcement": "Ankündigung"
+    },
+    "footer": {
+      "payment_methods": "Zahlungsarten",
+      "newsletter": "Newsletter"
+    },
+    "quantity": {
+      "label": "Menge"
+    }
   },
   "shopify": {
     "online_store": {
@@ -122,5 +253,9 @@
     "product_title": "Beispielprodukt",
     "collection_title": "Beispielkategorie"
   },
-  "404": { "title": "Diese Seite gibt es nicht", "subtext": "Der Link ist tot oder die Seite ist umgezogen.", "link": "Zur Startseite" }
+  "404": {
+    "title": "Diese Seite gibt es nicht",
+    "subtext": "Der Link ist tot oder die Seite ist umgezogen.",
+    "link": "Zur Startseite"
+  }
 }

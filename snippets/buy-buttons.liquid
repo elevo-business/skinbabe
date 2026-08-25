@@ -1,14 +1,18 @@
 {%- liquid
   assign variant = product.selected_or_first_available_variant
+  assign product_form_id = 'product-form-' | append: section.id
+  assign qty_field_id = 'ProductQty-' | append: section.id
 -%}
 <sb-product-form class="product__buy" data-cart-type="{{ settings.cart_type }}">
-  {%- form 'product', product, id: 'product-form-' | append: section.id, class: 'product__buy', novalidate: 'novalidate', data-product-form: '' -%}
+  {%- form 'product', product, id: product_form_id, class: 'product__buy', novalidate: 'novalidate', data-product-form: 'true' -%}
     <input type="hidden" name="id" value="{{ variant.id }}">
-    <input type="hidden" name="quantity" value="1">
+    {%- unless show_quantity -%}
+      <input type="hidden" name="quantity" value="1">
+    {%- endunless -%}
 
     <div class="product__buy-row">
       {%- if show_quantity -%}
-        {% render 'quantity-input', id: 'ProductQty-' | append: section.id, value: 1, min: 1 %}
+        {% render 'quantity-input', id: qty_field_id, value: 1, min: 1 %}
       {%- endif -%}
       <button
         type="submit"

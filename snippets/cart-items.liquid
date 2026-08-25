@@ -19,7 +19,8 @@
         {%- endfor -%}
 
         <div class="cart-item__row">
-          {% render 'quantity-input', id: 'CartQty-' | append: forloop.index, value: item.quantity, line: forloop.index, min: 0 %}
+          {%- assign qty_field_id = 'CartQty-' | append: forloop.index -%}
+          {% render 'quantity-input', id: qty_field_id, value: item.quantity, line: forloop.index, min: 0 %}
           <span class="price">
             {%- if item.original_line_price != item.final_line_price -%}
               <s class="price__compare">{{ item.original_line_price | money }}</s>

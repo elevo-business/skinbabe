@@ -28,7 +28,8 @@
 
             {%- when 'price' -%}
               <div class="product__price" {{ block.shopify_attributes }}>
-                {% render 'price', product: product, id: 'price-' | append: section.id %}
+                {%- assign price_id = 'price-' | append: section.id -%}
+                {% render 'price', product: product, id: price_id %}
                 {%- if block.settings.tax_note != blank -%}
                   <p class="small muted" style="margin-top:.35rem">{{ block.settings.tax_note }}</p>
                 {%- endif -%}

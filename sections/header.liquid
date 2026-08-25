@@ -143,7 +143,7 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": {{ shop.name | json }},
-      "url": {{ shop.url | append: page.url | json }}
+      "url": {{ shop.url | json }}
       {%- if settings.logo %},
       "logo": {{ settings.logo | image_url: width: 500 | prepend: 'https:' | json }}
       {%- endif -%}
