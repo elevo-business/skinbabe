@@ -1,0 +1,49 @@
+<div class="section">
+  <div class="page-width page-width--narrow" style="max-width:26rem">
+    <div id="recover" style="display:none">
+      <h1 class="h2" style="margin-bottom:.75rem">{{ 'customer.recover_password.title' | t }}</h1>
+      <p class="muted small" style="margin-bottom:1.5rem">{{ 'customer.recover_password.subtext' | t }}</p>
+      {%- form 'recover_customer_password', class: 'stack', style: 'gap:1rem' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="form__message form__message--success">{{ 'customer.recover_password.success' | t }}</p>
+        {%- endif -%}
+        <div class="field">
+          <label class="field__label" for="RecoverEmail">{{ 'customer.login.email' | t }}</label>
+          <input type="email" id="RecoverEmail" name="email" autocomplete="email" required>
+        </div>
+        <button type="submit" class="btn btn--full">{{ 'customer.login.submit' | t }}</button>
+        <button type="button" class="small muted link-underline" onclick="document.getElementById('recover').style.display='none';document.getElementById('login').style.display='block'">
+          {{ 'customer.login.cancel' | t }}
+        </button>
+      {%- endform -%}
+    </div>
+
+    <div id="login">
+      <h1 class="h2" style="margin-bottom:1.5rem">{{ 'customer.login.title' | t }}</h1>
+      {%- form 'customer_login', class: 'stack', style: 'gap:1rem' -%}
+        {%- if form.errors -%}
+          <p class="form__message form__message--error">{{ form.errors | default_errors }}</p>
+        {%- endif -%}
+        <div class="field">
+          <label class="field__label" for="LoginEmail">{{ 'customer.login.email' | t }}</label>
+          <input type="email" id="LoginEmail" name="customer[email]" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="LoginPassword">{{ 'customer.login.password' | t }}</label>
+          <input type="password" id="LoginPassword" name="customer[password]" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn--full">{{ 'customer.login.sign_in' | t }}</button>
+        <div class="stack center" style="gap:.5rem;margin-top:.5rem">
+          <button type="button" class="small muted link-underline" onclick="document.getElementById('login').style.display='none';document.getElementById('recover').style.display='block'">
+            {{ 'customer.login.forgot_password' | t }}
+          </button>
+          <a class="small link-underline" href="{{ routes.account_register_url }}">{{ 'customer.login.create_account' | t }}</a>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Anmelden" }
+{% endschema %}

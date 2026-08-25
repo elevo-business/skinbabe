@@ -1,0 +1,16 @@
+<div class="section">
+  <div class="page-width page-width--narrow">
+    <div class="page-hero reveal" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h1 class="h1">{{ page.title }}</h1>
+    </div>
+    <div class="rte article__body reveal">{{ page.content }}</div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Seite",
+  "settings": [{ "type": "text", "id": "eyebrow", "label": "Kleiner Vortext" }]
+}
+{% endschema %}

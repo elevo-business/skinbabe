@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": { "type": "main-page", "settings": { "eyebrow": "erklärt" } },
+    "diagnosis": {
+      "type": "diagnosis",
+      "blocks": {
+        "m1": { "type": "myth", "settings": { "text": "„Meine Haut ist halt empfindlich.“" } },
+        "m2": { "type": "myth", "settings": { "text": "„Ich müsste einfach öfter peelen.“" } },
+        "m3": { "type": "myth", "settings": { "text": "„Ich brauche die teurere Klinge.“" } },
+        "s1": { "type": "step", "settings": { "title": "Die erste Klinge zieht das Haar an", "text": "Mehrklingen-Systeme heben das Haar aus dem Follikel, bevor die nächste Klinge folgt." } },
+        "s2": { "type": "step", "settings": { "title": "Die zweite Klinge kappt es zu tief", "text": "Das Haar wird unterhalb der Hautoberfläche durchtrennt und rutscht in den Kanal zurück." } },
+        "s3": { "type": "step", "settings": { "title": "Beim Nachwachsen trifft es auf geschlossene Haut", "text": "Genau das ist ein eingewachsenes Haar — und das dunkle Pünktchen, das danach bleibt." } }
+      },
+      "block_order": ["m1", "m2", "m3", "s1", "s2", "s3"],
+      "settings": {
+        "eyebrow": "der mechanismus",
+        "heading": "warum haare überhaupt einwachsen",
+        "transition": "Nichts davon ist die Ursache.",
+        "answer_eyebrow": "lift and cut",
+        "answer_heading": "Das Prinzip, das das Problem erzeugt.",
+        "answer_text": "<p>Mehrklingen-Rasierer heben das Haar an und kappen es unter der Hautoberfläche. Das ist kein Fehler im Produkt — das ist die Funktionsweise.</p>",
+        "conclusion": "Ein Rasierer mit Schutzkopf hat keinen direkten Klingenkontakt zur Haut.",
+        "background": "cream"
+      }
+    },
+    "changes": {
+      "type": "changes",
+      "blocks": {
+        "c1": { "type": "change", "settings": { "icon": "shield", "title": "Schutzkopf statt Klingenkontakt", "text": "Ein feines Gitter zwischen Klinge und Haut. Das Haar wird auf Hautniveau gekürzt, nicht darunter." } },
+        "c2": { "type": "change", "settings": { "icon": "droplet", "title": "Trocken möglich", "text": "Ohne Wasser und ohne Schaum — die Reibung, die sonst zusätzlich reizt, fällt weg." } },
+        "c3": { "type": "change", "settings": { "icon": "clock", "title": "Nachwachsen ohne Barriere", "text": "Das Haar trifft beim Nachwachsen nicht auf verschlossene Haut." } },
+        "c4": { "type": "change", "settings": { "icon": "leaf", "title": "Weniger Produkte danach", "text": "Kein Peeling, kein Serum gegen ein Problem, das gar nicht erst entsteht." } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": { "eyebrow": "der unterschied", "heading": "was ein schutzkopf anders macht", "background": "default" }
+    },
+    "bestsellers": {
+      "type": "bestsellers",
+      "blocks": {
+        "p1": { "type": "product", "settings": { "subtitle": "Für jetzt sofort glatt, ohne die Pünktchen danach." } },
+        "p2": { "type": "product", "settings": { "subtitle": "Sofort glatt und langfristig weniger — zusammen." } }
+      },
+      "block_order": ["p1", "p2"],
+      "settings": { "eyebrow": "danach", "heading": "womit du das löst", "link_label": "alle produkte", "background": "cream" }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "eyebrow": "häufig gefragt", "heading": "was du noch wissen willst", "structured_data": true, "background": "default" }
+    },
+    "newsletter": { "type": "newsletter", "settings": { "background": "cream" } }
+  },
+  "order": ["main", "diagnosis", "changes", "bestsellers", "faq", "newsletter"]
+}

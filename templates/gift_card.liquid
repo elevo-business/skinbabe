@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ 'gift_cards.issued.title' | t: value: gift_card.initial_value | money }} — {{ shop.name }}</title>
+    {{ content_for_header }}
+    {% render 'css-variables' %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'components.css' | asset_url | stylesheet_tag }}
+    {% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ settings.type_heading_font | font_face: font_display: 'swap' }}
+    {% endstyle %}
+  </head>
+  <body>
+    <div class="section">
+      <div class="page-width page-width--narrow center">
+        <div class="stack" style="gap:1.25rem;align-items:center">
+          <p class="eyebrow">{{ shop.name }}</p>
+          <h1 class="h1">{{ 'gift_cards.issued.title' | t: value: gift_card.initial_value | money }}</h1>
+          {%- if gift_card.expires_on -%}
+            <p class="muted small">{{ 'gift_cards.issued.expires' | t: expiry: gift_card.expires_on | date: '%d.%m.%Y' }}</p>
+          {%- endif -%}
+
+          {{ gift_card.qr_identifier }}
+
+          <div class="reveal-answer" style="width:100%;max-width:24rem">
+            <p class="eyebrow">Code</p>
+            <p class="h3" style="letter-spacing:.1em;word-break:break-all">{{ gift_card.code | format_code }}</p>
+          </div>
+
+          <a class="btn" href="{{ shop.url }}">{{ 'gift_cards.issued.shop_link' | t }}</a>
+          <button class="small muted link-underline" onclick="window.print()">{{ 'gift_cards.issued.print' | t }}</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<div class="section">
+  <div class="page-width">
+    <div class="page-hero" style="margin-bottom:2rem">
+      <p class="eyebrow">{{ order.created_at | date: '%d.%m.%Y' }}</p>
+      <h1 class="h2">{{ 'customer.orders.order_number' | t }} {{ order.name }}</h1>
+    </div>
+
+    <div class="compare" style="margin-bottom:2.5rem">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">{{ 'customer.orders.product' | t }}</th>
+            <th scope="col">{{ 'customer.orders.quantity' | t }}</th>
+            <th scope="col">{{ 'customer.orders.price' | t }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for line_item in order.line_items -%}
+            <tr>
+              <th scope="row">{{ line_item.title }}</th>
+              <td>{{ line_item.quantity }}</td>
+              <td>{{ line_item.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cart-totals" style="max-width:22rem;margin-left:auto">
+      <div class="cart-totals__row"><span>{{ 'customer.orders.subtotal' | t }}</span><span>{{ order.subtotal_price | money }}</span></div>
+      {%- for shipping_method in order.shipping_methods -%}
+        <div class="cart-totals__row"><span>{{ 'customer.orders.shipping' | t }}</span><span>{{ shipping_method.price | money }}</span></div>
+      {%- endfor -%}
+      <div class="cart-totals__row cart-totals__row--total"><span>{{ 'customer.orders.total' | t }}</span><span>{{ order.total_price | money }}</span></div>
+    </div>
+
+    <div class="content-columns" style="margin-top:3rem">
+      <div>
+        <p class="eyebrow" style="margin-bottom:.75rem">{{ 'customer.orders.billing_address' | t }}</p>
+        {{ order.billing_address | format_address }}
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:.75rem">{{ 'customer.orders.shipping_address' | t }}</p>
+        {{ order.shipping_address | format_address }}
+      </div>
+    </div>
+
+    <p style="margin-top:2.5rem">
+      <a class="link-arrow" href="{{ routes.account_url }}">{% render 'icon', icon: 'arrow-left' %} {{ 'customer.account.return' | t }}</a>
+    </p>
+  </div>
+</div>

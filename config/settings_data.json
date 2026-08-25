@@ -1,0 +1,44 @@
+{
+  "current": {
+    "logo_width": 120,
+    "brand_tagline": "du hast keine schlechte haut. du hattest einen schlechten rasierer.",
+
+    "color_background": "#FFFFFF",
+    "color_ink": "#16130F",
+    "color_cream": "#F5EFE9",
+    "color_accent": "#A97E6D",
+    "color_gold": "#C9A227",
+    "color_sale": "#A63D2F",
+
+    "type_heading_font": "poppins_n5",
+    "type_heading_case": "lowercase",
+    "type_heading_tracking": -0.02,
+    "type_body_font": "assistant_n4",
+    "type_body_size": 16,
+    "type_accent_font": "playfair_display_n4",
+
+    "layout_page_width": 1440,
+    "layout_section_spacing": 6,
+    "shape_button_radius": 100,
+    "shape_card_radius": 16,
+    "animations_reveal": true,
+
+    "card_image_ratio": "portrait",
+    "card_hover_image": true,
+    "card_show_vendor": false,
+    "card_show_rating": true,
+    "card_show_swatches": true,
+    "card_quick_add": true,
+
+    "cart_type": "drawer",
+    "cart_show_note": true,
+    "cart_free_shipping_threshold": "5000",
+    "cart_show_recommendations": true,
+
+    "social_instagram": "",
+    "social_tiktok": "",
+    "social_facebook": "",
+    "social_youtube": "",
+    "social_pinterest": ""
+  }
+}

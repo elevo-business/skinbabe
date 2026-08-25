@@ -1,0 +1,40 @@
+<div class="section">
+  <div class="page-width page-width--narrow">
+    <div class="section-head section-head--split">
+      <h1 class="h2">{{ 'customer.addresses.title' | t }}</h1>
+      <a class="link-arrow" href="{{ routes.account_url }}">{{ 'customer.account.return' | t }} {% render 'icon', icon: 'arrow' %}</a>
+    </div>
+
+    {%- form 'customer_address', customer.new_address, class: 'stack', style: 'gap:1rem;margin-bottom:3rem' -%}
+      <h2 class="h3">{{ 'customer.addresses.add_new' | t }}</h2>
+      <div class="form-inline">
+        <input class="input" type="text" name="address[first_name]" placeholder="{{ 'customer.addresses.first_name' | t }}" autocomplete="given-name">
+        <input class="input" type="text" name="address[last_name]" placeholder="{{ 'customer.addresses.last_name' | t }}" autocomplete="family-name">
+      </div>
+      <input class="input" type="text" name="address[address1]" placeholder="{{ 'customer.addresses.address1' | t }}" autocomplete="address-line1">
+      <input class="input" type="text" name="address[address2]" placeholder="{{ 'customer.addresses.address2' | t }}" autocomplete="address-line2">
+      <div class="form-inline">
+        <input class="input" type="text" name="address[zip]" placeholder="{{ 'customer.addresses.zip' | t }}" autocomplete="postal-code">
+        <input class="input" type="text" name="address[city]" placeholder="{{ 'customer.addresses.city' | t }}" autocomplete="address-level2">
+      </div>
+      <input class="input" type="text" name="address[country]" placeholder="{{ 'customer.addresses.country' | t }}" autocomplete="country-name" value="Deutschland">
+      <input class="input" type="tel" name="address[phone]" placeholder="{{ 'customer.addresses.phone' | t }}" autocomplete="tel">
+      <button type="submit" class="btn" style="align-self:flex-start">{{ 'customer.addresses.add' | t }}</button>
+    {%- endform -%}
+
+    {%- for address in customer.addresses -%}
+      <div style="padding-block:1.5rem;border-top:1px solid var(--sb-line)">
+        {%- if address == customer.default_address -%}
+          <span class="badge badge--soft" style="margin-bottom:.6rem">{{ 'customer.addresses.default' | t }}</span>
+        {%- endif -%}
+        {{ address | format_address }}
+        {%- form 'customer_address', address -%}
+          <button type="submit" class="small muted link-underline" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+            {{ 'customer.addresses.delete' | t }}
+          </button>
+          <input type="hidden" name="_method" value="delete">
+        {%- endform -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>

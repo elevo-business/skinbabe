@@ -1,0 +1,102 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "rating": { "type": "rating", "settings": {} },
+        "price": { "type": "price", "settings": { "tax_note": "inkl. MwSt., zzgl. Versand" } },
+        "arguments": {
+          "type": "arguments",
+          "settings": {
+            "arg_1": "Kein direkter Klingenkontakt zur Haut",
+            "arg_2": "Auch trocken, ohne Wasser und Schaum",
+            "arg_3": "Ein Kopf hält drei bis sechs Monate",
+            "arg_4": "30 Tage zurückgeben, auch benutzt"
+          }
+        },
+        "variants": { "type": "variants", "settings": {} },
+        "buy": {
+          "type": "buy",
+          "settings": {
+            "show_quantity": false,
+            "show_dynamic_checkout": true,
+            "payment_note": "Klarna, PayPal, Apple Pay, Kreditkarte"
+          }
+        },
+        "trust": {
+          "type": "trust",
+          "settings": {
+            "text_1": "Auf Lager, Versand am selben Werktag",
+            "icon_1": "box",
+            "text_2": "30 Tage Rückgabe, auch geöffnet",
+            "icon_2": "return",
+            "text_3": "Klarna, PayPal, Apple Pay",
+            "icon_3": "card",
+            "text_4": "Support auf Deutsch, werktags in 24 h",
+            "icon_4": "chat"
+          }
+        },
+        "accordion": {
+          "type": "accordion",
+          "settings": {
+            "title_1": "Beschreibung",
+            "title_2": "So funktioniert es",
+            "title_3": "Lieferumfang",
+            "title_4": "Versand & Rückgabe"
+          }
+        }
+      },
+      "block_order": ["title", "rating", "price", "arguments", "variants", "buy", "trust", "accordion"],
+      "settings": { "gallery_layout": "stacked" }
+    },
+    "mechanism": {
+      "type": "diagnosis",
+      "settings": {
+        "eyebrow": "der mechanismus",
+        "heading": "warum haare überhaupt einwachsen",
+        "transition": "Es liegt nicht an dir.",
+        "answer_eyebrow": "was wirklich passiert",
+        "answer_heading": "Lift and cut — und das Ergebnis drei Tage später.",
+        "answer_text": "<p>Mehrklingen-Rasierer heben das Haar an und kappen es unter der Hautoberfläche. Beim Nachwachsen trifft es auf geschlossene Haut.</p>",
+        "conclusion": "Ein Rasierer mit Schutzkopf hat keinen direkten Klingenkontakt zur Haut.",
+        "background": "cream"
+      }
+    },
+    "comparison": {
+      "type": "comparison",
+      "settings": {
+        "eyebrow": "die rechnung",
+        "heading": "einmal kaufen statt jedes mal zahlen",
+        "col_1": "skinbabe",
+        "col_2": "Waxing zuhause",
+        "col_3": "Studio / Salon",
+        "background": "default"
+      }
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "eyebrow": "garantie",
+        "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
+        "seal_value": "30",
+        "seal_label": "Tage Garantie",
+        "background": "cream"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "vor dem kauf",
+        "heading": "häufige fragen zu diesem produkt",
+        "structured_data": false,
+        "background": "default"
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": { "heading": "passt dazu", "limit": 4, "background": "cream" }
+    }
+  },
+  "order": ["main", "mechanism", "comparison", "guarantee", "faq", "recommendations"]
+}

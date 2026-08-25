@@ -1,0 +1,28 @@
+<div class="section">
+  <div class="page-width page-width--narrow" style="max-width:26rem">
+    <h1 class="h2" style="margin-bottom:1.5rem">{{ 'customer.register.title' | t }}</h1>
+    {%- form 'create_customer', class: 'stack', style: 'gap:1rem' -%}
+      {%- if form.errors -%}
+        <p class="form__message form__message--error">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+      <div class="field">
+        <label class="field__label" for="RegFirst">{{ 'customer.register.first_name' | t }}</label>
+        <input type="text" id="RegFirst" name="customer[first_name]" autocomplete="given-name">
+      </div>
+      <div class="field">
+        <label class="field__label" for="RegLast">{{ 'customer.register.last_name' | t }}</label>
+        <input type="text" id="RegLast" name="customer[last_name]" autocomplete="family-name">
+      </div>
+      <div class="field">
+        <label class="field__label" for="RegEmail">{{ 'customer.register.email' | t }}</label>
+        <input type="email" id="RegEmail" name="customer[email]" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label class="field__label" for="RegPassword">{{ 'customer.register.password' | t }}</label>
+        <input type="password" id="RegPassword" name="customer[password]" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="btn btn--full">{{ 'customer.register.submit' | t }}</button>
+      <a class="small muted link-underline center" href="{{ routes.account_login_url }}">{{ 'customer.login.sign_in' | t }}</a>
+    {%- endform -%}
+  </div>
+</div>

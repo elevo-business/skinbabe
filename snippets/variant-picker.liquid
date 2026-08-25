@@ -1,0 +1,59 @@
+{%- unless product.has_only_default_variant -%}
+  <sb-variants
+    class="variant-picker"
+    data-section="{{ section.id }}"
+    data-url="{{ product.url }}"
+    data-update-url="{{ update_url | default: true }}"
+  >
+    {%- for option in product.options_with_values -%}
+      {%- assign option_index = forloop.index0 -%}
+      {%- if option.values.size > 8 -%}
+        <fieldset>
+          <legend>{{ option.name }}</legend>
+          <div class="variant-select">
+            <select name="options[{{ option.name | escape }}]" aria-label="{{ option.name | escape }}">
+              {%- for value in option.values -%}
+                <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+              {%- endfor -%}
+            </select>
+            {% render 'icon', icon: 'chevron' %}
+          </div>
+        </fieldset>
+      {%- else -%}
+        <fieldset>
+          <legend>
+            {{ option.name }}
+            <span data-selected-option="{{ option.name | escape }}">{{ option.selected_value }}</span>
+          </legend>
+          <div class="variant-options">
+            {%- for value in option.values -%}
+              {%- liquid
+                assign input_id = section.id | append: '-' | append: option_index | append: '-' | append: forloop.index0
+                assign available = false
+                for variant in product.variants
+                  if variant.options[option_index] == value and variant.available
+                    assign available = true
+                    break
+                  endif
+                endfor
+              -%}
+              <input
+                type="radio"
+                id="{{ input_id }}"
+                name="options[{{ option.name | escape }}]"
+                value="{{ value | escape }}"
+                {% if option.selected_value == value %}checked{% endif %}
+                {% unless available %}disabled{% endunless %}
+              >
+              <label for="{{ input_id }}" data-option-value-label>{{ value }}</label>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      {%- endif -%}
+    {%- endfor -%}
+
+    <script type="application/json">
+      {{ product.variants | json }}
+    </script>
+  </sb-variants>
+{%- endunless -%}

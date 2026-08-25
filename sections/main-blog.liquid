@@ -1,0 +1,22 @@
+{%- paginate blog.articles by 12 -%}
+<div class="section">
+  <div class="page-width">
+    <div class="page-hero reveal" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <p class="eyebrow">{{ blog.articles_count }} Beiträge</p>
+      <h1 class="h1">{{ blog.title }}</h1>
+    </div>
+
+    <div class="product-grid" style="--cols:3;--cols-tablet:2;">
+      {%- for article in blog.articles -%}
+        {% render 'article-card', article: article %}
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}{% render 'pagination', paginate: paginate %}{%- endif -%}
+  </div>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{ "name": "Blog" }
+{% endschema %}

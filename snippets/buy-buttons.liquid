@@ -1,0 +1,35 @@
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+-%}
+<sb-product-form class="product__buy" data-cart-type="{{ settings.cart_type }}">
+  {%- form 'product', product, id: 'product-form-' | append: section.id, class: 'product__buy', novalidate: 'novalidate', data-product-form: '' -%}
+    <input type="hidden" name="id" value="{{ variant.id }}">
+    <input type="hidden" name="quantity" value="1">
+
+    <div class="product__buy-row">
+      {%- if show_quantity -%}
+        {% render 'quantity-input', id: 'ProductQty-' | append: section.id, value: 1, min: 1 %}
+      {%- endif -%}
+      <button
+        type="submit"
+        name="add"
+        class="btn btn--lg"
+        {% unless product.available %}disabled aria-disabled="true"{% endunless %}
+      >
+        <span data-btn-label>
+          {%- if product.available -%}
+            {{ 'products.product.add_to_cart' | t }}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+        </span>
+      </button>
+    </div>
+
+    {%- if show_dynamic_checkout and product.available -%}
+      {{ form | payment_button }}
+    {%- endif -%}
+
+    <p class="form__message form__message--error" data-form-error hidden></p>
+  {%- endform -%}
+</sb-product-form>

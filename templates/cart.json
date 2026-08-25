@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": { "trust_note": "Klarna, PayPal, Apple Pay. 30 Tage Rückgabe." }
+    }
+  },
+  "order": ["main"]
+}

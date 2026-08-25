@@ -1,0 +1,108 @@
+{%- paginate collection.products by section.settings.per_page -%}
+<div class="section">
+  <div class="page-width">
+    <div class="collection-head reveal" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <p class="eyebrow">{{ collection.products_count }} Produkte</p>
+      <h1 class="h1">{{ collection.title }}</h1>
+      {%- if collection.description != blank and section.settings.show_description -%}
+        <div class="rte lede">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    <sb-facets class="facets" data-section="{{ section.id }}">
+      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+        <div data-facet-filters>
+          <form class="facets__bar">
+            <div class="facets__group">
+              {%- if section.settings.enable_filtering -%}
+                {%- for filter in collection.filters -%}
+                  {%- if filter.type == 'list' -%}
+                    {%- for value in filter.values -%}
+                      <label class="facets__pill">
+                        <input
+                          type="checkbox"
+                          name="{{ value.param_name }}"
+                          value="{{ value.value }}"
+                          {% if value.active %}checked{% endif %}
+                          {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                        >
+                        <span>{{ value.label }} <span class="muted">({{ value.count }})</span></span>
+                      </label>
+                    {%- endfor -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
+            </div>
+
+            {%- if section.settings.enable_sorting -%}
+              <div class="facets__group">
+                <label class="visually-hidden" for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+                <select class="facets__select" name="sort_by" id="SortBy">
+                  {%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+                  {%- for option in collection.sort_options -%}
+                    <option value="{{ option.value }}" {% if option.value == current_sort %}selected{% endif %}>{{ option.name }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {%- endif -%}
+          </form>
+
+          {%- if collection.current_vendor or collection.current_type or collection.filters != empty -%}
+            {%- assign has_active = false -%}
+            {%- for filter in collection.filters -%}
+              {%- if filter.active_values.size > 0 -%}{%- assign has_active = true -%}{%- endif -%}
+            {%- endfor -%}
+            {%- if has_active -%}
+              <div class="facets__active" style="margin-top:1rem">
+                {%- for filter in collection.filters -%}
+                  {%- for value in filter.active_values -%}
+                    <a class="facets__pill" href="{{ value.url_to_remove }}" data-facet-clear>
+                      {{ value.label }} {% render 'icon', icon: 'close' %}
+                    </a>
+                  {%- endfor -%}
+                {%- endfor -%}
+                <a class="small muted link-underline" href="{{ collection.url }}" data-facet-clear>{{ 'products.facets.clear_all' | t }}</a>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div data-facet-results>
+        {%- if collection.products.size > 0 -%}
+          <div class="product-grid" style="--cols:{{ section.settings.columns }};--cols-tablet:3;">
+            {%- for product in collection.products -%}
+              <div class="reveal" style="--reveal-delay:{{ forloop.index0 | modulo: 4 | times: 70 }}ms">
+                {% render 'product-card', product: product %}
+              </div>
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination', paginate: paginate %}
+          {%- endif -%}
+        {%- else -%}
+          <div class="empty-state">
+            <p class="h3">Hier ist gerade nichts.</p>
+            <p class="muted">Setz die Filter zurück oder schau dir alle Produkte an.</p>
+            <a class="btn btn--secondary" href="{{ collection.url }}">{{ 'products.facets.clear_all' | t }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </sb-facets>
+  </div>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Kategorie",
+  "settings": [
+    { "type": "checkbox", "id": "show_description", "label": "Beschreibung anzeigen", "default": true },
+    { "type": "checkbox", "id": "enable_filtering", "label": "Filter aktivieren", "default": true },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Sortierung aktivieren", "default": true },
+    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Spalten (Desktop)", "default": 3 },
+    { "type": "range", "id": "per_page", "min": 8, "max": 48, "step": 4, "label": "Produkte pro Seite", "default": 24 }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,50 @@
+{%- liquid
+  assign layout = layout | default: 'carousel'
+-%}
+<sb-media-gallery class="product__gallery{% if layout == 'stacked' %} product__gallery--stacked{% endif %}" id="gallery-{{ section.id }}">
+  <div class="gallery__viewer" data-gallery-viewer>
+    {%- if product.media.size > 0 -%}
+      {%- for media in product.media -%}
+        <div class="gallery__slide" data-media-id="{{ media.id }}">
+          {%- case media.media_type -%}
+            {%- when 'image' -%}
+              <img
+                src="{{ media | image_url: width: 1200 }}"
+                srcset="{{ media | image_url: width: 600 }} 600w, {{ media | image_url: width: 900 }} 900w, {{ media | image_url: width: 1400 }} 1400w"
+                sizes="(min-width: 990px) 50vw, 100vw"
+                alt="{{ media.alt | escape }}"
+                width="{{ media.width }}"
+                height="{{ media.height }}"
+                {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+              >
+            {%- when 'video' -%}
+              {{ media | video_tag: image_size: '1200x', controls: true, muted: true }}
+            {%- when 'external_video' -%}
+              {{ media | external_video_tag }}
+            {%- when 'model' -%}
+              {{ media | model_viewer_tag }}
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <div class="gallery__slide">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+    {%- endif -%}
+  </div>
+
+  {%- if product.media.size > 1 -%}
+    <div class="gallery__thumbs">
+      {%- for media in product.media -%}
+        <button
+          type="button"
+          class="gallery__thumb"
+          data-gallery-thumb
+          data-media-target="{{ media.id }}"
+          aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-label="{{ 'general.accessibility.next_slide' | t }} {{ forloop.index }}"
+        >
+          <img src="{{ media.preview_image | image_url: width: 180 }}" alt="" width="90" height="112" loading="lazy">
+        </button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</sb-media-gallery>

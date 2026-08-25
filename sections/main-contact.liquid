@@ -1,0 +1,50 @@
+<div class="section">
+  <div class="page-width">
+    <div class="content-columns">
+      <div>
+        <div class="page-hero">
+          {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+          <h1 class="h1">{{ page.title }}</h1>
+          {%- if page.content != blank -%}<div class="rte lede">{{ page.content }}</div>{%- endif -%}
+        </div>
+
+        {%- if section.settings.response_note != blank -%}
+          <div class="product__notice" style="margin-top:1.5rem">
+            {% render 'icon', icon: 'chat' %}
+            <div>{{ section.settings.response_note }}</div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div>
+        {%- form 'contact', class: 'stack', style: 'gap:1rem' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="form__message form__message--success">{% render 'icon', icon: 'check' %} {{ 'contact.form.post_success' | t }}</p>
+          {%- endif -%}
+          {%- if form.errors -%}
+            <p class="form__message form__message--error">{{ form.errors | default_errors }}</p>
+          {%- endif -%}
+
+          <div class="form-inline">
+            <input class="input" type="text" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" autocomplete="name" required>
+            <input class="input" type="email" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <textarea name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" required></textarea>
+          </div>
+          <button type="submit" class="btn" style="align-self:flex-start">{{ 'contact.form.send' | t }}</button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kontakt",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "kontakt" },
+    { "type": "richtext", "id": "response_note", "label": "Hinweis", "default": "<p>Wir antworten werktags innerhalb von 24 Stunden. Auf Deutsch, von einem Menschen.</p>" }
+  ]
+}
+{% endschema %}

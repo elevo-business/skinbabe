@@ -1,0 +1,70 @@
+<div class="section">
+  <article class="page-width article">
+    <div class="page-hero reveal" style="margin-bottom:2rem">
+      <p class="eyebrow">{{ article.published_at | date: '%d.%m.%Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}</p>
+      <h1 class="h1">{{ article.title }}</h1>
+    </div>
+
+    {%- if article.image -%}
+      <div class="media media--landscape reveal" style="margin-bottom:2.5rem">
+        <img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.image.alt | escape }}" width="1400" height="933" fetchpriority="high">
+      </div>
+    {%- endif -%}
+
+    <div class="rte article__body reveal">{{ article.content }}</div>
+
+    <p style="margin-top:3rem">
+      <a class="link-arrow" href="{{ blog.url }}">{% render 'icon', icon: 'arrow-left' %} {{ 'blogs.article.back_to_blog' | t }}</a>
+    </p>
+
+    {%- if blog.comments_enabled? -%}
+      <div id="comments" style="margin-top:4rem">
+        <h2 class="h3" style="margin-bottom:1.5rem">{{ 'blogs.article.comments' | t: count: article.comments_count }}</h2>
+
+        {%- for comment in article.comments -%}
+          <div style="padding-block:1.25rem;border-bottom:1px solid var(--sb-line)">
+            <p class="small muted">{{ comment.author }} · {{ comment.created_at | date: '%d.%m.%Y' }}</p>
+            <div class="rte" style="margin-top:.4rem">{{ comment.content }}</div>
+          </div>
+        {%- endfor -%}
+
+        {%- form 'new_comment', article, class: 'stack', style: 'gap:1rem;margin-top:2rem' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="form__message form__message--success">
+              {%- if blog.moderated? -%}{{ 'blogs.article.success_moderated' | t }}{%- else -%}{{ 'blogs.article.success' | t }}{%- endif -%}
+            </p>
+          {%- endif -%}
+          {%- if form.errors -%}
+            <p class="form__message form__message--error">{{ form.errors.messages.form }}</p>
+          {%- endif -%}
+          <div class="form-inline">
+            <input class="input" type="text" name="comment[author]" placeholder="{{ 'blogs.article.name' | t }}" required>
+            <input class="input" type="email" name="comment[email]" placeholder="{{ 'blogs.article.email' | t }}" required>
+          </div>
+          <div class="field">
+            <textarea name="comment[body]" placeholder="{{ 'blogs.article.message' | t }}" required></textarea>
+          </div>
+          <button type="submit" class="btn" style="align-self:flex-start">{{ 'blogs.article.post' | t }}</button>
+          {%- if blog.moderated? -%}<p class="small muted">{{ 'blogs.article.moderated' | t }}</p>{%- endif -%}
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </article>
+</div>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ article.title | json }},
+    "datePublished": {{ article.published_at | date: '%Y-%m-%d' | json }},
+    "author": { "@type": "Person", "name": {{ article.author | json }} }
+    {%- if article.image %},
+    "image": {{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}
+    {%- endif -%}
+  }
+</script>
+
+{% schema %}
+{ "name": "Beitrag" }
+{% endschema %}

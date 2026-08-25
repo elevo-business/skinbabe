@@ -1,0 +1,53 @@
+<div class="section">
+  <div class="page-width">
+    <div class="section-head section-head--split">
+      <h1 class="h2">{{ 'customer.account.title' | t }}</h1>
+      <a class="link-arrow" href="{{ routes.account_logout_url }}">Abmelden {% render 'icon', icon: 'arrow' %}</a>
+    </div>
+
+    <div class="content-columns">
+      <aside class="content-columns__aside">
+        <div class="reveal-answer">
+          <p class="eyebrow" style="margin-bottom:.75rem">{{ 'customer.account.details' | t }}</p>
+          {{ customer.default_address | format_address }}
+          <a class="link-arrow" href="{{ routes.account_addresses_url }}" style="margin-top:1rem">
+            {{ 'customer.account.view_addresses' | t }} {% render 'icon', icon: 'arrow' %}
+          </a>
+        </div>
+      </aside>
+
+      <div>
+        <h2 class="h3" style="margin-bottom:1.25rem">{{ 'customer.account.orders' | t }}</h2>
+        {%- paginate customer.orders by 12 -%}
+          {%- if customer.orders.size > 0 -%}
+            <div class="compare">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                    <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                    <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                    <th scope="col">{{ 'customer.orders.total' | t }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%- for order in customer.orders -%}
+                    <tr>
+                      <th scope="row"><a href="{{ order.customer_url }}" class="link-underline">{{ order.name }}</a></th>
+                      <td>{{ order.created_at | date: '%d.%m.%Y' }}</td>
+                      <td>{{ order.fulfillment_status_label }}</td>
+                      <td>{{ order.total_price | money }}</td>
+                    </tr>
+                  {%- endfor -%}
+                </tbody>
+              </table>
+            </div>
+            {%- if paginate.pages > 1 -%}{% render 'pagination', paginate: paginate %}{%- endif -%}
+          {%- else -%}
+            <p class="muted">{{ 'customer.account.no_orders' | t }}</p>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+    </div>
+  </div>
+</div>

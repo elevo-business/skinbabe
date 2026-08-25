@@ -1,0 +1,79 @@
+<div class="section">
+  <div class="page-width">
+    <h1 class="h2" style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">{{ 'cart.general.title' | t }}</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="empty-state">
+        <p class="h3">{{ 'cart.general.empty' | t }}</p>
+        <p class="muted">{{ 'cart.general.empty_body' | t }}</p>
+        <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+      </div>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" class="content-columns">
+        <div>
+          {% render 'cart-progress' %}
+          {% render 'cart-items' %}
+
+          {%- if settings.cart_show_note -%}
+            <details class="cart-note">
+              <summary>{{ 'cart.general.note' | t }}</summary>
+              <textarea name="note" placeholder="{{ 'cart.general.note_placeholder' | t }}" rows="3">{{ cart.note }}</textarea>
+            </details>
+          {%- endif -%}
+        </div>
+
+        <aside class="content-columns__aside">
+          <div class="reveal-answer">
+            <div class="cart-totals">
+              {%- for discount in cart.cart_level_discount_applications -%}
+                <div class="cart-totals__row small" style="color:var(--sb-accent)">
+                  <span>{{ discount.title }}</span>
+                  <span>−{{ discount.total_allocated_amount | money }}</span>
+                </div>
+              {%- endfor -%}
+              <div class="cart-totals__row cart-totals__row--total">
+                <span>{{ 'cart.general.total' | t }}</span>
+                <span>{{ cart.total_price | money }}</span>
+              </div>
+              <p class="small muted">{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}</p>
+            </div>
+
+            <button type="submit" name="checkout" class="btn btn--full btn--lg" style="margin-top:1.25rem">
+              {{ 'cart.general.checkout' | t }}
+            </button>
+
+            {%- if additional_checkout_buttons -%}
+              <div style="margin-top:.75rem">{{ content_for_additional_checkout_buttons }}</div>
+            {%- endif -%}
+
+            {%- if section.settings.trust_note != blank -%}
+              <p class="small muted center" style="margin-top:1rem">{{ section.settings.trust_note }}</p>
+            {%- endif -%}
+          </div>
+        </aside>
+      </form>
+
+      {%- if settings.cart_show_recommendations -%}
+        <div style="margin-top:clamp(3rem,6vw,5rem)">
+          <h2 class="h3" style="margin-bottom:1.5rem">{{ 'cart.general.recommendations' | t }}</h2>
+          <div class="product-grid" style="--cols:4;--cols-tablet:3;">
+            {%- assign rec_collection = collections[section.settings.recommendation_collection] -%}
+            {%- for product in rec_collection.products limit: 4 -%}
+              {% render 'product-card', product: product %}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Warenkorb",
+  "settings": [
+    { "type": "text", "id": "trust_note", "label": "Hinweis unter dem Button", "default": "Klarna, PayPal, Apple Pay. 30 Tage Rückgabe." },
+    { "type": "collection", "id": "recommendation_collection", "label": "Kategorie für Empfehlungen" }
+  ]
+}
+{% endschema %}

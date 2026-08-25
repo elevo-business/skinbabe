@@ -1,0 +1,14 @@
+<div class="section">
+  <div class="page-width">
+    <div class="empty-state">
+      <p class="eyebrow">404</p>
+      <h1 class="h1">{{ '404.title' | t }}</h1>
+      <p class="lede">{{ '404.subtext' | t }}</p>
+      <a class="btn" href="{{ routes.root_url }}">{{ '404.link' | t }} {% render 'icon', icon: 'arrow' %}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "404" }
+{% endschema %}

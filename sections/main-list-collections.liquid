@@ -1,0 +1,30 @@
+<div class="section">
+  <div class="page-width">
+    <div class="page-hero reveal" style="margin-bottom:clamp(2rem,4vw,3rem)">
+      <h1 class="h1">{{ page_title }}</h1>
+    </div>
+    <div class="product-grid" style="--cols:3;--cols-tablet:2;">
+      {%- for collection in collections -%}
+        <a class="card reveal" href="{{ collection.url }}">
+          <div class="media media--portrait">
+            {%- if collection.image -%}
+              <img src="{{ collection.image | image_url: width: 800 }}" alt="{{ collection.image.alt | escape }}" width="800" height="1000" loading="lazy">
+            {%- elsif collection.products.first.featured_media -%}
+              <img src="{{ collection.products.first.featured_media | image_url: width: 800 }}" alt="" width="800" height="1000" loading="lazy">
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">{{ collection.title }}</h2>
+            <p class="card__subtitle">{{ collection.products_count }} Produkte</p>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{ "name": "Alle Kategorien" }
+{% endschema %}

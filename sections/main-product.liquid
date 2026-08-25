@@ -1,0 +1,257 @@
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+-%}
+<div class="section">
+  <div class="page-width">
+    <div class="product">
+      {% render 'product-gallery', product: product, section: section, layout: section.settings.gallery_layout %}
+
+      <div class="product__info">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+
+            {%- when 'vendor' -%}
+              <p class="eyebrow" {{ block.shopify_attributes }}>{{ product.vendor }}</p>
+
+            {%- when 'title' -%}
+              <div {{ block.shopify_attributes }}>
+                <h1 class="h2 product__title">{{ product.title }}</h1>
+                {%- if block.settings.subtitle != blank -%}
+                  <p class="lede" style="margin-top:.5rem">{{ block.settings.subtitle }}</p>
+                {%- elsif product.metafields.skinbabe.card_subtitle.value != blank -%}
+                  <p class="lede" style="margin-top:.5rem">{{ product.metafields.skinbabe.card_subtitle.value }}</p>
+                {%- endif -%}
+              </div>
+
+            {%- when 'rating' -%}
+              <div {{ block.shopify_attributes }}>{% render 'rating', product: product %}</div>
+
+            {%- when 'price' -%}
+              <div class="product__price" {{ block.shopify_attributes }}>
+                {% render 'price', product: product, id: 'price-' | append: section.id %}
+                {%- if block.settings.tax_note != blank -%}
+                  <p class="small muted" style="margin-top:.35rem">{{ block.settings.tax_note }}</p>
+                {%- endif -%}
+              </div>
+
+            {%- when 'arguments' -%}
+              <ul class="product__args" {{ block.shopify_attributes }}>
+                {%- for i in (1..4) -%}
+                  {%- assign key = 'arg_' | append: i -%}
+                  {%- assign arg = block.settings[key] -%}
+                  {%- if arg != blank -%}
+                    <li class="product__arg">
+                      {% render 'icon', icon: 'check' %}
+                      <span>{{ arg }}</span>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+
+            {%- when 'notice' -%}
+              {%- if block.settings.text != blank -%}
+                <div class="product__notice" {{ block.shopify_attributes }}>
+                  {% render 'icon', icon: block.settings.icon %}
+                  <div>
+                    <div class="rte">{{ block.settings.text }}</div>
+                    {%- if block.settings.link_label != blank -%}
+                      <a href="{{ block.settings.link }}" style="display:inline-block;margin-top:.35rem">{{ block.settings.link_label }}</a>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+            {%- when 'variants' -%}
+              <div {{ block.shopify_attributes }}>
+                {% render 'variant-picker', product: product, section: section %}
+              </div>
+
+            {%- when 'buy' -%}
+              <div {{ block.shopify_attributes }}>
+                {% render 'buy-buttons', product: product, section: section, show_quantity: block.settings.show_quantity, show_dynamic_checkout: block.settings.show_dynamic_checkout %}
+                {%- if block.settings.payment_note != blank -%}
+                  <p class="small muted center" style="margin-top:.65rem">{{ block.settings.payment_note }}</p>
+                {%- endif -%}
+              </div>
+
+            {%- when 'trust' -%}
+              <div class="trust-grid" {{ block.shopify_attributes }}>
+                {%- for i in (1..4) -%}
+                  {%- liquid
+                    assign text_key = 'text_' | append: i
+                    assign icon_key = 'icon_' | append: i
+                    assign text = block.settings[text_key]
+                  -%}
+                  {%- if text != blank -%}
+                    <div class="trust-grid__item">
+                      {% render 'icon', icon: block.settings[icon_key] %}
+                      <span>{{ text }}</span>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+
+            {%- when 'inventory' -%}
+              {%- if variant.available and variant.inventory_management != blank and variant.inventory_quantity > 0 and variant.inventory_quantity <= block.settings.threshold -%}
+                <p class="small" style="color:var(--sb-accent)" {{ block.shopify_attributes }}>
+                  {{ 'products.product.low_stock' | t }}
+                </p>
+              {%- endif -%}
+
+            {%- when 'accordion' -%}
+              <div class="product-accordion" {{ block.shopify_attributes }}>
+                {%- for i in (1..4) -%}
+                  {%- liquid
+                    assign title_key = 'title_' | append: i
+                    assign content_key = 'content_' | append: i
+                    assign title = block.settings[title_key]
+                    assign content = block.settings[content_key]
+                  -%}
+                  {%- if title != blank -%}
+                    <details>
+                      <summary>{{ title }} {% render 'icon', icon: 'chevron' %}</summary>
+                      <div class="rte">
+                        {%- if content != blank -%}{{ content }}{%- elsif i == 1 -%}{{ product.description }}{%- endif -%}
+                      </div>
+                    </details>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+
+            {%- when 'text' -%}
+              <div class="rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+
+            {%- when '@app' -%}
+              {% render block %}
+
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "description": {{ product.description | strip_html | truncate: 500 | json }},
+    "url": {{ shop.url | append: product.url | json }},
+    {%- if product.featured_media -%}
+    "image": {{ product.featured_media | image_url: width: 1200 | prepend: 'https:' | json }},
+    {%- endif -%}
+    {%- if product.vendor != blank -%}
+    "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    {%- endif -%}
+    "offers": [
+      {%- for v in product.variants -%}
+        {
+          "@type": "Offer",
+          "sku": {{ v.sku | json }},
+          "availability": "https://schema.org/{% if v.available %}InStock{% else %}OutOfStock{% endif %}",
+          "price": {{ v.price | divided_by: 100.0 | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "url": {{ shop.url | append: product.url | append: '?variant=' | append: v.id | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Produkt",
+  "settings": [
+    {
+      "type": "select", "id": "gallery_layout", "label": "Galerie (Desktop)", "default": "stacked",
+      "options": [
+        { "value": "stacked", "label": "Untereinander" },
+        { "value": "carousel", "label": "Karussell mit Thumbnails" }
+      ]
+    }
+  ],
+  "blocks": [
+    { "type": "vendor", "name": "Marke", "limit": 1 },
+    {
+      "type": "title", "name": "Titel", "limit": 1,
+      "settings": [{ "type": "text", "id": "subtitle", "label": "Untertitel", "info": "Nutzen, nicht Kategorie. Fällt auf das Metafeld skinbabe.card_subtitle zurück." }]
+    },
+    { "type": "rating", "name": "Bewertung", "limit": 1 },
+    {
+      "type": "price", "name": "Preis", "limit": 1,
+      "settings": [{ "type": "text", "id": "tax_note", "label": "Steuerhinweis", "default": "inkl. MwSt., zzgl. Versand" }]
+    },
+    {
+      "type": "arguments", "name": "Vier Kurz-Argumente", "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Kein Feature ohne Konsequenz. „Wasserdicht“ ist ein Feature, „auch unter der Dusche, wenn du eh schon drin stehst“ ist eine Konsequenz." },
+        { "type": "text", "id": "arg_1", "label": "Argument 1", "default": "Kein direkter Klingenkontakt zur Haut" },
+        { "type": "text", "id": "arg_2", "label": "Argument 2", "default": "Auch trocken, ohne Wasser und Schaum" },
+        { "type": "text", "id": "arg_3", "label": "Argument 3", "default": "Ein Kopf hält drei bis sechs Monate" },
+        { "type": "text", "id": "arg_4", "label": "Argument 4", "default": "30 Tage zurückgeben, auch benutzt" }
+      ]
+    },
+    {
+      "type": "notice", "name": "Hinweis über dem Kaufbutton",
+      "settings": [
+        { "type": "paragraph", "content": "Bei IPL-Produkten gehört der Hinweis zu Haut- und Haartypen sichtbar hierher — nicht in die FAQ." },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>IPL braucht Kontrast zwischen Haar und Haut. Bei sehr hellem, rotem oder grauem Haar sowie sehr dunklen Hauttönen ist keine zuverlässige Wirkung zu erwarten.</p>" },
+        { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Eignungstabelle ansehen" },
+        { "type": "url", "id": "link", "label": "Link-Ziel" },
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "sparkle",
+          "options": [
+            { "value": "sparkle", "label": "Funkeln" },
+            { "value": "shield", "label": "Schild" },
+            { "value": "check", "label": "Haken" },
+            { "value": "droplet", "label": "Tropfen" },
+            { "value": "clock", "label": "Uhr" }
+          ]
+        }
+      ]
+    },
+    { "type": "variants", "name": "Variantenauswahl", "limit": 1 },
+    {
+      "type": "buy", "name": "Kaufbutton", "limit": 1,
+      "settings": [
+        { "type": "checkbox", "id": "show_quantity", "label": "Mengenauswahl anzeigen", "default": false },
+        { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Express-Zahlungsbuttons anzeigen", "default": true },
+        { "type": "text", "id": "payment_note", "label": "Zahlungshinweis", "default": "Klarna, PayPal, Apple Pay, Kreditkarte" }
+      ]
+    },
+    {
+      "type": "trust", "name": "Vertrauensraster", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text_1", "label": "Punkt 1", "default": "Auf Lager, Versand am selben Werktag" },
+        { "type": "select", "id": "icon_1", "label": "Icon 1", "default": "box", "options": [{ "value": "box", "label": "Paket" }, { "value": "truck", "label": "Versand" }, { "value": "return", "label": "Rückgabe" }, { "value": "card", "label": "Zahlung" }, { "value": "chat", "label": "Support" }, { "value": "shield", "label": "Schild" }, { "value": "clock", "label": "Uhr" }] },
+        { "type": "text", "id": "text_2", "label": "Punkt 2", "default": "30 Tage Rückgabe, auch geöffnet" },
+        { "type": "select", "id": "icon_2", "label": "Icon 2", "default": "return", "options": [{ "value": "box", "label": "Paket" }, { "value": "truck", "label": "Versand" }, { "value": "return", "label": "Rückgabe" }, { "value": "card", "label": "Zahlung" }, { "value": "chat", "label": "Support" }, { "value": "shield", "label": "Schild" }, { "value": "clock", "label": "Uhr" }] },
+        { "type": "text", "id": "text_3", "label": "Punkt 3", "default": "Klarna, PayPal, Apple Pay" },
+        { "type": "select", "id": "icon_3", "label": "Icon 3", "default": "card", "options": [{ "value": "box", "label": "Paket" }, { "value": "truck", "label": "Versand" }, { "value": "return", "label": "Rückgabe" }, { "value": "card", "label": "Zahlung" }, { "value": "chat", "label": "Support" }, { "value": "shield", "label": "Schild" }, { "value": "clock", "label": "Uhr" }] },
+        { "type": "text", "id": "text_4", "label": "Punkt 4", "default": "Support auf Deutsch, werktags in 24 h" },
+        { "type": "select", "id": "icon_4", "label": "Icon 4", "default": "chat", "options": [{ "value": "box", "label": "Paket" }, { "value": "truck", "label": "Versand" }, { "value": "return", "label": "Rückgabe" }, { "value": "card", "label": "Zahlung" }, { "value": "chat", "label": "Support" }, { "value": "shield", "label": "Schild" }, { "value": "clock", "label": "Uhr" }] }
+      ]
+    },
+    {
+      "type": "inventory", "name": "Lagerhinweis", "limit": 1,
+      "settings": [{ "type": "range", "id": "threshold", "min": 1, "max": 25, "step": 1, "label": "Ab wie vielen Stück warnen", "default": 8 }]
+    },
+    {
+      "type": "accordion", "name": "Akkordeon",
+      "settings": [
+        { "type": "text", "id": "title_1", "label": "Titel 1", "default": "Beschreibung" },
+        { "type": "richtext", "id": "content_1", "label": "Inhalt 1", "info": "Leer lassen, um die Produktbeschreibung aus Shopify zu übernehmen." },
+        { "type": "text", "id": "title_2", "label": "Titel 2", "default": "So funktioniert es" },
+        { "type": "richtext", "id": "content_2", "label": "Inhalt 2" },
+        { "type": "text", "id": "title_3", "label": "Titel 3", "default": "Lieferumfang" },
+        { "type": "richtext", "id": "content_3", "label": "Inhalt 3" },
+        { "type": "text", "id": "title_4", "label": "Titel 4", "default": "Versand & Rückgabe" },
+        { "type": "richtext", "id": "content_4", "label": "Inhalt 4" }
+      ]
+    },
+    { "type": "text", "name": "Freitext", "settings": [{ "type": "richtext", "id": "text", "label": "Text" }] },
+    { "type": "@app" }
+  ]
+}
+{% endschema %}

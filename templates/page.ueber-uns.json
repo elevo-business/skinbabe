@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "main": { "type": "main-page", "settings": { "eyebrow": "über uns" } },
+    "founder": {
+      "type": "image-with-text",
+      "blocks": {
+        "b1": { "type": "point", "settings": { "text": "Sitz und Impressum in Deutschland" } },
+        "b2": { "type": "point", "settings": { "text": "Support auf Deutsch, werktags in 24 Stunden" } },
+        "b3": { "type": "point", "settings": { "text": "Rückgabe ohne Rückfragen innerhalb der Frist" } }
+      },
+      "block_order": ["b1", "b2", "b3"],
+      "settings": {
+        "eyebrow": "wer dahintersteht",
+        "heading": "kein anonymes tiktok-ding",
+        "text": "<p>Hier gehört ein echter Name, ein echtes Gesicht und die echte Geschichte hin — warum es skinbabe gibt und wer antwortet, wenn du schreibst.</p>",
+        "media_position": "left",
+        "background": "default"
+      }
+    },
+    "values": {
+      "type": "changes",
+      "blocks": {
+        "v1": { "type": "change", "settings": { "icon": "shield", "title": "Wir versprechen nichts Absolutes", "text": "Keine „100 % schnittfrei“-Sätze. Wir erklären lieber, wie es funktioniert." } },
+        "v2": { "type": "change", "settings": { "icon": "check", "title": "Nur echte Bewertungen", "text": "Keine erfundenen Stimmen, keine generierten Gesichter. Was hier steht, hat jemand wirklich geschrieben." } },
+        "v3": { "type": "change", "settings": { "icon": "card", "title": "Keine Fantasie-Streichpreise", "text": "Ein Referenzpreis ist bei uns der niedrigste der letzten 30 Tage. Nichts anderes." } },
+        "v4": { "type": "change", "settings": { "icon": "chat", "title": "Ein Mensch antwortet", "text": "Kein Ticketsystem, das dich im Kreis schickt. Werktags innerhalb von 24 Stunden." } }
+      },
+      "block_order": ["v1", "v2", "v3", "v4"],
+      "settings": { "eyebrow": "wie wir arbeiten", "heading": "worauf du dich verlassen kannst", "background": "cream" }
+    },
+    "newsletter": { "type": "newsletter", "settings": { "background": "default" } }
+  },
+  "order": ["main", "founder", "values", "newsletter"]
+}

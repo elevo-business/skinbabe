@@ -1,0 +1,19 @@
+<div class="section">
+  <div class="page-width page-width--narrow" style="max-width:26rem">
+    <h1 class="h2" style="margin-bottom:.75rem">{{ 'customer.activate_account.title' | t }}</h1>
+    <p class="muted small" style="margin-bottom:1.5rem">{{ 'customer.activate_account.subtext' | t }}</p>
+    {%- form 'activate_customer_password', class: 'stack', style: 'gap:1rem' -%}
+      {%- if form.errors -%}<p class="form__message form__message--error">{{ form.errors | default_errors }}</p>{%- endif -%}
+      <div class="field">
+        <label class="field__label" for="ActivatePw">{{ 'customer.reset_password.password' | t }}</label>
+        <input type="password" id="ActivatePw" name="customer[password]" autocomplete="new-password" required>
+      </div>
+      <div class="field">
+        <label class="field__label" for="ActivatePwConfirm">{{ 'customer.reset_password.password_confirm' | t }}</label>
+        <input type="password" id="ActivatePwConfirm" name="customer[password_confirmation]" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="btn btn--full">{{ 'customer.activate_account.submit' | t }}</button>
+      <button type="submit" name="decline" class="small muted link-underline">{{ 'customer.activate_account.decline' | t }}</button>
+    {%- endform -%}
+  </div>
+</div>
