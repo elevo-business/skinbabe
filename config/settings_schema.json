@@ -1,0 +1,332 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "skinbabe",
+    "theme_version": "1.0.0",
+    "theme_author": "skinbabe",
+    "theme_documentation_url": "https://shopify.dev",
+    "theme_support_url": "https://shopify.dev"
+  },
+  {
+    "name": "Marke",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 60,
+        "max": 260,
+        "step": 5,
+        "unit": "px",
+        "label": "Logo-Breite",
+        "default": 120
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_inverted",
+        "label": "Logo hell (invertiert)",
+        "info": "Wird auf dunklen Flächen und im transparenten Header genutzt."
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "text",
+        "id": "brand_tagline",
+        "label": "Claim",
+        "default": "du hast keine schlechte haut. du hattest einen schlechten rasierer."
+      },
+      {
+        "type": "image_picker",
+        "id": "social_share_image",
+        "label": "Social-Sharing-Bild"
+      }
+    ]
+  },
+  {
+    "name": "Farben",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Hintergrund",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Text / Ink",
+        "default": "#16130F"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Creme-Fläche",
+        "default": "#F5EFE9"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Akzent",
+        "default": "#A97E6D"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Sterne / Gold",
+        "default": "#C9A227"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Reduziert",
+        "default": "#A63D2F"
+      }
+    ]
+  },
+  {
+    "name": "Typografie",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Headline-Font",
+        "default": "poppins_n5"
+      },
+      {
+        "type": "select",
+        "id": "type_heading_case",
+        "label": "Headline-Schreibweise",
+        "options": [
+          {
+            "value": "none",
+            "label": "Wie eingegeben"
+          },
+          {
+            "value": "lowercase",
+            "label": "kleinschreibung"
+          },
+          {
+            "value": "uppercase",
+            "label": "GROSSSCHREIBUNG"
+          }
+        ],
+        "default": "lowercase"
+      },
+      {
+        "type": "range",
+        "id": "type_heading_tracking",
+        "min": -0.05,
+        "max": 0.12,
+        "step": 0.005,
+        "unit": "em",
+        "label": "Headline-Laufweite",
+        "default": -0.02
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Fließtext-Font",
+        "default": "assistant_n4"
+      },
+      {
+        "type": "range",
+        "id": "type_body_size",
+        "min": 14,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "label": "Fließtext-Größe",
+        "default": 16
+      },
+      {
+        "type": "font_picker",
+        "id": "type_accent_font",
+        "label": "Akzent-Font (Serif)",
+        "info": "Wird für kursive Serif-Akzente in Headlines verwendet.",
+        "default": "playfair_display_n4"
+      }
+    ]
+  },
+  {
+    "name": "Layout & Form",
+    "settings": [
+      {
+        "type": "range",
+        "id": "layout_page_width",
+        "min": 1200,
+        "max": 1800,
+        "step": 20,
+        "unit": "px",
+        "label": "Maximale Seitenbreite",
+        "default": 1440
+      },
+      {
+        "type": "range",
+        "id": "layout_section_spacing",
+        "min": 3,
+        "max": 10,
+        "step": 1,
+        "label": "Sektionsabstand",
+        "default": 6
+      },
+      {
+        "type": "range",
+        "id": "shape_button_radius",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Button-Radius",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "shape_card_radius",
+        "min": 0,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "label": "Karten-Radius",
+        "default": 16
+      },
+      {
+        "type": "checkbox",
+        "id": "animations_reveal",
+        "label": "Einblend-Animationen beim Scrollen",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Produktkarte",
+    "settings": [
+      {
+        "type": "select",
+        "id": "card_image_ratio",
+        "label": "Bildformat",
+        "options": [
+          {
+            "value": "square",
+            "label": "1:1"
+          },
+          {
+            "value": "portrait",
+            "label": "4:5"
+          },
+          {
+            "value": "tall",
+            "label": "5:7"
+          }
+        ],
+        "default": "portrait"
+      },
+      {
+        "type": "checkbox",
+        "id": "card_hover_image",
+        "label": "Zweites Bild bei Hover",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_vendor",
+        "label": "Hersteller anzeigen",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_rating",
+        "label": "Bewertung anzeigen (nur mit Review-App)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_swatches",
+        "label": "Farb-/Varianten-Swatches anzeigen",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "card_quick_add",
+        "label": "Schnell-Kaufen-Button",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Warenkorb",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Darstellung",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Drawer (empfohlen)"
+          },
+          {
+            "value": "page",
+            "label": "Eigene Seite"
+          }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_note",
+        "label": "Bestellhinweis-Feld",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_free_shipping_threshold",
+        "label": "Versandkostenfrei ab",
+        "info": "In Cent, z. B. 5000 = 50 €. Leer lassen, um die Fortschrittsleiste auszublenden.",
+        "default": "5000"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_recommendations",
+        "label": "Produktempfehlungen im Warenkorb",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest"
+      }
+    ]
+  }
+]

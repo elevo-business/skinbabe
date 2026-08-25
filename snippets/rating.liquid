@@ -1,0 +1,15 @@
+{%- liquid
+  assign rating = product.metafields.reviews.rating.value
+  assign count = product.metafields.reviews.rating_count.value
+-%}
+{%- if rating and count > 0 -%}
+  <div class="rating" role="img" aria-label="{{ 'general.accessibility.star_reviews_info' | t: rating_value: rating.rating, rating_max: rating.scale_max }}">
+    <span class="rating__stars" aria-hidden="true">
+      {%- assign rounded = rating.rating | round -%}
+      {%- for i in (1..5) -%}
+        {%- if i <= rounded -%}{% render 'icon', icon: 'star' %}{%- else -%}{% render 'icon', icon: 'star-outline' %}{%- endif -%}
+      {%- endfor -%}
+    </span>
+    <span>{{ rating.rating }} ({{ count }})</span>
+  </div>
+{%- endif -%}

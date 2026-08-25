@@ -1,0 +1,61 @@
+{%- liquid
+  assign accent = settings.color_accent
+  assign accent_contrast = '#ffffff'
+  assign brightness = accent | color_brightness
+  if brightness > 160
+    assign accent_contrast = settings.color_ink
+  endif
+-%}
+{% style %}
+  :root{
+    /* --- Palette --- */
+    --sb-bg:{{ settings.color_background }};
+    --sb-ink:{{ settings.color_ink }};
+    --sb-muted:{{ settings.color_ink | color_mix: settings.color_background, 62 }};
+    --sb-cream:{{ settings.color_cream }};
+    --sb-accent:{{ accent }};
+    --sb-accent-contrast:{{ accent_contrast }};
+    --sb-accent-soft:{{ accent | color_mix: settings.color_background, 14 }};
+    --sb-gold:{{ settings.color_gold }};
+    --sb-sale:{{ settings.color_sale }};
+    --sb-success:#2f7d54;
+    --sb-error:#b3261e;
+    --sb-line:{{ settings.color_ink | color_modify: 'alpha', 0.10 }};
+    --sb-line-strong:{{ settings.color_ink | color_modify: 'alpha', 0.22 }};
+    --sb-overlay:{{ settings.color_ink | color_modify: 'alpha', 0.45 }};
+
+    /* --- Type --- */
+    --sb-font-body:{{ settings.type_body_font.family }},{{ settings.type_body_font.fallback_families }};
+    --sb-font-heading:{{ settings.type_heading_font.family }},{{ settings.type_heading_font.fallback_families }};
+    --sb-font-accent:{{ settings.type_accent_font.family }},{{ settings.type_accent_font.fallback_families }};
+    --sb-body-weight:{{ settings.type_body_font.weight }};
+    --sb-heading-weight:{{ settings.type_heading_font.weight }};
+    --sb-heading-tracking:{{ settings.type_heading_tracking }}em;
+    --sb-heading-case:{{ settings.type_heading_case }};
+    --sb-text-base:{{ settings.type_body_size | divided_by: 16.0 }}rem;
+
+    /* --- Space --- */
+    --sb-page-width:{{ settings.layout_page_width }}px;
+    --sb-gutter:1.25rem;
+    --sb-grid-gap:1.25rem;
+    --sb-space-section:clamp(3rem,{{ settings.layout_section_spacing }}vw,{{ settings.layout_section_spacing | times: 1.4 }}rem);
+
+    /* --- Shape --- */
+    --sb-radius-pill:{{ settings.shape_button_radius }}px;
+    --sb-radius-lg:{{ settings.shape_card_radius }}px;
+    --sb-radius-md:{{ settings.shape_card_radius | divided_by: 2 }}px;
+    --sb-btn-height:3rem;
+
+    /* --- Motion --- */
+    --sb-ease:cubic-bezier(.2,.7,.25,1);
+
+    /* Header offset, kept in sync by JS */
+    --sb-header-height:72px;
+  }
+  @media screen and (min-width:750px){
+    :root{--sb-gutter:2.5rem;--sb-grid-gap:2.5rem}
+  }
+  @media screen and (min-width:1200px){
+    :root{--sb-gutter:3.5rem}
+  }
+{% endstyle %}

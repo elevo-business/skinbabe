@@ -1,0 +1,120 @@
+{%- liquid
+  assign ratio_class = settings.card_image_ratio | default: 'portrait'
+  assign show_hover = settings.card_hover_image
+  assign second = product.media[1]
+  assign variant = product.selected_or_first_available_variant
+  assign subtitle = product.metafields.skinbabe.card_subtitle.value
+  if subtitle == blank
+    assign subtitle = card_subtitle
+  endif
+-%}
+{%- if product == blank or product.empty? -%}
+  <div class="card card--placeholder">
+    <div class="media media--{{ ratio_class }}">
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+    <div class="card__body">
+      <h3 class="card__title">{{ 'onboarding.product_title' | t }}</h3>
+      <div class="price"><span class="price__current">{{ 1999 | money }}</span></div>
+    </div>
+  </div>
+{%- else -%}
+  <div class="card{% if class %} {{ class }}{% endif %}">
+    <a class="card__media-link" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+      <div class="media media--{{ ratio_class }}{% if show_hover and second %} media--hover{% endif %}">
+        {%- if product.featured_media -%}
+          <img
+            src="{{ product.featured_media | image_url: width: 800 }}"
+            srcset="{{ product.featured_media | image_url: width: 400 }} 400w, {{ product.featured_media | image_url: width: 600 }} 600w, {{ product.featured_media | image_url: width: 900 }} 900w"
+            sizes="(min-width: 990px) 30vw, (min-width: 750px) 45vw, 90vw"
+            alt="{{ product.featured_media.alt | escape }}"
+            width="{{ product.featured_media.width }}"
+            height="{{ product.featured_media.height }}"
+            loading="lazy"
+            class="media__primary"
+          >
+          {%- if show_hover and second -%}
+            <img
+              src="{{ second | image_url: width: 800 }}"
+              srcset="{{ second | image_url: width: 400 }} 400w, {{ second | image_url: width: 600 }} 600w, {{ second | image_url: width: 900 }} 900w"
+              sizes="(min-width: 990px) 30vw, (min-width: 750px) 45vw, 90vw"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              class="media__secondary"
+            >
+          {%- endif -%}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <div class="card__badges">
+        {%- unless product.available -%}
+          <span class="badge badge--sold-out">{{ 'products.product.sold_out' | t }}</span>
+        {%- else -%}
+          {%- comment -%} Nur echte Streichpreise aus Shopify — keine erfundenen Rabatte. {%- endcomment -%}
+          {%- if product.compare_at_price > product.price -%}
+            {%- assign save = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}
+            <span class="badge badge--sale">−{{ save }}%</span>
+          {%- endif -%}
+        {%- endunless -%}
+        {%- for tag in product.tags -%}
+          {%- if tag contains 'badge:' -%}
+            <span class="badge badge--soft">{{ tag | remove: 'badge:' | strip }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </a>
+
+    <div class="card__body">
+      {%- if settings.card_show_vendor and product.vendor != blank -%}
+        <span class="eyebrow">{{ product.vendor }}</span>
+      {%- endif -%}
+
+      <h3 class="card__title">
+        <a href="{{ product.url }}" class="link-underline">{{ product.title }}</a>
+      </h3>
+
+      {%- if subtitle != blank -%}
+        <p class="card__subtitle">{{ subtitle }}</p>
+      {%- endif -%}
+
+      {%- if settings.card_show_rating -%}
+        {% render 'rating', product: product %}
+      {%- endif -%}
+
+      <div class="card__footer">
+        {% render 'price', product: product, show_from: true %}
+
+        {%- if settings.card_quick_add and product.available -%}
+          {%- if product.variants.size == 1 -%}
+            <sb-quick-add data-variant-id="{{ variant.id }}">
+              <button type="button" class="card__quick-add" aria-label="{{ 'products.product.quick_add' | t }}: {{ product.title | escape }}">
+                {% render 'icon', icon: 'plus' %}
+              </button>
+            </sb-quick-add>
+          {%- else -%}
+            <a href="{{ product.url }}" class="card__quick-add" aria-label="{{ 'products.product.choose_options' | t }}: {{ product.title | escape }}">
+              {% render 'icon', icon: 'arrow' %}
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+
+      {%- if settings.card_show_swatches and product.has_only_default_variant == false -%}
+        {%- for option in product.options_with_values -%}
+          {%- assign downcased = option.name | downcase -%}
+          {%- if downcased contains 'farbe' or downcased contains 'color' or downcased contains 'set' -%}
+            <ul class="card__swatches">
+              {%- for value in option.values limit: 5 -%}
+                <li><span class="swatch" style="--swatch:{{ value | downcase | replace: ' ', '' }}" title="{{ value | escape }}"></span></li>
+              {%- endfor -%}
+              {%- if option.values.size > 5 -%}<li class="small muted">+{{ option.values.size | minus: 5 }}</li>{%- endif -%}
+            </ul>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
