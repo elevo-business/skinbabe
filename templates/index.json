@@ -15,9 +15,9 @@
         "s1": {
           "type": "stat",
           "settings": {
-            "value": "30 Tage",
-            "label": "Rückgabe",
-            "icon": "return"
+            "value": "100 Tage",
+            "label": "Garantie",
+            "icon": "shield"
           }
         },
         "s2": {
@@ -54,10 +54,10 @@
         "overlay_opacity": 35,
         "text_align": "left",
         "eyebrow": "",
-        "heading": "hör auf zu rechnen, wann du dich zuletzt rasiert hast",
+        "heading": "Rasieren kann auch angenehm sein.",
         "heading_accent": "",
         "text": "<p>Du hast Jahre lang gedacht, es liegt an deiner Haut. Tut es nicht. Es liegt an dem Ding in deiner Hand.</p>",
-        "button_label": "rasierer ansehen",
+        "button_label": "Skinbabe ansehen",
         "button_link": "",
         "button_2_label": "warum haare einwachsen",
         "button_2_link": ""
