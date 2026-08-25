@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Kopfbereich",
   "type": "header",
@@ -5,12 +14,40 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "a1": { "type": "item", "settings": { "text": "Versandkostenfrei ab 50 €", "icon": "truck" } },
-        "a2": { "type": "item", "settings": { "text": "Lieferung in 2–4 Werktagen", "icon": "clock" } },
-        "a3": { "type": "item", "settings": { "text": "30 Tage Rückgaberecht", "icon": "return" } }
+        "a1": {
+          "type": "item",
+          "settings": {
+            "text": "Versandkostenfrei ab 50 €",
+            "icon": "truck",
+            "link": ""
+          }
+        },
+        "a2": {
+          "type": "item",
+          "settings": {
+            "text": "Lieferung in 2–4 Werktagen",
+            "icon": "clock",
+            "link": ""
+          }
+        },
+        "a3": {
+          "type": "item",
+          "settings": {
+            "text": "30 Tage Rückgaberecht",
+            "icon": "return",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["a1", "a2", "a3"],
-      "settings": { "bg": "#16130F", "fg": "#FFFFFF" }
+      "block_order": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "settings": {
+        "bg": "#16130f",
+        "fg": "#ffffff"
+      }
     },
     "header": {
       "type": "header",
@@ -18,9 +55,13 @@
         "menu": "main-menu",
         "hide_on_scroll": false,
         "enable_structured_data": true,
-        "drawer_note": "Fragen? Wir antworten werktags innerhalb von 24 Stunden."
+        "drawer_note": "Fragen? Wir antworten werktags innerhalb von 24 Stunden.",
+        "drawer_note_link": "shopify://products/skinbabe-prazisions-rasierer-fur-sensible-haut"
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }
