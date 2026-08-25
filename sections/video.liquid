@@ -1,0 +1,67 @@
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width{% if section.settings.width == 'narrow' %} page-width--narrow{% endif %}">
+    {%- if section.settings.heading != blank or section.settings.eyebrow != blank -%}
+      <div class="section-head reveal{% if section.settings.text_align == 'center' %} section-head--center{% endif %}">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h2">
+            {{ section.settings.heading }}
+            {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="rte lede">{{ section.settings.text }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="video reveal">
+      {%- if section.settings.video != blank -%}
+        {{ section.settings.video | video_tag: image_size: '1400x', controls: section.settings.show_controls, autoplay: section.settings.autoplay, loop: section.settings.loop, muted: section.settings.autoplay }}
+      {%- elsif section.settings.video_url != blank -%}
+        <iframe
+          src="{{ section.settings.video_url }}"
+          title="{{ section.settings.heading | escape | default: 'Video' }}"
+          loading="lazy"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      {%- else -%}
+        <div class="media media--wide">{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.caption != blank -%}
+      <p class="video__caption">{{ section.settings.caption }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext" },
+    { "type": "text", "id": "heading", "label": "Überschrift" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "video", "id": "video", "label": "Video aus Shopify" },
+    { "type": "text", "id": "video_url", "label": "Externe Einbettungs-URL", "info": "Nur nutzen, wenn kein Shopify-Video vorliegt. Externe Einbettungen laden Inhalte von Dritten — Datenschutzhinweis prüfen." },
+    { "type": "checkbox", "id": "show_controls", "label": "Bedienelemente anzeigen", "default": true },
+    { "type": "checkbox", "id": "autoplay", "label": "Automatisch starten (stumm)", "default": false },
+    { "type": "checkbox", "id": "loop", "label": "Endlos wiederholen", "default": false },
+    { "type": "text", "id": "caption", "label": "Bildunterschrift" },
+    {
+      "type": "select", "id": "width", "label": "Breite", "default": "wide",
+      "options": [{ "value": "narrow", "label": "Schmal" }, { "value": "wide", "label": "Breit" }]
+    },
+    {
+      "type": "select", "id": "text_align", "label": "Ausrichtung", "default": "center",
+      "options": [{ "value": "left", "label": "Links" }, { "value": "center", "label": "Zentriert" }]
+    },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "presets": [{ "name": "Video" }]
+}
+{% endschema %}

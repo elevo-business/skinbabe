@@ -3,54 +3,33 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "rating": { "type": "rating", "settings": {} },
-        "price": { "type": "price", "settings": { "tax_note": "inkl. MwSt., zzgl. Versand" } },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "tax_note": "inkl. MwSt., zzgl. Versand"
+          }
+        },
         "arguments": {
           "type": "arguments",
           "settings": {
-            "arg_1": "Kein direkter Klingenkontakt zur Haut",
-            "arg_2": "Auch trocken, ohne Wasser und Schaum",
-            "arg_3": "Ein Kopf hält drei bis sechs Monate",
+            "arg_1": "Alles, was du brauchst, in einer Bestellung",
+            "arg_2": "Günstiger als die Einzelteile zusammen",
+            "arg_3": "Ersatzköpfe für das erste Jahr enthalten",
             "arg_4": "30 Tage zurückgeben, auch benutzt"
           }
         },
-        "bundle_1": {
-          "type": "bundle_option",
-          "settings": {
-            "group_title": "Wähle dein Set",
-            "mode": "quantity",
-            "quantity": 1,
-            "label": "Einzeln",
-            "sublabel": "Ein Gerät, einmal ausprobieren.",
-            "show_image": true,
-            "selected": false
-          }
+        "variants": {
+          "type": "variants",
+          "settings": {}
         },
-        "bundle_2": {
-          "type": "bundle_option",
-          "settings": {
-            "group_title": "Wähle dein Set",
-            "mode": "quantity",
-            "quantity": 2,
-            "label": "Doppelt",
-            "sublabel": "Eins fürs Bad, eins für die Reisetasche.",
-            "badge": "Beliebteste Wahl",
-            "show_image": true,
-            "selected": true
-          }
-        },
-        "bundle_3": {
-          "type": "bundle_option",
-          "settings": {
-            "mode": "product",
-            "label": "Komplett-Set",
-            "sublabel": "Mit Ersatzköpfen und Pflege für das ganze Jahr.",
-            "show_image": true,
-            "selected": false
-          }
-        },
-        "variants": { "type": "variants", "settings": {} },
         "buy": {
           "type": "buy",
           "settings": {
@@ -59,7 +38,12 @@
             "payment_note": "Klarna, PayPal, Apple Pay, Kreditkarte"
           }
         },
-        "payment": { "type": "payment", "settings": { "limit": 6 } },
+        "payment": {
+          "type": "payment",
+          "settings": {
+            "limit": 6
+          }
+        },
         "trust": {
           "type": "trust",
           "settings": {
@@ -92,14 +76,6 @@
             "icon_4": "return"
           }
         },
-        "plan": {
-          "type": "plan",
-          "settings": {
-            "heading": "Lieferrhythmus",
-            "one_time_label": "Einmalig kaufen",
-            "note": "Rasierköpfe halten drei bis sechs Monate. Jederzeit pausierbar oder kündbar."
-          }
-        },
         "accordion": {
           "type": "accordion",
           "settings": {
@@ -126,19 +102,18 @@
         "rating",
         "price",
         "arguments",
-        "bundle_1",
-        "bundle_2",
-        "bundle_3",
         "variants",
         "buy",
         "payment",
         "trust",
         "usp",
-        "plan",
         "accordion",
         "specs"
       ],
-      "settings": { "gallery_layout": "stacked", "enable_sticky_bar": true }
+      "settings": {
+        "gallery_layout": "stacked",
+        "enable_sticky_bar": true
+      }
     },
     "steps": {
       "type": "steps",
@@ -218,11 +193,60 @@
     },
     "recommendations": {
       "type": "product-recommendations",
-      "settings": { "heading": "passt dazu", "limit": 4, "background": "default" }
+      "settings": {
+        "heading": "passt dazu",
+        "limit": 4,
+        "background": "default"
+      }
+    },
+    "builder": {
+      "type": "bundle-builder",
+      "settings": {
+        "eyebrow": "lieber selbst zusammenstellen",
+        "heading": "bau dir das set, das zu dir passt",
+        "text": "<p>Drei Schritte, eine Bestellung. Was du nicht brauchst, lässt du weg.</p>",
+        "summary_title": "Dein Set",
+        "button_label": "Set in den Warenkorb",
+        "hint": "Versandkostenfrei ab 50 €. 30 Tage Rückgabe auf jede Position.",
+        "text_align": "left",
+        "background": "cream"
+      },
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Wähle dein Gerät",
+            "required": true,
+            "limit": 4
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Ersatzköpfe dazu",
+            "required": false,
+            "limit": 4
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Pflege dazu",
+            "required": false,
+            "limit": 4
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ]
     }
   },
   "order": [
     "main",
+    "builder",
     "steps",
     "mechanism",
     "before_after",

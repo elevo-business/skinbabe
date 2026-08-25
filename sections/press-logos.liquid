@@ -1,0 +1,52 @@
+<div class="section section--tight{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <p class="eyebrow center reveal" style="margin-bottom:1.75rem">{{ section.settings.heading }}</p>
+    {%- endif -%}
+
+    <div class="press reveal">
+      {%- for block in section.blocks -%}
+        {%- capture logo -%}
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: height: 80 }}" alt="{{ block.settings.name | escape }}" height="40" width="auto" loading="lazy">
+          {%- else -%}
+            <span>{{ block.settings.name }}</span>
+          {%- endif -%}
+        {%- endcapture -%}
+
+        {%- if block.settings.link != blank -%}
+          <a class="press__item" href="{{ block.settings.link }}" target="_blank" rel="noopener" {{ block.shopify_attributes }}>{{ logo }}</a>
+        {%- else -%}
+          <div class="press__item" {{ block.shopify_attributes }}>{{ logo }}</div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Presse / Logos",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "paragraph", "content": "Nur Medien und Partner eintragen, bei denen tatsächlich etwas erschienen ist. Ein Link zum Beitrag macht die Angabe überprüfbar." },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "gesehen bei" },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Logo" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Magazin" },
+        { "type": "url", "id": "link", "label": "Link zum Beitrag" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Presse / Logos", "blocks": [{ "type": "logo" }, { "type": "logo" }, { "type": "logo" }, { "type": "logo" }] }]
+}
+{% endschema %}

@@ -3,11 +3,36 @@
     "hero": {
       "type": "hero",
       "blocks": {
-        "s1": { "type": "stat", "settings": { "value": "30 Tage", "label": "Rückgabe", "icon": "return" } },
-        "s2": { "type": "stat", "settings": { "value": "2–4 Werktage", "label": "Lieferzeit", "icon": "truck" } },
-        "s3": { "type": "stat", "settings": { "value": "Klarna & PayPal", "label": "Zahlung", "icon": "card" } }
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "30 Tage",
+            "label": "Rückgabe",
+            "icon": "return"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "2–4 Werktage",
+            "label": "Lieferzeit",
+            "icon": "truck"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "Klarna & PayPal",
+            "label": "Zahlung",
+            "icon": "card"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {
         "layout": "split",
         "media_position": "right",
@@ -21,22 +46,72 @@
     "marquee": {
       "type": "marquee",
       "blocks": {
-        "m1": { "type": "item", "settings": { "text": "kein direkter klingenkontakt", "icon": "shield" } },
-        "m2": { "type": "item", "settings": { "text": "auch trocken, ohne schaum", "icon": "droplet" } },
-        "m3": { "type": "item", "settings": { "text": "niemand muss dich dabei sehen", "icon": "sparkle" } },
-        "m4": { "type": "item", "settings": { "text": "deutscher support, werktags in 24 h", "icon": "check" } }
+        "m1": {
+          "type": "item",
+          "settings": {
+            "text": "kein direkter klingenkontakt",
+            "icon": "shield"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "text": "auch trocken, ohne schaum",
+            "icon": "droplet"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "text": "niemand muss dich dabei sehen",
+            "icon": "sparkle"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "text": "deutscher support, werktags in 24 h",
+            "icon": "check"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4"],
-      "settings": { "speed": 40 }
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ],
+      "settings": {
+        "speed": 40
+      }
     },
     "bestsellers": {
       "type": "bestsellers",
       "blocks": {
-        "p1": { "type": "product", "settings": { "subtitle": "Für jetzt sofort glatt, ohne die Pünktchen danach." } },
-        "p2": { "type": "product", "settings": { "subtitle": "Beides zusammen: sofort glatt und langfristig weniger." } },
-        "p3": { "type": "product", "settings": { "subtitle": "Mit Pflege und Ersatzköpfen für das ganze Jahr." } }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "subtitle": "Für jetzt sofort glatt, ohne die Pünktchen danach."
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "subtitle": "Beides zusammen: sofort glatt und langfristig weniger."
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "subtitle": "Mit Pflege und Ersatzköpfen für das ganze Jahr."
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
       "settings": {
         "eyebrow": "die leiter",
         "heading": "drei wege, dasselbe problem zu lösen",
@@ -48,15 +123,61 @@
     "diagnosis": {
       "type": "diagnosis",
       "blocks": {
-        "m1": { "type": "myth", "settings": { "text": "„Meine Haut ist halt empfindlich. Bei mir ist das so.“" } },
-        "m2": { "type": "myth", "settings": { "text": "„Ich rasiere falsch. Ich muss nur öfter peelen.“" } },
-        "m3": { "type": "myth", "settings": { "text": "„Ich brauche einfach die teurere Klinge.“" } },
-        "m4": { "type": "myth", "settings": { "text": "„Bei mir funktioniert sowas eh nicht.“" } },
-        "s1": { "type": "step", "settings": { "title": "Die erste Klinge zieht das Haar an", "text": "Mehrklingen-Systeme heben das Haar aus dem Follikel, bevor die nächste Klinge folgt." } },
-        "s2": { "type": "step", "settings": { "title": "Die zweite Klinge kappt es zu tief", "text": "Das Haar wird unterhalb der Hautoberfläche durchtrennt und rutscht zurück in den Kanal." } },
-        "s3": { "type": "step", "settings": { "title": "Beim Nachwachsen trifft es auf geschlossene Haut", "text": "Genau das ist ein eingewachsenes Haar — und das dunkle Pünktchen, das danach bleibt." } }
+        "m1": {
+          "type": "myth",
+          "settings": {
+            "text": "„Meine Haut ist halt empfindlich. Bei mir ist das so.“"
+          }
+        },
+        "m2": {
+          "type": "myth",
+          "settings": {
+            "text": "„Ich rasiere falsch. Ich muss nur öfter peelen.“"
+          }
+        },
+        "m3": {
+          "type": "myth",
+          "settings": {
+            "text": "„Ich brauche einfach die teurere Klinge.“"
+          }
+        },
+        "m4": {
+          "type": "myth",
+          "settings": {
+            "text": "„Bei mir funktioniert sowas eh nicht.“"
+          }
+        },
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Die erste Klinge zieht das Haar an",
+            "text": "Mehrklingen-Systeme heben das Haar aus dem Follikel, bevor die nächste Klinge folgt."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Die zweite Klinge kappt es zu tief",
+            "text": "Das Haar wird unterhalb der Hautoberfläche durchtrennt und rutscht zurück in den Kanal."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Beim Nachwachsen trifft es auf geschlossene Haut",
+            "text": "Genau das ist ein eingewachsenes Haar — und das dunkle Pünktchen, das danach bleibt."
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "s1", "s2", "s3"],
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {
         "eyebrow": "die diagnose",
         "heading": "du hast dir das jahrelang selbst zugeschrieben",
@@ -72,12 +193,41 @@
     "changes": {
       "type": "changes",
       "blocks": {
-        "c1": { "type": "change", "settings": { "title": "Du planst nicht mehr vor", "text": "Kein Rechnen mehr, ob zwei Tage reichen. Du entscheidest morgens, nicht am Dienstag davor." } },
-        "c2": { "type": "change", "settings": { "title": "Der Sonntagabend gehört wieder dir", "text": "Keine Rötung, die du bis Montag früh beobachtest." } },
-        "c3": { "type": "change", "settings": { "title": "Du drehst den Rückspiegel nicht mehr", "text": "Kein Check im Tageslicht, bevor du aussteigst." } },
-        "c4": { "type": "change", "settings": { "title": "Die Schublade wird leerer", "text": "Kein Peeling, kein Serum, keine Creme gegen ein Problem, das gar nicht erst entstehen muss." } }
+        "c1": {
+          "type": "change",
+          "settings": {
+            "title": "Du planst nicht mehr vor",
+            "text": "Kein Rechnen mehr, ob zwei Tage reichen. Du entscheidest morgens, nicht am Dienstag davor."
+          }
+        },
+        "c2": {
+          "type": "change",
+          "settings": {
+            "title": "Der Sonntagabend gehört wieder dir",
+            "text": "Keine Rötung, die du bis Montag früh beobachtest."
+          }
+        },
+        "c3": {
+          "type": "change",
+          "settings": {
+            "title": "Du drehst den Rückspiegel nicht mehr",
+            "text": "Kein Check im Tageslicht, bevor du aussteigst."
+          }
+        },
+        "c4": {
+          "type": "change",
+          "settings": {
+            "title": "Die Schublade wird leerer",
+            "text": "Kein Peeling, kein Serum, keine Creme gegen ein Problem, das gar nicht erst entstehen muss."
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
       "settings": {
         "eyebrow": "was sich ändert",
         "heading": "nicht deine haut. dein kalender.",
@@ -88,29 +238,79 @@
     "community": {
       "type": "community",
       "blocks": {
-        "u1": { "type": "post", "settings": {} },
-        "u2": { "type": "post", "settings": {} },
-        "u3": { "type": "post", "settings": {} },
-        "u4": { "type": "post", "settings": {} }
+        "u1": {
+          "type": "post",
+          "settings": {}
+        },
+        "u2": {
+          "type": "post",
+          "settings": {}
+        },
+        "u3": {
+          "type": "post",
+          "settings": {}
+        },
+        "u4": {
+          "type": "post",
+          "settings": {}
+        }
       },
-      "block_order": ["u1", "u2", "u3", "u4"],
+      "block_order": [
+        "u1",
+        "u2",
+        "u3",
+        "u4"
+      ],
       "settings": {
         "eyebrow": "community",
         "heading": "sie haben es vorher auch nicht geglaubt",
         "link_label": "auf instagram",
         "disclaimer": "Alle Beiträge stammen von echten Kundinnen und wurden mit ihrer Zustimmung veröffentlicht.",
-        "background": "default"
+        "background": "cream"
       }
     },
     "guarantee": {
       "type": "guarantee",
       "blocks": {
-        "g1": { "type": "point", "settings": { "icon": "shield", "title": "30 Tage auf den Rasierer", "text": "Das Ergebnis siehst du nach der ersten Anwendung. Wenn du nach vier Wochen nicht überzeugt bist, schickst du ihn zurück." } },
-        "g2": { "type": "point", "settings": { "icon": "clock", "title": "90 Tage auf das IPL-Gerät", "text": "Eine sichtbare Haarreduktion braucht etwa zehn Anwendungen. Eine 30-Tage-Frist wäre eine Frist, die du gar nicht nutzen könntest." } },
-        "g3": { "type": "point", "settings": { "icon": "return", "title": "Auch geöffnet und benutzt", "text": "Anders wäre die Garantie sinnlos. Du sollst das Gerät tatsächlich verwenden, bevor du entscheidest." } },
-        "g4": { "type": "point", "settings": { "icon": "chat", "title": "Support auf Deutsch, mit Namen", "text": "Werktags innerhalb von 24 Stunden. Kein Ticketsystem, das dich im Kreis schickt." } }
+        "g1": {
+          "type": "point",
+          "settings": {
+            "icon": "shield",
+            "title": "30 Tage auf den Rasierer",
+            "text": "Das Ergebnis siehst du nach der ersten Anwendung. Wenn du nach vier Wochen nicht überzeugt bist, schickst du ihn zurück."
+          }
+        },
+        "g2": {
+          "type": "point",
+          "settings": {
+            "icon": "clock",
+            "title": "90 Tage auf das IPL-Gerät",
+            "text": "Eine sichtbare Haarreduktion braucht etwa zehn Anwendungen. Eine 30-Tage-Frist wäre eine Frist, die du gar nicht nutzen könntest."
+          }
+        },
+        "g3": {
+          "type": "point",
+          "settings": {
+            "icon": "return",
+            "title": "Auch geöffnet und benutzt",
+            "text": "Anders wäre die Garantie sinnlos. Du sollst das Gerät tatsächlich verwenden, bevor du entscheidest."
+          }
+        },
+        "g4": {
+          "type": "point",
+          "settings": {
+            "icon": "chat",
+            "title": "Support auf Deutsch, mit Namen",
+            "text": "Werktags innerhalb von 24 Stunden. Kein Ticketsystem, das dich im Kreis schickt."
+          }
+        }
       },
-      "block_order": ["g1", "g2", "g3", "g4"],
+      "block_order": [
+        "g1",
+        "g2",
+        "g3",
+        "g4"
+      ],
       "settings": {
         "eyebrow": "garantie",
         "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
@@ -125,14 +325,57 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": { "type": "faq", "settings": { "question": "Warum 50 Euro für einen Rasierer?", "answer": "<p>Weil der Vergleichsrahmen nicht der Einwegrasierer ist. Rechne gegen zweimal Waxing im Studio oder gegen ein Jahr Ersatzklingen — dann ist die Frage eine andere.</p>" } },
-        "q2": { "type": "faq", "settings": { "question": "Bei mir funktioniert sowas eh nicht. Warum jetzt?", "answer": "<p>Weil du bisher immer dieselbe Art von Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut — das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, zahlen wir zurück.</p>" } },
-        "q3": { "type": "faq", "settings": { "question": "Rasierer oder IPL — was brauche ich?", "answer": "<p>Der Rasierer löst „jetzt sofort glatt“. Das IPL-Gerät zielt auf langanhaltende Haarreduktion über mehrere Wochen. Die beiden ersetzen sich nicht, sie lösen unterschiedliche Probleme.</p>" } },
-        "q4": { "type": "faq", "settings": { "question": "Wie oft brauche ich Ersatzköpfe?", "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist — ohne Abo-Zwang.</p>" } },
-        "q5": { "type": "faq", "settings": { "question": "Funktioniert IPL bei jedem Haut- und Haartyp?", "answer": "<p>Nein. IPL braucht Kontrast zwischen Haar und Haut und wirkt bei sehr hellem, rotem oder grauem Haar sowie bei sehr dunklen Hauttönen nicht zuverlässig. Auf der Produktseite steht die Eignungstabelle über dem Kaufbutton, damit du das vor dem Kauf siehst.</p>" } },
-        "q6": { "type": "faq", "settings": { "question": "Wer steckt hinter skinbabe?", "answer": "<p>Ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wer wir sind, steht auf der Über-uns-Seite — mit Namen und Gesicht.</p>" } }
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "question": "Warum 50 Euro für einen Rasierer?",
+            "answer": "<p>Weil der Vergleichsrahmen nicht der Einwegrasierer ist. Rechne gegen zweimal Waxing im Studio oder gegen ein Jahr Ersatzklingen — dann ist die Frage eine andere.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "question": "Bei mir funktioniert sowas eh nicht. Warum jetzt?",
+            "answer": "<p>Weil du bisher immer dieselbe Art von Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut — das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, zahlen wir zurück.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq",
+          "settings": {
+            "question": "Rasierer oder IPL — was brauche ich?",
+            "answer": "<p>Der Rasierer löst „jetzt sofort glatt“. Das IPL-Gerät zielt auf langanhaltende Haarreduktion über mehrere Wochen. Die beiden ersetzen sich nicht, sie lösen unterschiedliche Probleme.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq",
+          "settings": {
+            "question": "Wie oft brauche ich Ersatzköpfe?",
+            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist — ohne Abo-Zwang.</p>"
+          }
+        },
+        "q5": {
+          "type": "faq",
+          "settings": {
+            "question": "Funktioniert IPL bei jedem Haut- und Haartyp?",
+            "answer": "<p>Nein. IPL braucht Kontrast zwischen Haar und Haut und wirkt bei sehr hellem, rotem oder grauem Haar sowie bei sehr dunklen Hauttönen nicht zuverlässig. Auf der Produktseite steht die Eignungstabelle über dem Kaufbutton, damit du das vor dem Kauf siehst.</p>"
+          }
+        },
+        "q6": {
+          "type": "faq",
+          "settings": {
+            "question": "Wer steckt hinter skinbabe?",
+            "answer": "<p>Ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wer wir sind, steht auf der Über-uns-Seite — mit Namen und Gesicht.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
       "settings": {
         "eyebrow": "was du wissen willst",
         "heading": "die fragen, die du vor dem kauf stellst",
@@ -151,15 +394,196 @@
         "button_label": "Anmelden",
         "background": "cream"
       }
+    },
+    "press": {
+      "type": "press-logos",
+      "blocks": {
+        "l1": {
+          "type": "logo",
+          "settings": {
+            "name": "Medium eintragen"
+          }
+        },
+        "l2": {
+          "type": "logo",
+          "settings": {
+            "name": "Medium eintragen"
+          }
+        },
+        "l3": {
+          "type": "logo",
+          "settings": {
+            "name": "Medium eintragen"
+          }
+        },
+        "l4": {
+          "type": "logo",
+          "settings": {
+            "name": "Medium eintragen"
+          }
+        }
+      },
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4"
+      ],
+      "settings": {
+        "heading": "gesehen bei",
+        "background": "default"
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "blocks": {
+        "t1": {
+          "type": "step",
+          "settings": {
+            "title": "Trocken ansetzen",
+            "text": "Kein Wasser, kein Schaum. Du kannst direkt loslegen."
+          }
+        },
+        "t2": {
+          "type": "step",
+          "settings": {
+            "title": "In kurzen Zügen führen",
+            "text": "Der Schutzkopf hält die Klinge auf Abstand. Kein Druck nötig."
+          }
+        },
+        "t3": {
+          "type": "step",
+          "settings": {
+            "title": "Kopf abspülen, fertig",
+            "text": "Kurz unter Wasser, trocknen lassen. Der Kopf hält drei bis sechs Monate."
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "eyebrow": "so läuft das",
+        "heading": "drei minuten, kein aufwand",
+        "show_images": true,
+        "image_ratio": "square",
+        "text_align": "center",
+        "background": "default"
+      }
+    },
+    "before_after": {
+      "type": "before-after",
+      "settings": {
+        "eyebrow": "der unterschied",
+        "heading": "zieh den regler",
+        "label_before": "vorher",
+        "label_after": "nachher",
+        "disclaimer": "Aufnahmen einer Kundin, unretuschiert. Ergebnisse fallen individuell unterschiedlich aus.",
+        "width": "narrow",
+        "text_align": "center",
+        "background": "cream"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
+            "verified": true
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
+            "verified": true
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "eyebrow": "bewertungen",
+        "heading": "die meisten waren vorher skeptisch",
+        "link_label": "alle bewertungen",
+        "disclaimer": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen.",
+        "background": "default"
+      }
+    },
+    "builder": {
+      "type": "bundle-builder",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Wähle dein Gerät",
+            "required": true,
+            "limit": 4
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Ersatzköpfe dazu",
+            "required": false,
+            "limit": 4
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Pflege dazu",
+            "required": false,
+            "limit": 4
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "eyebrow": "set zusammenstellen",
+        "heading": "bau dir das set, das zu dir passt",
+        "text": "<p>Drei Schritte, eine Bestellung. Was du nicht brauchst, lässt du weg.</p>",
+        "summary_title": "Dein Set",
+        "button_label": "Set in den Warenkorb",
+        "hint": "Versandkostenfrei ab 50 €. 30 Tage Rückgabe auf jede Position.",
+        "text_align": "left",
+        "background": "cream"
+      }
     }
   },
   "order": [
     "hero",
     "marquee",
+    "press",
     "bestsellers",
     "diagnosis",
+    "steps",
     "changes",
+    "before_after",
+    "builder",
     "community",
+    "testimonials",
     "guarantee",
     "faq",
     "newsletter"

@@ -53,17 +53,49 @@ Die Sektionsreihenfolge in `templates/index.json` folgt dem Briefing:
 9. FAQ — die Fragen vor dem Kauf, mit FAQPage-Markup
 10. Newsletter
 
-## Produktseite
+## Produktseiten
+
+Drei fertige Vorlagen. Zuweisung im Produkt unter *Theme-Vorlage*.
+
+| Template | Für | Besonderheit |
+|---|---|---|
+| `product` | Rasierer und Zubehör | Mengenstufen (1×/2×), Abo-Block, 30 Tage |
+| `product.ipl` | IPL-Geräte | Eignungshinweis über dem Kaufbutton, Optionen als echte Produkte, 90 Tage |
+| `product.bundle` | Set-Produkte | zusätzlich der Set-Konfigurator |
 
 Oberhalb der Falz in dieser Reihenfolge: Titel → Preis → vier Kurz-Argumente
-→ Variante → Kaufbutton → Vertrauensraster.
+→ Kaufoptionen → Variante → Kaufbutton → Zahlungsarten → Vertrauensraster.
 
-Der Block **„Hinweis über dem Kaufbutton"** ist für IPL-Produkte gedacht:
-Der Hinweis zu Haut- und Haartypen steht sichtbar über dem Button, nicht
-in der FAQ. Bei Rasierer-Produkten den Block einfach entfernen.
+### Kaufoptionen / Bundles
 
-Darunter: Mechanismus-Erklärung, Vergleichstabelle, Garantie, FAQ,
-Produktempfehlungen.
+Der Block **„Kaufoption / Bundle"** ist mehrfach einsetzbar (bis 4). Jede
+Option arbeitet in einem von zwei Modi:
+
+- **Anderes Produkt** — die Angebots-Leiter. Option zeigt auf ein eigenes
+  Shopify-Produkt mit eigenem Preis (Rasierer-Set → Rasierer + IPL → Komplett).
+- **Mengenstufe** — 1×, 2×, 3× dieses Produkts. Der Stückpreis wird
+  ausgerechnet und angezeigt.
+
+Pro Option einstellbar: Bezeichnung, Untertitel, Badge („Beliebteste Wahl"),
+Zusatzhinweis, Bild, Vorauswahl. Preis und Streichpreis kommen immer aus
+Shopify — es gibt kein Feld für einen frei erfundenen Referenzpreis.
+
+Wenn du Kaufoptionen nutzt, lass den Block *Variantenauswahl* weg. Sonst
+konkurrieren zwei Auswahlen um dasselbe Formular.
+
+### Weitere Blöcke
+
+- **Hinweis über dem Kaufbutton** — für IPL: Haut- und Haartypen, sichtbar
+  über dem Button statt in der FAQ
+- **Nachkauf / Abo** — zeigt die in Shopify angelegten Kaufpläne; ohne
+  Kaufpläne wird der Block nicht ausgegeben
+- **USP-Reihe**, **Spezifikationen**, **Zahlungsarten**, **Lagerhinweis**
+
+### Sticky-Kaufleiste
+
+Erscheint, sobald der Kaufbutton aus dem Bild scrollt, und übernimmt den
+aktuellen Preis aus Varianten- und Bundle-Auswahl. Abschaltbar in den
+Section-Einstellungen.
 
 ## Was das Theme technisch durchsetzt
 
@@ -140,6 +172,54 @@ Die Bestseller-Zeile ist auf drei Positionen ausgelegt:
 
 Die mittlere Karte ist das Ziel. Der Untertitel jeder Karte sollte erklären,
 welches Problem sie löst — sonst entscheidet sich niemand.
+
+## Set-Konfigurator
+
+Eigene Section (`Set-Konfigurator`), nutzbar auf Startseite, Produktseite
+oder eigener Landingpage. Jeder Block ist ein Schritt, die Auswahl je Schritt
+kommt aus einer **Kategorie** — neue Optionen fügst du hinzu, indem du ein
+Produkt in die Kategorie legst, nicht indem du das Theme anfasst.
+
+Pro Schritt einstellbar: Titel, Beschreibung, Kategorie, maximale Anzahl
+Optionen, Menge pro Auswahl, Pflicht oder optional. Optionale Schritte
+bekommen automatisch eine „Nicht dazunehmen"-Karte.
+
+Die Summe rechts rechnet live mit, ein Klick legt alle Positionen gemeinsam
+in den Warenkorb.
+
+## Section-Übersicht
+
+| Section | Zweck |
+|---|---|
+| Hero | Zustand statt Feature, mit Kennzahlen-Leiste |
+| Laufband | kurze Sachargumente im Endlosband |
+| Presse / Logos | „gesehen bei", nur mit Link zum Beitrag |
+| Bestseller-Zeile | max. 3 Produkte mit Nutzen-Untertitel |
+| Diagnose & Mechanismus | Selbstdiagnosen, dann Auflösung |
+| So funktioniert es | 3–4 Schritte mit Bild |
+| Was sich ändert | vier Alltagsveränderungen |
+| Vorher / Nachher | Vergleichsslider, ziehbar |
+| Set-Konfigurator | mehrstufige Zusammenstellung |
+| Community | echte Handles, verlinkt |
+| Bewertungen | echte Bewertungen mit Quelle |
+| Feature-Reihen | alternierende Bild-Text-Blöcke |
+| Vergleichstabelle | gegen Waxing und Salon |
+| Kennzahlen | Zahlenband, optional hochzählend |
+| Video | Shopify-Video oder Einbettung |
+| Garantie | Bedingungen mit Begründung |
+| FAQ | mit optionalem FAQPage-Markup |
+| Newsletter | mit rechtlichem Hinweis |
+
+## Eigene Display-Schrift
+
+Theme-Einstellungen → Typografie → *Eigene Schrift*. Eine lizenzierte
+`.woff2` unter Inhalte → Dateien hochladen, URL eintragen, Schriftname
+vergeben, Rolle wählen (Überschriften / Fließtext / beide). Überschreibt
+die Wahl aus der Shopify-Bibliothek.
+
+Ohne eigene Schrift greifen die font_picker-Einstellungen; ist dort nichts
+gesetzt, greift ein definierter Fallback-Stack. Die Typografie fällt in
+keinem Fall auf die Browser-Standardschrift zurück.
 
 ## Entwicklung
 

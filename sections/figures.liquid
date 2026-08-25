@@ -1,0 +1,65 @@
+<div class="section section--tight{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-head section-head--center reveal">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 class="h2">
+          {{ section.settings.heading }}
+          {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+        </h2>
+      </div>
+    {%- endif -%}
+
+    <div class="figures reveal" style="--figure-cols:{{ section.blocks.size | at_most: 4 }};">
+      {%- for block in section.blocks -%}
+        <div class="figure" {{ block.shopify_attributes }}>
+          <span class="figure__value">
+            {%- if block.settings.count_up and block.settings.number > 0 -%}
+              {{ block.settings.prefix }}<sb-count-up data-value="{{ block.settings.number }}">0</sb-count-up>{{ block.settings.suffix }}
+            {%- else -%}
+              {{ block.settings.value }}
+            {%- endif -%}
+          </span>
+          <span class="figure__label">{{ block.settings.label }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="small muted center" style="margin-top:1.5rem">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kennzahlen",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "paragraph", "content": "Wichtig: eine Kundenzahl im ganzen Shop. Wenn hier eine Zahl steht, darf im Header oder Hero keine abweichende stehen." },
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext" },
+    { "type": "text", "id": "heading", "label": "Überschrift" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "textarea", "id": "footnote", "label": "Fußnote", "info": "Stand der Angaben nennen, damit die Zahl überprüfbar bleibt." },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "figure",
+      "name": "Kennzahl",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Wert", "default": "4,7" },
+        { "type": "text", "id": "label", "label": "Bezeichnung", "default": "Durchschnittliche Bewertung" },
+        { "type": "checkbox", "id": "count_up", "label": "Hochzählen beim Scrollen", "default": false },
+        { "type": "number", "id": "number", "label": "Zahlenwert zum Hochzählen" },
+        { "type": "text", "id": "prefix", "label": "Präfix" },
+        { "type": "text", "id": "suffix", "label": "Suffix" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Kennzahlen", "blocks": [{ "type": "figure" }, { "type": "figure" }, { "type": "figure" }] }]
+}
+{% endschema %}

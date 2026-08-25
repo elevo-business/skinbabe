@@ -3,26 +3,37 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "rating": { "type": "rating", "settings": {} },
-        "price": { "type": "price", "settings": { "tax_note": "inkl. MwSt., zzgl. Versand" } },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "tax_note": "inkl. MwSt., zzgl. Versand"
+          }
+        },
         "arguments": {
           "type": "arguments",
           "settings": {
-            "arg_1": "Kein direkter Klingenkontakt zur Haut",
-            "arg_2": "Auch trocken, ohne Wasser und Schaum",
-            "arg_3": "Ein Kopf hält drei bis sechs Monate",
-            "arg_4": "30 Tage zurückgeben, auch benutzt"
+            "arg_1": "Langanhaltende Haarreduktion, kein Laser",
+            "arg_2": "Sichtbar nach etwa zehn Anwendungen",
+            "arg_3": "Zuhause, ohne Termin und ohne Studio",
+            "arg_4": "90 Tage zurückgeben, auch benutzt"
           }
         },
         "bundle_1": {
           "type": "bundle_option",
           "settings": {
             "group_title": "Wähle dein Set",
-            "mode": "quantity",
+            "mode": "product",
             "quantity": 1,
-            "label": "Einzeln",
-            "sublabel": "Ein Gerät, einmal ausprobieren.",
+            "label": "Nur IPL-Gerät",
+            "sublabel": "Für langfristig weniger Haarwuchs.",
             "show_image": true,
             "selected": false
           }
@@ -31,10 +42,10 @@
           "type": "bundle_option",
           "settings": {
             "group_title": "Wähle dein Set",
-            "mode": "quantity",
+            "mode": "product",
             "quantity": 2,
-            "label": "Doppelt",
-            "sublabel": "Eins fürs Bad, eins für die Reisetasche.",
+            "label": "IPL + Rasierer",
+            "sublabel": "Sofort glatt und langfristig weniger.",
             "badge": "Beliebteste Wahl",
             "show_image": true,
             "selected": true
@@ -45,12 +56,15 @@
           "settings": {
             "mode": "product",
             "label": "Komplett-Set",
-            "sublabel": "Mit Ersatzköpfen und Pflege für das ganze Jahr.",
+            "sublabel": "Mit Pflege und Zubehör.",
             "show_image": true,
             "selected": false
           }
         },
-        "variants": { "type": "variants", "settings": {} },
+        "variants": {
+          "type": "variants",
+          "settings": {}
+        },
         "buy": {
           "type": "buy",
           "settings": {
@@ -59,13 +73,18 @@
             "payment_note": "Klarna, PayPal, Apple Pay, Kreditkarte"
           }
         },
-        "payment": { "type": "payment", "settings": { "limit": 6 } },
+        "payment": {
+          "type": "payment",
+          "settings": {
+            "limit": 6
+          }
+        },
         "trust": {
           "type": "trust",
           "settings": {
             "text_1": "Auf Lager, Versand am selben Werktag",
             "icon_1": "box",
-            "text_2": "30 Tage Rückgabe, auch geöffnet",
+            "text_2": "90 Tage Rückgabe, auch geöffnet",
             "icon_2": "return",
             "text_3": "Klarna, PayPal, Apple Pay",
             "icon_3": "card",
@@ -78,18 +97,18 @@
           "settings": {
             "columns": 4,
             "compact": false,
-            "title_1": "Schutzkopf",
-            "text_1": "Kein direkter Klingenkontakt",
-            "icon_1": "shield",
-            "title_2": "Trocken nutzbar",
-            "text_2": "Ohne Wasser und Schaum",
-            "icon_2": "droplet",
-            "title_3": "3–6 Monate",
-            "text_3": "Standzeit pro Kopf",
-            "icon_3": "clock",
-            "title_4": "30 Tage",
-            "text_4": "Rückgabe, auch benutzt",
-            "icon_4": "return"
+            "title_1": "Kein Termin",
+            "text_1": "Zuhause, wann du willst",
+            "icon_1": "clock",
+            "title_2": "Kein Laser",
+            "text_2": "IPL, sanfter Lichtimpuls",
+            "icon_2": "sparkle",
+            "title_3": "10 Anwendungen",
+            "text_3": "Bis erste Ergebnisse sichtbar sind",
+            "icon_3": "check",
+            "title_4": "90 Tage",
+            "text_4": "Garantie, passend zur Wirkdauer",
+            "icon_4": "shield"
           }
         },
         "plan": {
@@ -112,12 +131,20 @@
         "specs": {
           "type": "specs",
           "settings": {
-            "label_1": "Lieferumfang",
-            "label_2": "Akkulaufzeit",
-            "label_3": "Ladezeit",
-            "label_4": "Maße",
-            "label_5": "Gewicht",
+            "label_1": "Lichtimpulse",
+            "label_2": "Intensitätsstufen",
+            "label_3": "Aufsätze",
+            "label_4": "Anwendungsintervall",
+            "label_5": "Stromversorgung",
             "label_6": "Garantie"
+          }
+        },
+        "notice": {
+          "type": "notice",
+          "settings": {
+            "icon": "sparkle",
+            "text": "<p>IPL braucht Kontrast zwischen Haar und Haut. Bei sehr hellem, rotem oder grauem Haar sowie sehr dunklen Hauttönen ist keine zuverlässige Wirkung zu erwarten.</p>",
+            "link_label": "Eignungstabelle ansehen"
           }
         }
       },
@@ -126,6 +153,7 @@
         "rating",
         "price",
         "arguments",
+        "notice",
         "bundle_1",
         "bundle_2",
         "bundle_3",
@@ -138,7 +166,10 @@
         "accordion",
         "specs"
       ],
-      "settings": { "gallery_layout": "stacked", "enable_sticky_bar": true }
+      "settings": {
+        "gallery_layout": "stacked",
+        "enable_sticky_bar": true
+      }
     },
     "steps": {
       "type": "steps",
@@ -171,7 +202,7 @@
         "heading": "zieh den regler",
         "label_before": "vorher",
         "label_after": "nachher",
-        "disclaimer": "Aufnahmen einer Kundin, unretuschiert. Ergebnisse fallen individuell unterschiedlich aus.",
+        "disclaimer": "Aufnahmen einer Kundin nach zwölf Wochen, unretuschiert. Ergebnisse fallen individuell unterschiedlich aus.",
         "width": "narrow",
         "text_align": "center",
         "background": "cream"
@@ -181,8 +212,8 @@
       "type": "comparison",
       "settings": {
         "eyebrow": "die rechnung",
-        "heading": "einmal kaufen statt jedes mal zahlen",
-        "col_1": "skinbabe",
+        "heading": "ipl gegen studio",
+        "col_1": "skinbabe IPL",
         "col_2": "Waxing zuhause",
         "col_3": "Studio / Salon",
         "background": "default"
@@ -201,8 +232,8 @@
       "type": "guarantee",
       "settings": {
         "eyebrow": "garantie",
-        "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
-        "seal_value": "30",
+        "heading": "90 tage, weil ergebnisse zeit brauchen",
+        "seal_value": "90",
         "seal_label": "Tage Garantie",
         "background": "default"
       }
@@ -218,7 +249,11 @@
     },
     "recommendations": {
       "type": "product-recommendations",
-      "settings": { "heading": "passt dazu", "limit": 4, "background": "default" }
+      "settings": {
+        "heading": "passt dazu",
+        "limit": 4,
+        "background": "default"
+      }
     }
   },
   "order": [

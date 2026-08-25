@@ -1,0 +1,80 @@
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width">
+    <div class="section-head reveal{% if section.settings.text_align == 'center' %} section-head--center{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="h2">
+          {{ section.settings.heading }}
+          {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="rte lede">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+
+    <div class="steps{% if section.blocks.size == 4 %} steps--four{% endif %} reveal">
+      {%- for block in section.blocks -%}
+        <div class="step" {{ block.shopify_attributes }}>
+          {%- if section.settings.show_images -%}
+            <div class="media media--{{ section.settings.image_ratio }} step__media">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.image.alt | escape }}" width="700" height="700" loading="lazy">
+              {%- else -%}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          <span class="step__num">{{ forloop.index }}</span>
+          <h3 class="step__title">{{ block.settings.title }}</h3>
+          <p class="step__text">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "So funktioniert es",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "so läuft das" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "drei minuten, kein aufwand" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "checkbox", "id": "show_images", "label": "Bilder anzeigen", "default": true },
+    {
+      "type": "select", "id": "image_ratio", "label": "Bildformat", "default": "square",
+      "options": [{ "value": "square", "label": "1:1" }, { "value": "portrait", "label": "4:5" }, { "value": "landscape", "label": "3:2" }]
+    },
+    {
+      "type": "select", "id": "text_align", "label": "Ausrichtung", "default": "center",
+      "options": [{ "value": "left", "label": "Links" }, { "value": "center", "label": "Zentriert" }]
+    },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Schritt",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Bild" },
+        { "type": "text", "id": "title", "label": "Titel", "default": "Trocken ansetzen" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Kein Wasser, kein Schaum. Du kannst direkt loslegen." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "So funktioniert es",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Trocken ansetzen", "text": "Kein Wasser, kein Schaum. Du kannst direkt loslegen." } },
+        { "type": "step", "settings": { "title": "In kurzen Zügen führen", "text": "Der Schutzkopf hält die Klinge auf Abstand. Kein Druck nötig." } },
+        { "type": "step", "settings": { "title": "Kopf abspülen, fertig", "text": "Kurz unter Wasser, trocknen lassen. Der Kopf hält drei bis sechs Monate." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
