@@ -5,6 +5,43 @@
   if brightness > 160
     assign accent_contrast = settings.color_ink
   endif
+
+  comment
+    Font-Stacks werden defensiv gebaut: fehlt ein Font-Drop (z. B. weil eine
+    Einstellung noch nicht gesetzt ist), greift ein vernuenftiger Fallback
+    statt der Browser-Standardschrift.
+  endcomment
+
+  assign sans_fallback = "'Helvetica Neue', Helvetica, Arial, sans-serif"
+  assign serif_fallback = "Georgia, 'Times New Roman', serif"
+
+  assign body_family = sans_fallback
+  if settings.type_body_font.family != blank
+    assign body_family = settings.type_body_font.family | append: ', ' | append: settings.type_body_font.fallback_families | append: ', ' | append: sans_fallback
+  endif
+
+  assign heading_family = body_family
+  if settings.type_heading_font.family != blank
+    assign heading_family = settings.type_heading_font.family | append: ', ' | append: settings.type_heading_font.fallback_families | append: ', ' | append: sans_fallback
+  endif
+
+  assign accent_family = serif_fallback
+  if settings.type_accent_font.family != blank
+    assign accent_family = settings.type_accent_font.family | append: ', ' | append: settings.type_accent_font.fallback_families | append: ', ' | append: serif_fallback
+  endif
+
+  if settings.custom_font_name != blank and settings.custom_font_woff2 != blank
+    assign custom_stack = "'" | append: settings.custom_font_name | append: "', " | append: heading_family
+    if settings.custom_font_role == 'heading' or settings.custom_font_role == 'both'
+      assign heading_family = custom_stack
+    endif
+    if settings.custom_font_role == 'body' or settings.custom_font_role == 'both'
+      assign body_family = "'" | append: settings.custom_font_name | append: "', " | append: body_family
+    endif
+  endif
+
+  assign body_weight = settings.type_body_font.weight | default: 400
+  assign heading_weight = settings.type_heading_font.weight | default: 500
 -%}
 {% style %}
   :root{
@@ -25,31 +62,31 @@
     --sb-overlay:{{ settings.color_ink | color_modify: 'alpha', 0.45 }};
 
     /* --- Type --- */
-    --sb-font-body:{{ settings.type_body_font.family }},{{ settings.type_body_font.fallback_families }};
-    --sb-font-heading:{{ settings.type_heading_font.family }},{{ settings.type_heading_font.fallback_families }};
-    --sb-font-accent:{{ settings.type_accent_font.family }},{{ settings.type_accent_font.fallback_families }};
-    --sb-body-weight:{{ settings.type_body_font.weight }};
-    --sb-heading-weight:{{ settings.type_heading_font.weight }};
-    --sb-heading-tracking:{{ settings.type_heading_tracking | divided_by: 100.0 }}em;
-    --sb-heading-case:{{ settings.type_heading_case }};
-    --sb-text-base:{{ settings.type_body_size | divided_by: 16.0 }}rem;
+    --sb-font-body:{{ body_family }};
+    --sb-font-heading:{{ heading_family }};
+    --sb-font-accent:{{ accent_family }};
+    --sb-body-weight:{{ body_weight }};
+    --sb-heading-weight:{{ heading_weight }};
+    --sb-heading-tracking:{{ settings.type_heading_tracking | default: -2 | divided_by: 100.0 }}em;
+    --sb-heading-case:{{ settings.type_heading_case | default: 'lowercase' }};
+    --sb-text-base:{{ settings.type_body_size | default: 16 | divided_by: 16.0 }}rem;
 
     /* --- Space --- */
-    --sb-page-width:{{ settings.layout_page_width }}px;
+    --sb-page-width:{{ settings.layout_page_width | default: 1440 }}px;
     --sb-gutter:1.25rem;
     --sb-grid-gap:1.25rem;
-    --sb-space-section:clamp(3rem,{{ settings.layout_section_spacing }}vw,{{ settings.layout_section_spacing | times: 1.4 }}rem);
+    --sb-space-section:clamp(3rem,{{ settings.layout_section_spacing | default: 6 }}vw,{{ settings.layout_section_spacing | default: 6 | times: 1.4 }}rem);
 
     /* --- Shape --- */
-    --sb-radius-pill:{{ settings.shape_button_radius }}px;
-    --sb-radius-lg:{{ settings.shape_card_radius }}px;
-    --sb-radius-md:{{ settings.shape_card_radius | divided_by: 2 }}px;
+    --sb-radius-pill:{{ settings.shape_button_radius | default: 100 }}px;
+    --sb-radius-lg:{{ settings.shape_card_radius | default: 16 }}px;
+    --sb-radius-md:{{ settings.shape_card_radius | default: 16 | divided_by: 2 }}px;
     --sb-btn-height:3rem;
 
     /* --- Motion --- */
     --sb-ease:cubic-bezier(.2,.7,.25,1);
 
-    /* Header offset, kept in sync by JS */
+    /* Header-Hoehe, wird per JS aktuell gehalten */
     --sb-header-height:72px;
   }
   @media screen and (min-width:750px){

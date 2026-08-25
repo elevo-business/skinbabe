@@ -151,6 +151,51 @@
         "label": "Akzent-Font (Serif)",
         "info": "Wird für kursive Serif-Akzente in Headlines verwendet.",
         "default": "playfair_display_n4"
+      },
+      {
+        "type": "header",
+        "content": "Eigene Schrift (optional)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Für eine lizenzierte Display-Schrift: .woff2 unter Inhalte → Dateien hochladen, URL hier einfügen. Überschreibt den gewählten Font aus der Shopify-Bibliothek."
+      },
+      {
+        "type": "text",
+        "id": "custom_font_name",
+        "label": "Schriftname",
+        "info": "Frei wählbar, z. B. „Skinbabe Display“."
+      },
+      {
+        "type": "url",
+        "id": "custom_font_woff2",
+        "label": "URL zur .woff2-Datei"
+      },
+      {
+        "type": "text",
+        "id": "custom_font_weight",
+        "label": "Schnittbereich",
+        "default": "400 700"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_role",
+        "label": "Verwenden für",
+        "default": "heading",
+        "options": [
+          {
+            "value": "heading",
+            "label": "Nur Überschriften"
+          },
+          {
+            "value": "body",
+            "label": "Nur Fließtext"
+          },
+          {
+            "value": "both",
+            "label": "Überschriften und Fließtext"
+          }
+        ]
       }
     ]
   },

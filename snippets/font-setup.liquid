@@ -1,0 +1,68 @@
+{%- comment -%}
+  Laedt Schriften ausfallsicher.
+
+  Reihenfolge:
+  1. Eigene Schrift aus assets/ (woff2), falls im Customizer hinterlegt
+  2. Shopify-Font-Bibliothek ueber die font_picker-Einstellungen
+  3. Systemschrift-Stack
+
+  Jeder Zugriff auf font_url / font_face ist geprueft: ist eine Einstellung
+  kein gueltiger Font-Drop, wird der Block uebersprungen statt einen
+  Liquid-Fehler zu werfen.
+{%- endcomment -%}
+
+{%- liquid
+  assign body_font = settings.type_body_font
+  assign heading_font = settings.type_heading_font
+  assign accent_font = settings.type_accent_font
+
+  assign body_ok = false
+  assign heading_ok = false
+  assign accent_ok = false
+
+  if body_font.family != blank
+    assign body_ok = true
+  endif
+  if heading_font.family != blank
+    assign heading_ok = true
+  endif
+  if accent_font.family != blank
+    assign accent_ok = true
+  endif
+-%}
+
+{%- if body_ok and body_font.system? == false -%}
+  {{ body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{%- endif -%}
+{%- if heading_ok and heading_font.system? == false -%}
+  {{ heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{%- endif -%}
+
+{%- if settings.custom_font_woff2 != blank -%}
+  {{ settings.custom_font_woff2 | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{%- endif -%}
+
+{% style %}
+  {%- if body_ok -%}
+    {{ body_font | font_face: font_display: 'swap' }}
+    {{ body_font | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+    {{ body_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+  {%- endif -%}
+  {%- if heading_ok -%}
+    {{ heading_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+  {%- if accent_ok -%}
+    {{ accent_font | font_face: font_display: 'swap' }}
+    {{ accent_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  {%- if settings.custom_font_woff2 != blank and settings.custom_font_name != blank -%}
+    @font-face{
+      font-family:'{{ settings.custom_font_name }}';
+      src:url('{{ settings.custom_font_woff2 }}') format('woff2');
+      font-weight:{{ settings.custom_font_weight | default: '400 700' }};
+      font-style:normal;
+      font-display:swap;
+    }
+  {%- endif -%}
+{% endstyle %}
