@@ -1,0 +1,63 @@
+{%- comment -%}
+  Nachkauf / Abo. Preise kommen aus den Shopify-Kaufplänen, nicht aus
+  Freitextfeldern — ein ausgewiesener Vorteil entspricht damit immer dem,
+  was an der Kasse berechnet wird.
+{%- endcomment -%}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign form_id = 'product-form-' | append: section.id
+-%}
+<sb-plan class="plan" data-section="{{ section.id }}">
+  {%- if block.settings.heading != blank -%}
+    <span class="bundle__title">{{ block.settings.heading }}</span>
+  {%- endif -%}
+
+  {%- unless product.requires_selling_plan -%}
+    <label class="plan__option">
+      <input type="radio" name="selling_plan" value="" form="{{ form_id }}" data-price="{{ variant.price }}" checked>
+      <span class="plan__card">
+        <span>{{ block.settings.one_time_label | default: 'Einmalig kaufen' }}</span>
+        <span>{{ variant.price | money }}</span>
+      </span>
+    </label>
+  {%- endunless -%}
+
+  {%- for group in product.selling_plan_groups -%}
+    {%- for plan in group.selling_plans -%}
+      {%- liquid
+        assign allocation = null
+        for a in variant.selling_plan_allocations
+          if a.selling_plan.id == plan.id
+            assign allocation = a
+            break
+          endif
+        endfor
+      -%}
+      {%- if allocation -%}
+        <label class="plan__option">
+          <input
+            type="radio"
+            name="selling_plan"
+            value="{{ plan.id }}"
+            form="{{ form_id }}"
+            data-price="{{ allocation.per_delivery_price }}"
+            {% if product.requires_selling_plan and forloop.first %}checked{% endif %}
+          >
+          <span class="plan__card">
+            <span>{{ plan.name }}</span>
+            <span>
+              {{ allocation.per_delivery_price | money }}
+              {%- if allocation.compare_at_price > allocation.per_delivery_price -%}
+                <span class="plan__save">statt {{ allocation.compare_at_price | money }}</span>
+              {%- endif -%}
+            </span>
+          </span>
+        </label>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+
+  {%- if block.settings.note != blank -%}
+    <p class="builder__hint">{{ block.settings.note }}</p>
+  {%- endif -%}
+</sb-plan>

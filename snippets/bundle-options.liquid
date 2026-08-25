@@ -1,0 +1,122 @@
+{%- comment -%}
+  Kaufoptionen auf der Produktseite.
+  Jede Option ist entweder ein eigenes Produkt (Angebots-Leiter) oder eine
+  Mengenstufe des aktuellen Produkts. Preise und Streichpreise kommen
+  ausschliesslich aus Shopify — es gibt keinen Weg, hier einen Referenzpreis
+  frei einzutragen.
+{%- endcomment -%}
+
+{%- liquid
+  assign options = section.blocks | where: 'type', 'bundle_option'
+  assign base_variant = product.selected_or_first_available_variant
+  assign group_title = ''
+  for block in options
+    if block.settings.group_title != blank and group_title == ''
+      assign group_title = block.settings.group_title
+    endif
+  endfor
+-%}
+
+{%- if options.size > 0 -%}
+  <sb-bundle class="bundle" data-section="{{ section.id }}">
+    <div class="bundle__head">
+      {%- if group_title != blank -%}
+        <span class="bundle__title">{{ group_title }}</span>
+      {%- endif -%}
+      <span class="bundle__unit" data-bundle-unit hidden></span>
+    </div>
+
+    {%- assign has_preselect = false -%}
+    {%- for block in options -%}
+      {%- if block.settings.selected -%}{%- assign has_preselect = true -%}{%- endif -%}
+    {%- endfor -%}
+
+    {%- for block in options -%}
+      {%- liquid
+        assign mode = block.settings.mode
+        assign qty = 1
+        assign target = base_variant
+        assign target_product = product
+
+        if mode == 'quantity'
+          assign qty = block.settings.quantity | at_least: 1
+        else
+          assign target_product = block.settings.product
+          assign target = target_product.selected_or_first_available_variant
+        endif
+
+        assign unit_price = target.price | default: 0
+        assign unit_compare = target.compare_at_price | default: 0
+        assign total_price = unit_price | times: qty
+        assign total_compare = unit_compare | times: qty
+        assign is_available = target.available
+
+        assign is_checked = block.settings.selected
+        if has_preselect == false and forloop.first
+          assign is_checked = true
+        endif
+
+        assign thumb = block.settings.image | default: target_product.featured_media
+      -%}
+
+      {%- if mode == 'quantity' or target_product != blank -%}
+        <label class="bundle__option{% if is_checked %} is-selected{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.badge != blank -%}
+            <span class="bundle__badge">{{ block.settings.badge }}</span>
+          {%- endif -%}
+
+          <input
+            type="radio"
+            name="bundle-{{ section.id }}"
+            value="{{ block.id }}"
+            data-mode="{{ mode }}"
+            data-variant-id="{{ target.id }}"
+            data-quantity="{{ qty }}"
+            data-price="{{ unit_price }}"
+            data-compare="{{ unit_compare }}"
+            data-available="{{ is_available }}"
+            data-label="{{ block.settings.label | escape }}"
+            {% if is_checked %}checked{% endif %}
+            {% unless is_available %}disabled{% endunless %}
+          >
+
+          <span class="bundle__card">
+            <span class="bundle__radio" aria-hidden="true"></span>
+
+            {%- if block.settings.show_image and thumb != blank -%}
+              <span class="bundle__thumb">
+                <img src="{{ thumb | image_url: width: 120 }}" alt="" width="60" height="60" loading="lazy">
+              </span>
+            {%- endif -%}
+
+            <span class="bundle__body">
+              <span class="bundle__label">
+                {{ block.settings.label | default: target_product.title }}
+                {%- unless is_available -%}
+                  <span class="badge badge--sold-out">{{ 'products.product.sold_out' | t }}</span>
+                {%- endunless -%}
+              </span>
+              {%- if block.settings.sublabel != blank -%}
+                <span class="bundle__sub">{{ block.settings.sublabel }}</span>
+              {%- endif -%}
+              {%- if block.settings.note != blank -%}
+                <span class="bundle__note">{{ block.settings.note }}</span>
+              {%- endif -%}
+            </span>
+
+            <span class="bundle__prices">
+              <span class="bundle__price">{{ total_price | money }}</span>
+              {%- if total_compare > total_price -%}
+                <span class="bundle__compare">{{ total_compare | money }}</span>
+              {%- endif -%}
+              {%- if qty > 1 -%}
+                {%- assign each = total_price | divided_by: qty -%}
+                <span class="bundle__each">{{ each | money }} pro Stück</span>
+              {%- endif -%}
+            </span>
+          </span>
+        </label>
+      {%- endif -%}
+    {%- endfor -%}
+  </sb-bundle>
+{%- endif -%}

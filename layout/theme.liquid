@@ -27,6 +27,7 @@
     {% render 'css-variables' %}
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'components.css' | asset_url | stylesheet_tag }}
+    {{ 'conversion.css' | asset_url | stylesheet_tag }}
 
     {% render 'font-setup' %}
 
@@ -56,6 +57,7 @@
       };
     </script>
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    <script src="{{ 'conversion.js' | asset_url }}" defer></script>
   </head>
 
   <body class="template-{{ template.name | handle }} {% if template.suffix %}template-suffix-{{ template.suffix | handle }}{% endif %}">
