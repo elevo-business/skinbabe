@@ -97,7 +97,8 @@
         "type": "font_picker",
         "id": "type_heading_font",
         "label": "Headline-Font",
-        "default": "poppins_n4"
+        "default": "assistant_n4",
+        "info": "Im Customizer frei wählbar — für den Handfee-Look eine geometrische Sans wie Poppins oder Jost."
       },
       {
         "type": "select",
@@ -155,7 +156,8 @@
         "type": "font_picker",
         "id": "type_body_font",
         "label": "Fließtext-Font",
-        "default": "assistant_n4"
+        "default": "assistant_n4",
+        "info": "Im Customizer frei wählbar."
       },
       {
         "type": "range",
@@ -171,8 +173,8 @@
         "type": "font_picker",
         "id": "type_accent_font",
         "label": "Akzent-Font (Serif)",
-        "info": "Wird für kursive Serif-Akzente in Headlines verwendet.",
-        "default": "playfair_display_n4"
+        "info": "Wird für kursive Serif-Akzente in Headlines verwendet. Im Customizer z. B. auf Playfair Display stellen.",
+        "default": "serif"
       },
       {
         "type": "header",
@@ -189,9 +191,10 @@
         "info": "Frei wählbar, z. B. „Skinbabe Display“."
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "custom_font_woff2",
-        "label": "URL zur .woff2-Datei"
+        "label": "URL zur .woff2-Datei",
+        "info": "Datei unter Inhalte → Dateien hochladen, dort die URL kopieren."
       },
       {
         "type": "text",
