@@ -1,11 +1,23 @@
 {%- liquid
   assign layout = section.settings.layout
   assign stats = section.blocks | where: 'type', 'stat'
+  assign has_media = false
+  if section.settings.image != blank or section.settings.image_mobile != blank or section.settings.video != blank
+    assign has_media = true
+  endif
 -%}
-<div class="hero hero--{{ layout }}{% if section.settings.media_position == 'left' %} hero--media-left{% endif %}">
+<div
+  class="hero hero--{{ layout }}{% if section.settings.media_position == 'left' %} hero--media-left{% endif %}{% if section.settings.full_bleed == false %} hero--contained{% endif %}"
+  style="
+    --hero-min-height:{{ section.settings.height }}vh;
+    --hero-min-height-mobile:{{ section.settings.height_mobile }}vh;
+    --hero-focal:{{ section.settings.focal_x }}% {{ section.settings.focal_y }}%;
+    --hero-overlay:{{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  "
+>
   {%- if layout == 'overlay' -%}
     <div class="hero__media">
-      {% render 'hero-media', section: section %}
+      {% render 'hero-media', section: section, has_media: has_media %}
     </div>
     <div class="page-width hero__inner">
       <div class="hero__content{% if section.settings.text_align == 'center' %} hero__content--center{% endif %} reveal">
@@ -17,7 +29,7 @@
       {% render 'hero-text', section: section %}
     </div>
     <div class="hero__media">
-      {% render 'hero-media', section: section %}
+      {% render 'hero-media', section: section, has_media: has_media %}
     </div>
   {%- endif -%}
 </div>
@@ -43,22 +55,33 @@
   "max_blocks": 3,
   "settings": [
     { "type": "paragraph", "content": "Die Headline zielt auf das Gefühl, nicht auf das Produkt. Ein Gedanke, kein Feature-Stapel." },
+    { "type": "header", "content": "Hero-Bild" },
+    { "type": "image_picker", "id": "image", "label": "Hero-Bild (Desktop)" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Hero-Bild (Mobil)", "info": "Optional. Ohne eigenes Mobil-Bild wird das Desktop-Bild verwendet." },
+    { "type": "video", "id": "video", "label": "Video statt Bild", "info": "Läuft stumm und in Schleife. Hat Vorrang vor dem Bild." },
+    { "type": "range", "id": "focal_x", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Bildausschnitt horizontal", "default": 50 },
+    { "type": "range", "id": "focal_y", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Bildausschnitt vertikal", "default": 50 },
+    { "type": "header", "content": "Format" },
     {
       "type": "select", "id": "layout", "label": "Layout", "default": "split",
       "options": [
-        { "value": "split", "label": "Zweispaltig (Text + Bild)" },
-        { "value": "overlay", "label": "Vollbild mit Textoverlay" }
+        { "value": "split", "label": "Zweispaltig (Text neben Bild)" },
+        { "value": "overlay", "label": "Vollflächiges Bild mit Text darauf" }
       ]
     },
     {
       "type": "select", "id": "media_position", "label": "Bildposition (zweispaltig)", "default": "right",
       "options": [{ "value": "left", "label": "Links" }, { "value": "right", "label": "Rechts" }]
     },
+    { "type": "range", "id": "height", "min": 45, "max": 92, "step": 1, "unit": "vh", "label": "Höhe (Desktop)", "default": 78 },
+    { "type": "range", "id": "height_mobile", "min": 40, "max": 90, "step": 1, "unit": "vh", "label": "Höhe (Mobil)", "default": 62 },
+    { "type": "checkbox", "id": "full_bleed", "label": "Randlos über die volle Breite", "default": true },
+    { "type": "range", "id": "overlay_opacity", "min": 0, "max": 70, "step": 5, "unit": "%", "label": "Abdunklung (nur vollflächig)", "default": 35 },
+    { "type": "header", "content": "Inhalt" },
     {
       "type": "select", "id": "text_align", "label": "Textausrichtung", "default": "left",
       "options": [{ "value": "left", "label": "Links" }, { "value": "center", "label": "Zentriert" }]
     },
-    { "type": "header", "content": "Inhalt" },
     { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext" },
     { "type": "text", "id": "heading", "label": "Headline", "default": "hör auf zu rechnen, wann du dich zuletzt rasiert hast" },
     { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent", "info": "Wird an die Headline angehängt und kursiv gesetzt." },
@@ -66,11 +89,7 @@
     { "type": "text", "id": "button_label", "label": "Button", "default": "rasierer ansehen" },
     { "type": "url", "id": "button_link", "label": "Button-Link" },
     { "type": "text", "id": "button_2_label", "label": "Zweiter Button", "default": "warum haare einwachsen" },
-    { "type": "url", "id": "button_2_link", "label": "Zweiter Button-Link" },
-    { "type": "header", "content": "Medien" },
-    { "type": "image_picker", "id": "image", "label": "Bild (Desktop)" },
-    { "type": "image_picker", "id": "image_mobile", "label": "Bild (Mobil)" },
-    { "type": "video", "id": "video", "label": "Video (optional)" }
+    { "type": "url", "id": "button_2_link", "label": "Zweiter Button-Link" }
   ],
   "blocks": [
     {

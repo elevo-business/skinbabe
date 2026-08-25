@@ -38,6 +38,21 @@ Fonts: Headline `Poppins` (Kleinschreibung, negative Laufweite),
 Fließtext `Assistant`, Akzent `Playfair Display` kursiv. Alle drei aus der
 Shopify-Font-Bibliothek, also selbst gehostet und ohne externe Requests.
 
+## Hero-Bild
+
+Die Hero-Section hat einen eigenen Abschnitt **Hero-Bild** mit Desktop-Bild,
+optionalem Mobil-Bild und optionalem Video. Solange kein Bild gesetzt ist,
+zeigt der Bereich einen sichtbaren Platzhalter mit Hinweis — er kann also
+nicht versehentlich in sich zusammenfallen.
+
+Steuerbar sind außerdem:
+
+- **Layout** — zweispaltig (Text neben Bild) oder vollflächig mit Text darauf
+- **Höhe** getrennt für Desktop und Mobil, in vh
+- **Bildausschnitt** horizontal und vertikal, für den Bildfokus beim Zuschnitt
+- **Randlos** oder in der Seitenbreite mit abgerundeten Ecken
+- **Abdunklung** für die vollflächige Variante, damit Text lesbar bleibt
+
 ## Startseite
 
 Die Sektionsreihenfolge in `templates/index.json` folgt dem Briefing:
@@ -68,20 +83,38 @@ Oberhalb der Falz in dieser Reihenfolge: Titel → Preis → vier Kurz-Argumente
 
 ### Kaufoptionen / Bundles
 
-Der Block **„Kaufoption / Bundle"** ist mehrfach einsetzbar (bis 4). Jede
+Der Block **„Kaufoption / Bundle"** ist bis zu **dreimal** einsetzbar. Jede
 Option arbeitet in einem von zwei Modi:
 
-- **Anderes Produkt** — die Angebots-Leiter. Option zeigt auf ein eigenes
-  Shopify-Produkt mit eigenem Preis (Rasierer-Set → Rasierer + IPL → Komplett).
-- **Mengenstufe** — 1×, 2×, 3× dieses Produkts. Der Stückpreis wird
-  ausgerechnet und angezeigt.
+- **Bundle aus Produkten** — bis zu drei verschiedene Produkte pro Option,
+  jeweils mit eigener Menge. Sie gehen als einzelne Positionen gemeinsam in
+  den Warenkorb, der Preis wird aus den Produkten summiert.
+- **Mengenstufe** — 1×, 2×, 3× dieses Produkts, mit ausgerechnetem Stückpreis.
 
 Pro Option einstellbar: Bezeichnung, Untertitel, Badge („Beliebteste Wahl"),
-Zusatzhinweis, Bild, Vorauswahl. Preis und Streichpreis kommen immer aus
-Shopify — es gibt kein Feld für einen frei erfundenen Referenzpreis.
+Zusatzhinweis, Bild, Auflistung der enthaltenen Produkte, Vorauswahl.
+Preis und Streichpreis kommen immer aus Shopify — es gibt kein Feld für
+einen frei erfundenen Referenzpreis.
 
-Wenn du Kaufoptionen nutzt, lass den Block *Variantenauswahl* weg. Sonst
-konkurrieren zwei Auswahlen um dasselbe Formular.
+Die Angebots-Leiter aus dem Briefing ist als Standard vorbelegt:
+
+| Option | Rolle |
+|---|---|
+| Rasierer-Set | Einstieg |
+| Rasierer + IPL | Zielposition, mit Badge und vorausgewählt |
+| Komplett-Set | Anker nach oben |
+
+Die Produktfelder sind leer — trag dort deine echten Produkte ein. Eine
+Option ohne Produkt wird nicht ausgegeben, die Seite bleibt also auch
+halb gepflegt funktionsfähig.
+
+Zwei Hinweise:
+
+- Wenn du Kaufoptionen nutzt, lass den Block *Variantenauswahl* weg. Sonst
+  konkurrieren zwei Auswahlen um dasselbe Formular.
+- Bei mehrteiligen Bundles werden die Express-Zahlungsbuttons ausgeblendet.
+  Apple Pay und Co. können nur eine Variante tragen — der reguläre
+  Kaufbutton legt dagegen alle Positionen zusammen ab.
 
 ### Weitere Blöcke
 

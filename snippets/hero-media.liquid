@@ -1,24 +1,34 @@
 {%- liquid
   assign image = section.settings.image
   assign image_mobile = section.settings.image_mobile | default: image
+  assign desktop = image | default: image_mobile
 -%}
 {%- if section.settings.video != blank -%}
   {{ section.settings.video | video_tag: image_size: '1600x', autoplay: true, loop: true, muted: true, controls: false }}
-{%- elsif image != blank -%}
+
+{%- elsif desktop != blank -%}
   <picture>
-    {%- if image_mobile != blank -%}
-      <source media="(max-width: 749px)" srcset="{{ image_mobile | image_url: width: 900 }}">
+    {%- if image_mobile != blank and image_mobile != desktop -%}
+      <source media="(max-width: 749px)" srcset="{{ image_mobile | image_url: width: 900 }} 900w, {{ image_mobile | image_url: width: 1400 }} 1400w">
     {%- endif -%}
     <img
-      src="{{ image | image_url: width: 1600 }}"
-      srcset="{{ image | image_url: width: 900 }} 900w, {{ image | image_url: width: 1400 }} 1400w, {{ image | image_url: width: 1900 }} 1900w"
-      sizes="(min-width: 990px) 50vw, 100vw"
-      alt="{{ image.alt | escape }}"
-      width="{{ image.width }}"
-      height="{{ image.height }}"
+      src="{{ desktop | image_url: width: 1600 }}"
+      srcset="{{ desktop | image_url: width: 900 }} 900w, {{ desktop | image_url: width: 1400 }} 1400w, {{ desktop | image_url: width: 1900 }} 1900w"
+      sizes="(min-width: 990px) 55vw, 100vw"
+      alt="{{ desktop.alt | escape }}"
+      width="{{ desktop.width }}"
+      height="{{ desktop.height }}"
       fetchpriority="high"
     >
   </picture>
+
 {%- else -%}
-  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- comment -%} Leerer Bildbereich: im Editor sichtbar, damit klar ist, wo das Hero-Bild hingehört. {%- endcomment -%}
+  <div class="hero__placeholder">
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    <span class="hero__placeholder-hint">
+      {% render 'icon', icon: 'sparkle' %}
+      Hero-Bild hier hochladen
+    </span>
+  </div>
 {%- endif -%}

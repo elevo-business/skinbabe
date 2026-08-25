@@ -29,36 +29,47 @@
         "bundle_1": {
           "type": "bundle_option",
           "settings": {
-            "group_title": "Wähle dein Set",
-            "mode": "product",
-            "quantity": 1,
+            "mode": "products",
             "label": "Nur IPL-Gerät",
             "sublabel": "Für langfristig weniger Haarwuchs.",
+            "badge": "",
+            "show_contents": true,
             "show_image": true,
-            "selected": false
+            "selected": false,
+            "quantity_1": 1,
+            "quantity_2": 1,
+            "quantity_3": 1,
+            "group_title": "Wähle dein Set"
           }
         },
         "bundle_2": {
           "type": "bundle_option",
           "settings": {
-            "group_title": "Wähle dein Set",
-            "mode": "product",
-            "quantity": 2,
+            "mode": "products",
             "label": "IPL + Rasierer",
-            "sublabel": "Sofort glatt und langfristig weniger.",
+            "sublabel": "Sofort glatt und langfristig weniger. Kein Doppelkauf.",
             "badge": "Beliebteste Wahl",
+            "show_contents": true,
             "show_image": true,
-            "selected": true
+            "selected": true,
+            "quantity_1": 1,
+            "quantity_2": 1,
+            "quantity_3": 1
           }
         },
         "bundle_3": {
           "type": "bundle_option",
           "settings": {
-            "mode": "product",
+            "mode": "products",
             "label": "Komplett-Set",
             "sublabel": "Mit Pflege und Zubehör.",
+            "badge": "",
+            "show_contents": true,
             "show_image": true,
-            "selected": false
+            "selected": false,
+            "quantity_1": 1,
+            "quantity_2": 1,
+            "quantity_3": 1
           }
         },
         "variants": {

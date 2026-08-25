@@ -1,9 +1,13 @@
 {%- comment -%}
-  Kaufoptionen auf der Produktseite.
-  Jede Option ist entweder ein eigenes Produkt (Angebots-Leiter) oder eine
-  Mengenstufe des aktuellen Produkts. Preise und Streichpreise kommen
-  ausschliesslich aus Shopify — es gibt keinen Weg, hier einen Referenzpreis
-  frei einzutragen.
+  Kaufoptionen auf der Produktseite. Maximal drei Optionen.
+
+  Jede Option ist entweder
+  - ein Bundle aus bis zu drei verschiedenen Produkten, die gemeinsam als
+    einzelne Positionen in den Warenkorb gehen, oder
+  - eine Mengenstufe des aktuellen Produkts.
+
+  Preise und Streichpreise werden aus den Shopify-Produkten summiert. Es gibt
+  kein Feld, in das ein Referenzpreis frei eingetragen werden kann.
 {%- endcomment -%}
 
 {%- liquid
@@ -13,6 +17,13 @@
   for block in options
     if block.settings.group_title != blank and group_title == ''
       assign group_title = block.settings.group_title
+    endif
+  endfor
+
+  assign has_preselect = false
+  for block in options
+    if block.settings.selected
+      assign has_preselect = true
     endif
   endfor
 -%}
@@ -26,40 +37,86 @@
       <span class="bundle__unit" data-bundle-unit hidden></span>
     </div>
 
-    {%- assign has_preselect = false -%}
-    {%- for block in options -%}
-      {%- if block.settings.selected -%}{%- assign has_preselect = true -%}{%- endif -%}
-    {%- endfor -%}
-
     {%- for block in options -%}
       {%- liquid
         assign mode = block.settings.mode
-        assign qty = 1
-        assign target = base_variant
-        assign target_product = product
+
+        assign total_price = 0
+        assign total_compare = 0
+        assign item_count = 0
+        assign all_available = true
+        assign first_variant_id = ''
+        assign lead_product = blank
 
         if mode == 'quantity'
           assign qty = block.settings.quantity | at_least: 1
-        else
-          assign target_product = block.settings.product
-          assign target = target_product.selected_or_first_available_variant
+          assign total_price = base_variant.price | times: qty
+          if base_variant.compare_at_price > base_variant.price
+            assign total_compare = base_variant.compare_at_price | times: qty
+          else
+            assign total_compare = base_variant.price | times: qty
+          endif
+          assign item_count = qty
+          assign first_variant_id = base_variant.id
+          assign lead_product = product
+          unless base_variant.available
+            assign all_available = false
+          endunless
         endif
+      -%}
 
-        assign unit_price = target.price | default: 0
-        assign unit_compare = target.compare_at_price | default: 0
-        assign total_price = unit_price | times: qty
-        assign total_compare = unit_compare | times: qty
-        assign is_available = target.available
+      {%- capture items_json -%}
+        {%- if mode == 'quantity' -%}
+          [{"id":{{ base_variant.id }},"quantity":{{ block.settings.quantity | at_least: 1 }}}]
+        {%- else -%}
+          [
+          {%- assign written = 0 -%}
+          {%- for i in (1..3) -%}
+            {%- liquid
+              assign pkey = 'product_' | append: i
+              assign qkey = 'quantity_' | append: i
+              assign bundled = block.settings[pkey]
+            -%}
+            {%- if bundled != blank -%}
+              {%- liquid
+                assign bq = block.settings[qkey] | default: 1 | at_least: 1
+                assign bv = bundled.selected_or_first_available_variant
+                assign line_total = bv.price | times: bq
+                assign total_price = total_price | plus: line_total
+                if bv.compare_at_price > bv.price
+                  assign line_compare = bv.compare_at_price | times: bq
+                else
+                  assign line_compare = bv.price | times: bq
+                endif
+                assign total_compare = total_compare | plus: line_compare
+                assign item_count = item_count | plus: bq
+                unless bv.available
+                  assign all_available = false
+                endunless
+                if first_variant_id == ''
+                  assign first_variant_id = bv.id
+                  assign lead_product = bundled
+                endif
+              -%}
+              {%- if written > 0 %},{% endif -%}
+              {"id":{{ bv.id }},"quantity":{{ bq }}}
+              {%- assign written = written | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+          ]
+        {%- endif -%}
+      {%- endcapture -%}
 
+      {%- liquid
+        assign items_json = items_json | strip
         assign is_checked = block.settings.selected
         if has_preselect == false and forloop.first
           assign is_checked = true
         endif
-
-        assign thumb = block.settings.image | default: target_product.featured_media
+        assign thumb = block.settings.image | default: lead_product.featured_media
       -%}
 
-      {%- if mode == 'quantity' or target_product != blank -%}
+      {%- if first_variant_id != '' -%}
         <label class="bundle__option{% if is_checked %} is-selected{% endif %}" {{ block.shopify_attributes }}>
           {%- if block.settings.badge != blank -%}
             <span class="bundle__badge">{{ block.settings.badge }}</span>
@@ -70,14 +127,15 @@
             name="bundle-{{ section.id }}"
             value="{{ block.id }}"
             data-mode="{{ mode }}"
-            data-variant-id="{{ target.id }}"
-            data-quantity="{{ qty }}"
-            data-price="{{ unit_price }}"
-            data-compare="{{ unit_compare }}"
-            data-available="{{ is_available }}"
+            data-variant-id="{{ first_variant_id }}"
+            data-items="{{ items_json | escape }}"
+            data-total="{{ total_price }}"
+            data-compare="{{ total_compare }}"
+            data-count="{{ item_count }}"
+            data-available="{{ all_available }}"
             data-label="{{ block.settings.label | escape }}"
             {% if is_checked %}checked{% endif %}
-            {% unless is_available %}disabled{% endunless %}
+            {% unless all_available %}disabled{% endunless %}
           >
 
           <span class="bundle__card">
@@ -85,20 +143,40 @@
 
             {%- if block.settings.show_image and thumb != blank -%}
               <span class="bundle__thumb">
-                <img src="{{ thumb | image_url: width: 120 }}" alt="" width="60" height="60" loading="lazy">
+                <img src="{{ thumb | image_url: width: 140 }}" alt="" width="70" height="70" loading="lazy">
               </span>
             {%- endif -%}
 
             <span class="bundle__body">
               <span class="bundle__label">
-                {{ block.settings.label | default: target_product.title }}
-                {%- unless is_available -%}
+                {{ block.settings.label | default: lead_product.title }}
+                {%- unless all_available -%}
                   <span class="badge badge--sold-out">{{ 'products.product.sold_out' | t }}</span>
                 {%- endunless -%}
               </span>
+
               {%- if block.settings.sublabel != blank -%}
                 <span class="bundle__sub">{{ block.settings.sublabel }}</span>
               {%- endif -%}
+
+              {%- if block.settings.show_contents and mode != 'quantity' -%}
+                <span class="bundle__contents">
+                  {%- for i in (1..3) -%}
+                    {%- assign pkey = 'product_' | append: i -%}
+                    {%- assign qkey = 'quantity_' | append: i -%}
+                    {%- assign bundled = block.settings[pkey] -%}
+                    {%- if bundled != blank -%}
+                      {%- assign bq = block.settings[qkey] | default: 1 -%}
+                      <span class="bundle__content-item">
+                        {% render 'icon', icon: 'check' %}
+                        {%- if bq > 1 -%}{{ bq }}× {% endif -%}
+                        {{ bundled.title }}
+                      </span>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </span>
+              {%- endif -%}
+
               {%- if block.settings.note != blank -%}
                 <span class="bundle__note">{{ block.settings.note }}</span>
               {%- endif -%}
@@ -109,8 +187,8 @@
               {%- if total_compare > total_price -%}
                 <span class="bundle__compare">{{ total_compare | money }}</span>
               {%- endif -%}
-              {%- if qty > 1 -%}
-                {%- assign each = total_price | divided_by: qty -%}
+              {%- if item_count > 1 -%}
+                {%- assign each = total_price | divided_by: item_count -%}
                 <span class="bundle__each">{{ each | money }} pro Stück</span>
               {%- endif -%}
             </span>

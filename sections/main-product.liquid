@@ -673,11 +673,11 @@
     {
       "type": "bundle_option",
       "name": "Kaufoption / Bundle",
-      "limit": 4,
+      "limit": 3,
       "settings": [
         {
           "type": "paragraph",
-          "content": "Mehrere dieser Blöcke ergeben die Auswahl über dem Kaufbutton. Preise und Streichpreise kommen immer aus Shopify. Wenn du Kaufoptionen nutzt, lass den Block „Variantenauswahl“ weg — sonst konkurrieren zwei Auswahlen."
+          "content": "Bis zu drei Optionen ergeben die Auswahl über dem Kaufbutton. Jede Option kann aus mehreren Produkten bestehen — die gehen als einzelne Positionen gemeinsam in den Warenkorb. Preise werden aus den Produkten summiert."
         },
         {
           "type": "text",
@@ -690,11 +690,11 @@
           "type": "select",
           "id": "mode",
           "label": "Art der Option",
-          "default": "product",
+          "default": "products",
           "options": [
             {
-              "value": "product",
-              "label": "Anderes Produkt (Angebots-Leiter)"
+              "value": "products",
+              "label": "Bundle aus Produkten"
             },
             {
               "value": "quantity",
@@ -703,10 +703,54 @@
           ]
         },
         {
+          "type": "header",
+          "content": "Bundle-Inhalt"
+        },
+        {
           "type": "product",
-          "id": "product",
-          "label": "Produkt",
-          "info": "Nur bei „Anderes Produkt“."
+          "id": "product_1",
+          "label": "Produkt 1"
+        },
+        {
+          "type": "range",
+          "id": "quantity_1",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "label": "Menge Produkt 1",
+          "default": 1
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Produkt 2"
+        },
+        {
+          "type": "range",
+          "id": "quantity_2",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "label": "Menge Produkt 2",
+          "default": 1
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Produkt 3"
+        },
+        {
+          "type": "range",
+          "id": "quantity_3",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "label": "Menge Produkt 3",
+          "default": 1
+        },
+        {
+          "type": "header",
+          "content": "Mengenstufe"
         },
         {
           "type": "range",
@@ -716,7 +760,11 @@
           "step": 1,
           "label": "Menge",
           "default": 1,
-          "info": "Nur bei „Mengenstufe“."
+          "info": "Nur bei „Mengenstufe dieses Produkts“."
+        },
+        {
+          "type": "header",
+          "content": "Darstellung"
         },
         {
           "type": "text",
@@ -744,6 +792,12 @@
         },
         {
           "type": "checkbox",
+          "id": "show_contents",
+          "label": "Enthaltene Produkte auflisten",
+          "default": true
+        },
+        {
+          "type": "checkbox",
           "id": "show_image",
           "label": "Bild anzeigen",
           "default": true
@@ -752,7 +806,7 @@
           "type": "image_picker",
           "id": "image",
           "label": "Eigenes Bild",
-          "info": "Sonst wird das Produktbild verwendet."
+          "info": "Sonst wird das Bild des ersten Produkts verwendet."
         },
         {
           "type": "checkbox",

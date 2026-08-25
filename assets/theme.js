@@ -207,10 +207,22 @@
       label.textContent = T.strings.adding;
       if (this.errorEl) { this.errorEl.hidden = true; this.errorEl.textContent = ''; }
 
-      const formData = new FormData(this.form);
-      formData.append('sections_url', window.location.pathname);
+      // Mehrteilige Bundles gehen als Positionsliste in den Warenkorb
+      let payload;
+      if (this.form.dataset.bundleItems) {
+        try {
+          payload = { items: JSON.parse(this.form.dataset.bundleItems) };
+        } catch (e) {
+          payload = null;
+        }
+      }
+      if (!payload) {
+        payload = new FormData(this.form);
+        payload.append('sections_url', window.location.pathname);
+      }
+
       try {
-        await CartStore.add(formData);
+        await CartStore.add(payload);
         label.textContent = T.strings.added;
         announce(T.strings.added);
         const drawer = document.getElementById('CartDrawer');

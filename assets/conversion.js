@@ -36,20 +36,24 @@
         if (e.detail.sectionId !== this.sectionId) return;
         const active = this.querySelector('input[type="radio"]:checked');
         if (active && active.dataset.mode === 'quantity') {
-          active.dataset.variantId = e.detail.variant.id;
-          active.dataset.price = e.detail.variant.price;
-          active.dataset.compare = e.detail.variant.compare_at_price || '';
+          const qty = parseInt(active.dataset.count, 10) || 1;
+          const v = e.detail.variant;
+          active.dataset.variantId = v.id;
+          active.dataset.items = JSON.stringify([{ id: v.id, quantity: qty }]);
+          active.dataset.total = v.price * qty;
+          active.dataset.compare = (v.compare_at_price || v.price) * qty;
+          active.dataset.available = String(v.available);
           this.apply(active, true);
         }
       });
     }
 
     apply(input, silent) {
-      const qty = parseInt(input.dataset.quantity, 10) || 1;
-      const unit = parseInt(input.dataset.price, 10) || 0;
-      const compare = parseInt(input.dataset.compare, 10) || 0;
-      const total = unit * qty;
-      const compareTotal = compare ? compare * qty : 0;
+      let items = [];
+      try { items = JSON.parse(input.dataset.items || '[]'); } catch (e) { items = []; }
+      const count = parseInt(input.dataset.count, 10) || 1;
+      const total = parseInt(input.dataset.total, 10) || 0;
+      const compareTotal = parseInt(input.dataset.compare, 10) || 0;
 
       $$('.bundle__option', this).forEach((el) =>
         el.classList.toggle('is-selected', el.contains(input))
@@ -58,8 +62,21 @@
       if (this.form) {
         const idInput = this.form.querySelector('input[name="id"]');
         const qtyInput = this.form.querySelector('input[name="quantity"]');
+
+        // Fallback ohne JS-Warenkorb: erste Position im Formular
         if (idInput && input.dataset.variantId) idInput.value = input.dataset.variantId;
-        if (qtyInput) qtyInput.value = qty;
+        if (qtyInput) qtyInput.value = items.length === 1 ? (items[0].quantity || 1) : 1;
+
+        // Mehrteilige Bundles werden als Positionsliste hinzugefügt
+        if (items.length > 1) {
+          this.form.dataset.bundleItems = JSON.stringify(items);
+        } else {
+          delete this.form.dataset.bundleItems;
+        }
+
+        // Express-Buttons können nur eine Variante tragen
+        const payment = this.form.querySelector('.shopify-payment-button');
+        if (payment) payment.hidden = items.length > 1;
 
         const submit = this.form.querySelector('[type="submit"]');
         if (submit) {
@@ -86,13 +103,13 @@
       // Stückpreis ist eine Rechnung, keine Behauptung — daher immer erlaubt
       const perUnit = this.querySelector('[data-bundle-unit]');
       if (perUnit) {
-        perUnit.textContent = qty > 1 ? `${money(Math.round(total / qty))} pro Stück` : '';
-        perUnit.hidden = qty <= 1;
+        perUnit.textContent = count > 1 ? `${money(Math.round(total / count))} pro Stück` : '';
+        perUnit.hidden = count <= 1;
       }
 
       document.dispatchEvent(
         new CustomEvent('bundle:changed', {
-          detail: { sectionId: this.sectionId, total, quantity: qty, variantId: input.dataset.variantId }
+          detail: { sectionId: this.sectionId, total, items, count }
         })
       );
       if (!silent && window.SkinbabeTheme) window.SkinbabeTheme.announce(input.dataset.label || '');

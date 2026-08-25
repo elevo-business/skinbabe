@@ -40,7 +40,13 @@
         "heading": "hör auf zu rechnen, wann du dich zuletzt rasiert hast",
         "text": "<p>Du hast Jahre lang gedacht, es liegt an deiner Haut. Tut es nicht. Es liegt an dem Ding in deiner Hand.</p>",
         "button_label": "rasierer ansehen",
-        "button_2_label": "warum haare einwachsen"
+        "button_2_label": "warum haare einwachsen",
+        "height": 78,
+        "height_mobile": 62,
+        "focal_x": 50,
+        "focal_y": 50,
+        "full_bleed": true,
+        "overlay_opacity": 35
       }
     },
     "marquee": {

@@ -3,9 +3,20 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
-        "rating": { "type": "rating", "settings": {} },
-        "price": { "type": "price", "settings": { "tax_note": "inkl. MwSt., zzgl. Versand" } },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "tax_note": "inkl. MwSt., zzgl. Versand"
+          }
+        },
         "arguments": {
           "type": "arguments",
           "settings": {
@@ -18,39 +29,53 @@
         "bundle_1": {
           "type": "bundle_option",
           "settings": {
-            "group_title": "Wähle dein Set",
-            "mode": "quantity",
-            "quantity": 1,
-            "label": "Einzeln",
-            "sublabel": "Ein Gerät, einmal ausprobieren.",
+            "mode": "products",
+            "label": "Rasierer-Set",
+            "sublabel": "Der Einstieg. Für jetzt sofort glatt.",
+            "badge": "",
+            "show_contents": true,
             "show_image": true,
-            "selected": false
+            "selected": false,
+            "quantity_1": 1,
+            "quantity_2": 1,
+            "quantity_3": 1,
+            "group_title": "Wähle dein Set"
           }
         },
         "bundle_2": {
           "type": "bundle_option",
           "settings": {
-            "group_title": "Wähle dein Set",
-            "mode": "quantity",
-            "quantity": 2,
-            "label": "Doppelt",
-            "sublabel": "Eins fürs Bad, eins für die Reisetasche.",
+            "mode": "products",
+            "label": "Rasierer + IPL",
+            "sublabel": "Sofort glatt und langfristig weniger. Kein Doppelkauf.",
             "badge": "Beliebteste Wahl",
+            "show_contents": true,
             "show_image": true,
-            "selected": true
+            "selected": true,
+            "quantity_1": 1,
+            "quantity_2": 1,
+            "quantity_3": 1
           }
         },
         "bundle_3": {
           "type": "bundle_option",
           "settings": {
-            "mode": "product",
+            "mode": "products",
             "label": "Komplett-Set",
-            "sublabel": "Mit Ersatzköpfen und Pflege für das ganze Jahr.",
+            "sublabel": "Mit Pflege und Ersatzköpfen für das ganze Jahr.",
+            "badge": "",
+            "show_contents": true,
             "show_image": true,
-            "selected": false
+            "selected": false,
+            "quantity_1": 1,
+            "quantity_2": 1,
+            "quantity_3": 1
           }
         },
-        "variants": { "type": "variants", "settings": {} },
+        "variants": {
+          "type": "variants",
+          "settings": {}
+        },
         "buy": {
           "type": "buy",
           "settings": {
@@ -59,7 +84,12 @@
             "payment_note": "Klarna, PayPal, Apple Pay, Kreditkarte"
           }
         },
-        "payment": { "type": "payment", "settings": { "limit": 6 } },
+        "payment": {
+          "type": "payment",
+          "settings": {
+            "limit": 6
+          }
+        },
         "trust": {
           "type": "trust",
           "settings": {
@@ -138,7 +168,10 @@
         "accordion",
         "specs"
       ],
-      "settings": { "gallery_layout": "stacked", "enable_sticky_bar": true }
+      "settings": {
+        "gallery_layout": "stacked",
+        "enable_sticky_bar": true
+      }
     },
     "steps": {
       "type": "steps",
@@ -218,7 +251,11 @@
     },
     "recommendations": {
       "type": "product-recommendations",
-      "settings": { "heading": "passt dazu", "limit": 4, "background": "default" }
+      "settings": {
+        "heading": "passt dazu",
+        "limit": 4,
+        "background": "default"
+      }
     }
   },
   "order": [
