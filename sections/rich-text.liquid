@@ -1,0 +1,89 @@
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% elsif section.settings.background == 'ink' %} surface-ink{% endif %}">
+  <div class="page-width page-width--narrow">
+    <div class="stack reveal" style="gap:1.25rem;{% if section.settings.text_align == 'center' %}align-items:center;text-align:center;{% endif %}">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'eyebrow' -%}
+            <p class="eyebrow" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+          {%- when 'heading' -%}
+            <h2 class="{{ block.settings.size }}" {{ block.shopify_attributes }}>
+              {{ block.settings.text }}
+              {%- if block.settings.accent != blank -%}<span class="serif">{{ block.settings.accent }}</span>{%- endif -%}
+            </h2>
+          {%- when 'text' -%}
+            <div class="rte{% if block.settings.large %} lede{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- when 'punchline' -%}
+            <p class="punchline" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+          {%- when 'button' -%}
+            <a class="btn{% if block.settings.style == 'secondary' %} btn--secondary{% endif %}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+              {{ block.settings.label }}
+              {% render 'icon', icon: 'arrow' %}
+            </a>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text",
+  "settings": [
+    {
+      "type": "select", "id": "text_align", "label": "Ausrichtung", "default": "center",
+      "options": [{ "value": "left", "label": "Links" }, { "value": "center", "label": "Zentriert" }]
+    },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [
+        { "value": "default", "label": "Weiß" },
+        { "value": "cream", "label": "Creme" },
+        { "value": "ink", "label": "Dunkel" }
+      ]
+    }
+  ],
+  "blocks": [
+    { "type": "eyebrow", "name": "Vortext", "settings": [{ "type": "text", "id": "text", "label": "Text" }] },
+    {
+      "type": "heading", "name": "Überschrift",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "der feind ist der rasierer" },
+        { "type": "text", "id": "accent", "label": "Kursiver Serif-Akzent" },
+        {
+          "type": "select", "id": "size", "label": "Größe", "default": "h2",
+          "options": [{ "value": "h1", "label": "Groß" }, { "value": "h2", "label": "Mittel" }, { "value": "h3", "label": "Klein" }]
+        }
+      ]
+    },
+    {
+      "type": "text", "name": "Fließtext",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "checkbox", "id": "large", "label": "Größer setzen", "default": false }
+      ]
+    },
+    { "type": "punchline", "name": "Pointe", "settings": [{ "type": "text", "id": "text", "label": "Text" }] },
+    {
+      "type": "button", "name": "Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Text", "default": "mehr erfahren" },
+        { "type": "url", "id": "link", "label": "Link" },
+        {
+          "type": "select", "id": "style", "label": "Stil", "default": "primary",
+          "options": [{ "value": "primary", "label": "Gefüllt" }, { "value": "secondary", "label": "Outline" }]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "heading" },
+        { "type": "text" }
+      ]
+    }
+  ]
+}
+{% endschema %}

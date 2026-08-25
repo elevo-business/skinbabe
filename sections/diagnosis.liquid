@@ -1,0 +1,116 @@
+{%- liquid
+  assign myths = section.blocks | where: 'type', 'myth'
+  assign steps = section.blocks | where: 'type', 'step'
+-%}
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width">
+    <div class="diagnosis">
+      <div class="stack reveal" style="gap:1.5rem">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h2">
+            {{ section.settings.heading }}
+            {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+          </h2>
+        {%- endif -%}
+
+        {%- if myths.size > 0 -%}
+          <div class="myths">
+            {%- for block in myths -%}
+              <p class="myth" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.transition != blank -%}
+          <p class="punchline">{{ section.settings.transition }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="reveal-answer reveal" style="--reveal-delay:120ms">
+        {%- if section.settings.answer_eyebrow != blank -%}<p class="eyebrow">{{ section.settings.answer_eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.answer_heading != blank -%}<h3 class="h3">{{ section.settings.answer_heading }}</h3>{%- endif -%}
+        {%- if section.settings.answer_text != blank -%}<div class="rte">{{ section.settings.answer_text }}</div>{%- endif -%}
+
+        {%- if steps.size > 0 -%}
+          <div class="mechanism">
+            {%- for block in steps -%}
+              <div class="mechanism__step" {{ block.shopify_attributes }}>
+                <span class="mechanism__num">{{ forloop.index }}</span>
+                <div class="mechanism__body">
+                  <h4>{{ block.settings.title }}</h4>
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.conclusion != blank -%}
+          <p class="punchline">{{ section.settings.conclusion }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.link_label != blank -%}
+          <a class="link-arrow" href="{{ section.settings.link_url }}">
+            {{ section.settings.link_label }}
+            {% render 'icon', icon: 'arrow' %}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Diagnose & Mechanismus",
+  "settings": [
+    { "type": "paragraph", "content": "Herzstück der Startseite: erst die falschen Selbstdiagnosen anerkennen, dann mit dem Mechanismus auflösen. Der Feind im Text ist der Rasierer, nie ihr Körper." },
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "die diagnose" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "du hast dir das jahrelang selbst zugeschrieben" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "text", "id": "transition", "label": "Überleitung (Pointe)", "default": "Nichts davon stimmt." },
+    { "type": "header", "content": "Auflösung" },
+    { "type": "text", "id": "answer_eyebrow", "label": "Vortext", "default": "was wirklich passiert" },
+    { "type": "text", "id": "answer_heading", "label": "Überschrift", "default": "Das Problem ist der Rasierer, nicht deine Haut." },
+    { "type": "richtext", "id": "answer_text", "label": "Text", "default": "<p>Mehrklingen-Rasierer arbeiten nach einem Prinzip, das sich „lift and cut“ nennt. Und genau das erzeugt das Problem, gegen das sie dir danach die Creme verkaufen.</p>" },
+    { "type": "text", "id": "conclusion", "label": "Schlusssatz", "default": "Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut." },
+    { "type": "text", "id": "link_label", "label": "Link-Text", "default": "die lange erklärung" },
+    { "type": "url", "id": "link_url", "label": "Link-Ziel" },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "myth",
+      "name": "Selbstdiagnose",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Satz", "default": "„Meine Haut ist halt empfindlich. Bei mir ist das so.“" }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "Mechanismus-Schritt",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titel", "default": "Die erste Klinge zieht das Haar an" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Mehrklingen-Systeme heben das Haar aus dem Follikel, bevor die nächste Klinge folgt." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Diagnose & Mechanismus",
+      "blocks": [
+        { "type": "myth", "settings": { "text": "„Meine Haut ist halt empfindlich. Bei mir ist das so.“" } },
+        { "type": "myth", "settings": { "text": "„Ich rasiere falsch. Ich muss nur öfter peelen.“" } },
+        { "type": "myth", "settings": { "text": "„Bei mir funktioniert sowas eh nicht.“" } },
+        { "type": "step", "settings": { "title": "Die erste Klinge zieht das Haar an", "text": "Mehrklingen-Systeme heben das Haar aus dem Follikel, bevor die nächste Klinge folgt." } },
+        { "type": "step", "settings": { "title": "Die zweite Klinge kappt es zu tief", "text": "Das Haar wird unterhalb der Hautoberfläche durchtrennt und rutscht zurück in den Kanal." } },
+        { "type": "step", "settings": { "title": "Beim Nachwachsen trifft es auf geschlossene Haut", "text": "Genau das ist ein eingewachsenes Haar — und das dunkle Pünktchen, das danach bleibt." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

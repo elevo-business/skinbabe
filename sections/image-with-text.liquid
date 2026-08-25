@@ -1,0 +1,78 @@
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width">
+    <div class="hero hero--split{% if section.settings.media_position == 'left' %} hero--media-left{% endif %} rounded" style="background:var(--sb-cream)">
+      <div class="hero__content reveal">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h2">
+            {{ section.settings.heading }}
+            {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="rte lede hero__text">{{ section.settings.text }}</div>{%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="product__args">
+            {%- for block in section.blocks -%}
+              <li class="product__arg" {{ block.shopify_attributes }}>
+                {% render 'icon', icon: 'check' %}
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <a class="btn" href="{{ section.settings.button_link }}">
+            {{ section.settings.button_label }}
+            {% render 'icon', icon: 'arrow' %}
+          </a>
+        {%- endif -%}
+      </div>
+
+      <div class="hero__media">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1400 }}"
+            srcset="{{ section.settings.image | image_url: width: 700 }} 700w, {{ section.settings.image | image_url: width: 1400 }} 1400w"
+            sizes="(min-width: 990px) 50vw, 100vw"
+            alt="{{ section.settings.image.alt | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Bild mit Text",
+  "max_blocks": 5,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "niemand muss dich dabei sehen" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Kein Termin, kein Studio, kein fremder Mensch, der dich in einem Papierhöschen ansieht. Dein Badezimmer reicht.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button" },
+    { "type": "url", "id": "button_link", "label": "Button-Link" },
+    { "type": "image_picker", "id": "image", "label": "Bild" },
+    {
+      "type": "select", "id": "media_position", "label": "Bildposition", "default": "right",
+      "options": [{ "value": "left", "label": "Links" }, { "value": "right", "label": "Rechts" }]
+    },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    { "type": "point", "name": "Punkt", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Kein Termin, keine Wartezeit" }] }
+  ],
+  "presets": [{ "name": "Bild mit Text" }]
+}
+{% endschema %}

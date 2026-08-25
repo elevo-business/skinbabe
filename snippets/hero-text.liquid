@@ -1,0 +1,32 @@
+{%- if section.settings.eyebrow != blank -%}
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+{%- endif -%}
+
+{%- if section.settings.heading != blank -%}
+  <h1 class="h0 hero__title">
+    {{ section.settings.heading }}
+    {%- if section.settings.heading_accent != blank -%}
+      <span class="serif">{{ section.settings.heading_accent }}</span>
+    {%- endif -%}
+  </h1>
+{%- endif -%}
+
+{%- if section.settings.text != blank -%}
+  <div class="rte lede hero__text">{{ section.settings.text }}</div>
+{%- endif -%}
+
+{%- if section.settings.button_label != blank or section.settings.button_2_label != blank -%}
+  <div class="hero__ctas">
+    {%- if section.settings.button_label != blank -%}
+      <a class="btn btn--lg" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">
+        {{ section.settings.button_label }}
+        {% render 'icon', icon: 'arrow' %}
+      </a>
+    {%- endif -%}
+    {%- if section.settings.button_2_label != blank -%}
+      <a class="btn btn--secondary btn--lg" href="{{ section.settings.button_2_link | default: routes.root_url }}">
+        {{ section.settings.button_2_label }}
+      </a>
+    {%- endif -%}
+  </div>
+{%- endif -%}

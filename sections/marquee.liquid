@@ -1,0 +1,56 @@
+<div class="marquee" style="--marquee-speed:{{ section.settings.speed }}s;">
+  <div class="marquee__track">
+    {%- for i in (1..2) -%}
+      <div class="marquee__group" {% if i == 2 %}aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          <span class="marquee__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != 'none' -%}{% render 'icon', icon: block.settings.icon %}{%- endif -%}
+            {{ block.settings.text }}
+          </span>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Laufband",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "range", "id": "speed", "min": 20, "max": 80, "step": 5, "unit": "s", "label": "Durchlaufdauer", "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Eintrag",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "kein direkter klingenkontakt" },
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "sparkle",
+          "options": [
+            { "value": "none", "label": "Kein Icon" },
+            { "value": "sparkle", "label": "Funkeln" },
+            { "value": "check", "label": "Haken" },
+            { "value": "droplet", "label": "Tropfen" },
+            { "value": "leaf", "label": "Blatt" },
+            { "value": "shield", "label": "Schild" },
+            { "value": "truck", "label": "Versand" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Laufband",
+      "blocks": [
+        { "type": "item", "settings": { "text": "kein direkter klingenkontakt", "icon": "shield" } },
+        { "type": "item", "settings": { "text": "auch trocken, ohne schaum", "icon": "droplet" } },
+        { "type": "item", "settings": { "text": "niemand muss dich dabei sehen", "icon": "sparkle" } },
+        { "type": "item", "settings": { "text": "deutscher support, werktags in 24 h", "icon": "check" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

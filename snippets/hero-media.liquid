@@ -1,0 +1,24 @@
+{%- liquid
+  assign image = section.settings.image
+  assign image_mobile = section.settings.image_mobile | default: image
+-%}
+{%- if section.settings.video != blank -%}
+  {{ section.settings.video | video_tag: image_size: '1600x', autoplay: true, loop: true, muted: true, controls: false }}
+{%- elsif image != blank -%}
+  <picture>
+    {%- if image_mobile != blank -%}
+      <source media="(max-width: 749px)" srcset="{{ image_mobile | image_url: width: 900 }}">
+    {%- endif -%}
+    <img
+      src="{{ image | image_url: width: 1600 }}"
+      srcset="{{ image | image_url: width: 900 }} 900w, {{ image | image_url: width: 1400 }} 1400w, {{ image | image_url: width: 1900 }} 1900w"
+      sizes="(min-width: 990px) 50vw, 100vw"
+      alt="{{ image.alt | escape }}"
+      width="{{ image.width }}"
+      height="{{ image.height }}"
+      fetchpriority="high"
+    >
+  </picture>
+{%- else -%}
+  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+{%- endif -%}

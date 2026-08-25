@@ -1,0 +1,97 @@
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width">
+    <div class="section-head section-head--split reveal">
+      <div class="stack" style="gap:.6rem">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h2">
+            {{ section.settings.heading }}
+            {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+          </h2>
+        {%- endif -%}
+      </div>
+      {%- if settings.social_instagram != blank -%}
+        <a class="link-arrow" href="{{ settings.social_instagram }}" target="_blank" rel="noopener">
+          {{ section.settings.link_label | default: 'auf instagram' }}
+          {% render 'icon', icon: 'arrow' %}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <sb-slider class="reveal">
+      <ul class="slider__track" data-slider-track style="--slide-width:72%;--slide-width-md:38%;--slide-width-lg:23%;">
+        {%- for block in section.blocks -%}
+          <li class="slider__item community__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener">{%- endif -%}
+              <div class="media media--portrait community__media">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.image.alt | escape }}" width="700" height="875" loading="lazy">
+                {%- else -%}
+                  {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+            {%- if block.settings.link != blank -%}</a>{%- endif -%}
+
+            {%- if block.settings.handle != blank -%}
+              <span class="community__handle">
+                {% render 'icon', icon: 'instagram' %}
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" target="_blank" rel="noopener" class="link-underline">{{ block.settings.handle }}</a>
+                {%- else -%}
+                  {{ block.settings.handle }}
+                {%- endif -%}
+              </span>
+            {%- endif -%}
+
+            {%- if block.settings.quote != blank -%}
+              <p class="community__quote">{{ block.settings.quote }}</p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="slider__nav" style="margin-top:1.5rem">
+        <button class="slider__btn" type="button" data-slider-prev aria-label="{{ 'general.accessibility.previous_slide' | t }}">{% render 'icon', icon: 'arrow-left' %}</button>
+        <button class="slider__btn" type="button" data-slider-next aria-label="{{ 'general.accessibility.next_slide' | t }}">{% render 'icon', icon: 'arrow' %}</button>
+      </div>
+    </sb-slider>
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p class="small muted" style="margin-top:1.5rem">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Community",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "paragraph", "content": "Nur echte Kundinnen mit echten, verlinkten Handles. Keine erfundenen Namen, keine KI-generierten Personen — ein Screenshot der Dateinamen reicht, um die Marke zu beschädigen." },
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "community" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "sie haben es vorher auch nicht geglaubt" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "text", "id": "link_label", "label": "Link-Text", "default": "auf instagram" },
+    { "type": "text", "id": "disclaimer", "label": "Hinweis", "default": "Alle Beiträge stammen von echten Kundinnen und wurden mit ihrer Zustimmung veröffentlicht." },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Beitrag",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Bild" },
+        { "type": "text", "id": "handle", "label": "Instagram-Handle", "info": "Nur echte Handles eintragen." },
+        { "type": "url", "id": "link", "label": "Link zum Beitrag" },
+        { "type": "textarea", "id": "quote", "label": "Zitat", "info": "Wörtlich übernehmen, nicht schöner schreiben." }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Community", "blocks": [{ "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }] }
+  ]
+}
+{% endschema %}

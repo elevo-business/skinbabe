@@ -1,0 +1,94 @@
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width page-width--narrow">
+    <div class="section-head reveal{% if section.settings.text_align == 'center' %} section-head--center{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="h2">
+          {{ section.settings.heading }}
+          {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="rte lede">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+
+    <div class="compare reveal">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"><span class="visually-hidden">Kriterium</span></th>
+            <th scope="col" class="is-us">{{ section.settings.col_1 }}</th>
+            <th scope="col">{{ section.settings.col_2 }}</th>
+            {%- if section.settings.col_3 != blank -%}<th scope="col">{{ section.settings.col_3 }}</th>{%- endif -%}
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <th scope="row">{{ block.settings.label }}</th>
+              <td class="is-us">{% render 'compare-cell', value: block.settings.value_1 %}</td>
+              <td>{% render 'compare-cell', value: block.settings.value_2 %}</td>
+              {%- if section.settings.col_3 != blank -%}
+                <td>{% render 'compare-cell', value: block.settings.value_3 %}</td>
+              {%- endif -%}
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="small muted" style="margin-top:1.25rem">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vergleichstabelle",
+  "max_blocks": 10,
+  "settings": [
+    { "type": "paragraph", "content": "Vergleichsrahmen wechseln: gegen Waxing und Salon, nicht gegen den Einwegrasierer. Keine unbelegten Behauptungen über Wettbewerbsprodukte." },
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "die rechnung" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "einmal kaufen statt jedes mal zahlen" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "header", "content": "Spalten" },
+    { "type": "text", "id": "col_1", "label": "Spalte 1 (wir)", "default": "skinbabe" },
+    { "type": "text", "id": "col_2", "label": "Spalte 2", "default": "Waxing zuhause" },
+    { "type": "text", "id": "col_3", "label": "Spalte 3", "default": "Studio / Salon" },
+    { "type": "textarea", "id": "footnote", "label": "Fußnote", "default": "Angaben beruhen auf marktüblichen Preisen und können je nach Anbieter abweichen." },
+    {
+      "type": "select", "id": "text_align", "label": "Ausrichtung", "default": "left",
+      "options": [{ "value": "left", "label": "Links" }, { "value": "center", "label": "Zentriert" }]
+    },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Zeile",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Kriterium", "default": "Kosten im ersten Jahr" },
+        { "type": "text", "id": "value_1", "label": "Wert Spalte 1", "info": "„ja“ oder „nein“ erzeugt ein Symbol." },
+        { "type": "text", "id": "value_2", "label": "Wert Spalte 2" },
+        { "type": "text", "id": "value_3", "label": "Wert Spalte 3" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vergleichstabelle",
+      "blocks": [
+        { "type": "row", "settings": { "label": "Termin nötig", "value_1": "nein", "value_2": "nein", "value_3": "ja" } },
+        { "type": "row", "settings": { "label": "Jemand sieht dich dabei", "value_1": "nein", "value_2": "nein", "value_3": "ja" } },
+        { "type": "row", "settings": { "label": "Aufwand pro Anwendung", "value_1": "wenige Minuten", "value_2": "20–30 Minuten", "value_3": "Anfahrt + Termin" } },
+        { "type": "row", "settings": { "label": "Laufende Kosten", "value_1": "Ersatzköpfe alle 3–6 Monate", "value_2": "Wachs regelmäßig", "value_3": "jeder Termin einzeln" } },
+        { "type": "row", "settings": { "label": "Spontan möglich", "value_1": "ja", "value_2": "ja", "value_3": "nein" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

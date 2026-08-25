@@ -1,0 +1,106 @@
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width">
+    <div class="guarantee">
+      <div class="stack reveal" style="gap:1.25rem">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h2">
+            {{ section.settings.heading }}
+            {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="rte lede">{{ section.settings.text }}</div>{%- endif -%}
+
+        {%- if section.settings.seal_value != blank -%}
+          <div class="guarantee__seal">
+            <span class="guarantee__seal-value">{{ section.settings.seal_value }}</span>
+            <span class="guarantee__seal-label">{{ section.settings.seal_label }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="reveal" style="--reveal-delay:120ms">
+        <div class="guarantee__list">
+          {%- for block in section.blocks -%}
+            <div class="guarantee__row" {{ block.shopify_attributes }}>
+              {% render 'icon', icon: block.settings.icon %}
+              <div>
+                <strong>{{ block.settings.title }}</strong>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.footnote != blank -%}
+          <p class="small muted" style="margin-top:1.75rem">{{ section.settings.footnote }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.link_label != blank -%}
+          <p style="margin-top:1.25rem">
+            <a class="link-arrow" href="{{ section.settings.link_url }}">
+              {{ section.settings.link_label }}
+              {% render 'icon', icon: 'arrow' %}
+            </a>
+          </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Garantie",
+  "max_blocks": 5,
+  "settings": [
+    { "type": "paragraph", "content": "Erklärte Garantien schlagen behauptete Garantien. Die Bedingungen und ihre Begründung gehören hierher — und müssen zu den Texten auf der Produktseite passen." },
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "garantie" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "wenn es bei dir nicht funktioniert, zahlen wir zurück" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Du hast schon genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>" },
+    { "type": "text", "id": "seal_value", "label": "Siegel-Wert", "default": "30 / 90" },
+    { "type": "text", "id": "seal_label", "label": "Siegel-Bezeichnung", "default": "Tage Garantie" },
+    { "type": "textarea", "id": "footnote", "label": "Fußnote", "default": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen." },
+    { "type": "text", "id": "link_label", "label": "Link-Text", "default": "versand & rückgabe im detail" },
+    { "type": "url", "id": "link_url", "label": "Link-Ziel" },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "cream",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Punkt",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titel", "default": "30 Tage auf den Rasierer" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Das Ergebnis siehst du nach der ersten Anwendung. Wenn du nach vier Wochen nicht überzeugt bist, schickst du ihn zurück." },
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "shield",
+          "options": [
+            { "value": "shield", "label": "Schild" },
+            { "value": "return", "label": "Rückgabe" },
+            { "value": "clock", "label": "Uhr" },
+            { "value": "chat", "label": "Support" },
+            { "value": "card", "label": "Zahlung" },
+            { "value": "check", "label": "Haken" },
+            { "value": "box", "label": "Paket" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Garantie",
+      "blocks": [
+        { "type": "point", "settings": { "icon": "shield", "title": "30 Tage auf den Rasierer", "text": "Das Ergebnis siehst du nach der ersten Anwendung. Wenn du nach vier Wochen nicht überzeugt bist, schickst du ihn zurück." } },
+        { "type": "point", "settings": { "icon": "clock", "title": "90 Tage auf das IPL-Gerät", "text": "Eine sichtbare Haarreduktion braucht etwa zehn Anwendungen. Eine 30-Tage-Frist wäre hier eine Frist, die du gar nicht nutzen kannst." } },
+        { "type": "point", "settings": { "icon": "return", "title": "Auch geöffnet und benutzt", "text": "Anders wäre die Garantie sinnlos. Du sollst das Gerät ja tatsächlich verwenden, bevor du entscheidest." } },
+        { "type": "point", "settings": { "icon": "chat", "title": "Support auf Deutsch, mit Namen", "text": "Werktags innerhalb von 24 Stunden. Kein Ticketsystem, das dich im Kreis schickt." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,108 @@
+{%- liquid
+  assign layout = section.settings.layout
+  assign stats = section.blocks | where: 'type', 'stat'
+-%}
+<div class="hero hero--{{ layout }}{% if section.settings.media_position == 'left' %} hero--media-left{% endif %}">
+  {%- if layout == 'overlay' -%}
+    <div class="hero__media">
+      {% render 'hero-media', section: section %}
+    </div>
+    <div class="page-width hero__inner">
+      <div class="hero__content{% if section.settings.text_align == 'center' %} hero__content--center{% endif %} reveal">
+        {% render 'hero-text', section: section %}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="hero__content{% if section.settings.text_align == 'center' %} hero__content--center{% endif %} reveal">
+      {% render 'hero-text', section: section %}
+    </div>
+    <div class="hero__media">
+      {% render 'hero-media', section: section %}
+    </div>
+  {%- endif -%}
+</div>
+
+{%- if stats.size > 0 -%}
+  <div class="page-width">
+    <div class="hero-stats">
+      {%- for block in stats -%}
+        <div class="hero-stats__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != 'none' -%}{% render 'icon', icon: block.settings.icon %}{%- endif -%}
+          <span class="hero-stats__value">{{ block.settings.value }}</span>
+          <span class="hero-stats__label">{{ block.settings.label }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "shopify-section--hero",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "paragraph", "content": "Die Headline zielt auf das Gefühl, nicht auf das Produkt. Ein Gedanke, kein Feature-Stapel." },
+    {
+      "type": "select", "id": "layout", "label": "Layout", "default": "split",
+      "options": [
+        { "value": "split", "label": "Zweispaltig (Text + Bild)" },
+        { "value": "overlay", "label": "Vollbild mit Textoverlay" }
+      ]
+    },
+    {
+      "type": "select", "id": "media_position", "label": "Bildposition (zweispaltig)", "default": "right",
+      "options": [{ "value": "left", "label": "Links" }, { "value": "right", "label": "Rechts" }]
+    },
+    {
+      "type": "select", "id": "text_align", "label": "Textausrichtung", "default": "left",
+      "options": [{ "value": "left", "label": "Links" }, { "value": "center", "label": "Zentriert" }]
+    },
+    { "type": "header", "content": "Inhalt" },
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext" },
+    { "type": "text", "id": "heading", "label": "Headline", "default": "hör auf zu rechnen, wann du dich zuletzt rasiert hast" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent", "info": "Wird an die Headline angehängt und kursiv gesetzt." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Du hast Jahre lang gedacht, es liegt an deiner Haut. Tut es nicht. Es liegt an dem Ding in deiner Hand.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "rasierer ansehen" },
+    { "type": "url", "id": "button_link", "label": "Button-Link" },
+    { "type": "text", "id": "button_2_label", "label": "Zweiter Button", "default": "warum haare einwachsen" },
+    { "type": "url", "id": "button_2_link", "label": "Zweiter Button-Link" },
+    { "type": "header", "content": "Medien" },
+    { "type": "image_picker", "id": "image", "label": "Bild (Desktop)" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Bild (Mobil)" },
+    { "type": "video", "id": "video", "label": "Video (optional)" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Kennzahl",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Wert", "default": "30 Tage" },
+        { "type": "text", "id": "label", "label": "Bezeichnung", "default": "Rückgabe" },
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "return",
+          "options": [
+            { "value": "none", "label": "Kein Icon" },
+            { "value": "return", "label": "Rückgabe" },
+            { "value": "truck", "label": "Versand" },
+            { "value": "clock", "label": "Lieferzeit" },
+            { "value": "card", "label": "Zahlung" },
+            { "value": "shield", "label": "Garantie" },
+            { "value": "chat", "label": "Support" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "30 Tage", "label": "Rückgabe", "icon": "return" } },
+        { "type": "stat", "settings": { "value": "2–4 Werktage", "label": "Lieferzeit", "icon": "truck" } },
+        { "type": "stat", "settings": { "value": "Klarna & PayPal", "label": "Zahlung", "icon": "card" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

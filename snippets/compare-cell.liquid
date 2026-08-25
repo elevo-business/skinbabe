@@ -1,0 +1,12 @@
+{%- liquid
+  assign v = value | strip | downcase
+-%}
+{%- if v == 'ja' or v == 'yes' or v == 'true' -%}
+  <span class="yes">{% render 'icon', icon: 'check' %}<span class="visually-hidden">ja</span></span>
+{%- elsif v == 'nein' or v == 'no' or v == 'false' -%}
+  <span class="no">{% render 'icon', icon: 'close' %}<span class="visually-hidden">nein</span></span>
+{%- elsif value == blank -%}
+  <span class="no">—</span>
+{%- else -%}
+  {{ value }}
+{%- endif -%}

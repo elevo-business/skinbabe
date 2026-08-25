@@ -1,0 +1,100 @@
+<div class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+  <div class="page-width page-width--narrow">
+    <div class="section-head reveal{% if section.settings.text_align == 'center' %} section-head--center{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="h2">
+          {{ section.settings.heading }}
+          {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+        </h2>
+      {%- endif -%}
+    </div>
+
+    <sb-accordion class="faq reveal" data-single="{{ section.settings.single_open }}">
+      {%- for block in section.blocks -%}
+        <details class="faq__item" {{ block.shopify_attributes }}>
+          <summary class="faq__q">
+            {{ block.settings.question }}
+            {% render 'icon', icon: 'chevron' %}
+          </summary>
+          <div class="faq__a rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </sb-accordion>
+
+    {%- if section.settings.footer_text != blank -%}
+      <p class="small muted center" style="margin-top:2rem">
+        {{ section.settings.footer_text }}
+        {%- if section.settings.footer_link != blank -%}
+          <a href="{{ section.settings.footer_link }}" class="link-underline">{{ section.settings.footer_link_label }}</a>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if section.settings.structured_data -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "paragraph", "content": "Die vier bis sechs Fragen, die sie wirklich vor dem Kauf stellt — nicht die, die sich gut lesen." },
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "was du wissen willst" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "die fragen, die du vor dem kauf stellst" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    {
+      "type": "select", "id": "text_align", "label": "Ausrichtung", "default": "left",
+      "options": [{ "value": "left", "label": "Links" }, { "value": "center", "label": "Zentriert" }]
+    },
+    { "type": "checkbox", "id": "single_open", "label": "Nur eine Frage gleichzeitig geöffnet", "default": true },
+    { "type": "checkbox", "id": "structured_data", "label": "FAQ-Markup für Google ausgeben", "default": true },
+    { "type": "text", "id": "footer_text", "label": "Abschlusstext", "default": "Deine Frage ist nicht dabei?" },
+    { "type": "text", "id": "footer_link_label", "label": "Link-Text", "default": "Schreib uns." },
+    { "type": "url", "id": "footer_link", "label": "Link-Ziel" },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "default",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Frage",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Frage", "default": "Warum 50 Euro für einen Rasierer?" },
+        { "type": "richtext", "id": "answer", "label": "Antwort", "default": "<p>Weil der Vergleichsrahmen nicht der Einwegrasierer ist.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "Warum 50 Euro für einen Rasierer?", "answer": "<p>Weil der Vergleichsrahmen nicht der Einwegrasierer ist. Rechne gegen zweimal Waxing im Studio oder gegen ein Jahr Ersatzklingen — dann ist die Frage eine andere.</p>" } },
+        { "type": "faq", "settings": { "question": "Bei mir funktioniert sowas eh nicht. Warum jetzt?", "answer": "<p>Weil du bisher immer dieselbe Art von Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut — das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, zahlen wir zurück.</p>" } },
+        { "type": "faq", "settings": { "question": "Rasierer oder IPL — was brauche ich?", "answer": "<p>Der Rasierer löst „jetzt sofort glatt“. Das IPL-Gerät zielt auf langanhaltende Haarreduktion über mehrere Wochen. Die beiden ersetzen sich nicht, sie lösen unterschiedliche Probleme.</p>" } },
+        { "type": "faq", "settings": { "question": "Wie oft muss ich Ersatzköpfe kaufen?", "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist — ohne Abo-Zwang.</p>" } },
+        { "type": "faq", "settings": { "question": "Wer steckt hinter skinbabe?", "answer": "<p>Ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wer wir sind, steht auf unserer Über-uns-Seite — mit Namen und Gesicht.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
