@@ -266,6 +266,7 @@
         "t1": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/4_702e57da-b528-4d5f-9ced-71901715e6f0.png",
             "title": "Trocken ansetzen",
             "text": "Kein Wasser, kein Schaum. Du kannst direkt loslegen."
           }
