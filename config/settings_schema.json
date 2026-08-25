@@ -97,7 +97,7 @@
         "type": "font_picker",
         "id": "type_heading_font",
         "label": "Headline-Font",
-        "default": "poppins_n5"
+        "default": "poppins_n4"
       },
       {
         "type": "select",
@@ -120,14 +120,36 @@
         "default": "lowercase"
       },
       {
-        "type": "range",
+        "type": "select",
         "id": "type_heading_tracking",
-        "min": -5,
-        "max": 12,
-        "step": 1,
-        "unit": "/100 em",
         "label": "Headline-Laufweite",
-        "default": -2
+        "default": "-0.02",
+        "options": [
+          {
+            "value": "-0.04",
+            "label": "Sehr eng"
+          },
+          {
+            "value": "-0.03",
+            "label": "Eng"
+          },
+          {
+            "value": "-0.02",
+            "label": "Leicht eng"
+          },
+          {
+            "value": "0",
+            "label": "Normal"
+          },
+          {
+            "value": "0.02",
+            "label": "Leicht weit"
+          },
+          {
+            "value": "0.06",
+            "label": "Weit (für Versalien)"
+          }
+        ]
       },
       {
         "type": "font_picker",
