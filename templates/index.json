@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -34,19 +43,24 @@
         "s3"
       ],
       "settings": {
-        "layout": "split",
-        "media_position": "right",
-        "text_align": "left",
-        "heading": "hör auf zu rechnen, wann du dich zuletzt rasiert hast",
-        "text": "<p>Du hast Jahre lang gedacht, es liegt an deiner Haut. Tut es nicht. Es liegt an dem Ding in deiner Hand.</p>",
-        "button_label": "rasierer ansehen",
-        "button_2_label": "warum haare einwachsen",
-        "height": 78,
-        "height_mobile": 62,
+        "image_mobile": "shopify://shop_images/4_702e57da-b528-4d5f-9ced-71901715e6f0.png",
         "focal_x": 50,
         "focal_y": 50,
+        "layout": "overlay",
+        "media_position": "right",
+        "height": 78,
+        "height_mobile": 62,
         "full_bleed": true,
-        "overlay_opacity": 35
+        "overlay_opacity": 35,
+        "text_align": "left",
+        "eyebrow": "",
+        "heading": "hör auf zu rechnen, wann du dich zuletzt rasiert hast",
+        "heading_accent": "",
+        "text": "<p>Du hast Jahre lang gedacht, es liegt an deiner Haut. Tut es nicht. Es liegt an dem Ding in deiner Hand.</p>",
+        "button_label": "rasierer ansehen",
+        "button_link": "",
+        "button_2_label": "warum haare einwachsen",
+        "button_2_link": ""
       }
     },
     "marquee": {
@@ -91,24 +105,70 @@
         "speed": 40
       }
     },
+    "press": {
+      "type": "press-logos",
+      "blocks": {
+        "l1": {
+          "type": "logo",
+          "settings": {
+            "name": "Medium eintragen",
+            "link": ""
+          }
+        },
+        "l2": {
+          "type": "logo",
+          "settings": {
+            "name": "Medium eintragen",
+            "link": ""
+          }
+        },
+        "l3": {
+          "type": "logo",
+          "settings": {
+            "name": "Medium eintragen",
+            "link": ""
+          }
+        },
+        "l4": {
+          "type": "logo",
+          "settings": {
+            "name": "Medium eintragen",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4"
+      ],
+      "settings": {
+        "heading": "gesehen bei",
+        "background": "default"
+      }
+    },
     "bestsellers": {
       "type": "bestsellers",
       "blocks": {
         "p1": {
           "type": "product",
           "settings": {
+            "product": "",
             "subtitle": "Für jetzt sofort glatt, ohne die Pünktchen danach."
           }
         },
         "p2": {
           "type": "product",
           "settings": {
+            "product": "",
             "subtitle": "Beides zusammen: sofort glatt und langfristig weniger."
           }
         },
         "p3": {
           "type": "product",
           "settings": {
+            "product": "",
             "subtitle": "Mit Pflege und Ersatzköpfen für das ganze Jahr."
           }
         }
@@ -121,7 +181,9 @@
       "settings": {
         "eyebrow": "die leiter",
         "heading": "drei wege, dasselbe problem zu lösen",
+        "heading_accent": "",
         "link_label": "alle produkte",
+        "link_url": "",
         "footnote": "Der Rasierer löst „jetzt sofort glatt“. Das IPL-Gerät zielt auf langanhaltende Haarreduktion. Zusammen ist das kein Doppelkauf.",
         "background": "default"
       }
@@ -187,13 +249,56 @@
       "settings": {
         "eyebrow": "die diagnose",
         "heading": "du hast dir das jahrelang selbst zugeschrieben",
+        "heading_accent": "",
         "transition": "Nichts davon stimmt.",
         "answer_eyebrow": "was wirklich passiert",
         "answer_heading": "Das Problem ist der Rasierer, nicht deine Haut.",
         "answer_text": "<p>Mehrklingen-Rasierer arbeiten nach einem Prinzip, das sich „lift and cut“ nennt. Und genau das erzeugt das Problem, gegen das dir danach die Creme verkauft wird.</p>",
         "conclusion": "Ein Rasierer mit Schutzkopf hat keinen direkten Klingenkontakt zur Haut.",
         "link_label": "die lange erklärung",
+        "link_url": "",
         "background": "cream"
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "blocks": {
+        "t1": {
+          "type": "step",
+          "settings": {
+            "title": "Trocken ansetzen",
+            "text": "Kein Wasser, kein Schaum. Du kannst direkt loslegen."
+          }
+        },
+        "t2": {
+          "type": "step",
+          "settings": {
+            "title": "In kurzen Zügen führen",
+            "text": "Der Schutzkopf hält die Klinge auf Abstand. Kein Druck nötig."
+          }
+        },
+        "t3": {
+          "type": "step",
+          "settings": {
+            "title": "Kopf abspülen, fertig",
+            "text": "Kurz unter Wasser, trocknen lassen. Der Kopf hält drei bis sechs Monate."
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "eyebrow": "so läuft das",
+        "heading": "drei minuten, kein aufwand",
+        "heading_accent": "",
+        "text": "",
+        "show_images": true,
+        "image_ratio": "square",
+        "text_align": "center",
+        "background": "default"
       }
     },
     "changes": {
@@ -203,28 +308,32 @@
           "type": "change",
           "settings": {
             "title": "Du planst nicht mehr vor",
-            "text": "Kein Rechnen mehr, ob zwei Tage reichen. Du entscheidest morgens, nicht am Dienstag davor."
+            "text": "Kein Rechnen mehr, ob zwei Tage reichen. Du entscheidest morgens, nicht am Dienstag davor.",
+            "icon": "none"
           }
         },
         "c2": {
           "type": "change",
           "settings": {
             "title": "Der Sonntagabend gehört wieder dir",
-            "text": "Keine Rötung, die du bis Montag früh beobachtest."
+            "text": "Keine Rötung, die du bis Montag früh beobachtest.",
+            "icon": "none"
           }
         },
         "c3": {
           "type": "change",
           "settings": {
             "title": "Du drehst den Rückspiegel nicht mehr",
-            "text": "Kein Check im Tageslicht, bevor du aussteigst."
+            "text": "Kein Check im Tageslicht, bevor du aussteigst.",
+            "icon": "none"
           }
         },
         "c4": {
           "type": "change",
           "settings": {
             "title": "Die Schublade wird leerer",
-            "text": "Kein Peeling, kein Serum, keine Creme gegen ein Problem, das gar nicht erst entstehen muss."
+            "text": "Kein Peeling, kein Serum, keine Creme gegen ein Problem, das gar nicht erst entstehen muss.",
+            "icon": "none"
           }
         }
       },
@@ -237,8 +346,80 @@
       "settings": {
         "eyebrow": "was sich ändert",
         "heading": "nicht deine haut. dein kalender.",
+        "heading_accent": "",
+        "text": "",
         "text_align": "left",
         "background": "default"
+      }
+    },
+    "before_after": {
+      "type": "before-after",
+      "settings": {
+        "eyebrow": "der unterschied",
+        "heading": "zieh den regler",
+        "heading_accent": "",
+        "text": "",
+        "label_before": "vorher",
+        "label_after": "nachher",
+        "slider_label": "Vergleich zwischen vorher und nachher",
+        "disclaimer": "Aufnahmen einer Kundin, unretuschiert. Ergebnisse fallen individuell unterschiedlich aus.",
+        "width": "narrow",
+        "text_align": "center",
+        "background": "cream"
+      }
+    },
+    "builder": {
+      "type": "bundle-builder",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Wähle dein Gerät",
+            "description": "",
+            "collection": "",
+            "limit": 4,
+            "quantity": 1,
+            "required": true
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Ersatzköpfe dazu",
+            "description": "",
+            "collection": "",
+            "limit": 4,
+            "quantity": 1,
+            "required": false
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Pflege dazu",
+            "description": "",
+            "collection": "",
+            "limit": 4,
+            "quantity": 1,
+            "required": false
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "eyebrow": "set zusammenstellen",
+        "heading": "bau dir das set, das zu dir passt",
+        "heading_accent": "",
+        "text": "<p>Drei Schritte, eine Bestellung. Was du nicht brauchst, lässt du weg.</p>",
+        "summary_title": "Dein Set",
+        "button_label": "Set in den Warenkorb",
+        "hint": "Versandkostenfrei ab 50 €. 30 Tage Rückgabe auf jede Position.",
+        "text_align": "left",
+        "background": "cream"
       }
     },
     "community": {
@@ -246,19 +427,35 @@
       "blocks": {
         "u1": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": "",
+            "quote": ""
+          }
         },
         "u2": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": "",
+            "quote": ""
+          }
         },
         "u3": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": "",
+            "quote": ""
+          }
         },
         "u4": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": "",
+            "quote": ""
+          }
         }
       },
       "block_order": [
@@ -270,9 +467,65 @@
       "settings": {
         "eyebrow": "community",
         "heading": "sie haben es vorher auch nicht geglaubt",
+        "heading_accent": "",
         "link_label": "auf instagram",
         "disclaimer": "Alle Beiträge stammen von echten Kundinnen und wurden mit ihrer Zustimmung veröffentlicht.",
         "background": "cream"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "headline": "",
+            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
+            "name": "",
+            "source": "",
+            "source_url": "",
+            "verified": true
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "headline": "",
+            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
+            "name": "",
+            "source": "",
+            "source_url": "",
+            "verified": true
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "headline": "",
+            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
+            "name": "",
+            "source": "",
+            "source_url": "",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "eyebrow": "bewertungen",
+        "heading": "die meisten waren vorher skeptisch",
+        "heading_accent": "",
+        "link_label": "alle bewertungen",
+        "link_url": "",
+        "disclaimer": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen.",
+        "background": "default"
       }
     },
     "guarantee": {
@@ -281,33 +534,33 @@
         "g1": {
           "type": "point",
           "settings": {
-            "icon": "shield",
             "title": "30 Tage auf den Rasierer",
-            "text": "Das Ergebnis siehst du nach der ersten Anwendung. Wenn du nach vier Wochen nicht überzeugt bist, schickst du ihn zurück."
+            "text": "Das Ergebnis siehst du nach der ersten Anwendung. Wenn du nach vier Wochen nicht überzeugt bist, schickst du ihn zurück.",
+            "icon": "shield"
           }
         },
         "g2": {
           "type": "point",
           "settings": {
-            "icon": "clock",
             "title": "90 Tage auf das IPL-Gerät",
-            "text": "Eine sichtbare Haarreduktion braucht etwa zehn Anwendungen. Eine 30-Tage-Frist wäre eine Frist, die du gar nicht nutzen könntest."
+            "text": "Eine sichtbare Haarreduktion braucht etwa zehn Anwendungen. Eine 30-Tage-Frist wäre eine Frist, die du gar nicht nutzen könntest.",
+            "icon": "clock"
           }
         },
         "g3": {
           "type": "point",
           "settings": {
-            "icon": "return",
             "title": "Auch geöffnet und benutzt",
-            "text": "Anders wäre die Garantie sinnlos. Du sollst das Gerät tatsächlich verwenden, bevor du entscheidest."
+            "text": "Anders wäre die Garantie sinnlos. Du sollst das Gerät tatsächlich verwenden, bevor du entscheidest.",
+            "icon": "return"
           }
         },
         "g4": {
           "type": "point",
           "settings": {
-            "icon": "chat",
             "title": "Support auf Deutsch, mit Namen",
-            "text": "Werktags innerhalb von 24 Stunden. Kein Ticketsystem, das dich im Kreis schickt."
+            "text": "Werktags innerhalb von 24 Stunden. Kein Ticketsystem, das dich im Kreis schickt.",
+            "icon": "chat"
           }
         }
       },
@@ -320,11 +573,13 @@
       "settings": {
         "eyebrow": "garantie",
         "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
+        "heading_accent": "",
         "text": "<p>Du hast genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
         "seal_value": "30 / 90",
         "seal_label": "Tage Garantie",
         "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
         "link_label": "versand & rückgabe im detail",
+        "link_url": "",
         "background": "cream"
       }
     },
@@ -385,195 +640,25 @@
       "settings": {
         "eyebrow": "was du wissen willst",
         "heading": "die fragen, die du vor dem kauf stellst",
+        "heading_accent": "",
+        "text_align": "left",
         "single_open": true,
         "structured_data": true,
         "footer_text": "Deine Frage ist nicht dabei?",
         "footer_link_label": "Schreib uns.",
+        "footer_link": "",
         "background": "default"
       }
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {
+        "eyebrow": "",
         "heading": "wir schreiben selten. dafür nichts überflüssiges.",
+        "heading_accent": "",
         "text": "<p>Neue Produkte, Nachkauf-Erinnerungen und gelegentlich etwas, das dir wirklich hilft.</p>",
         "button_label": "Anmelden",
-        "background": "cream"
-      }
-    },
-    "press": {
-      "type": "press-logos",
-      "blocks": {
-        "l1": {
-          "type": "logo",
-          "settings": {
-            "name": "Medium eintragen"
-          }
-        },
-        "l2": {
-          "type": "logo",
-          "settings": {
-            "name": "Medium eintragen"
-          }
-        },
-        "l3": {
-          "type": "logo",
-          "settings": {
-            "name": "Medium eintragen"
-          }
-        },
-        "l4": {
-          "type": "logo",
-          "settings": {
-            "name": "Medium eintragen"
-          }
-        }
-      },
-      "block_order": [
-        "l1",
-        "l2",
-        "l3",
-        "l4"
-      ],
-      "settings": {
-        "heading": "gesehen bei",
-        "background": "default"
-      }
-    },
-    "steps": {
-      "type": "steps",
-      "blocks": {
-        "t1": {
-          "type": "step",
-          "settings": {
-            "title": "Trocken ansetzen",
-            "text": "Kein Wasser, kein Schaum. Du kannst direkt loslegen."
-          }
-        },
-        "t2": {
-          "type": "step",
-          "settings": {
-            "title": "In kurzen Zügen führen",
-            "text": "Der Schutzkopf hält die Klinge auf Abstand. Kein Druck nötig."
-          }
-        },
-        "t3": {
-          "type": "step",
-          "settings": {
-            "title": "Kopf abspülen, fertig",
-            "text": "Kurz unter Wasser, trocknen lassen. Der Kopf hält drei bis sechs Monate."
-          }
-        }
-      },
-      "block_order": [
-        "t1",
-        "t2",
-        "t3"
-      ],
-      "settings": {
-        "eyebrow": "so läuft das",
-        "heading": "drei minuten, kein aufwand",
-        "show_images": true,
-        "image_ratio": "square",
-        "text_align": "center",
-        "background": "default"
-      }
-    },
-    "before_after": {
-      "type": "before-after",
-      "settings": {
-        "eyebrow": "der unterschied",
-        "heading": "zieh den regler",
-        "label_before": "vorher",
-        "label_after": "nachher",
-        "disclaimer": "Aufnahmen einer Kundin, unretuschiert. Ergebnisse fallen individuell unterschiedlich aus.",
-        "width": "narrow",
-        "text_align": "center",
-        "background": "cream"
-      }
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "blocks": {
-        "r1": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
-            "verified": true
-          }
-        },
-        "r2": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
-            "verified": true
-          }
-        },
-        "r3": {
-          "type": "review",
-          "settings": {
-            "rating": 4,
-            "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
-            "verified": true
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3"
-      ],
-      "settings": {
-        "eyebrow": "bewertungen",
-        "heading": "die meisten waren vorher skeptisch",
-        "link_label": "alle bewertungen",
-        "disclaimer": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen.",
-        "background": "default"
-      }
-    },
-    "builder": {
-      "type": "bundle-builder",
-      "blocks": {
-        "s1": {
-          "type": "step",
-          "settings": {
-            "title": "Wähle dein Gerät",
-            "required": true,
-            "limit": 4
-          }
-        },
-        "s2": {
-          "type": "step",
-          "settings": {
-            "title": "Ersatzköpfe dazu",
-            "required": false,
-            "limit": 4
-          }
-        },
-        "s3": {
-          "type": "step",
-          "settings": {
-            "title": "Pflege dazu",
-            "required": false,
-            "limit": 4
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
-      "settings": {
-        "eyebrow": "set zusammenstellen",
-        "heading": "bau dir das set, das zu dir passt",
-        "text": "<p>Drei Schritte, eine Bestellung. Was du nicht brauchst, lässt du weg.</p>",
-        "summary_title": "Dein Set",
-        "button_label": "Set in den Warenkorb",
-        "hint": "Versandkostenfrei ab 50 €. 30 Tage Rückgabe auf jede Position.",
-        "text_align": "left",
+        "legal": "Mit der Anmeldung stimmst du dem Erhalt von E-Mails zu. Abmeldung jederzeit über den Link in jeder Mail. Details in unserer Datenschutzerklärung.",
         "background": "cream"
       }
     }
