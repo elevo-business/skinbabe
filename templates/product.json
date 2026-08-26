@@ -24,13 +24,13 @@
             "style": "summary"
           }
         },
-        "stockbar": {
-          "type": "stockbar",
+        "arguments": {
+          "type": "arguments",
           "settings": {
-            "in_label": "Auf Lager",
-            "out_label": "Zurzeit ausverkauft",
-            "ships_text": "In 3–4 Werktagen bei dir zu Hause ❤️",
-            "origin": ""
+            "arg_1": "Kein direkter Klingenkontakt zur Haut",
+            "arg_2": "Auch trocken, ohne Wasser und Schaum",
+            "arg_3": "Ein Kopf hält drei bis sechs Monate",
+            "arg_4": ""
           }
         },
         "buybox": {
@@ -46,13 +46,13 @@
             "upsell_text": "um dein Set aufzubewahren"
           }
         },
-        "arguments": {
-          "type": "arguments",
+        "stockbar": {
+          "type": "stockbar",
           "settings": {
-            "arg_1": "Kein direkter Klingenkontakt zur Haut",
-            "arg_2": "Auch trocken, ohne Wasser und Schaum",
-            "arg_3": "Ein Kopf hält drei bis sechs Monate",
-            "arg_4": ""
+            "in_label": "Auf Lager",
+            "out_label": "Zurzeit ausverkauft",
+            "ships_text": "In 3–4 Werktagen bei dir zu Hause ❤️",
+            "origin": ""
           }
         },
         "gifts": {
@@ -225,9 +225,9 @@
       "block_order": [
         "title",
         "rating",
-        "stockbar",
-        "buybox",
         "arguments",
+        "buybox",
+        "stockbar",
         "gifts",
         "bundle_1",
         "bundle_2",
@@ -302,7 +302,7 @@
         "answer_text": "<p>Mehrklingen-Rasierer heben das Haar an und kappen es unter der Hautoberfläche. Beim Nachwachsen trifft es auf geschlossene Haut.</p>",
         "conclusion": "Ein Rasierer mit Schutzkopf hat keinen direkten Klingenkontakt zur Haut.",
         "link_label": "die lange erklärung",
-        "link_url": "shopify://pages/warum-haare-einwachsen",
+        "link_url": "",
         "background": "default"
       }
     },
@@ -497,7 +497,7 @@
         "seal_label": "Tage Garantie",
         "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
         "link_label": "versand & rückgabe im detail",
-        "link_url": "shopify://pages/versand-rueckgabe",
+        "link_url": "",
         "background": "default"
       }
     },
@@ -514,7 +514,7 @@
         "structured_data": false,
         "footer_text": "Deine Frage ist nicht dabei?",
         "footer_link_label": "Schreib uns.",
-        "footer_link": "shopify://pages/contact",
+        "footer_link": "",
         "width": "narrow",
         "text_align": "left",
         "background": "cream"
