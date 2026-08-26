@@ -371,14 +371,6 @@
         "text_align": "left",
         "background": "cream"
       }
-    },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "passt dazu",
-        "limit": 4,
-        "background": "default"
-      }
     }
   },
   "order": [
@@ -390,7 +382,6 @@
     "review_summary",
     "testimonials",
     "guarantee",
-    "faq",
-    "recommendations"
+    "faq"
   ]
 }
