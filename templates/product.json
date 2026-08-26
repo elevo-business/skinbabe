@@ -302,7 +302,7 @@
         "answer_text": "<p>Mehrklingen-Rasierer heben das Haar an und kappen es unter der Hautoberfläche. Beim Nachwachsen trifft es auf geschlossene Haut.</p>",
         "conclusion": "Ein Rasierer mit Schutzkopf hat keinen direkten Klingenkontakt zur Haut.",
         "link_label": "die lange erklärung",
-        "link_url": "",
+        "link_url": "shopify://pages/warum-haare-einwachsen",
         "background": "default"
       }
     },
@@ -497,7 +497,7 @@
         "seal_label": "Tage Garantie",
         "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
         "link_label": "versand & rückgabe im detail",
-        "link_url": "",
+        "link_url": "shopify://pages/versand-rueckgabe",
         "background": "default"
       }
     },
@@ -514,7 +514,7 @@
         "structured_data": false,
         "footer_text": "Deine Frage ist nicht dabei?",
         "footer_link_label": "Schreib uns.",
-        "footer_link": "",
+        "footer_link": "shopify://pages/contact",
         "width": "narrow",
         "text_align": "left",
         "background": "cream"
