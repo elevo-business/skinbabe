@@ -259,6 +259,37 @@
     },
     "steps": {
       "type": "steps",
+      "blocks": {
+        "step_3BJVjY": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Design_ohne_Titel_27.png",
+            "title": "Kopf auswählen",
+            "text": "Kein Wasser, kein Schaum. Du kannst direkt loslegen."
+          }
+        },
+        "step_QnYMxD": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/4_702e57da-b528-4d5f-9ced-71901715e6f0.png",
+            "title": "Beginne zu rasieren",
+            "text": "Kein Wasser, kein Schaum nötig. Du kannst direkt loslegen."
+          }
+        },
+        "step_yHWgpB": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/96.webp",
+            "title": "Glatte Haut genießen",
+            "text": "So einfach kann es sein!"
+          }
+        }
+      },
+      "block_order": [
+        "step_3BJVjY",
+        "step_QnYMxD",
+        "step_yHWgpB"
+      ],
       "settings": {
         "eyebrow": "so läuft das",
         "heading": "2 Minuten, kaum aufwand",
