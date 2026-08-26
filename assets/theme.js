@@ -435,11 +435,13 @@
       });
       if (!this.viewer) return;
       const slides = $$('[data-media-id]', this.viewer);
+      const counter = this.querySelector('[data-gallery-current]');
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.intersectionRatio < 0.6) return;
           const id = entry.target.dataset.mediaId;
           this.thumbs.forEach((t) => t.setAttribute('aria-current', String(t.dataset.mediaTarget === id)));
+          if (counter) counter.textContent = slides.indexOf(entry.target) + 1;
         });
       }, { root: this.viewer, threshold: 0.6 });
       slides.forEach((s) => io.observe(s));

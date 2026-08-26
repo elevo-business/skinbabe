@@ -237,9 +237,13 @@
   "name": "Produkt",
   "settings": [
     {
+      "type": "header",
+      "content": "Galerie"
+    },
+    {
       "type": "select",
       "id": "gallery_layout",
-      "label": "Galerie (Desktop)",
+      "label": "Anordnung (Desktop)",
       "default": "stacked",
       "options": [
         {
@@ -248,7 +252,53 @@
         },
         {
           "value": "carousel",
-          "label": "Karussell mit Thumbnails"
+          "label": "Karussell mit Vorschaubildern"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "gallery_ratio",
+      "label": "Bildformat",
+      "default": "adapt",
+      "info": "„Wie das Bild“ übernimmt das Format des Hauptbilds für alle Slides — dann springt beim Wischen nichts.",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Wie das Bild"
+        },
+        {
+          "value": "square",
+          "label": "Quadratisch (1:1)"
+        },
+        {
+          "value": "portrait",
+          "label": "Hochformat (4:5)"
+        },
+        {
+          "value": "tall",
+          "label": "Hoch (5:7)"
+        },
+        {
+          "value": "landscape",
+          "label": "Querformat (3:2)"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "gallery_fit",
+      "label": "Skalierung",
+      "default": "contain",
+      "info": "„Einpassen“ zeigt das Bild immer vollständig — richtig für Aufnahmen mit Text oder Siegel. „Füllen“ beschneidet dafür randlos.",
+      "options": [
+        {
+          "value": "contain",
+          "label": "Einpassen (nichts wird beschnitten)"
+        },
+        {
+          "value": "cover",
+          "label": "Füllen (randlos, beschneidet)"
         }
       ]
     },

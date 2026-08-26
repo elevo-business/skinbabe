@@ -242,7 +242,7 @@ sb-slider{display:block;position:relative}
   padding-bottom:.25rem;
 }
 .slider__track::-webkit-scrollbar{display:none}
-.slider__item{scroll-snap-align:start;flex:0 0 auto;width:var(--slide-width,78%)}
+.slider__item{scroll-snap-align:start;flex:0 0 auto;min-width:0;width:var(--slide-width,78%)}
 @media screen and (min-width:750px){.slider__item{width:var(--slide-width-md,42%)}}
 @media screen and (min-width:990px){.slider__item{width:var(--slide-width-lg,26%)}}
 .slider__nav{display:flex;gap:.5rem}
@@ -467,22 +467,53 @@ sb-slider{display:block;position:relative}
   .product{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,4.5vw,5rem);align-items:start}
   .product__info{position:sticky;top:calc(var(--sb-header-height) + 2rem)}
 }
-.product__gallery{display:flex;flex-direction:column;gap:.75rem}
+.product__gallery{
+  display:flex;flex-direction:column;gap:.75rem;
+  --gallery-ratio:1;
+  --gallery-fit:contain;
+}
 .gallery__viewer{
   display:flex;gap:.75rem;overflow-x:auto;scroll-snap-type:x mandatory;
   scrollbar-width:none;border-radius:var(--sb-radius-lg);
 }
 .gallery__viewer::-webkit-scrollbar{display:none}
-.gallery__slide{flex:0 0 100%;scroll-snap-align:start;border-radius:var(--sb-radius-lg);overflow:hidden;background:var(--sb-cream)}
+.gallery__slide{
+  flex:0 0 100%;
+  /* Ohne min-width:0 sprengt ein breites Bild das Flex-Item und laeuft
+     ueber den Bildschirmrand hinaus. */
+  min-width:0;
+  scroll-snap-align:start;
+  border-radius:var(--sb-radius-lg);
+  overflow:hidden;
+  background:var(--sb-bg);
+  aspect-ratio:var(--gallery-ratio);
+  max-height:var(--gallery-max-height,none);
+}
+/* Bild, Video, Einbettung und Platzhalter fuellen die Verhaeltnis-Box */
+.gallery__slide > *{
+  display:block;width:100%;height:100%;
+  object-fit:var(--gallery-fit);
+}
 .gallery__thumbs{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
 .gallery__thumbs::-webkit-scrollbar{display:none}
 .gallery__thumb{
-  flex:none;width:4.25rem;border-radius:var(--sb-radius-md);overflow:hidden;
-  border:1px solid transparent;opacity:.55;transition:opacity .2s,border-color .2s;
+  flex:none;width:4.25rem;aspect-ratio:1;
+  border-radius:var(--sb-radius-md);overflow:hidden;background:var(--sb-bg);
+  border:1px solid var(--sb-line);opacity:.55;
+  transition:opacity .2s,border-color .2s;
 }
+.gallery__thumb img{width:100%;height:100%;object-fit:contain}
 .gallery__thumb[aria-current='true']{opacity:1;border-color:var(--sb-ink)}
+
+/* Auf dem Telefon nie hoeher als der Bildschirm */
+@media screen and (max-width:989px){
+  .product__gallery{--gallery-max-height:76vh}
+  .gallery__viewer{margin-inline:calc(var(--sb-gutter) * -1);padding-inline:var(--sb-gutter)}
+  .gallery__slide{scroll-snap-align:center}
+}
+
 @media screen and (min-width:990px){
-  .product__gallery--stacked .gallery__viewer{flex-direction:column;overflow:visible}
+  .product__gallery--stacked .gallery__viewer{flex-direction:column;overflow:visible;border-radius:0}
   .product__gallery--stacked .gallery__slide{flex:none;width:100%}
   .product__gallery--stacked .gallery__thumbs{display:none}
 }

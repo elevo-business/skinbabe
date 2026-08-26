@@ -274,3 +274,13 @@ sb-tabs{display:block}
 .bundle__content-item svg{width:.7rem;height:.7rem;flex:none;color:var(--sb-accent)}
 .bundle__card{align-items:start}
 .bundle__radio{margin-top:.15rem}
+
+/* ---------------- Galerie-Zähler ---------------- */
+.gallery__counter{
+  position:absolute;right:1rem;bottom:1rem;z-index:1;
+  padding:.3rem .7rem;border-radius:var(--sb-radius-pill);
+  background:rgba(0,0,0,.55);color:#fff;
+  font-size:.6875rem;letter-spacing:.06em;line-height:1;
+  pointer-events:none;
+}
+sb-media-gallery{position:relative;display:flex;flex-direction:column;gap:.75rem}

@@ -1,7 +1,34 @@
 {%- liquid
   assign layout = layout | default: 'carousel'
+  assign ratio_setting = section.settings.gallery_ratio | default: 'adapt'
+  assign fit = section.settings.gallery_fit | default: 'contain'
+
+  case ratio_setting
+    when 'square'
+      assign ratio = 1.0
+    when 'portrait'
+      assign ratio = 0.8
+    when 'tall'
+      assign ratio = 0.7143
+    when 'landscape'
+      assign ratio = 1.5
+    else
+      comment
+        „Wie das Bild“: Seitenverhaeltnis des Hauptbilds, aber fuer alle Slides
+        gleich — sonst springt die Hoehe beim Wischen.
+      endcomment
+      assign ratio = product.featured_media.aspect_ratio
+  endcase
+
+  if ratio == blank or ratio == 0
+    assign ratio = 1.0
+  endif
 -%}
-<sb-media-gallery class="product__gallery{% if layout == 'stacked' %} product__gallery--stacked{% endif %}" id="gallery-{{ section.id }}">
+<sb-media-gallery
+  class="product__gallery{% if layout == 'stacked' %} product__gallery--stacked{% endif %}"
+  id="gallery-{{ section.id }}"
+  style="--gallery-ratio:{{ ratio }};--gallery-fit:{{ fit }};"
+>
   <div class="gallery__viewer" data-gallery-viewer>
     {%- if product.media.size > 0 -%}
       {%- for media in product.media -%}
@@ -32,6 +59,10 @@
   </div>
 
   {%- if product.media.size > 1 -%}
+    <div class="gallery__counter hide-desktop" aria-hidden="true">
+      <span data-gallery-current>1</span> / {{ product.media.size }}
+    </div>
+
     <div class="gallery__thumbs">
       {%- for media in product.media -%}
         <button
@@ -42,7 +73,7 @@
           aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
           aria-label="{{ 'general.accessibility.next_slide' | t }} {{ forloop.index }}"
         >
-          <img src="{{ media.preview_image | image_url: width: 180 }}" alt="" width="90" height="112" loading="lazy">
+          <img src="{{ media.preview_image | image_url: width: 200 }}" alt="" width="100" height="100" loading="lazy">
         </button>
       {%- endfor -%}
     </div>
