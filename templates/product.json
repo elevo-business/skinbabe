@@ -133,8 +133,8 @@
           "settings": {
             "in_label": "Auf Lager",
             "out_label": "Zurzeit ausverkauft",
-            "ships_text": "Versand in 2–4 Werktagen",
-            "origin": "Versand aus Deutschland"
+            "ships_text": "Versand in 3–4 Werktagen",
+            "origin": ""
           }
         },
         "buy": {
