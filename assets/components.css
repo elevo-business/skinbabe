@@ -28,28 +28,67 @@
 sb-header{
   position:sticky;top:0;z-index:10;display:block;
   background:var(--sb-bg);
+  color:var(--sb-ink);
   border-bottom:1px solid transparent;
-  transition:transform .35s var(--sb-ease),border-color .3s,background-color .3s;
+  transition:transform .35s var(--sb-ease),border-color .3s,background-color .3s,color .3s;
 }
 sb-header.is-stuck{border-bottom-color:var(--sb-line)}
 sb-header.is-hidden{transform:translateY(-100%)}
+
+/* --- Transparent: der Header legt sich ueber den ersten Abschnitt.
+   Der negative Aussenabstand zieht den Inhalt darunter hoch, ohne dass
+   das Sticky-Verhalten verloren geht. --- */
+sb-header.header--transparent{
+  background:transparent;
+  border-bottom-color:transparent;
+  margin-bottom:calc(var(--header-height,3.5rem) * -1);
+}
+sb-header.header--transparent-light{color:#fff}
+sb-header.header--transparent-light .header__icon:hover{background:rgba(255,255,255,.16)}
+sb-header.header--transparent-light .nav__link:hover{background:rgba(255,255,255,.14)}
+sb-header.header--transparent .header__logo-img--default{display:none}
+sb-header.header--transparent .header__logo-img--inverted{display:block}
+
+/* Sobald gescrollt wird, ist der Header wieder deckend */
+sb-header.header--transparent.is-stuck{
+  background:var(--sb-bg);
+  color:var(--sb-ink);
+  border-bottom-color:var(--sb-line);
+}
+sb-header.header--transparent.is-stuck .header__logo-img--default{display:block}
+sb-header.header--transparent.is-stuck .header__logo-img--inverted{display:none}
+sb-header.header--transparent.is-stuck .header__icon:hover{background:var(--sb-cream)}
+
 .header{
   display:grid;
   grid-template-columns:1fr auto 1fr;
   align-items:center;
-  gap:1rem;
-  min-height:var(--header-height,4rem);
+  gap:.5rem;
+  height:var(--header-height,3.5rem);
   padding-inline:var(--sb-gutter);
   max-width:var(--sb-page-width);margin-inline:auto;
 }
 .header__nav{display:none}
-.header__logo{justify-self:center;display:inline-flex;align-items:center}
-.header__logo img{width:var(--logo-width,120px);height:auto}
-.header__logo-text{
-  font-family:var(--sb-font-heading);font-size:1.375rem;font-weight:600;
-  letter-spacing:-.03em;text-transform:lowercase;line-height:1;
+
+/* Das Logo wird auf die Logo-Hoehe begrenzt. Eine groessere Breite
+   vergroessert damit nie den Header. */
+.header__logo{
+  justify-self:center;display:inline-flex;align-items:center;
+  height:var(--logo-height,28px);
 }
-.header__actions{display:flex;align-items:center;justify-content:flex-end;gap:.25rem}
+.header__logo-img,
+.header__logo img{
+  display:block;
+  width:auto;height:auto;
+  max-width:var(--logo-width,120px);
+  max-height:var(--logo-height,28px);
+}
+.header__logo-img--inverted{display:none}
+.header__logo-text{
+  font-family:var(--sb-font-heading);font-size:1.25rem;font-weight:600;
+  letter-spacing:-.03em;text-transform:lowercase;line-height:1;white-space:nowrap;
+}
+.header__actions{display:flex;align-items:center;justify-content:flex-end;gap:.15rem}
 .header__icon{
   position:relative;display:inline-flex;align-items:center;justify-content:center;
   width:2.5rem;height:2.5rem;border-radius:50%;
@@ -58,7 +97,7 @@ sb-header.is-hidden{transform:translateY(-100%)}
 .header__icon:hover{background:var(--sb-cream)}
 .header__icon svg{width:1.25rem;height:1.25rem}
 .header__count{
-  position:absolute;top:.25rem;right:.2rem;
+  position:absolute;top:.2rem;right:.15rem;
   min-width:1.05rem;height:1.05rem;padding:0 .25rem;
   display:grid;place-items:center;
   background:var(--sb-accent);color:var(--sb-accent-contrast);
@@ -67,8 +106,16 @@ sb-header.is-hidden{transform:translateY(-100%)}
 }
 .header__menu-toggle{justify-self:start}
 
+/* Liegt der Header transparent ueber dem ersten Abschnitt, braucht ein
+   zweispaltiger Hero oben Luft, damit der Text nicht unter dem Header steht.
+   Der Vollbild-Hero setzt seinen Text ohnehin nach unten. */
+body:has(sb-header.header--transparent) main > .shopify-section:first-child .hero--split .hero__content{
+  padding-top:calc(var(--sb-header-height,4rem) + 1.5rem);
+}
+
 @media screen and (min-width:990px){
-  .header{grid-template-columns:auto 1fr auto;gap:2rem;--header-height:4.75rem}
+  .header{grid-template-columns:auto 1fr auto;gap:2rem;height:var(--header-height-desktop,4rem)}
+  sb-header.header--transparent{margin-bottom:calc(var(--header-height-desktop,4rem) * -1)}
   .header__menu-toggle{display:none}
   .header__logo{justify-self:start}
   .header__nav{display:flex;justify-content:center}

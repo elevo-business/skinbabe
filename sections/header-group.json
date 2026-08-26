@@ -56,7 +56,12 @@
         "hide_on_scroll": true,
         "enable_structured_data": true,
         "drawer_note": "Fragen? Wir antworten werktags innerhalb von 24 Stunden.",
-        "drawer_note_link": "shopify://products/skinbabe-prazisions-rasierer-fur-sensible-haut"
+        "drawer_note_link": "shopify://products/skinbabe-prazisions-rasierer-fur-sensible-haut",
+        "height": 64,
+        "height_mobile": 54,
+        "logo_height": 28,
+        "transparent_mode": "index",
+        "transparent_text": "light"
       }
     }
   },

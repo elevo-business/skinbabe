@@ -1,8 +1,29 @@
 {%- liquid
   assign menu = section.settings.menu
+
+  comment
+    Transparenter Header legt sich ueber den ersten Abschnitt. Sinnvoll nur,
+    wenn dort ein Bild liegt — sonst steht heller Text auf hellem Grund.
+  endcomment
+  assign transparent = false
+  if section.settings.transparent_mode == 'all'
+    assign transparent = true
+  elsif section.settings.transparent_mode == 'index' and template.name == 'index'
+    assign transparent = true
+  endif
 -%}
-<sb-header data-hide-on-scroll="{{ section.settings.hide_on_scroll }}">
-  <div class="header" style="--logo-width:{{ settings.logo_width }}px;">
+<sb-header
+  class="{% if transparent %}header--transparent header--transparent-{{ section.settings.transparent_text }}{% endif %}"
+  data-hide-on-scroll="{{ section.settings.hide_on_scroll }}"
+  data-transparent="{{ transparent }}"
+  style="
+    --header-height:{{ section.settings.height_mobile }}px;
+    --header-height-desktop:{{ section.settings.height }}px;
+    --logo-width:{{ settings.logo_width }}px;
+    --logo-height:{{ section.settings.logo_height }}px;
+  "
+>
+  <div class="header">
     <button
       class="header__icon header__menu-toggle"
       type="button"
@@ -97,12 +118,24 @@
     <a class="header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
       {%- if settings.logo != blank -%}
         <img
-          src="{{ settings.logo | image_url: width: 400 }}"
+          class="header__logo-img header__logo-img--default"
+          src="{{ settings.logo | image_url: width: 600 }}"
           alt="{{ shop.name | escape }}"
           width="{{ settings.logo.width }}"
           height="{{ settings.logo.height }}"
           {% if template.name == 'index' %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
         >
+        {%- if transparent and settings.logo_inverted != blank -%}
+          <img
+            class="header__logo-img header__logo-img--inverted"
+            src="{{ settings.logo_inverted | image_url: width: 600 }}"
+            alt=""
+            aria-hidden="true"
+            width="{{ settings.logo_inverted.width }}"
+            height="{{ settings.logo_inverted.height }}"
+            {% if template.name == 'index' %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+          >
+        {%- endif -%}
       {%- else -%}
         <span class="header__logo-text">{{ shop.name }}</span>
       {%- endif -%}
@@ -157,32 +190,191 @@
   "class": "shopify-section--header",
   "max_blocks": 4,
   "settings": [
-    { "type": "link_list", "id": "menu", "label": "Hauptmenü", "default": "main-menu" },
-    { "type": "checkbox", "id": "hide_on_scroll", "label": "Header beim Runterscrollen ausblenden", "default": false },
-    { "type": "checkbox", "id": "enable_structured_data", "label": "Organization-Markup ausgeben", "default": true },
-    { "type": "header", "content": "Drawer-Menü" },
-    { "type": "text", "id": "drawer_note", "label": "Hinweis unten im Menü", "default": "Fragen? Wir antworten werktags innerhalb von 24 Stunden." },
-    { "type": "url", "id": "drawer_note_link", "label": "Link zum Hinweis" }
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Hauptmenü",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Höhe und Logo"
+    },
+    {
+      "type": "paragraph",
+      "content": "Die Kopfhöhe ist fest. Ein größeres Logo macht den Header nicht höher — es wird auf die Logo-Höhe begrenzt."
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 48,
+      "max": 104,
+      "step": 2,
+      "unit": "px",
+      "label": "Kopfhöhe (Desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 44,
+      "max": 88,
+      "step": 2,
+      "unit": "px",
+      "label": "Kopfhöhe (Mobil)",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 16,
+      "max": 56,
+      "step": 1,
+      "unit": "px",
+      "label": "Maximale Logo-Höhe",
+      "default": 28,
+      "info": "Die Breite stellst du in den Theme-Einstellungen unter Marke ein."
+    },
+    {
+      "type": "header",
+      "content": "Transparenz"
+    },
+    {
+      "type": "select",
+      "id": "transparent_mode",
+      "label": "Transparent über dem ersten Abschnitt",
+      "default": "index",
+      "options": [
+        {
+          "value": "off",
+          "label": "Aus"
+        },
+        {
+          "value": "index",
+          "label": "Nur auf der Startseite"
+        },
+        {
+          "value": "all",
+          "label": "Auf allen Seiten"
+        }
+      ],
+      "info": "Nur sinnvoll, wenn der erste Abschnitt ein Bild ist. Beim Scrollen wird der Header wieder deckend."
+    },
+    {
+      "type": "select",
+      "id": "transparent_text",
+      "label": "Schrift im transparenten Zustand",
+      "default": "light",
+      "options": [
+        {
+          "value": "light",
+          "label": "Hell (für dunkle Bilder)"
+        },
+        {
+          "value": "dark",
+          "label": "Dunkel (für helle Bilder)"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Verhalten"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_scroll",
+      "label": "Header beim Runterscrollen ausblenden",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_structured_data",
+      "label": "Organization-Markup ausgeben",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Drawer-Menü"
+    },
+    {
+      "type": "text",
+      "id": "drawer_note",
+      "label": "Hinweis unten im Menü",
+      "default": "Fragen? Wir antworten werktags innerhalb von 24 Stunden."
+    },
+    {
+      "type": "url",
+      "id": "drawer_note_link",
+      "label": "Link zum Hinweis"
+    }
   ],
   "blocks": [
     {
       "type": "mega",
       "name": "Mega-Menü",
       "settings": [
-        { "type": "text", "id": "trigger", "label": "Menüpunkt (exakter Titel)", "info": "Muss genau dem Titel im Hauptmenü entsprechen." },
-        { "type": "text", "id": "col_1_title", "label": "Spalte 1 – Überschrift" },
-        { "type": "link_list", "id": "col_1_menu", "label": "Spalte 1 – Menü" },
-        { "type": "text", "id": "col_2_title", "label": "Spalte 2 – Überschrift" },
-        { "type": "link_list", "id": "col_2_menu", "label": "Spalte 2 – Menü" },
-        { "type": "text", "id": "col_3_title", "label": "Spalte 3 – Überschrift" },
-        { "type": "link_list", "id": "col_3_menu", "label": "Spalte 3 – Menü" },
-        { "type": "header", "content": "Teaser" },
-        { "type": "image_picker", "id": "feature_image", "label": "Bild" },
-        { "type": "text", "id": "feature_title", "label": "Teaser-Text" },
-        { "type": "url", "id": "feature_link", "label": "Teaser-Link" }
+        {
+          "type": "text",
+          "id": "trigger",
+          "label": "Menüpunkt (exakter Titel)",
+          "info": "Muss genau dem Titel im Hauptmenü entsprechen."
+        },
+        {
+          "type": "text",
+          "id": "col_1_title",
+          "label": "Spalte 1 – Überschrift"
+        },
+        {
+          "type": "link_list",
+          "id": "col_1_menu",
+          "label": "Spalte 1 – Menü"
+        },
+        {
+          "type": "text",
+          "id": "col_2_title",
+          "label": "Spalte 2 – Überschrift"
+        },
+        {
+          "type": "link_list",
+          "id": "col_2_menu",
+          "label": "Spalte 2 – Menü"
+        },
+        {
+          "type": "text",
+          "id": "col_3_title",
+          "label": "Spalte 3 – Überschrift"
+        },
+        {
+          "type": "link_list",
+          "id": "col_3_menu",
+          "label": "Spalte 3 – Menü"
+        },
+        {
+          "type": "header",
+          "content": "Teaser"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Teaser-Text"
+        },
+        {
+          "type": "url",
+          "id": "feature_link",
+          "label": "Teaser-Link"
+        }
       ]
     }
   ],
-  "enabled_on": { "groups": ["header"] }
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
 }
 {% endschema %}
