@@ -144,7 +144,7 @@
           "type": "buy",
           "settings": {
             "show_quantity": false,
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "payment_note": "Klarna, PayPal, Apple Pay, Kreditkarte"
           }
         },
