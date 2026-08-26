@@ -386,3 +386,32 @@
   }
   customElements.define('sb-faq', SbFaq);
 })();
+
+/* ---------------- <sb-cutoff> — ehrlicher Versand-Countdown --------- */
+(function () {
+  'use strict';
+  class SbCutoff extends HTMLElement {
+    connectedCallback() {
+      this.textEl = this.querySelector('[data-cutoff-text]');
+      this.hour = parseInt(this.dataset.hour, 10);
+      this.before = this.dataset.before;
+      this.after = this.dataset.after;
+      if (!this.textEl || !Number.isFinite(this.hour)) return;
+      this.tick();
+      this.timer = setInterval(() => this.tick(), 60000);
+    }
+    disconnectedCallback() { clearInterval(this.timer); }
+    tick() {
+      const now = new Date();
+      const cutoff = new Date(now);
+      cutoff.setHours(this.hour, 0, 0, 0);
+      const diff = cutoff - now;
+      if (diff <= 0) { this.textEl.textContent = this.after; this.classList.add('is-closed'); return; }
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const left = h > 0 ? `${h} Std. ${m} Min.` : `${m} Min.`;
+      this.textEl.innerHTML = this.before.replace('%%', `<strong>${left}</strong>`);
+    }
+  }
+  customElements.define('sb-cutoff', SbCutoff);
+})();

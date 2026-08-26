@@ -166,9 +166,26 @@
             "text": "<p>IPL braucht Kontrast zwischen Haar und Haut. Bei sehr hellem, rotem oder grauem Haar sowie sehr dunklen Hauttönen ist keine zuverlässige Wirkung zu erwarten.</p>",
             "link_label": "Eignungstabelle ansehen"
           }
+        },
+        "signal": {
+          "type": "signal",
+          "settings": {
+            "text": "Oft ausverkauft",
+            "tone": "popular",
+            "icon": "sparkle"
+          }
+        },
+        "cutoff": {
+          "type": "cutoff",
+          "settings": {
+            "cutoff_hour": 14,
+            "before": "In %% bestellt, morgen verschickt",
+            "after": "Heute bestellt, übermorgen verschickt"
+          }
         }
       },
       "block_order": [
+        "signal",
         "title",
         "rating",
         "price",
@@ -179,6 +196,7 @@
         "bundle_3",
         "variants",
         "buy",
+        "cutoff",
         "payment",
         "trust",
         "usp",

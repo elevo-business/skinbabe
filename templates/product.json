@@ -190,9 +190,26 @@
             "label_6": "Garantie",
             "value_6": ""
           }
+        },
+        "signal": {
+          "type": "signal",
+          "settings": {
+            "text": "Oft ausverkauft",
+            "tone": "popular",
+            "icon": "sparkle"
+          }
+        },
+        "cutoff": {
+          "type": "cutoff",
+          "settings": {
+            "cutoff_hour": 14,
+            "before": "In %% bestellt, morgen verschickt",
+            "after": "Heute bestellt, übermorgen verschickt"
+          }
         }
       },
       "block_order": [
+        "signal",
         "title",
         "rating",
         "price",
@@ -202,6 +219,7 @@
         "bundle_3",
         "variants",
         "buy",
+        "cutoff",
         "payment",
         "trust",
         "usp",

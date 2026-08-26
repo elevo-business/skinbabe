@@ -1,0 +1,5 @@
+<sb-cutoff class="cutoff" data-hour="{{ block.settings.cutoff_hour }}" data-tz-offset="{{ block.settings.tz_offset }}"
+  data-before="{{ block.settings.before | escape }}" data-after="{{ block.settings.after | escape }}">
+  <span class="cutoff__icon">{% render 'icon', icon: 'truck' %}</span>
+  <span class="cutoff__text" data-cutoff-text>{{ block.settings.before }}</span>
+</sb-cutoff>

@@ -1,0 +1,23 @@
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign show = true
+  if block.settings.only_if_low_stock
+    assign show = false
+    if variant.inventory_management != blank and variant.inventory_quantity > 0 and variant.inventory_quantity <= block.settings.low_stock_threshold
+      assign show = true
+    endif
+  endif
+-%}
+{%- if show and block.settings.text != blank -%}
+  <p class="signal signal--{{ block.settings.tone }}">
+    {%- if block.settings.icon != 'none' -%}
+      <span class="signal__dot">{% render 'icon', icon: block.settings.icon %}</span>
+    {%- endif -%}
+    <span>
+      {{- block.settings.text -}}
+      {%- if block.settings.only_if_low_stock and variant.inventory_quantity > 0 -%}
+        {{ ' ' }}<strong>{{ variant.inventory_quantity }}</strong>
+      {%- endif -%}
+    </span>
+  </p>
+{%- endif -%}
