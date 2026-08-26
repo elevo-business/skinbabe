@@ -85,6 +85,7 @@
         },
         "bundle_2": {
           "type": "bundle_option",
+          "disabled": true,
           "settings": {
             "group_title": "Wähle dein Set",
             "mode": "products",
@@ -106,6 +107,7 @@
         },
         "bundle_3": {
           "type": "bundle_option",
+          "disabled": true,
           "settings": {
             "group_title": "Wähle dein Set",
             "mode": "products",
@@ -134,7 +136,7 @@
           "settings": {
             "in_label": "Auf Lager",
             "out_label": "Zurzeit ausverkauft",
-            "ships_text": "Versand in 3–4 Werktagen",
+            "ships_text": "In 3–4 Werktagen bei dir zu Hause ❤️",
             "origin": ""
           }
         },
