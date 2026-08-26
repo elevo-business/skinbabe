@@ -19,7 +19,7 @@
     "color_gold": "#C9A227",
     "color_sale": "#A63D2F",
     "type_heading_font": "assistant_n4",
-    "type_heading_case": "lowercase",
+    "type_heading_case": "none",
     "type_heading_tracking": "-0.02",
     "type_body_font": "assistant_n4",
     "type_body_size": 16,

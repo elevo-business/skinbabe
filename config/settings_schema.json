@@ -119,7 +119,7 @@
             "label": "GROSSSCHREIBUNG"
           }
         ],
-        "default": "lowercase"
+        "default": "none"
       },
       {
         "type": "select",
