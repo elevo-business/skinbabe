@@ -327,11 +327,95 @@
     },
     "testimonials": {
       "type": "testimonials",
+      "blocks": {
+        "review_gLHiEp": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "headline": "",
+            "quote": "Ich hab ehrlich nicht damit gerechnet, dass es diesmal anders ist.",
+            "photo": "shopify://shop_images/En7MF6ltQT_mid.jpg",
+            "name": "Amelia",
+            "date": "",
+            "product": "",
+            "source": "",
+            "source_url": "",
+            "verified": true
+          }
+        },
+        "review_i6N7BG": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "headline": "",
+            "quote": "Ich hab ehrlich nicht damit gerechnet, dass es diesmal anders ist.",
+            "photo": "shopify://shop_images/Ur0ZzRty0.jpg",
+            "name": "Aynur",
+            "date": "",
+            "product": "",
+            "source": "",
+            "source_url": "",
+            "verified": true
+          }
+        },
+        "review_VwiWBD": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "headline": "",
+            "quote": "Ich hab ehrlich nicht damit gerechnet, dass es diesmal anders ist.",
+            "photo": "shopify://shop_images/y6-D3pmvs.jpg",
+            "name": "Michelle",
+            "date": "",
+            "product": "",
+            "source": "",
+            "source_url": "",
+            "verified": true
+          }
+        },
+        "review_BEnGTT": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "headline": "",
+            "quote": "Ich hab ehrlich nicht damit gerechnet, dass es diesmal anders ist.",
+            "photo": "shopify://shop_images/PQwb5uIcE.jpg",
+            "name": "Maja",
+            "date": "",
+            "product": "",
+            "source": "",
+            "source_url": "",
+            "verified": true
+          }
+        },
+        "review_WFyDgA": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "headline": "",
+            "quote": "Ich hab ehrlich nicht damit gerechnet, dass es diesmal anders ist.",
+            "photo": "shopify://shop_images/PRDuj7QSg.jpg",
+            "name": "Melissa",
+            "date": "vor 2 Wochen",
+            "product": "skinbabe-prazisions-rasierer-fur-sensible-haut",
+            "source": "",
+            "source_url": "",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_gLHiEp",
+        "review_i6N7BG",
+        "review_VwiWBD",
+        "review_BEnGTT",
+        "review_WFyDgA"
+      ],
       "settings": {
         "layout": "slider",
         "eyebrow": "bewertungen",
-        "heading": "die meisten waren vorher skeptisch",
-        "heading_accent": "",
+        "heading": "Die meisten waren vorher skeptisch",
+        "heading_accent": "-Es ist zu einfach",
         "link_label": "alle bewertungen",
         "link_url": "",
         "disclaimer": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen.",
@@ -341,8 +425,8 @@
     "guarantee": {
       "type": "guarantee",
       "settings": {
-        "eyebrow": "garantie",
-        "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
+        "eyebrow": "Garantie",
+        "heading": "Wenn es bei dir nicht funktioniert, zahlen wir zurück",
         "heading_accent": "",
         "text": "<p>Du hast schon genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
         "seal_value": "100",
