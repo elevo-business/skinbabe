@@ -475,3 +475,14 @@ sb-media-gallery{position:relative;display:flex;flex-direction:column;gap:.75rem
 .surface-cream .reassure{background:var(--sb-bg)}
 .reassure__icon{flex:none;color:var(--sb-accent)}
 .reassure__icon svg{width:1.15rem;height:1.15rem}
+
+/* ---------------- CTA-Banner ---------------- */
+.cta-banner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem}
+.cta-banner .btn{margin-top:.25rem}
+.cta-seals{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem 2rem;margin-top:1.25rem;padding-top:1.5rem;border-top:1px solid var(--sb-line);width:100%}
+.surface-ink .cta-seals{border-top-color:rgba(255,255,255,.18)}
+.cta-seal{display:inline-flex;align-items:center;gap:.55rem;font-size:.8125rem;text-align:left}
+.cta-seal svg{width:1.4rem;height:1.4rem;flex:none;color:var(--sb-accent)}
+.cta-seal strong{display:block;font-weight:600;letter-spacing:-.01em}
+.cta-seal__sub{display:block;color:var(--sb-muted);font-size:.75rem}
+.surface-ink .cta-seal__sub{color:rgba(255,255,255,.6)}

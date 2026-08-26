@@ -18,7 +18,9 @@
         },
         "rating": {
           "type": "rating",
-          "settings": {}
+          "settings": {
+            "style": "summary"
+          }
         },
         "price": {
           "type": "price",
@@ -214,26 +216,26 @@
       },
       "block_order": [
         "signal",
-        "title",
         "rating",
-        "price",
-        "arguments",
         "gifts",
-        "notice",
-        "bundle_1",
-        "bundle_2",
-        "bundle_3",
-        "variants",
         "stockbar",
+        "title",
+        "price",
+        "notice",
+        "variants",
         "buy",
         "cutoff",
         "payment",
         "trust",
         "reassure",
-        "usp",
         "plan",
+        "usp",
         "accordion",
-        "specs"
+        "specs",
+        "arguments",
+        "bundle_1",
+        "bundle_2",
+        "bundle_3"
       ],
       "settings": {
         "gallery_layout": "stacked",
@@ -440,17 +442,97 @@
         "i6",
         "i7"
       ]
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "eyebrow": "ohne risiko",
+        "heading": "Teste es risikofrei",
+        "text": "<p>Wenn es bei dir nicht funktioniert, bekommst du dein Geld zurück. Ganz einfach.</p>",
+        "button_label": "In den Warenkorb",
+        "background": "cream"
+      },
+      "blocks": {
+        "s1": {
+          "type": "seal",
+          "settings": {
+            "icon": "shield",
+            "title": "90 Tage Garantie",
+            "text": "Geld zurück"
+          }
+        },
+        "s2": {
+          "type": "seal",
+          "settings": {
+            "icon": "return",
+            "title": "Kostenlose Rücksendung",
+            "text": "innerhalb der Frist"
+          }
+        },
+        "s3": {
+          "type": "seal",
+          "settings": {
+            "icon": "chat",
+            "title": "Support auf Deutsch",
+            "text": "werktags in 24 h"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "stats": {
+      "type": "figures",
+      "settings": {
+        "eyebrow": "in zahlen",
+        "heading": "Was Kundinnen berichten",
+        "footnote": "Angaben aus unserer Nachkauf-Befragung. Stand laufend aktualisiert.",
+        "background": "default"
+      },
+      "blocks": {
+        "f1": {
+          "type": "figure",
+          "settings": {
+            "value": "96 %",
+            "label": "weniger Rasierpickel nach 4 Wochen"
+          }
+        },
+        "f2": {
+          "type": "figure",
+          "settings": {
+            "value": "92 %",
+            "label": "würden es weiterempfehlen"
+          }
+        },
+        "f3": {
+          "type": "figure",
+          "settings": {
+            "value": "4,7",
+            "label": "durchschnittliche Bewertung"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ]
     }
   },
   "order": [
     "main",
+    "included",
     "steps",
     "mechanism",
     "before_after",
     "comparison",
+    "stats",
+    "cta",
     "review_summary",
     "testimonials",
-    "included",
     "guarantee",
     "faq",
     "recommendations"

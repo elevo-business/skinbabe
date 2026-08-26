@@ -237,24 +237,26 @@
         }
       },
       "block_order": [
-        "title",
+        "signal",
         "rating",
-        "price",
-        "arguments",
         "gifts",
-        "bundle_1",
-        "bundle_2",
-        "bundle_3",
-        "variants",
         "stockbar",
+        "title",
+        "price",
+        "variants",
         "buy",
+        "cutoff",
         "payment",
         "trust",
         "reassure",
-        "usp",
         "plan",
+        "usp",
         "accordion",
-        "specs"
+        "specs",
+        "arguments",
+        "bundle_1",
+        "bundle_2",
+        "bundle_3"
       ],
       "settings": {
         "gallery_layout": "carousel",
@@ -502,17 +504,185 @@
         "text_align": "left",
         "background": "cream"
       }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "eyebrow": "ohne risiko",
+        "heading": "Teste es risikofrei",
+        "text": "<p>Wenn es bei dir nicht funktioniert, bekommst du dein Geld zurück. Ganz einfach.</p>",
+        "button_label": "In den Warenkorb",
+        "background": "cream"
+      },
+      "blocks": {
+        "s1": {
+          "type": "seal",
+          "settings": {
+            "icon": "shield",
+            "title": "30 Tage Garantie",
+            "text": "Geld zurück"
+          }
+        },
+        "s2": {
+          "type": "seal",
+          "settings": {
+            "icon": "return",
+            "title": "Kostenlose Rücksendung",
+            "text": "innerhalb der Frist"
+          }
+        },
+        "s3": {
+          "type": "seal",
+          "settings": {
+            "icon": "chat",
+            "title": "Support auf Deutsch",
+            "text": "werktags in 24 h"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "stats": {
+      "type": "figures",
+      "settings": {
+        "eyebrow": "in zahlen",
+        "heading": "Was Kundinnen berichten",
+        "footnote": "Angaben aus unserer Nachkauf-Befragung. Stand laufend aktualisiert.",
+        "background": "default"
+      },
+      "blocks": {
+        "f1": {
+          "type": "figure",
+          "settings": {
+            "value": "96 %",
+            "label": "weniger Rasierpickel nach 4 Wochen"
+          }
+        },
+        "f2": {
+          "type": "figure",
+          "settings": {
+            "value": "92 %",
+            "label": "würden es weiterempfehlen"
+          }
+        },
+        "f3": {
+          "type": "figure",
+          "settings": {
+            "value": "4,7",
+            "label": "durchschnittliche Bewertung"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ]
+    },
+    "included": {
+      "type": "included-items",
+      "settings": {
+        "eyebrow": "im set enthalten",
+        "heading": "Alles für den perfekten Shave",
+        "columns": 4,
+        "text_align": "center",
+        "free_label": "GRATIS",
+        "background": "cream"
+      },
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "title": "SilkGlide Pro 2.0™",
+            "text": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur.",
+            "free": false
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "title": "BodySmooth™ Scherkopf",
+            "text": "Für sanfte Präzision ohne Nicks. Bleibt bis zu 50 Rasuren scharf.",
+            "free": false
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "title": "USB-Ladekabel",
+            "text": "Damit dein Gerät immer einsatzbereit ist.",
+            "free": false
+          }
+        },
+        "i4": {
+          "type": "item",
+          "settings": {
+            "title": "Runder Intimaufsatz",
+            "text": "Für Bikinizone, Achseln und Gesicht. Runde Klingen berühren die Haut nie direkt.",
+            "free": true
+          }
+        },
+        "i5": {
+          "type": "item",
+          "settings": {
+            "title": "Schutzkappe",
+            "text": "Schützt empfindliche Haut und reduziert Reizungen im Alltag.",
+            "free": true
+          }
+        },
+        "i6": {
+          "type": "item",
+          "settings": {
+            "title": "Peeling-Handschuh",
+            "text": "Entfernt sanft abgestorbene Haut und beugt eingewachsenen Haaren vor.",
+            "free": true
+          }
+        },
+        "i7": {
+          "type": "item",
+          "settings": {
+            "title": "Reinigungsbürste",
+            "text": "Fegt Haare und Rückstände weg, bevor du den Scherkopf abspülst.",
+            "free": true
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6",
+        "i7"
+      ]
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "passt dazu",
+        "limit": 4,
+        "background": "default"
+      }
     }
   },
   "order": [
     "main",
+    "included",
     "steps",
     "mechanism",
     "before_after",
     "comparison",
+    "stats",
+    "cta",
     "review_summary",
     "testimonials",
     "guarantee",
-    "faq"
+    "faq",
+    "recommendations"
   ]
 }
