@@ -69,11 +69,14 @@
       "settings": {
         "eyebrow": "der mechanismus",
         "heading": "warum haare überhaupt einwachsen",
+        "heading_accent": "",
         "transition": "Nichts davon ist die Ursache.",
         "answer_eyebrow": "lift and cut",
         "answer_heading": "Das Prinzip, das das Problem erzeugt.",
         "answer_text": "<p>Mehrklingen-Rasierer heben das Haar an und kappen es unter der Hautoberfläche. Das ist kein Fehler im Produkt — das ist die Funktionsweise.</p>",
         "conclusion": "Ein Rasierer mit Schutzkopf hat keinen direkten Klingenkontakt zur Haut.",
+        "link_label": "",
+        "link_url": "",
         "background": "cream"
       }
     },
@@ -83,33 +86,33 @@
         "c1": {
           "type": "change",
           "settings": {
-            "icon": "shield",
             "title": "Schutzkopf statt Klingenkontakt",
-            "text": "Ein feines Gitter zwischen Klinge und Haut. Das Haar wird auf Hautniveau gekürzt, nicht darunter."
+            "text": "Ein feines Gitter zwischen Klinge und Haut. Das Haar wird auf Hautniveau gekürzt, nicht darunter.",
+            "icon": "shield"
           }
         },
         "c2": {
           "type": "change",
           "settings": {
-            "icon": "droplet",
             "title": "Trocken möglich",
-            "text": "Ohne Wasser und ohne Schaum — die Reibung, die sonst zusätzlich reizt, fällt weg."
+            "text": "Ohne Wasser und ohne Schaum — die Reibung, die sonst zusätzlich reizt, fällt weg.",
+            "icon": "droplet"
           }
         },
         "c3": {
           "type": "change",
           "settings": {
-            "icon": "clock",
             "title": "Nachwachsen ohne Barriere",
-            "text": "Das Haar trifft beim Nachwachsen nicht auf verschlossene Haut."
+            "text": "Das Haar trifft beim Nachwachsen nicht auf verschlossene Haut.",
+            "icon": "clock"
           }
         },
         "c4": {
           "type": "change",
           "settings": {
-            "icon": "leaf",
             "title": "Weniger Produkte danach",
-            "text": "Kein Peeling, kein Serum gegen ein Problem, das gar nicht erst entsteht."
+            "text": "Kein Peeling, kein Serum gegen ein Problem, das gar nicht erst entsteht.",
+            "icon": "leaf"
           }
         }
       },
@@ -122,6 +125,9 @@
       "settings": {
         "eyebrow": "der unterschied",
         "heading": "was ein schutzkopf anders macht",
+        "heading_accent": "",
+        "text": "",
+        "text_align": "left",
         "background": "default"
       }
     },
@@ -131,12 +137,14 @@
         "p1": {
           "type": "product",
           "settings": {
+            "product": "",
             "subtitle": "Für jetzt sofort glatt, ohne die Pünktchen danach."
           }
         },
         "p2": {
           "type": "product",
           "settings": {
+            "product": "",
             "subtitle": "Sofort glatt und langfristig weniger — zusammen."
           }
         }
@@ -148,9 +156,11 @@
       "settings": {
         "eyebrow": "danach",
         "heading": "womit du das löst",
+        "heading_accent": "",
         "link_label": "alle produkte",
-        "background": "cream",
-        "link_url": "shopify://collections/all"
+        "link_url": "shopify://collections/all",
+        "footnote": "Rasierer für jetzt sofort glatt. IPL für langfristig weniger. Beides zusammen ist kein Doppelkauf.",
+        "background": "cream"
       }
     },
     "faq": {
@@ -158,13 +168,29 @@
       "settings": {
         "eyebrow": "häufig gefragt",
         "heading": "was du noch wissen willst",
+        "heading_accent": "",
+        "text": "",
+        "open_first": true,
+        "single_open": true,
+        "show_topics": true,
         "structured_data": true,
+        "footer_text": "Deine Frage ist nicht dabei?",
+        "footer_link_label": "Schreib uns",
+        "footer_link": "",
+        "width": "narrow",
+        "text_align": "left",
         "background": "default"
       }
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {
+        "eyebrow": "",
+        "heading": "wir schreiben selten. dafür nichts überflüssiges.",
+        "heading_accent": "",
+        "text": "<p>Neue Produkte, Nachkauf-Erinnerungen und gelegentlich etwas, das dir wirklich hilft.</p>",
+        "button_label": "Anmelden",
+        "legal": "Mit der Anmeldung stimmst du dem Erhalt von E-Mails zu. Abmeldung jederzeit über den Link in jeder Mail. Details in unserer Datenschutzerklärung.",
         "background": "cream"
       }
     }
