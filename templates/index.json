@@ -551,17 +551,9 @@
         "g1": {
           "type": "point",
           "settings": {
-            "title": "30 Tage auf den Rasierer",
+            "title": "100 Tage auf den Rasierer",
             "text": "Das Ergebnis siehst du nach der ersten Anwendung. Wenn du nach vier Wochen nicht überzeugt bist, schickst du ihn zurück.",
             "icon": "shield"
-          }
-        },
-        "g2": {
-          "type": "point",
-          "settings": {
-            "title": "90 Tage auf das IPL-Gerät",
-            "text": "Eine sichtbare Haarreduktion braucht etwa zehn Anwendungen. Eine 30-Tage-Frist wäre eine Frist, die du gar nicht nutzen könntest.",
-            "icon": "clock"
           }
         },
         "g3": {
@@ -583,7 +575,6 @@
       },
       "block_order": [
         "g1",
-        "g2",
         "g3",
         "g4"
       ],
@@ -592,7 +583,7 @@
         "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
         "heading_accent": "",
         "text": "<p>Du hast genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
-        "seal_value": "30 / 90",
+        "seal_value": "100",
         "seal_label": "Tage Garantie",
         "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
         "link_label": "versand & rückgabe im detail",
