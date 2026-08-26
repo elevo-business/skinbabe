@@ -349,6 +349,7 @@
         "t2",
         "t3"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "so läuft das",
         "heading": "drei minuten, kein aufwand",
@@ -418,6 +419,8 @@
         "heading": "zieh den regler",
         "heading_accent": "",
         "text": "",
+        "image_before": "shopify://shop_images/Dein_Abschnittstext_13_1.webp",
+        "image_after": "shopify://shop_images/Dein_Abschnittstext_13_1.webp",
         "label_before": "vorher",
         "label_after": "nachher",
         "slider_label": "Vergleich zwischen vorher und nachher",
@@ -469,6 +472,7 @@
         "s2",
         "s3"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "set zusammenstellen",
         "heading": "bau dir das set, das zu dir passt",
@@ -523,6 +527,7 @@
         "u3",
         "u4"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "community",
         "heading": "sie haben es vorher auch nicht geglaubt",
