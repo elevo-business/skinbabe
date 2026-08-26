@@ -53,6 +53,9 @@
         "full_bleed": true,
         "overlay_opacity": 35,
         "text_align": "left",
+        "content_position": "bottom",
+        "content_inset": 48,
+        "content_inset_mobile": 32,
         "eyebrow": "",
         "heading": "Rasieren kann auch angenehm sein.",
         "heading_accent": "",
@@ -60,10 +63,7 @@
         "button_label": "Skinbabe ansehen",
         "button_link": "",
         "button_2_label": "warum haare einwachsen",
-        "button_2_link": "",
-        "content_position": "bottom",
-        "content_inset": 48,
-        "content_inset_mobile": 32
+        "button_2_link": ""
       }
     },
     "marquee": {
@@ -144,7 +144,7 @@
         "heading_accent": "",
         "link_label": "alle produkte",
         "link_url": "",
-        "footnote": "Der Rasierer löst „jetzt sofort glatt“. Das IPL-Gerät zielt auf langanhaltende Haarreduktion. Zusammen ist das kein Doppelkauf.",
+        "footnote": "",
         "background": "default"
       }
     },
