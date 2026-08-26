@@ -192,6 +192,15 @@
             {%- when 'text' -%}
               <div class="rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
 
+            {%- when 'gifts' -%}
+              <div {{ block.shopify_attributes }}>{% render 'product-gifts', block: block %}</div>
+
+            {%- when 'stockbar' -%}
+              <div {{ block.shopify_attributes }}>{% render 'product-stockbar', product: product, block: block %}</div>
+
+            {%- when 'reassure' -%}
+              <div {{ block.shopify_attributes }}>{% render 'product-reassure', block: block %}</div>
+
             {%- when 'signal' -%}
               <div {{ block.shopify_attributes }}>{% render 'product-signal', product: product, block: block %}</div>
 
@@ -1438,6 +1447,204 @@
           "id": "after",
           "label": "Nach Bestellschluss",
           "default": "Heute bestellt, übermorgen verschickt"
+        }
+      ]
+    },
+    {
+      "type": "gifts",
+      "name": "Gratis-Geschenke",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Zeigt kostenlose Zugaben. Wichtig: der durchgestrichene Wert muss glaubwuerdig sein. Aufgeblasene UVPs auf Zugaben schwaechen das Angebot."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Ueberschrift",
+          "default": "Gratis zu deiner ersten Bestellung"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Zusatz",
+          "default": "Kostenlose Extras"
+        },
+        {
+          "type": "text",
+          "id": "free_label",
+          "label": "Badge-Text",
+          "default": "GRATIS"
+        },
+        {
+          "type": "range",
+          "id": "count",
+          "min": 2,
+          "max": 4,
+          "step": 1,
+          "label": "Spalten",
+          "default": 4
+        },
+        {
+          "type": "header",
+          "content": "Geschenk 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "g1_image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "g1_title",
+          "label": "Titel",
+          "default": "Intimaufsatz"
+        },
+        {
+          "type": "text",
+          "id": "g1_value",
+          "label": "Wert (durchgestrichen)"
+        },
+        {
+          "type": "header",
+          "content": "Geschenk 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "g2_image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "g2_title",
+          "label": "Titel",
+          "default": "Peeling-Handschuh"
+        },
+        {
+          "type": "text",
+          "id": "g2_value",
+          "label": "Wert"
+        },
+        {
+          "type": "header",
+          "content": "Geschenk 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "g3_image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "g3_title",
+          "label": "Titel",
+          "default": "Mystery-Geschenk"
+        },
+        {
+          "type": "text",
+          "id": "g3_value",
+          "label": "Wert"
+        },
+        {
+          "type": "header",
+          "content": "Geschenk 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "g4_image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "g4_title",
+          "label": "Titel",
+          "default": "Gratis-Versand"
+        },
+        {
+          "type": "text",
+          "id": "g4_value",
+          "label": "Wert"
+        }
+      ]
+    },
+    {
+      "type": "stockbar",
+      "name": "Lager & Versand",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "in_label",
+          "label": "Auf Lager",
+          "default": "Auf Lager"
+        },
+        {
+          "type": "text",
+          "id": "out_label",
+          "label": "Ausverkauft",
+          "default": "Zurzeit ausverkauft"
+        },
+        {
+          "type": "text",
+          "id": "ships_text",
+          "label": "Versandhinweis",
+          "default": "Versand in 2–4 Werktagen"
+        },
+        {
+          "type": "text",
+          "id": "origin",
+          "label": "Herkunft",
+          "default": "Versand aus Deutschland"
+        }
+      ]
+    },
+    {
+      "type": "reassure",
+      "name": "Beruhigungshinweis",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Weniger als 1 % der Kundinnen nutzen die Geld-zurück-Garantie."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "shield",
+          "options": [
+            {
+              "value": "none",
+              "label": "none"
+            },
+            {
+              "value": "shield",
+              "label": "shield"
+            },
+            {
+              "value": "check",
+              "label": "check"
+            },
+            {
+              "value": "sparkle",
+              "label": "sparkle"
+            },
+            {
+              "value": "leaf",
+              "label": "leaf"
+            },
+            {
+              "value": "chat",
+              "label": "chat"
+            },
+            {
+              "value": "return",
+              "label": "return"
+            }
+          ]
         }
       ]
     },

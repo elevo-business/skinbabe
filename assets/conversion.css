@@ -445,3 +445,33 @@ sb-media-gallery{position:relative;display:flex;flex-direction:column;gap:.75rem
 .cutoff__icon{display:inline-flex;flex:none;color:var(--sb-accent)}
 .cutoff__icon svg{width:1.1rem;height:1.1rem}
 .cutoff.is-closed .cutoff__icon{color:var(--sb-muted)}
+
+/* ---------------- Gratis-Geschenke (PDP) ---------------- */
+.gifts{display:flex;flex-direction:column;gap:.75rem}
+.gifts__head{font-size:.8125rem;letter-spacing:.02em}
+.gifts__head strong{text-transform:uppercase;letter-spacing:.06em;font-size:.75rem}
+.gifts__head span{color:var(--sb-muted)}
+.gifts__grid{display:grid;grid-template-columns:repeat(var(--gift-cols,4),1fr);gap:.6rem}
+@media screen and (max-width:749px){.gifts__grid{grid-template-columns:repeat(4,1fr);gap:.45rem}}
+.gift{display:flex;flex-direction:column;gap:.4rem;text-align:center}
+.gift__media{position:relative;aspect-ratio:1;display:grid;place-items:center;background:var(--sb-accent-soft);border-radius:var(--sb-radius-md);overflow:hidden}
+.gift__media img{width:74%;height:74%;object-fit:contain}
+.gift__badge{position:absolute;top:.4rem;left:50%;transform:translateX(-50%);white-space:nowrap;display:inline-flex;gap:.25rem;align-items:center;padding:.2rem .45rem;border-radius:var(--sb-radius-pill);background:var(--sb-ink);color:#fff;font-size:.5625rem;font-weight:700;letter-spacing:.04em}
+.gift__badge s{opacity:.6;font-weight:500}
+.gift__title{font-size:.6875rem;font-weight:600;line-height:1.2}
+@media screen and (max-width:389px){.gift__title{font-size:.625rem}}
+
+/* ---------------- Lager-/Versandleiste ---------------- */
+.stockbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.75rem 1rem;background:var(--sb-cream);border-radius:var(--sb-radius-md);font-size:.8125rem}
+.surface-cream .stockbar{background:var(--sb-bg)}
+.stockbar__left{display:inline-flex;align-items:center;gap:.5rem}
+.stockbar__dot{width:.5rem;height:.5rem;border-radius:50%;flex:none}
+.stockbar__dot.is-in{background:var(--sb-success);box-shadow:0 0 0 3px rgba(47,125,84,.18)}
+.stockbar__dot.is-out{background:var(--sb-muted)}
+.stockbar__muted{color:var(--sb-muted)}
+
+/* ---------------- Beruhigungshinweis ---------------- */
+.reassure{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;background:var(--sb-cream);border-radius:var(--sb-radius-md);font-size:.8125rem;line-height:1.4}
+.surface-cream .reassure{background:var(--sb-bg)}
+.reassure__icon{flex:none;color:var(--sb-accent)}
+.reassure__icon svg{width:1.15rem;height:1.15rem}

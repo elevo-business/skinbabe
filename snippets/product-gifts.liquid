@@ -1,0 +1,32 @@
+{%- liquid
+  assign gifts = block.settings.count | default: 4
+-%}
+<div class="gifts">
+  {%- if block.settings.heading != blank -%}
+    <p class="gifts__head">
+      <strong>{{ block.settings.heading }}</strong>
+      {%- if block.settings.subheading != blank -%} <span>{{ block.settings.subheading }}</span>{%- endif -%}
+    </p>
+  {%- endif -%}
+  <ul class="gifts__grid" style="--gift-cols:{{ gifts }};">
+    {%- for i in (1..4) -%}
+      {%- liquid
+        assign img = 'g' | append: i | append: '_image'
+        assign ttl = 'g' | append: i | append: '_title'
+        assign val = 'g' | append: i | append: '_value'
+        assign title = block.settings[ttl]
+      -%}
+      {%- if title != blank -%}
+        <li class="gift">
+          <div class="gift__media">
+            <span class="gift__badge">{{ block.settings.free_label }}{% if block.settings[val] != blank %} <s>{{ block.settings[val] }}</s>{% endif %}</span>
+            {%- if block.settings[img] != blank -%}
+              <img src="{{ block.settings[img] | image_url: width: 320 }}" alt="{{ title | escape }}" width="160" height="160" loading="lazy">
+            {%- else -%}{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}{%- endif -%}
+          </div>
+          <span class="gift__title">{{ title }}</span>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>

@@ -1,0 +1,14 @@
+{%- liquid
+  assign v = product.selected_or_first_available_variant
+  assign in_stock = v.available
+-%}
+<div class="stockbar">
+  <span class="stockbar__left">
+    <span class="stockbar__dot {% if in_stock %}is-in{% else %}is-out{% endif %}"></span>
+    <strong>{% if in_stock %}{{ block.settings.in_label }}{% else %}{{ block.settings.out_label }}{% endif %}</strong>
+    {%- if in_stock and block.settings.ships_text != blank -%} <span class="stockbar__muted">{{ block.settings.ships_text }}</span>{%- endif -%}
+  </span>
+  {%- if block.settings.origin != blank -%}
+    <span class="stockbar__muted">{{ block.settings.origin }}</span>
+  {%- endif -%}
+</div>

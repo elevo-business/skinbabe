@@ -182,6 +182,34 @@
             "before": "In %% bestellt, morgen verschickt",
             "after": "Heute bestellt, übermorgen verschickt"
           }
+        },
+        "gifts": {
+          "type": "gifts",
+          "settings": {
+            "heading": "Gratis zu deiner ersten Bestellung",
+            "subheading": "Kostenlose Extras",
+            "free_label": "GRATIS",
+            "count": 4,
+            "g1_title": "Intimaufsatz",
+            "g2_title": "Peeling-Handschuh",
+            "g3_title": "Mystery-Geschenk",
+            "g4_title": "Gratis-Versand"
+          }
+        },
+        "stockbar": {
+          "type": "stockbar",
+          "settings": {
+            "in_label": "Auf Lager",
+            "ships_text": "Versand in 2–4 Werktagen",
+            "origin": "Versand aus Deutschland"
+          }
+        },
+        "reassure": {
+          "type": "reassure",
+          "settings": {
+            "text": "Weniger als 1 % der Kundinnen nutzen die Geld-zurück-Garantie.",
+            "icon": "shield"
+          }
         }
       },
       "block_order": [
@@ -190,15 +218,18 @@
         "rating",
         "price",
         "arguments",
+        "gifts",
         "notice",
         "bundle_1",
         "bundle_2",
         "bundle_3",
         "variants",
+        "stockbar",
         "buy",
         "cutoff",
         "payment",
         "trust",
+        "reassure",
         "usp",
         "plan",
         "accordion",
