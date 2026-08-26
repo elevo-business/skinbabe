@@ -24,10 +24,26 @@
             "style": "summary"
           }
         },
-        "price": {
-          "type": "price",
+        "stockbar": {
+          "type": "stockbar",
           "settings": {
-            "tax_note": ""
+            "in_label": "Auf Lager",
+            "out_label": "Zurzeit ausverkauft",
+            "ships_text": "In 3–4 Werktagen bei dir zu Hause ❤️",
+            "origin": ""
+          }
+        },
+        "buybox": {
+          "type": "buybox",
+          "settings": {
+            "heading": "Dein Set",
+            "tax_note": "inkl. MwSt., zzgl. Versand",
+            "show_dynamic_checkout": false,
+            "show_payment": true,
+            "reassurance": "100 Tage Rückgabe, auch benutzt",
+            "upsell_product": "",
+            "upsell_label": "Ersatzköpfe dazulegen",
+            "upsell_text": "Für die nächsten 6 Monate"
           }
         },
         "arguments": {
@@ -127,33 +143,6 @@
             "selected": false
           }
         },
-        "variants": {
-          "type": "variants",
-          "settings": {}
-        },
-        "stockbar": {
-          "type": "stockbar",
-          "settings": {
-            "in_label": "Auf Lager",
-            "out_label": "Zurzeit ausverkauft",
-            "ships_text": "In 3–4 Werktagen bei dir zu Hause ❤️",
-            "origin": ""
-          }
-        },
-        "buy": {
-          "type": "buy",
-          "settings": {
-            "show_quantity": false,
-            "show_dynamic_checkout": false,
-            "payment_note": "Klarna, PayPal, Apple Pay, Kreditkarte"
-          }
-        },
-        "payment": {
-          "type": "payment",
-          "settings": {
-            "limit": 6
-          }
-        },
         "trust": {
           "type": "trust",
           "settings": {
@@ -231,18 +220,6 @@
             "label_6": "Garantie",
             "value_6": ""
           }
-        },
-        "buybox": {
-          "type": "buybox",
-          "settings": {
-            "heading": "Dein Set",
-            "tax_note": "inkl. MwSt., zzgl. Versand",
-            "show_dynamic_checkout": true,
-            "show_payment": true,
-            "reassurance": "30 Tage Rückgabe, auch benutzt",
-            "upsell_label": "Ersatzköpfe dazulegen",
-            "upsell_text": "Für die nächsten 6 Monate"
-          }
         }
       },
       "block_order": [
@@ -250,7 +227,6 @@
         "rating",
         "stockbar",
         "buybox",
-        "cutoff",
         "arguments",
         "gifts",
         "bundle_1",
