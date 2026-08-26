@@ -35,19 +35,24 @@ sb-header{
 sb-header.is-stuck{border-bottom-color:var(--sb-line)}
 sb-header.is-hidden{transform:translateY(-100%)}
 
-/* --- Transparent: der Header legt sich ueber den ersten Abschnitt.
-   Der negative Aussenabstand zieht den Inhalt darunter hoch, ohne dass
-   das Sticky-Verhalten verloren geht. --- */
+/* --- Transparent: kein eigener Hintergrund --- */
 sb-header.header--transparent{
   background:transparent;
   border-bottom-color:transparent;
+}
+/* --- Ueberlagern: der negative Aussenabstand zieht den Inhalt darunter
+   hoch, ohne dass das Sticky-Verhalten verloren geht. --- */
+sb-header.header--overlap{
   margin-bottom:calc(var(--header-height,3.5rem) * -1);
 }
 sb-header.header--transparent-light{color:#fff}
 sb-header.header--transparent-light .header__icon:hover{background:rgba(255,255,255,.16)}
 sb-header.header--transparent-light .nav__link:hover{background:rgba(255,255,255,.14)}
-sb-header.header--transparent .header__logo-img--default{display:none}
-sb-header.header--transparent .header__logo-img--inverted{display:block}
+/* Ohne hinterlegtes helles Logo wird das vorhandene Logo aufgehellt,
+   damit es auf dem Bild nicht untergeht. */
+sb-header.header--logo-auto-invert:not(.is-stuck) .header__logo img{filter:brightness(0) invert(1)}
+sb-header.header--transparent-light .header__logo-img--default{display:none}
+sb-header.header--transparent-light .header__logo-img--inverted{display:block}
 
 /* Sobald gescrollt wird, ist der Header wieder deckend */
 sb-header.header--transparent.is-stuck{
@@ -55,8 +60,8 @@ sb-header.header--transparent.is-stuck{
   color:var(--sb-ink);
   border-bottom-color:var(--sb-line);
 }
-sb-header.header--transparent.is-stuck .header__logo-img--default{display:block}
-sb-header.header--transparent.is-stuck .header__logo-img--inverted{display:none}
+sb-header.header--transparent-light.is-stuck .header__logo-img--default{display:block}
+sb-header.header--transparent-light.is-stuck .header__logo-img--inverted{display:none}
 sb-header.header--transparent.is-stuck .header__icon:hover{background:var(--sb-cream)}
 
 .header{
@@ -65,6 +70,8 @@ sb-header.header--transparent.is-stuck .header__icon:hover{background:var(--sb-c
   align-items:center;
   gap:.5rem;
   height:var(--header-height,3.5rem);
+  /* Ein Logo groesser als die Kopfhoehe ragt hinaus, statt sie zu dehnen */
+  overflow:visible;
   padding-inline:var(--sb-gutter);
   max-width:var(--sb-page-width);margin-inline:auto;
 }
@@ -74,14 +81,17 @@ sb-header.header--transparent.is-stuck .header__icon:hover{background:var(--sb-c
    vergroessert damit nie den Header. */
 .header__logo{
   justify-self:center;display:inline-flex;align-items:center;
-  height:var(--logo-height,28px);
+  /* Keine feste Hoehe: das Logo bestimmt seine Groesse selbst */
+  line-height:0;
 }
 .header__logo-img,
 .header__logo img{
   display:block;
-  width:auto;height:auto;
-  max-width:var(--logo-width,120px);
-  max-height:var(--logo-height,28px);
+  width:auto;
+  height:var(--logo-height,32px);
+  max-width:var(--logo-width,180px);
+  /* Greift die Breitengrenze, skaliert die Hoehe proportional mit */
+  object-fit:contain;
 }
 .header__logo-img--inverted{display:none}
 .header__logo-text{
@@ -106,16 +116,23 @@ sb-header.header--transparent.is-stuck .header__icon:hover{background:var(--sb-c
 }
 .header__menu-toggle{justify-self:start}
 
+/* Kopfhoehe an das Logo anpassen: dann ist die eingestellte Hoehe ein
+   Mindestwert und der Header waechst bei Bedarf mit. */
+sb-header.header--logo-leads .header{height:auto;min-height:var(--header-height,3.5rem);padding-block:.5rem}
+
 /* Liegt der Header transparent ueber dem ersten Abschnitt, braucht ein
    zweispaltiger Hero oben Luft, damit der Text nicht unter dem Header steht.
    Der Vollbild-Hero setzt seinen Text ohnehin nach unten. */
-body:has(sb-header.header--transparent) main > .shopify-section:first-child .hero--split .hero__content{
+body:has(sb-header.header--overlap) main > .shopify-section:first-child .hero--split .hero__content{
   padding-top:calc(var(--sb-header-height,4rem) + 1.5rem);
 }
 
 @media screen and (min-width:990px){
   .header{grid-template-columns:auto 1fr auto;gap:2rem;height:var(--header-height-desktop,4rem)}
-  sb-header.header--transparent{margin-bottom:calc(var(--header-height-desktop,4rem) * -1)}
+  .header__logo-img,
+  .header__logo img{height:var(--logo-height-desktop,40px)}
+  sb-header.header--overlap{margin-bottom:calc(var(--header-height-desktop,4rem) * -1)}
+  sb-header.header--logo-leads .header{height:auto;min-height:var(--header-height-desktop,4rem)}
   .header__menu-toggle{display:none}
   .header__logo{justify-self:start}
   .header__nav{display:flex;justify-content:center}

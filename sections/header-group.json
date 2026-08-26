@@ -59,9 +59,12 @@
         "drawer_note_link": "shopify://products/skinbabe-prazisions-rasierer-fur-sensible-haut",
         "height": 64,
         "height_mobile": 54,
-        "logo_height": 28,
-        "transparent_mode": "index",
-        "transparent_text": "light"
+        "logo_height": 40,
+        "transparent_mode": "all",
+        "transparent_text": "auto",
+        "logo_height_mobile": 32,
+        "logo_grows_header": false,
+        "overlap_mode": "index"
       }
     }
   },

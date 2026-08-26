@@ -18,12 +18,13 @@
       {
         "type": "range",
         "id": "logo_width",
-        "min": 60,
-        "max": 260,
-        "step": 5,
+        "min": 80,
+        "max": 480,
+        "step": 10,
         "unit": "px",
         "label": "Logo-Breite",
-        "default": 120
+        "default": 180,
+        "info": "Obergrenze für die Breite. Die eigentliche Größe stellst du über die Logo-Höhe im Header ein."
       },
       {
         "type": "image_picker",

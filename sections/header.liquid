@@ -2,8 +2,12 @@
   assign menu = section.settings.menu
 
   comment
-    Transparenter Header legt sich ueber den ersten Abschnitt. Sinnvoll nur,
-    wenn dort ein Bild liegt — sonst steht heller Text auf hellem Grund.
+    Zwei getrennte Dinge:
+    - transparent: der Header hat keinen eigenen Hintergrund
+    - overlap:     er legt sich zusaetzlich ueber den ersten Abschnitt
+
+    Ueberlagern ergibt nur Sinn, wo darunter ein Bild liegt. Auf einer
+    Produktseite wuerde sonst der Inhalt unter den Header rutschen.
   endcomment
   assign transparent = false
   if section.settings.transparent_mode == 'all'
@@ -11,16 +15,42 @@
   elsif section.settings.transparent_mode == 'index' and template.name == 'index'
     assign transparent = true
   endif
+
+  assign overlap = false
+  if section.settings.overlap_mode == 'all'
+    assign overlap = true
+  elsif section.settings.overlap_mode == 'index' and template.name == 'index'
+    assign overlap = true
+  endif
+
+  comment
+    Schriftfarbe: automatisch heisst hell, wo der Header ueber einem Bild
+    liegt, sonst dunkel. So bleibt das Logo ueberall sichtbar.
+  endcomment
+  assign text_scheme = section.settings.transparent_text
+  if text_scheme == 'auto'
+    if overlap
+      assign text_scheme = 'light'
+    else
+      assign text_scheme = 'dark'
+    endif
+  endif
 -%}
 <sb-header
-  class="{% if transparent %}header--transparent header--transparent-{{ section.settings.transparent_text }}{% endif %}"
+  class="
+    {%- if transparent %} header--transparent header--transparent-{{ text_scheme }}{% endif -%}
+    {%- if overlap %} header--overlap{% endif -%}
+    {%- if transparent and text_scheme == 'light' and settings.logo_inverted == blank %} header--logo-auto-invert{% endif -%}
+    {%- if section.settings.logo_grows_header %} header--logo-leads{% endif -%}
+  "
   data-hide-on-scroll="{{ section.settings.hide_on_scroll }}"
   data-transparent="{{ transparent }}"
   style="
     --header-height:{{ section.settings.height_mobile }}px;
     --header-height-desktop:{{ section.settings.height }}px;
     --logo-width:{{ settings.logo_width }}px;
-    --logo-height:{{ section.settings.logo_height }}px;
+    --logo-height:{{ section.settings.logo_height_mobile }}px;
+    --logo-height-desktop:{{ section.settings.logo_height }}px;
   "
 >
   <div class="header">
@@ -125,7 +155,7 @@
           height="{{ settings.logo.height }}"
           {% if template.name == 'index' %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
         >
-        {%- if transparent and settings.logo_inverted != blank -%}
+        {%- if transparent and text_scheme == 'light' and settings.logo_inverted != blank -%}
           <img
             class="header__logo-img header__logo-img--inverted"
             src="{{ settings.logo_inverted | image_url: width: 600 }}"
@@ -198,17 +228,48 @@
     },
     {
       "type": "header",
-      "content": "Höhe und Logo"
+      "content": "Logo"
     },
     {
       "type": "paragraph",
-      "content": "Die Kopfhöhe ist fest. Ein größeres Logo macht den Header nicht höher — es wird auf die Logo-Höhe begrenzt."
+      "content": "Die Logo-Höhe ist der eigentliche Regler. Die Breite unter Marke wirkt nur als Obergrenze — ist sie zu klein, bleibt das Logo klein."
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 16,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo-Höhe (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "logo_height_mobile",
+      "min": 14,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo-Höhe (Mobil)",
+      "default": 32
+    },
+    {
+      "type": "checkbox",
+      "id": "logo_grows_header",
+      "label": "Kopfhöhe an das Logo anpassen",
+      "default": false,
+      "info": "Aus: Die Kopfhöhe bleibt fest, ein großes Logo ragt darüber hinaus. An: Der Header wächst mit dem Logo mit."
+    },
+    {
+      "type": "header",
+      "content": "Kopfhöhe"
     },
     {
       "type": "range",
       "id": "height",
       "min": 48,
-      "max": 104,
+      "max": 120,
       "step": 2,
       "unit": "px",
       "label": "Kopfhöhe (Desktop)",
@@ -218,22 +279,11 @@
       "type": "range",
       "id": "height_mobile",
       "min": 44,
-      "max": 88,
+      "max": 96,
       "step": 2,
       "unit": "px",
       "label": "Kopfhöhe (Mobil)",
       "default": 54
-    },
-    {
-      "type": "range",
-      "id": "logo_height",
-      "min": 16,
-      "max": 56,
-      "step": 1,
-      "unit": "px",
-      "label": "Maximale Logo-Höhe",
-      "default": 28,
-      "info": "Die Breite stellst du in den Theme-Einstellungen unter Marke ein."
     },
     {
       "type": "header",
@@ -242,7 +292,27 @@
     {
       "type": "select",
       "id": "transparent_mode",
-      "label": "Transparent über dem ersten Abschnitt",
+      "label": "Transparenter Hintergrund",
+      "default": "all",
+      "options": [
+        {
+          "value": "off",
+          "label": "Aus"
+        },
+        {
+          "value": "index",
+          "label": "Nur auf der Startseite"
+        },
+        {
+          "value": "all",
+          "label": "Im ganzen Store"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "overlap_mode",
+      "label": "Über den Inhalt legen",
       "default": "index",
       "options": [
         {
@@ -258,21 +328,25 @@
           "label": "Auf allen Seiten"
         }
       ],
-      "info": "Nur sinnvoll, wenn der erste Abschnitt ein Bild ist. Beim Scrollen wird der Header wieder deckend."
+      "info": "Nur dort einschalten, wo der erste Abschnitt ein Bild ist. Sonst rutscht der Inhalt unter den Header."
     },
     {
       "type": "select",
       "id": "transparent_text",
-      "label": "Schrift im transparenten Zustand",
-      "default": "light",
+      "label": "Schriftfarbe",
+      "default": "auto",
       "options": [
         {
+          "value": "auto",
+          "label": "Automatisch (hell über Bildern, sonst dunkel)"
+        },
+        {
           "value": "light",
-          "label": "Hell (für dunkle Bilder)"
+          "label": "Immer hell"
         },
         {
           "value": "dark",
-          "label": "Dunkel (für helle Bilder)"
+          "label": "Immer dunkel"
         }
       ]
     },
