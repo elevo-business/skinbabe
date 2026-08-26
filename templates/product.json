@@ -36,7 +36,7 @@
         "buybox": {
           "type": "buybox",
           "settings": {
-            "heading": "Dein Set",
+            "heading": "Dein WEG FÜR GLATTE BEINE, OHNE RASIERSTRESS",
             "tax_note": "inkl. MwSt., zzgl. Versand",
             "show_dynamic_checkout": false,
             "show_payment": true,
