@@ -306,7 +306,7 @@
       ],
       "settings": {
         "eyebrow": "die diagnose",
-        "heading": "du hast dir das jahrelang selbst zugeschrieben",
+        "heading": "Du hast dir das jahrelang selbst zugeschrieben",
         "heading_accent": "",
         "transition": "Nichts davon stimmt.",
         "answer_eyebrow": "was wirklich passiert",
@@ -700,49 +700,61 @@
         "q1": {
           "type": "faq",
           "settings": {
-            "topic": "Preis",
             "question": "Warum 79,95 € für einen Rasierer?",
-            "answer": "<p>Weil der Vergleich nicht der 12-€-Einwegrasierer ist. Rechne gegen ein Jahr Ersatzklingen oder gegen zweimal Waxing im Studio – dann sieht die Zahl anders aus. Du kaufst einmal, statt jeden Monat nachzukaufen.</p>"
+            "answer": "<p>Weil der Vergleich nicht der 12-€-Einwegrasierer ist. Rechne gegen ein Jahr Ersatzklingen oder gegen zweimal Waxing im Studio – dann sieht die Zahl anders aus. Du kaufst einmal, statt jeden Monat nachzukaufen.</p>",
+            "topic": "Preis",
+            "link_label": "",
+            "link": ""
           }
         },
         "q2": {
           "type": "faq",
           "settings": {
-            "topic": "Wirkung",
             "question": "Bei mir hat das noch nie funktioniert. Warum jetzt?",
-            "answer": "<p>Weil du bisher immer dieselbe Art Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut – das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, bekommst du dein Geld zurück.</p>"
+            "answer": "<p>Weil du bisher immer dieselbe Art Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut – das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, bekommst du dein Geld zurück.</p>",
+            "topic": "Wirkung",
+            "link_label": "",
+            "link": ""
           }
         },
         "q3": {
           "type": "faq",
           "settings": {
-            "topic": "Empfindliche Stellen",
             "question": "Tut das an Bikinizone, Achseln oder im Gesicht weh?",
-            "answer": "<p>Der Schutzkopf hält die Klinge auf Abstand, deshalb ist er genau für diese Stellen gemacht. Kein Ziepen, kein direkter Schnitt auf der Haut. Für das Gesicht nutzt du den runden Aufsatz.</p>"
+            "answer": "<p>Der Schutzkopf hält die Klinge auf Abstand, deshalb ist er genau für diese Stellen gemacht. Kein Ziepen, kein direkter Schnitt auf der Haut. Für das Gesicht nutzt du den runden Aufsatz.</p>",
+            "topic": "Empfindliche Stellen",
+            "link_label": "",
+            "link": ""
           }
         },
         "q4": {
           "type": "faq",
           "settings": {
-            "topic": "Anwendung",
             "question": "Muss ich ihn nass benutzen?",
-            "answer": "<p>Nein. Er funktioniert trocken – ohne Wasser und ohne Schaum, wenn es schnell gehen muss. Er ist wasserdicht, du kannst ihn aber auch unter der Dusche verwenden, wenn du eh schon drin stehst.</p>"
+            "answer": "<p>Nein. Er funktioniert trocken – ohne Wasser und ohne Schaum, wenn es schnell gehen muss. Er ist wasserdicht, du kannst ihn aber auch unter der Dusche verwenden, wenn du eh schon drin stehst.</p>",
+            "topic": "Anwendung",
+            "link_label": "",
+            "link": ""
           }
         },
         "q5": {
           "type": "faq",
           "settings": {
-            "topic": "Ersatzköpfe",
             "question": "Wie oft brauche ich Ersatzköpfe?",
-            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist – ohne Abo-Zwang.</p>"
+            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist – ohne Abo-Zwang.</p>",
+            "topic": "Ersatzköpfe",
+            "link_label": "",
+            "link": ""
           }
         },
         "q6": {
           "type": "faq",
           "settings": {
-            "topic": "Vertrauen",
             "question": "Ist das nur so ein TikTok-Ding?",
-            "answer": "<p>Wir sind ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wenn du schreibst, antwortet ein Mensch, werktags innerhalb von 24 Stunden. Und du hast 30 Tage Rückgaberecht – auch geöffnet und benutzt.</p>"
+            "answer": "<p>Wir sind ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wenn du schreibst, antwortet ein Mensch, werktags innerhalb von 24 Stunden. Und du hast 30 Tage Rückgaberecht – auch geöffnet und benutzt.</p>",
+            "topic": "Vertrauen",
+            "link_label": "",
+            "link": ""
           }
         }
       },
