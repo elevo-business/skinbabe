@@ -1,8 +1,10 @@
 /*
  * ------------------------------------------------------------
- * Dieses Template wird auch vom Shopify-Theme-Editor beschrieben.
- * Aenderungen hier koennen beim naechsten Speichern im Editor
- * ueberschrieben werden.
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
 {
@@ -12,7 +14,9 @@
       "blocks": {
         "title": {
           "type": "title",
-          "settings": {}
+          "settings": {
+            "subtitle": ""
+          }
         },
         "rating": {
           "type": "rating",
@@ -36,47 +40,64 @@
         "bundle_1": {
           "type": "bundle_option",
           "settings": {
+            "group_title": "Wähle dein Set",
             "mode": "products",
+            "product_1": "skinbabe-prazisions-rasierer-fur-sensible-haut",
+            "quantity_1": 1,
+            "product_2": "",
+            "quantity_2": 1,
+            "product_3": "",
+            "quantity_3": 1,
+            "quantity": 1,
             "label": "Rasierer-Set",
             "sublabel": "Der Einstieg. Für jetzt sofort glatt.",
             "badge": "",
+            "note": "",
             "show_contents": true,
             "show_image": true,
-            "selected": false,
-            "quantity_1": 1,
-            "quantity_2": 1,
-            "quantity_3": 1,
-            "group_title": "Wähle dein Set"
+            "selected": false
           }
         },
         "bundle_2": {
           "type": "bundle_option",
           "settings": {
+            "group_title": "Wähle dein Set",
             "mode": "products",
+            "product_1": "",
+            "quantity_1": 1,
+            "product_2": "",
+            "quantity_2": 1,
+            "product_3": "",
+            "quantity_3": 1,
+            "quantity": 1,
             "label": "Rasierer + IPL",
             "sublabel": "Sofort glatt und langfristig weniger. Kein Doppelkauf.",
             "badge": "Beliebteste Wahl",
+            "note": "",
             "show_contents": true,
             "show_image": true,
-            "selected": true,
-            "quantity_1": 1,
-            "quantity_2": 1,
-            "quantity_3": 1
+            "selected": true
           }
         },
         "bundle_3": {
           "type": "bundle_option",
           "settings": {
+            "group_title": "Wähle dein Set",
             "mode": "products",
+            "product_1": "",
+            "quantity_1": 1,
+            "product_2": "",
+            "quantity_2": 1,
+            "product_3": "",
+            "quantity_3": 1,
+            "quantity": 1,
             "label": "Komplett-Set",
             "sublabel": "Mit Pflege und Ersatzköpfen für das ganze Jahr.",
             "badge": "",
+            "note": "",
             "show_contents": true,
             "show_image": true,
-            "selected": false,
-            "quantity_1": 1,
-            "quantity_2": 1,
-            "quantity_3": 1
+            "selected": false
           }
         },
         "variants": {
@@ -141,20 +162,30 @@
           "type": "accordion",
           "settings": {
             "title_1": "Beschreibung",
+            "content_1": "",
             "title_2": "So funktioniert es",
+            "content_2": "",
             "title_3": "Lieferumfang",
-            "title_4": "Versand & Rückgabe"
+            "content_3": "",
+            "title_4": "Versand & Rückgabe",
+            "content_4": ""
           }
         },
         "specs": {
           "type": "specs",
           "settings": {
             "label_1": "Lieferumfang",
+            "value_1": "",
             "label_2": "Akkulaufzeit",
+            "value_2": "",
             "label_3": "Ladezeit",
+            "value_3": "",
             "label_4": "Maße",
+            "value_4": "",
             "label_5": "Gewicht",
-            "label_6": "Garantie"
+            "value_5": "",
+            "label_6": "Garantie",
+            "value_6": ""
           }
         }
       },
@@ -176,7 +207,7 @@
         "specs"
       ],
       "settings": {
-        "gallery_layout": "stacked",
+        "gallery_layout": "carousel",
         "enable_sticky_bar": true
       }
     },
@@ -185,6 +216,8 @@
       "settings": {
         "eyebrow": "so läuft das",
         "heading": "drei minuten, kein aufwand",
+        "heading_accent": "",
+        "text": "",
         "show_images": true,
         "image_ratio": "square",
         "text_align": "center",
@@ -196,11 +229,14 @@
       "settings": {
         "eyebrow": "der mechanismus",
         "heading": "warum haare überhaupt einwachsen",
+        "heading_accent": "",
         "transition": "Es liegt nicht an dir.",
         "answer_eyebrow": "was wirklich passiert",
         "answer_heading": "Lift and cut — und das Ergebnis drei Tage später.",
         "answer_text": "<p>Mehrklingen-Rasierer heben das Haar an und kappen es unter der Hautoberfläche. Beim Nachwachsen trifft es auf geschlossene Haut.</p>",
         "conclusion": "Ein Rasierer mit Schutzkopf hat keinen direkten Klingenkontakt zur Haut.",
+        "link_label": "die lange erklärung",
+        "link_url": "",
         "background": "default"
       }
     },
@@ -209,8 +245,11 @@
       "settings": {
         "eyebrow": "der unterschied",
         "heading": "zieh den regler",
+        "heading_accent": "",
+        "text": "",
         "label_before": "vorher",
         "label_after": "nachher",
+        "slider_label": "Vergleich zwischen vorher und nachher",
         "disclaimer": "Aufnahmen einer Kundin, unretuschiert. Ergebnisse fallen individuell unterschiedlich aus.",
         "width": "narrow",
         "text_align": "center",
@@ -222,9 +261,13 @@
       "settings": {
         "eyebrow": "die rechnung",
         "heading": "einmal kaufen statt jedes mal zahlen",
+        "heading_accent": "",
+        "text": "",
         "col_1": "skinbabe",
         "col_2": "Waxing zuhause",
         "col_3": "Studio / Salon",
+        "footnote": "Angaben beruhen auf marktüblichen Preisen und können je nach Anbieter abweichen.",
+        "text_align": "left",
         "background": "default"
       }
     },
@@ -233,6 +276,9 @@
       "settings": {
         "eyebrow": "bewertungen",
         "heading": "die meisten waren vorher skeptisch",
+        "heading_accent": "",
+        "link_label": "alle bewertungen",
+        "link_url": "",
         "disclaimer": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen.",
         "background": "cream"
       }
@@ -242,8 +288,13 @@
       "settings": {
         "eyebrow": "garantie",
         "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
+        "heading_accent": "",
+        "text": "<p>Du hast schon genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
         "seal_value": "30",
         "seal_label": "Tage Garantie",
+        "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
+        "link_label": "versand & rückgabe im detail",
+        "link_url": "",
         "background": "default"
       }
     },
@@ -252,7 +303,13 @@
       "settings": {
         "eyebrow": "vor dem kauf",
         "heading": "häufige fragen zu diesem produkt",
+        "heading_accent": "",
+        "text_align": "left",
+        "single_open": true,
         "structured_data": false,
+        "footer_text": "Deine Frage ist nicht dabei?",
+        "footer_link_label": "Schreib uns.",
+        "footer_link": "",
         "background": "cream"
       }
     },
