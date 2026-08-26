@@ -290,9 +290,11 @@
       "type": "before-after",
       "settings": {
         "eyebrow": "der unterschied",
-        "heading": "zieh den regler",
+        "heading": "Schau selbst!",
         "heading_accent": "",
         "text": "",
+        "image_before": "shopify://shop_images/Dein_Abschnittstext_13_1.webp",
+        "image_after": "shopify://shop_images/Dein_Abschnittstext_13_1.webp",
         "label_before": "vorher",
         "label_after": "nachher",
         "slider_label": "Vergleich zwischen vorher und nachher",
