@@ -57,7 +57,7 @@
         "logo_height_mobile": 72,
         "logo_grows_header": false,
         "height": 64,
-        "height_mobile": 54,
+        "height_mobile": 96,
         "transparent_mode": "all",
         "overlap_mode": "index",
         "transparent_text": "auto",

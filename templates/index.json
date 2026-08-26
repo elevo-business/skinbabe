@@ -105,49 +105,6 @@
         "speed": 40
       }
     },
-    "press": {
-      "type": "press-logos",
-      "blocks": {
-        "l1": {
-          "type": "logo",
-          "settings": {
-            "name": "Medium eintragen",
-            "link": ""
-          }
-        },
-        "l2": {
-          "type": "logo",
-          "settings": {
-            "name": "Medium eintragen",
-            "link": ""
-          }
-        },
-        "l3": {
-          "type": "logo",
-          "settings": {
-            "name": "Medium eintragen",
-            "link": ""
-          }
-        },
-        "l4": {
-          "type": "logo",
-          "settings": {
-            "name": "Medium eintragen",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "l1",
-        "l2",
-        "l3",
-        "l4"
-      ],
-      "settings": {
-        "heading": "gesehen bei",
-        "background": "default"
-      }
-    },
     "bestsellers": {
       "type": "bestsellers",
       "blocks": {
@@ -179,8 +136,8 @@
         "p3"
       ],
       "settings": {
-        "eyebrow": "die leiter",
-        "heading": "drei wege, dasselbe problem zu lösen",
+        "eyebrow": "Unsere Auswahl",
+        "heading": "Für eine seidenweiche glatte Haut",
         "heading_accent": "",
         "link_label": "alle produkte",
         "link_url": "",
@@ -745,7 +702,6 @@
   "order": [
     "hero",
     "marquee",
-    "press",
     "bestsellers",
     "diagnosis",
     "steps",
