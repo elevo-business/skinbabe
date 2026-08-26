@@ -1,0 +1,16 @@
+{%- comment -%}
+  Sterne mit exakter Teilfüllung. 4,7 sieht damit auch wie 4,7 aus.
+  Erwartet: value (0–5), optional size ('sm' | 'md' | 'lg').
+{%- endcomment -%}
+{%- liquid
+  assign rating_value = value | default: 0 | times: 1.0
+  assign fill = rating_value | divided_by: 5.0 | times: 100
+-%}
+<span class="stars stars--{{ size | default: 'sm' }}" style="--fill:{{ fill }}%" role="img" aria-label="{{ 'general.accessibility.star_reviews_info' | t: rating_value: rating_value, rating_max: 5 }}">
+  <span class="stars__row stars__row--base" aria-hidden="true">
+    {%- for i in (1..5) -%}{% render 'icon', icon: 'star-outline' %}{%- endfor -%}
+  </span>
+  <span class="stars__row stars__row--fill" aria-hidden="true">
+    {%- for i in (1..5) -%}{% render 'icon', icon: 'star' %}{%- endfor -%}
+  </span>
+</span>

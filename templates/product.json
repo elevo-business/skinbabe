@@ -1,10 +1,8 @@
 /*
  * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
+ * Dieses Template wird auch vom Shopify-Theme-Editor beschrieben.
+ * Aenderungen hier koennen beim naechsten Speichern im Editor
+ * ueberschrieben werden.
  * ------------------------------------------------------------
  */
 {
@@ -320,6 +318,45 @@
         "limit": 4,
         "background": "default"
       }
+    },
+    "review_summary": {
+      "type": "review-summary",
+      "blocks": {
+        "a1": {
+          "type": "aspect",
+          "settings": {
+            "label": "Weniger Rasierpickel",
+            "value": 0
+          }
+        },
+        "a2": {
+          "type": "aspect",
+          "settings": {
+            "label": "Angenehm auf der Haut",
+            "value": 0
+          }
+        },
+        "a3": {
+          "type": "aspect",
+          "settings": {
+            "label": "Würde es weiterempfehlen",
+            "value": 0
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "settings": {
+        "source": "metafield",
+        "eyebrow": "bewertungen",
+        "heading": "was kundinnen nach vier wochen sagen",
+        "total_label": "Bewertungen",
+        "blocks_note": "Werte aus dem Export der Review-Plattform übernehmen, nicht schätzen.",
+        "background": "cream"
+      }
     }
   },
   "order": [
@@ -328,6 +365,7 @@
     "mechanism",
     "before_after",
     "comparison",
+    "review_summary",
     "testimonials",
     "guarantee",
     "faq",

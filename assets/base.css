@@ -191,9 +191,24 @@ h1,h2,h3,h4{
 .badge--sold-out{background:var(--sb-line-strong);color:var(--sb-ink)}
 
 /* ---------- Rating stars ---------- */
-.rating{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--sb-muted)}
+.rating{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--sb-muted)}
 .rating__stars{display:inline-flex;gap:.1rem;color:var(--sb-gold)}
 .rating__stars svg{width:.8rem;height:.8rem}
+
+/* Teilgefuellte Sterne: zwei uebereinanderliegende Reihen, die obere wird
+   auf den Anteil beschnitten. 4,7 sieht damit auch wie 4,7 aus. */
+.stars{position:relative;display:inline-flex;line-height:0;color:var(--sb-gold);flex:none}
+.stars__row{display:inline-flex;gap:.1rem}
+.stars__row--base{opacity:.4}
+.stars__row--fill{position:absolute;inset:0;overflow:hidden;width:var(--fill,0%)}
+.stars svg{width:var(--star-size,.8rem);height:var(--star-size,.8rem);flex:none}
+.stars--md{--star-size:1rem}
+.stars--lg{--star-size:1.375rem}
+
+.rating--summary{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem 0;color:var(--sb-ink)}
+.rating--summary:hover .rating__count{text-decoration:underline;text-underline-offset:.2em}
+.rating__value{font-weight:600;font-size:.875rem}
+.rating__count{font-size:.8125rem;color:var(--sb-muted)}
 
 /* ---------- Price ---------- */
 .price{display:inline-flex;align-items:baseline;gap:.5rem;font-size:.9375rem;font-weight:500}

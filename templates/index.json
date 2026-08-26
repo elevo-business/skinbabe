@@ -662,6 +662,48 @@
         "legal": "Mit der Anmeldung stimmst du dem Erhalt von E-Mails zu. Abmeldung jederzeit über den Link in jeder Mail. Details in unserer Datenschutzerklärung.",
         "background": "cream"
       }
+    },
+    "review_summary": {
+      "type": "review-summary",
+      "blocks": {
+        "a1": {
+          "type": "aspect",
+          "settings": {
+            "label": "Weniger Rasierpickel",
+            "value": 0
+          }
+        },
+        "a2": {
+          "type": "aspect",
+          "settings": {
+            "label": "Angenehm auf der Haut",
+            "value": 0
+          }
+        },
+        "a3": {
+          "type": "aspect",
+          "settings": {
+            "label": "Würde es weiterempfehlen",
+            "value": 0
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "settings": {
+        "source": "manual",
+        "eyebrow": "bewertungen",
+        "heading": "was kundinnen nach vier wochen sagen",
+        "total_label": "Bewertungen",
+        "blocks_note": "Werte aus dem Export der Review-Plattform übernehmen, nicht schätzen.",
+        "background": "default",
+        "average": "4.7",
+        "total": "0",
+        "source_label": "Quelle eintragen"
+      }
     }
   },
   "order": [
@@ -675,6 +717,7 @@
     "before_after",
     "builder",
     "community",
+    "review_summary",
     "testimonials",
     "guarantee",
     "faq",

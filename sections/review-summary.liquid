@@ -1,0 +1,148 @@
+{%- comment -%}
+  Bewertungsübersicht. Zahlen kommen entweder aus den Metafeldern der
+  Review-App oder werden gepflegt — in beiden Fällen sind es echte Werte.
+  Es gibt keinen Weg, hier eine Wunschbewertung zu erfinden, ohne dass die
+  Quelle danebensteht.
+{%- endcomment -%}
+{%- liquid
+  assign source = section.settings.source
+  assign rating_object = product.metafields.reviews.rating.value
+  assign meta_count = product.metafields.reviews.rating_count.value | plus: 0
+
+  if source == 'metafield' and rating_object and meta_count > 0
+    assign average = rating_object.rating | times: 1.0
+    assign total = meta_count
+    assign has_data = true
+  elsif source == 'manual' and section.settings.average != blank and section.settings.total > 0
+    assign average = section.settings.average | times: 1.0
+    assign total = section.settings.total | plus: 0
+    assign has_data = true
+  else
+    assign has_data = false
+  endif
+
+  assign bar_total = 0
+  for i in (1..5)
+    assign key = 'count_' | append: i
+    assign bar_total = bar_total | plus: section.settings[key]
+  endfor
+-%}
+
+{%- if has_data -%}
+  <div id="reviews" class="section{% if section.settings.background == 'cream' %} surface-cream{% endif %}">
+    <div class="page-width">
+      <div class="section-head reveal">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="h2">
+            {{ section.settings.heading }}
+            {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+          </h2>
+        {%- endif -%}
+      </div>
+
+      <div class="review-summary reveal">
+        <div class="review-summary__score">
+          <span class="review-summary__average">{{ average | round: 1 }}</span>
+          {% render 'stars', value: average, size: 'lg' %}
+          <span class="review-summary__total">{{ total }} {{ section.settings.total_label }}</span>
+          {%- if section.settings.source_label != blank -%}
+            <span class="review-summary__origin">
+              {% render 'icon', icon: 'check' %}
+              {%- if section.settings.source_url != blank -%}
+                <a href="{{ section.settings.source_url }}" target="_blank" rel="noopener" class="link-underline">{{ section.settings.source_label }}</a>
+              {%- else -%}
+                {{ section.settings.source_label }}
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+        </div>
+
+        {%- if bar_total > 0 -%}
+          <ul class="review-bars">
+            {%- for i in (1..5) -%}
+              {%- liquid
+                assign step = 5 | minus: forloop.index0
+                assign key = 'count_' | append: step
+                assign value = section.settings[key] | plus: 0
+                assign percent = 0
+                if bar_total > 0
+                  assign percent = value | times: 100 | divided_by: bar_total
+                endif
+              -%}
+              <li class="review-bar">
+                <span class="review-bar__label">{{ step }} {% render 'icon', icon: 'star' %}</span>
+                <span class="review-bar__track"><span class="review-bar__fill" style="--percent:{{ percent }}%"></span></span>
+                <span class="review-bar__value">{{ percent }} %</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.blocks_note != blank or section.blocks.size > 0 -%}
+          <div class="review-summary__aspects">
+            {%- for block in section.blocks -%}
+              <div class="review-aspect" {{ block.shopify_attributes }}>
+                <span class="review-aspect__label">{{ block.settings.label }}</span>
+                <span class="review-aspect__track"><span class="review-aspect__fill" style="--percent:{{ block.settings.value }}%"></span></span>
+                <span class="review-aspect__value">{{ block.settings.value }} %</span>
+              </div>
+            {%- endfor -%}
+            {%- if section.settings.blocks_note != blank -%}
+              <p class="small muted">{{ section.settings.blocks_note }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Bewertungsübersicht",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "paragraph", "content": "Zahlen entweder automatisch aus der Review-App oder gepflegt. Bei gepflegten Werten gehören sie aus dem Export deiner Review-Plattform übernommen, nicht geschätzt — und die Quelle gehört sichtbar daneben." },
+    {
+      "type": "select", "id": "source", "label": "Quelle der Zahlen", "default": "metafield",
+      "options": [
+        { "value": "metafield", "label": "Automatisch aus der Review-App" },
+        { "value": "manual", "label": "Gepflegt" }
+      ]
+    },
+    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "bewertungen" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "was kundinnen nach vier wochen sagen" },
+    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
+    { "type": "header", "content": "Gepflegte Werte" },
+    { "type": "text", "id": "average", "label": "Durchschnitt", "info": "Zahl von 0 bis 5, z. B. 4.7", "default": "4.7" },
+    { "type": "text", "id": "total", "label": "Anzahl Bewertungen", "default": "0" },
+    { "type": "text", "id": "total_label", "label": "Bezeichnung", "default": "Bewertungen" },
+    { "type": "text", "id": "source_label", "label": "Quelle", "info": "z. B. „Geprüfte Bewertungen bei Judge.me“." },
+    { "type": "url", "id": "source_url", "label": "Link zur Quelle" },
+    { "type": "header", "content": "Verteilung" },
+    { "type": "text", "id": "count_5", "label": "Anzahl 5 Sterne", "default": "0" },
+    { "type": "text", "id": "count_4", "label": "Anzahl 4 Sterne", "default": "0" },
+    { "type": "text", "id": "count_3", "label": "Anzahl 3 Sterne", "default": "0" },
+    { "type": "text", "id": "count_2", "label": "Anzahl 2 Sterne", "default": "0" },
+    { "type": "text", "id": "count_1", "label": "Anzahl 1 Stern", "default": "0" },
+    { "type": "header", "content": "Einzelkriterien" },
+    { "type": "textarea", "id": "blocks_note", "label": "Hinweis unter den Kriterien" },
+    {
+      "type": "select", "id": "background", "label": "Hintergrund", "default": "cream",
+      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "aspect",
+      "name": "Kriterium",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Kriterium", "default": "Weniger Rasierpickel" },
+        { "type": "range", "id": "value", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Zustimmung", "default": 80 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Bewertungsübersicht" }]
+}
+{% endschema %}

@@ -662,3 +662,129 @@ sb-facets[aria-busy='true'] [data-facet-results]{opacity:.45;transition:opacity 
 .stat{display:flex;flex-direction:column;gap:.3rem;align-items:center;text-align:center;padding:1.75rem 1rem;background:var(--sb-bg)}
 .stat__value{font-family:var(--sb-font-heading);font-size:clamp(1.5rem,2.6vw,2.125rem);line-height:1}
 .stat__label{font-size:.75rem;color:var(--sb-muted);letter-spacing:.04em}
+
+/* ============================================================
+   Mobile
+   Der Store wird überwiegend auf dem Telefon gekauft. Was hier
+   steht, sind keine Feinheiten, sondern die Stellen, an denen
+   mobile Shops tatsächlich Umsatz verlieren.
+   ============================================================ */
+
+@media screen and (max-width:749px){
+
+  /* --- Eingabefelder: unter 16px zoomt iOS beim Fokus in die Seite --- */
+  .input,
+  .field input,
+  .field textarea,
+  .field select,
+  .facets__select,
+  .qty__input,
+  .variant-select select,
+  input[type='text'],
+  input[type='email'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='number'],
+  input[type='password'],
+  textarea,
+  select{
+    font-size:16px;
+  }
+
+  /* --- Tap-Targets auf mindestens 44px --- */
+  .header__icon{width:2.75rem;height:2.75rem}
+  .qty button{width:2.75rem;height:2.75rem}
+  .qty__input{width:2.75rem;height:2.75rem}
+  .card__quick-add{width:2.75rem;height:2.75rem}
+  .drawer__close{width:2.75rem;height:2.75rem}
+  .footer__social a{width:2.75rem;height:2.75rem}
+  .slider__btn{width:2.75rem;height:2.75rem}
+  .btn--sm{min-height:2.75rem}
+  .cart-item__remove{padding-block:.4rem;display:inline-block}
+
+  /* --- Hero: echte Fensterhöhe statt vh, sonst springt es in Safari --- */
+  .hero--overlay{min-height:var(--hero-min-height-mobile)}
+  @supports (height:100dvh){
+    .hero--overlay{min-height:calc(var(--hero-min-height-mobile) / 100 * 100dvh)}
+  }
+  .hero--split .hero__content{padding-block:clamp(2rem,8vw,3rem)}
+
+  /* --- Kennzahlen unter dem Hero: drei Spalten sind auf 360px zu eng --- */
+  .hero-stats__item{padding:.9rem .5rem;gap:.3rem}
+  .hero-stats__value{font-size:.8125rem;line-height:1.25}
+  .hero-stats__label{font-size:.625rem;letter-spacing:.06em}
+  .hero-stats__item svg{width:1rem;height:1rem}
+
+  /* --- Abschnittsköpfe: Link unter die Überschrift statt daneben --- */
+  .section-head--split{flex-direction:column;align-items:flex-start;gap:1rem}
+
+  /* --- Breite Tabellen: Scroll sichtbar machen, sonst wird er übersehen --- */
+  .compare{
+    position:relative;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+  }
+  .compare::after{
+    content:'';position:sticky;top:0;right:0;float:right;
+    width:2.5rem;height:100%;pointer-events:none;
+    background:linear-gradient(90deg,transparent,var(--sb-bg));
+  }
+  .surface-cream .compare::after{background:linear-gradient(90deg,transparent,var(--sb-cream))}
+
+  /* --- Produktseite: Galerie randlos, Info-Spalte mit Luft --- */
+  .product{gap:1.75rem}
+  .product__title{font-size:clamp(1.5rem,7vw,2rem)}
+  .product__args{gap:.45rem}
+  .trust-grid__item{padding:.8rem .85rem;font-size:.75rem}
+
+  /* --- Sticky-Kaufleiste darf den Seitenfuß nicht verdecken --- */
+  body.template-product{padding-bottom:4.5rem}
+
+  /* --- Warenkorb-Positionen: schmalere Bildspalte --- */
+  .cart-item{grid-template-columns:4.5rem 1fr;gap:.85rem}
+
+  /* --- Karten-Raster: engere Rinne, damit die Karten nicht schrumpfen --- */
+  .product-grid{gap:1.75rem .75rem}
+  .card__title{font-size:.875rem}
+  .card__subtitle{font-size:.75rem}
+
+  /* --- Slider: am Rand anschneiden, damit erkennbar ist, dass es weitergeht --- */
+  .slider__track{
+    margin-inline:calc(var(--sb-gutter) * -1);
+    padding-inline:var(--sb-gutter);
+    scroll-padding-inline:var(--sb-gutter);
+  }
+
+  /* --- FAQ: größere Tap-Fläche und ruhigere Typografie --- */
+  .faq__q{padding-block:1.15rem;font-size:.9375rem;gap:1rem}
+  .faq__a{font-size:.875rem;padding-bottom:1.25rem}
+
+  /* --- Footer: Spalten als Aufklapper wirken ruhiger --- */
+  .footer__col-title{margin-bottom:.75rem}
+  .footer__bottom{flex-direction:column;align-items:flex-start;gap:.85rem}
+
+  /* --- Drawer nutzen die volle Breite --- */
+  .drawer__panel{width:100vw}
+  .drawer__panel--left{width:min(22rem,88vw)}
+}
+
+/* --- Sehr schmale Geräte (bis 360px) --- */
+@media screen and (max-width:360px){
+  :root{--sb-gutter:1rem}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .hero-stats__value{font-size:.75rem}
+  .btn{padding-inline:1.25rem;font-size:.8125rem}
+}
+
+/* --- Tablet-Zwischenbereich --- */
+@media screen and (min-width:750px) and (max-width:989px){
+  .product{gap:2rem}
+  .hero--split .hero__media{min-height:52vw}
+}
+
+/* --- Zeigergeräte ohne Hover: Hover-Effekte nicht erzwingen --- */
+@media (hover:none){
+  .btn:hover{transform:none}
+  .card:hover .media__primary{transform:none}
+  .press__item{opacity:.75;filter:none}
+}

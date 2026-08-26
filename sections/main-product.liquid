@@ -25,7 +25,9 @@
               </div>
 
             {%- when 'rating' -%}
-              <div {{ block.shopify_attributes }}>{% render 'rating', product: product %}</div>
+              <div {{ block.shopify_attributes }}>
+                {% render 'rating', product: product, style: block.settings.style %}
+              </div>
 
             {%- when 'price' -%}
               <div class="product__price" {{ block.shopify_attributes }}>
@@ -217,6 +219,22 @@
     {%- if product.vendor != blank -%}
     "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
     {%- endif -%}
+    {%- comment -%}
+      AggregateRating nur, wenn echte Bewertungen aus einer Review-App
+      vorliegen. Ausgedachte Werte hier waeren gegenueber Google eine
+      Falschangabe und fliegen frueher oder spaeter auf.
+    {%- endcomment -%}
+    {%- assign review_rating = product.metafields.reviews.rating.value -%}
+    {%- assign review_count = product.metafields.reviews.rating_count.value | plus: 0 -%}
+    {%- if review_rating and review_count > 0 -%}
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ review_rating.rating | json }},
+      "bestRating": {{ review_rating.scale_max | json }},
+      "worstRating": {{ review_rating.scale_min | default: 1 | json }},
+      "ratingCount": {{ review_count | json }}
+    },
+    {%- endif -%}
     "offers": [
       {%- for v in product.variants -%}
         {
@@ -332,7 +350,29 @@
     {
       "type": "rating",
       "name": "Bewertung",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Darstellung",
+          "default": "summary",
+          "options": [
+            {
+              "value": "summary",
+              "label": "Mit Note und Anzahl, springt zu den Bewertungen"
+            },
+            {
+              "value": "inline",
+              "label": "Kompakt mit Note"
+            },
+            {
+              "value": "compact",
+              "label": "Nur Sterne und Anzahl"
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "price",

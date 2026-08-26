@@ -272,6 +272,45 @@
         "limit": 4,
         "background": "default"
       }
+    },
+    "review_summary": {
+      "type": "review-summary",
+      "blocks": {
+        "a1": {
+          "type": "aspect",
+          "settings": {
+            "label": "Weniger Rasierpickel",
+            "value": 0
+          }
+        },
+        "a2": {
+          "type": "aspect",
+          "settings": {
+            "label": "Angenehm auf der Haut",
+            "value": 0
+          }
+        },
+        "a3": {
+          "type": "aspect",
+          "settings": {
+            "label": "Würde es weiterempfehlen",
+            "value": 0
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "settings": {
+        "source": "metafield",
+        "eyebrow": "bewertungen",
+        "heading": "was kundinnen nach vier wochen sagen",
+        "total_label": "Bewertungen",
+        "blocks_note": "Werte aus dem Export der Review-Plattform übernehmen, nicht schätzen.",
+        "background": "cream"
+      }
     }
   },
   "order": [
@@ -280,6 +319,7 @@
     "mechanism",
     "before_after",
     "comparison",
+    "review_summary",
     "testimonials",
     "guarantee",
     "faq",

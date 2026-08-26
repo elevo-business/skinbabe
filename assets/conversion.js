@@ -351,3 +351,38 @@
   }
   customElements.define('sb-plan', SbPlan);
 })();
+
+/* ---------------- <sb-faq> — Akkordeon mit Themenfilter --------------- */
+(function () {
+  'use strict';
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  class SbFaq extends HTMLElement {
+    connectedCallback() {
+      this.items = $$('details', this);
+
+      if (this.dataset.single === 'true') {
+        this.addEventListener('toggle', (e) => {
+          if (!e.target.open) return;
+          this.items.forEach((d) => { if (d !== e.target) d.open = false; });
+        }, true);
+      }
+
+      const bar = this.previousElementSibling;
+      if (!bar || !bar.classList.contains('faq-topics')) return;
+      this.buttons = $$('[data-faq-topic]', bar);
+      bar.addEventListener('click', (e) => {
+        const button = e.target.closest('[data-faq-topic]');
+        if (!button) return;
+        const topic = button.dataset.faqTopic;
+        this.buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+        this.items.forEach((item) => {
+          const match = !topic || item.dataset.topic === topic;
+          item.hidden = !match;
+          if (!match) item.open = false;
+        });
+      });
+    }
+  }
+  customElements.define('sb-faq', SbFaq);
+})();

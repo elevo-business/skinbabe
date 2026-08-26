@@ -18,32 +18,58 @@
       {%- endif -%}
     </div>
 
-    <sb-slider class="reveal">
-      <ul class="slider__track" data-slider-track style="--slide-width:82%;--slide-width-md:46%;--slide-width-lg:31%;">
+    {%- assign is_grid = false -%}
+    {%- if section.settings.layout == 'grid' -%}{%- assign is_grid = true -%}{%- endif -%}
+
+    {%- if is_grid -%}<div class="reveal">{%- else -%}<sb-slider class="reveal">{%- endif -%}
+      <ul class="{% if is_grid %}testimonial-grid{% else %}slider__track{% endif %}"{% unless is_grid %} data-slider-track style="--slide-width:82%;--slide-width-md:46%;--slide-width-lg:31%;"{% endunless %}>
         {%- for block in section.blocks -%}
-          <li class="slider__item" {{ block.shopify_attributes }}>
-            <div class="testimonial">
-              {%- if block.settings.rating > 0 -%}
-                <span class="rating__stars" aria-label="{{ block.settings.rating }} von 5 Sternen">
-                  {%- for i in (1..5) -%}
-                    {%- if i <= block.settings.rating -%}{% render 'icon', icon: 'star' %}{%- else -%}{% render 'icon', icon: 'star-outline' %}{%- endif -%}
-                  {%- endfor -%}
-                </span>
+          <li class="{% unless is_grid %}slider__item{% endunless %}" {{ block.shopify_attributes }}>
+            <figure class="testimonial">
+              {%- if block.settings.photo != blank -%}
+                <div class="media media--landscape testimonial__photo">
+                  <img
+                    src="{{ block.settings.photo | image_url: width: 700 }}"
+                    alt="{{ block.settings.photo.alt | escape }}"
+                    width="700" height="466" loading="lazy"
+                  >
+                </div>
               {%- endif -%}
 
-              {%- if block.settings.headline != blank -%}
-                <p class="testimonial__quote" style="font-weight:600">{{ block.settings.headline }}</p>
+              <div class="testimonial__head">
+                {%- if block.settings.rating > 0 -%}
+                  {% render 'stars', value: block.settings.rating %}
+                {%- endif -%}
+                {%- if block.settings.date != blank -%}
+                  <span class="testimonial__date">{{ block.settings.date }}</span>
+                {%- endif -%}
+              </div>
+
+              <blockquote class="testimonial__body">
+                {%- if block.settings.headline != blank -%}
+                  <p class="testimonial__headline">{{ block.settings.headline }}</p>
+                {%- endif -%}
+                <p class="testimonial__quote">{{ block.settings.quote }}</p>
+              </blockquote>
+
+              {%- if block.settings.product != blank -%}
+                <a class="testimonial__product" href="{{ block.settings.product.url }}">
+                  {%- if block.settings.product.featured_media -%}
+                    <span class="testimonial__product-media">
+                      <img src="{{ block.settings.product.featured_media | image_url: width: 80 }}" alt="" width="40" height="40" loading="lazy">
+                    </span>
+                  {%- endif -%}
+                  <span>{{ block.settings.product.title }}</span>
+                </a>
               {%- endif -%}
 
-              <p class="testimonial__quote">{{ block.settings.quote }}</p>
-
-              <div class="testimonial__foot">
+              <figcaption class="testimonial__foot">
                 {%- if block.settings.avatar != blank -%}
                   <span class="testimonial__avatar">
                     <img src="{{ block.settings.avatar | image_url: width: 120 }}" alt="" width="60" height="60" loading="lazy">
                   </span>
                 {%- endif -%}
-                <span>
+                <span class="testimonial__meta">
                   <span class="testimonial__name">{{ block.settings.name }}</span>
                   {%- if block.settings.source != blank -%}
                     <span class="testimonial__source">
@@ -54,21 +80,23 @@
                       {%- endif -%}
                     </span>
                   {%- endif -%}
-                  {%- if block.settings.verified -%}
-                    <span class="testimonial__verified">{% render 'icon', icon: 'check' %} Verifizierter Kauf</span>
-                  {%- endif -%}
                 </span>
-              </div>
-            </div>
+                {%- if block.settings.verified -%}
+                  <span class="testimonial__verified">{% render 'icon', icon: 'check' %} Verifiziert</span>
+                {%- endif -%}
+              </figcaption>
+            </figure>
           </li>
         {%- endfor -%}
       </ul>
 
-      <div class="slider__nav" style="margin-top:1.5rem">
-        <button class="slider__btn" type="button" data-slider-prev aria-label="{{ 'general.accessibility.previous_slide' | t }}">{% render 'icon', icon: 'arrow-left' %}</button>
-        <button class="slider__btn" type="button" data-slider-next aria-label="{{ 'general.accessibility.next_slide' | t }}">{% render 'icon', icon: 'arrow' %}</button>
-      </div>
-    </sb-slider>
+      {%- unless is_grid -%}
+        <div class="slider__nav" style="margin-top:1.5rem">
+          <button class="slider__btn" type="button" data-slider-prev aria-label="{{ 'general.accessibility.previous_slide' | t }}">{% render 'icon', icon: 'arrow-left' %}</button>
+          <button class="slider__btn" type="button" data-slider-next aria-label="{{ 'general.accessibility.next_slide' | t }}">{% render 'icon', icon: 'arrow' %}</button>
+        </div>
+      {%- endunless -%}
+    {%- if is_grid -%}</div>{%- else -%}</sb-slider>{%- endif -%}
 
     {%- if section.settings.disclaimer != blank -%}
       <p class="small muted" style="margin-top:1.5rem">{{ section.settings.disclaimer }}</p>
@@ -81,16 +109,75 @@
   "name": "Bewertungen",
   "max_blocks": 12,
   "settings": [
-    { "type": "paragraph", "content": "Nur echte Bewertungen übernehmen — wörtlich, nicht schöner geschrieben. Keine erfundenen Namen, keine generierten Gesichter. Quelle und Link machen die Bewertung überprüfbar." },
-    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "bewertungen" },
-    { "type": "text", "id": "heading", "label": "Überschrift", "default": "die meisten waren vorher skeptisch" },
-    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
-    { "type": "text", "id": "link_label", "label": "Link-Text", "default": "alle bewertungen" },
-    { "type": "url", "id": "link_url", "label": "Link-Ziel" },
-    { "type": "textarea", "id": "disclaimer", "label": "Hinweis", "default": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen." },
     {
-      "type": "select", "id": "background", "label": "Hintergrund", "default": "cream",
-      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+      "type": "paragraph",
+      "content": "Nur echte Bewertungen übernehmen — wörtlich, nicht schöner geschrieben. Keine erfundenen Namen, keine generierten Gesichter. Quelle und Link machen die Bewertung überprüfbar."
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Darstellung",
+      "default": "slider",
+      "options": [
+        {
+          "value": "slider",
+          "label": "Karussell"
+        },
+        {
+          "value": "grid",
+          "label": "Raster"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Kleiner Vortext",
+      "default": "bewertungen"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "die meisten waren vorher skeptisch"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Kursiver Serif-Akzent"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link-Text",
+      "default": "alle bewertungen"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link-Ziel"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Hinweis",
+      "default": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen."
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Hintergrund",
+      "default": "cream",
+      "options": [
+        {
+          "value": "default",
+          "label": "Weiß"
+        },
+        {
+          "value": "cream",
+          "label": "Creme"
+        }
+      ]
     }
   ],
   "blocks": [
@@ -98,17 +185,92 @@
       "type": "review",
       "name": "Bewertung",
       "settings": [
-        { "type": "range", "id": "rating", "min": 0, "max": 5, "step": 1, "label": "Sterne", "default": 5 },
-        { "type": "text", "id": "headline", "label": "Kurzfassung", "info": "Optional. Der erste Satz der Bewertung." },
-        { "type": "textarea", "id": "quote", "label": "Bewertung", "default": "Ich hab ehrlich nicht damit gerechnet, dass es diesmal anders ist." },
-        { "type": "text", "id": "name", "label": "Name", "info": "So, wie die Kundin ihn angegeben hat." },
-        { "type": "image_picker", "id": "avatar", "label": "Bild", "info": "Nur mit Zustimmung. Keine Stockfotos als Kundinnen ausgeben." },
-        { "type": "text", "id": "source", "label": "Quelle", "info": "z. B. Instagram-Handle oder Bewertungsplattform." },
-        { "type": "url", "id": "source_url", "label": "Link zur Quelle" },
-        { "type": "checkbox", "id": "verified", "label": "Verifizierter Kauf", "default": true }
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "Sterne",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Kurzfassung",
+          "info": "Optional. Der stärkste Satz der Bewertung."
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Bewertung",
+          "default": "Ich hab ehrlich nicht damit gerechnet, dass es diesmal anders ist."
+        },
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Foto der Kundin vom Produkt",
+          "info": "Selbst aufgenommene Fotos wirken deutlich stärker als Produktrender."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "info": "So, wie die Kundin ihn angegeben hat."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Profilbild",
+          "info": "Nur mit Zustimmung. Keine Stockfotos als Kundinnen ausgeben."
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Datum",
+          "info": "z. B. „vor 3 Wochen“ oder „14.03.2026“."
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Gekauftes Produkt",
+          "info": "Verlinkt die Bewertung mit dem Produkt."
+        },
+        {
+          "type": "text",
+          "id": "source",
+          "label": "Quelle",
+          "info": "z. B. Instagram-Handle oder Bewertungsplattform."
+        },
+        {
+          "type": "url",
+          "id": "source_url",
+          "label": "Link zur Quelle"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verifizierter Kauf",
+          "default": true
+        }
       ]
     }
   ],
-  "presets": [{ "name": "Bewertungen", "blocks": [{ "type": "review" }, { "type": "review" }, { "type": "review" }] }]
+  "presets": [
+    {
+      "name": "Bewertungen",
+      "blocks": [
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
