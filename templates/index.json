@@ -154,7 +154,8 @@
         "i1": {
           "type": "item",
           "settings": {
-            "title": "SilkGlide Pro 2.0™",
+            "image": "shopify://shop_images/Design_ohne_Titel_27.png",
+            "title": "skinbabe",
             "text": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur.",
             "free": false,
             "badge": ""
@@ -163,24 +164,27 @@
         "i2": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Ueberschrifthinzufuegen_23.png",
             "title": "BodySmooth™ Scherkopf",
             "text": "Für sanfte Präzision ohne Nicks. Bleibt bis zu 50 Rasuren scharf.",
-            "free": false,
+            "free": true,
             "badge": ""
           }
         },
         "i3": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/white_Kopie_-Photoroom.webp",
             "title": "USB-Ladekabel",
             "text": "Damit dein Gerät immer einsatzbereit ist.",
-            "free": false,
+            "free": true,
             "badge": ""
           }
         },
         "i4": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/11.png",
             "title": "Runder Intimaufsatz",
             "text": "Für Bikinizone, Achseln und Gesicht. Runde Klingen berühren die Haut nie direkt.",
             "free": true,
@@ -190,6 +194,7 @@
         "i5": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/freecompress-Untitled_design_15.webp",
             "title": "Schutzkappe",
             "text": "Schützt empfindliche Haut und reduziert Reizungen im Alltag.",
             "free": true,
@@ -199,6 +204,7 @@
         "i6": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/10.png",
             "title": "Peeling-Handschuh",
             "text": "Entfernt sanft abgestorbene Haut und beugt eingewachsenen Haaren vor.",
             "free": true,
@@ -207,6 +213,7 @@
         },
         "i7": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "title": "Reinigungsbürste",
             "text": "Fegt Haare und Rückstände weg, bevor du den Scherkopf abspülst.",
