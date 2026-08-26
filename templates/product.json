@@ -190,26 +190,9 @@
             "label_6": "Garantie",
             "value_6": ""
           }
-        },
-        "signal": {
-          "type": "signal",
-          "settings": {
-            "text": "Oft ausverkauft",
-            "tone": "popular",
-            "icon": "sparkle"
-          }
-        },
-        "cutoff": {
-          "type": "cutoff",
-          "settings": {
-            "cutoff_hour": 14,
-            "before": "In %% bestellt, morgen verschickt",
-            "after": "Heute bestellt, übermorgen verschickt"
-          }
         }
       },
       "block_order": [
-        "signal",
         "title",
         "rating",
         "price",
@@ -219,7 +202,6 @@
         "bundle_3",
         "variants",
         "buy",
-        "cutoff",
         "payment",
         "trust",
         "usp",
@@ -238,7 +220,7 @@
       "type": "steps",
       "settings": {
         "eyebrow": "so läuft das",
-        "heading": "zwei minuten, kaum aufwand",
+        "heading": "2 Minuten, kaum aufwand",
         "heading_accent": "",
         "text": "",
         "show_images": true,
@@ -251,7 +233,7 @@
       "type": "diagnosis",
       "settings": {
         "eyebrow": "der mechanismus",
-        "heading": "warum haare überhaupt einwachsen",
+        "heading": "Warum haare überhaupt einwachsen",
         "heading_accent": "",
         "transition": "Es liegt nicht an dir.",
         "answer_eyebrow": "was wirklich passiert",
@@ -389,92 +371,6 @@
         "text_align": "left",
         "background": "cream"
       }
-    },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "passt dazu",
-        "limit": 4,
-        "background": "default"
-      }
-    },
-    "included": {
-      "type": "included-items",
-      "settings": {
-        "eyebrow": "im set enthalten",
-        "heading": "Alles für den perfekten Shave",
-        "columns": 4,
-        "text_align": "center",
-        "free_label": "GRATIS",
-        "background": "cream"
-      },
-      "blocks": {
-        "i1": {
-          "type": "item",
-          "settings": {
-            "title": "SilkGlide Pro 2.0™",
-            "text": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur.",
-            "free": false
-          }
-        },
-        "i2": {
-          "type": "item",
-          "settings": {
-            "title": "BodySmooth™ Scherkopf",
-            "text": "Für sanfte Präzision ohne Nicks. Bleibt bis zu 50 Rasuren scharf.",
-            "free": false
-          }
-        },
-        "i3": {
-          "type": "item",
-          "settings": {
-            "title": "USB-Ladekabel",
-            "text": "Damit dein Gerät immer einsatzbereit ist.",
-            "free": false
-          }
-        },
-        "i4": {
-          "type": "item",
-          "settings": {
-            "title": "Runder Intimaufsatz",
-            "text": "Für Bikinizone, Achseln und Gesicht. Runde Klingen berühren die Haut nie direkt.",
-            "free": true
-          }
-        },
-        "i5": {
-          "type": "item",
-          "settings": {
-            "title": "Schutzkappe",
-            "text": "Schützt empfindliche Haut und reduziert Reizungen im Alltag.",
-            "free": true
-          }
-        },
-        "i6": {
-          "type": "item",
-          "settings": {
-            "title": "Peeling-Handschuh",
-            "text": "Entfernt sanft abgestorbene Haut und beugt eingewachsenen Haaren vor.",
-            "free": true
-          }
-        },
-        "i7": {
-          "type": "item",
-          "settings": {
-            "title": "Reinigungsbürste",
-            "text": "Fegt Haare und Rückstände weg, bevor du den Scherkopf abspülst.",
-            "free": true
-          }
-        }
-      },
-      "block_order": [
-        "i1",
-        "i2",
-        "i3",
-        "i4",
-        "i5",
-        "i6",
-        "i7"
-      ]
     }
   },
   "order": [
@@ -485,7 +381,6 @@
     "comparison",
     "review_summary",
     "testimonials",
-    "included",
     "guarantee",
     "faq"
   ]
