@@ -196,11 +196,11 @@
             "title_1": "Beschreibung",
             "content_1": "",
             "title_2": "So funktioniert es",
-            "content_2": "",
+            "content_2": "<p>Trocken oder nass ansetzen – beides geht. In kurzen Zügen über die Haut führen, kein Druck nötig, der Schutzkopf hält die Klinge auf Abstand. Für Bikinizone, Achseln und Gesicht den passenden Aufsatz nutzen. Nach der Rasur den Kopf kurz unter Wasser abspülen und trocknen lassen.</p>",
             "title_3": "Lieferumfang",
-            "content_3": "",
+            "content_3": "<ul><li>skinbabe Rasierer</li><li>Scherkopf (vormontiert)</li><li>USB-Ladekabel</li><li>Reinigungsbürste</li><li>Anleitung auf Deutsch</li></ul>",
             "title_4": "Versand & Rückgabe",
-            "content_4": ""
+            "content_4": "<p>Versand in 2–4 Werktagen, versandkostenfrei ab 79,95 €. 30 Tage Rückgaberecht – auch geöffnet und benutzt. Du schreibst uns kurz, bekommst ein Etikett, die Erstattung läuft über dasselbe Zahlungsmittel.</p>"
           }
         },
         "specs": {
@@ -208,17 +208,17 @@
           "disabled": true,
           "settings": {
             "label_1": "Lieferumfang",
-            "value_1": "",
-            "label_2": "Akkulaufzeit",
-            "value_2": "",
-            "label_3": "Ladezeit",
-            "value_3": "",
-            "label_4": "Maße",
-            "value_4": "",
-            "label_5": "Gewicht",
+            "value_1": "Rasierer, Scherkopf, USB-Kabel, Reinigungsbürste",
+            "label_2": "Stromversorgung",
+            "value_2": "Akku, USB-aufladbar",
+            "label_3": "Anwendung",
+            "value_3": "Nass & trocken, wasserdicht",
+            "label_4": "Standzeit Scherkopf",
+            "value_4": "3–6 Monate je nach Nutzung",
+            "label_5": "",
             "value_5": "",
             "label_6": "Garantie",
-            "value_6": ""
+            "value_6": "30 Tage Geld-zurück"
           }
         }
       },

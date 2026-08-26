@@ -116,11 +116,12 @@
                       assign label_key = 'label_' | append: i
                       assign value_key = 'value_' | append: i
                       assign spec_label = block.settings[label_key]
+                      assign spec_value = block.settings[value_key]
                     -%}
-                    {%- if spec_label != blank -%}
+                    {%- if spec_label != blank and spec_value != blank -%}
                       <tr>
                         <th scope="row">{{ spec_label }}</th>
-                        <td>{{ block.settings[value_key] }}</td>
+                        <td>{{ spec_value }}</td>
                       </tr>
                     {%- endif -%}
                   {%- endfor -%}
@@ -181,7 +182,9 @@
                     assign title = block.settings[title_key]
                     assign content = block.settings[content_key]
                   -%}
-                  {%- if title != blank -%}
+                  {%- assign has_content = false -%}
+                  {%- if content != blank or i == 1 -%}{%- assign has_content = true -%}{%- endif -%}
+                  {%- if title != blank and has_content -%}
                     <details>
                       <summary>{{ title }} {% render 'icon', icon: 'chevron' %}</summary>
                       <div class="rte">

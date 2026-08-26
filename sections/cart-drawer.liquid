@@ -24,6 +24,40 @@
         {% render 'cart-progress' %}
         {% render 'cart-items' %}
 
+        {%- if settings.cart_show_recommendations and section.settings.upsell_collection != blank -%}
+          {%- assign rec = collections[section.settings.upsell_collection] -%}
+          {%- assign picks = '' -%}
+          {%- for rec_product in rec.products limit: 6 -%}
+            {%- if rec_product.available -%}
+              {%- assign in_cart = false -%}
+              {%- for line in cart.items -%}{%- if line.product_id == rec_product.id -%}{%- assign in_cart = true -%}{%- endif -%}{%- endfor -%}
+              {%- unless in_cart -%}{%- assign picks = picks | append: rec_product.id | append: ',' -%}{%- endunless -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- assign pick_ids = picks | split: ',' -%}
+          {%- if pick_ids.size > 0 -%}
+            <p class="cart-upsell__head">{{ section.settings.upsell_heading }}</p>
+            <div class="cart-upsell">
+              {%- assign shown = 0 -%}
+              {%- for rec_product in rec.products -%}
+                {%- assign rid = rec_product.id | append: "" -%}{%- if shown < 2 and pick_ids contains rid -%}
+                  {%- assign shown = shown | plus: 1 -%}
+                  <div class="cart-upsell__item">
+                    <span class="cart-upsell__media">{%- if rec_product.featured_media -%}<img src="{{ rec_product.featured_media | image_url: width: 120 }}" alt="" width="48" height="48" loading="lazy">{%- endif -%}</span>
+                    <span class="cart-upsell__body">
+                      <span class="cart-upsell__title">{{ rec_product.title }}</span>
+                      <span class="cart-upsell__price">{{ rec_product.price | money }}</span>
+                    </span>
+                    <sb-quick-add data-variant-id="{{ rec_product.selected_or_first_available_variant.id }}">
+                      <button type="button" class="cart-upsell__add" aria-label="{{ rec_product.title | escape }} hinzufügen">{% render 'icon', icon: 'plus' %}</button>
+                    </sb-quick-add>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+
         {%- if settings.cart_show_note -%}
           <details class="cart-note">
             <summary>{{ 'cart.general.note' | t }}</summary>
@@ -56,9 +90,17 @@
             <p class="small muted">{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}</p>
           </div>
 
+          <ul class="cart-trust">
+            <li>{% render 'icon', icon: 'return' %} 30 Tage Rückgabe</li>
+            <li>{% render 'icon', icon: 'card' %} Sicher zahlen</li>
+            <li>{% render 'icon', icon: 'truck' %} Versand in 2–4 Tagen</li>
+          </ul>
+
           <button type="submit" name="checkout" class="btn btn--full btn--lg" style="margin-top:1rem">
             {{ 'cart.general.checkout' | t }}
+            <span class="cart-checkout__total">· {{ cart.total_price | money }}</span>
           </button>
+          <p class="cart-checkout__note">{% render 'icon', icon: 'shield' %} Klarna · PayPal · Apple Pay · Kreditkarte</p>
         </form>
 
         <p class="center" style="margin-top:.75rem">
@@ -70,5 +112,11 @@
 </sb-drawer>
 
 {% schema %}
-{ "name": "Warenkorb-Drawer" }
+{
+  "name": "Warenkorb-Drawer",
+  "settings": [
+    { "type": "text", "id": "upsell_heading", "label": "Upsell-Überschrift", "default": "Passt dazu" },
+    { "type": "collection", "id": "upsell_collection", "label": "Upsell-Kategorie", "info": "Zeigt bis zu zwei Produkte, die noch nicht im Warenkorb sind." }
+  ]
+}
 {% endschema %}
