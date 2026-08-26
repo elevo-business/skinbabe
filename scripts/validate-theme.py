@@ -14,10 +14,12 @@ from pathlib import Path
 SCHEMA_RE = re.compile(r"\{% schema %\}(.*?)\{% endschema %\}", re.S)
 # Shopify schreibt beim Zurueckspielen aus dem Theme-Editor einen
 # /* ... */-Kommentarblock an den Anfang der JSON-Templates.
-COMMENT_RE = re.compile(r"^\s*/\*.*?\*/\s*", re.S)
+COMMENT_RE = re.compile(r"\A\s*(?:/\*.*?\*/\s*)+", re.S)
 
 
 def load_json(path):
+    """JSON-Templates koennen mehrere fuehrende /* */-Bloecke tragen:
+    Shopify setzt beim Zurueckschreiben aus dem Editor einen eigenen davor."""
     return json.loads(COMMENT_RE.sub("", Path(path).read_text()))
 
 # https://shopify.dev/docs/storefronts/themes/architecture/limits
