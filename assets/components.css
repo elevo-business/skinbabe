@@ -51,8 +51,10 @@ sb-header.header--transparent-light .nav__link:hover{background:rgba(255,255,255
 /* Ohne hinterlegtes helles Logo wird das vorhandene Logo aufgehellt,
    damit es auf dem Bild nicht untergeht. */
 sb-header.header--logo-auto-invert:not(.is-stuck) .header__logo img{filter:brightness(0) invert(1)}
-sb-header.header--transparent-light .header__logo-img--default{display:none}
-sb-header.header--transparent-light .header__logo-img--inverted{display:block}
+/* Nur tauschen, wenn ein helles Logo hinterlegt ist. Sonst bliebe der
+   Header ohne Logo — genau das war der Fehler. */
+sb-header.header--has-inverted-logo:not(.is-stuck) .header__logo-img--default{display:none}
+sb-header.header--has-inverted-logo:not(.is-stuck) .header__logo-img--inverted{display:block}
 
 /* Sobald gescrollt wird, ist der Header wieder deckend */
 sb-header.header--transparent.is-stuck{
@@ -60,8 +62,8 @@ sb-header.header--transparent.is-stuck{
   color:var(--sb-ink);
   border-bottom-color:var(--sb-line);
 }
-sb-header.header--transparent-light.is-stuck .header__logo-img--default{display:block}
-sb-header.header--transparent-light.is-stuck .header__logo-img--inverted{display:none}
+sb-header.header--has-inverted-logo.is-stuck .header__logo-img--default{display:block}
+sb-header.header--has-inverted-logo.is-stuck .header__logo-img--inverted{display:none}
 sb-header.header--transparent.is-stuck .header__icon:hover{background:var(--sb-cream)}
 
 .header{
@@ -125,6 +127,14 @@ sb-header.header--logo-leads .header{height:auto;min-height:var(--header-height,
    Der Vollbild-Hero setzt seinen Text ohnehin nach unten. */
 body:has(sb-header.header--overlap) main > .shopify-section:first-child .hero--split .hero__content{
   padding-top:calc(var(--sb-header-height,4rem) + 1.5rem);
+}
+
+/* Liegt der Header ueber dem Inhalt, reicht die Flaeche des ersten
+   Abschnitts bis ganz nach oben. Sein Innenabstand bekommt mindestens die
+   Kopfhoehe, damit nichts darunter verschwindet — wo er ohnehin groesser
+   ist, bleibt es dabei. */
+body:has(sb-header.header--overlap) main > .shopify-section:first-child > .section{
+  padding-top:max(var(--sb-space-section), calc(var(--sb-header-height,4rem) + 1rem));
 }
 
 @media screen and (min-width:990px){

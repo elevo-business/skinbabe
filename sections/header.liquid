@@ -29,7 +29,12 @@
   endcomment
   assign text_scheme = section.settings.transparent_text
   if text_scheme == 'auto'
-    if overlap
+    comment
+      Hell nur dort, wo der Header ueber einem Bild liegt — also auf der
+      Startseite. Auf Produkt- und Kategorieseiten ist der Grund hell,
+      dort muss die Schrift dunkel bleiben, sonst verschwindet das Logo.
+    endcomment
+    if template.name == 'index'
       assign text_scheme = 'light'
     else
       assign text_scheme = 'dark'
@@ -40,7 +45,9 @@
   class="
     {%- if transparent %} header--transparent header--transparent-{{ text_scheme }}{% endif -%}
     {%- if overlap %} header--overlap{% endif -%}
-    {%- if transparent and text_scheme == 'light' and settings.logo_inverted == blank %} header--logo-auto-invert{% endif -%}
+    {%- if transparent and text_scheme == 'light' -%}
+      {%- if settings.logo_inverted != blank %} header--has-inverted-logo{% else %} header--logo-auto-invert{% endif -%}
+    {%- endif -%}
     {%- if section.settings.logo_grows_header %} header--logo-leads{% endif -%}
   "
   data-hide-on-scroll="{{ section.settings.hide_on_scroll }}"
@@ -238,7 +245,7 @@
       "type": "range",
       "id": "logo_height",
       "min": 16,
-      "max": 96,
+      "max": 140,
       "step": 2,
       "unit": "px",
       "label": "Logo-Höhe (Desktop)",
@@ -248,7 +255,7 @@
       "type": "range",
       "id": "logo_height_mobile",
       "min": 14,
-      "max": 72,
+      "max": 120,
       "step": 2,
       "unit": "px",
       "label": "Logo-Höhe (Mobil)",
@@ -269,7 +276,7 @@
       "type": "range",
       "id": "height",
       "min": 48,
-      "max": 120,
+      "max": 160,
       "step": 2,
       "unit": "px",
       "label": "Kopfhöhe (Desktop)",
@@ -279,7 +286,7 @@
       "type": "range",
       "id": "height_mobile",
       "min": 44,
-      "max": 96,
+      "max": 140,
       "step": 2,
       "unit": "px",
       "label": "Kopfhöhe (Mobil)",
@@ -313,7 +320,7 @@
       "type": "select",
       "id": "overlap_mode",
       "label": "Über den Inhalt legen",
-      "default": "index",
+      "default": "all",
       "options": [
         {
           "value": "off",
@@ -328,7 +335,7 @@
           "label": "Auf allen Seiten"
         }
       ],
-      "info": "Nur dort einschalten, wo der erste Abschnitt ein Bild ist. Sonst rutscht der Inhalt unter den Header."
+      "info": "Der Header schwebt über dem Inhalt statt eine eigene Zeile zu belegen. Auf Seiten ohne Bild oben liegt er über der Fläche des ersten Abschnitts."
     },
     {
       "type": "select",

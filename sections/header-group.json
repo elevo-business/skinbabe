@@ -59,7 +59,7 @@
         "height": 64,
         "height_mobile": 96,
         "transparent_mode": "all",
-        "overlap_mode": "index",
+        "overlap_mode": "all",
         "transparent_text": "auto",
         "hide_on_scroll": true,
         "enable_structured_data": true,
