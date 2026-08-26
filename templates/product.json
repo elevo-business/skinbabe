@@ -62,6 +62,7 @@
         },
         "bundle_1": {
           "type": "bundle_option",
+          "disabled": true,
           "settings": {
             "group_title": "Wähle dein Set",
             "mode": "products",
