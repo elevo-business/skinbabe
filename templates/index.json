@@ -154,8 +154,8 @@
         "p1": {
           "type": "product",
           "settings": {
-            "product": "",
-            "subtitle": "Für jetzt sofort glatt, ohne die Pünktchen danach."
+            "product": "skinbabe-prazisions-rasierer-fur-sensible-haut",
+            "subtitle": "In 2 Minuten ohne Erdbeerbeine nach der Rasur"
           }
         },
         "p2": {
@@ -474,6 +474,55 @@
         "background": "cream"
       }
     },
+    "review_summary": {
+      "type": "review-summary",
+      "blocks": {
+        "a1": {
+          "type": "aspect",
+          "settings": {
+            "label": "Weniger Rasierpickel",
+            "value": 0
+          }
+        },
+        "a2": {
+          "type": "aspect",
+          "settings": {
+            "label": "Angenehm auf der Haut",
+            "value": 0
+          }
+        },
+        "a3": {
+          "type": "aspect",
+          "settings": {
+            "label": "Würde es weiterempfehlen",
+            "value": 0
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "settings": {
+        "source": "manual",
+        "eyebrow": "bewertungen",
+        "heading": "was kundinnen nach vier wochen sagen",
+        "heading_accent": "",
+        "average": "4.7",
+        "total": "0",
+        "total_label": "Bewertungen",
+        "source_label": "Quelle eintragen",
+        "source_url": "",
+        "count_5": "0",
+        "count_4": "0",
+        "count_3": "0",
+        "count_2": "0",
+        "count_1": "0",
+        "blocks_note": "Werte aus dem Export der Review-Plattform übernehmen, nicht schätzen.",
+        "background": "default"
+      }
+    },
     "testimonials": {
       "type": "testimonials",
       "blocks": {
@@ -484,6 +533,8 @@
             "headline": "",
             "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
             "name": "",
+            "date": "",
+            "product": "",
             "source": "",
             "source_url": "",
             "verified": true
@@ -496,6 +547,8 @@
             "headline": "",
             "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
             "name": "",
+            "date": "",
+            "product": "",
             "source": "",
             "source_url": "",
             "verified": true
@@ -508,6 +561,8 @@
             "headline": "",
             "quote": "Echte Bewertung hier eintragen — wörtlich, nicht schöner geschrieben.",
             "name": "",
+            "date": "",
+            "product": "",
             "source": "",
             "source_url": "",
             "verified": true
@@ -520,6 +575,7 @@
         "r3"
       ],
       "settings": {
+        "layout": "slider",
         "eyebrow": "bewertungen",
         "heading": "die meisten waren vorher skeptisch",
         "heading_accent": "",
@@ -591,42 +647,60 @@
           "type": "faq",
           "settings": {
             "question": "Warum 50 Euro für einen Rasierer?",
-            "answer": "<p>Weil der Vergleichsrahmen nicht der Einwegrasierer ist. Rechne gegen zweimal Waxing im Studio oder gegen ein Jahr Ersatzklingen — dann ist die Frage eine andere.</p>"
+            "answer": "<p>Weil der Vergleichsrahmen nicht der Einwegrasierer ist. Rechne gegen zweimal Waxing im Studio oder gegen ein Jahr Ersatzklingen — dann ist die Frage eine andere.</p>",
+            "topic": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "q2": {
           "type": "faq",
           "settings": {
             "question": "Bei mir funktioniert sowas eh nicht. Warum jetzt?",
-            "answer": "<p>Weil du bisher immer dieselbe Art von Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut — das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, zahlen wir zurück.</p>"
+            "answer": "<p>Weil du bisher immer dieselbe Art von Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut — das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, zahlen wir zurück.</p>",
+            "topic": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "q3": {
           "type": "faq",
           "settings": {
             "question": "Rasierer oder IPL — was brauche ich?",
-            "answer": "<p>Der Rasierer löst „jetzt sofort glatt“. Das IPL-Gerät zielt auf langanhaltende Haarreduktion über mehrere Wochen. Die beiden ersetzen sich nicht, sie lösen unterschiedliche Probleme.</p>"
+            "answer": "<p>Der Rasierer löst „jetzt sofort glatt“. Das IPL-Gerät zielt auf langanhaltende Haarreduktion über mehrere Wochen. Die beiden ersetzen sich nicht, sie lösen unterschiedliche Probleme.</p>",
+            "topic": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "q4": {
           "type": "faq",
           "settings": {
             "question": "Wie oft brauche ich Ersatzköpfe?",
-            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist — ohne Abo-Zwang.</p>"
+            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist — ohne Abo-Zwang.</p>",
+            "topic": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "q5": {
           "type": "faq",
           "settings": {
             "question": "Funktioniert IPL bei jedem Haut- und Haartyp?",
-            "answer": "<p>Nein. IPL braucht Kontrast zwischen Haar und Haut und wirkt bei sehr hellem, rotem oder grauem Haar sowie bei sehr dunklen Hauttönen nicht zuverlässig. Auf der Produktseite steht die Eignungstabelle über dem Kaufbutton, damit du das vor dem Kauf siehst.</p>"
+            "answer": "<p>Nein. IPL braucht Kontrast zwischen Haar und Haut und wirkt bei sehr hellem, rotem oder grauem Haar sowie bei sehr dunklen Hauttönen nicht zuverlässig. Auf der Produktseite steht die Eignungstabelle über dem Kaufbutton, damit du das vor dem Kauf siehst.</p>",
+            "topic": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "q6": {
           "type": "faq",
           "settings": {
             "question": "Wer steckt hinter skinbabe?",
-            "answer": "<p>Ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wer wir sind, steht auf der Über-uns-Seite — mit Namen und Gesicht.</p>"
+            "answer": "<p>Ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wer wir sind, steht auf der Über-uns-Seite — mit Namen und Gesicht.</p>",
+            "topic": "",
+            "link_label": "",
+            "link": ""
           }
         }
       },
@@ -642,12 +716,16 @@
         "eyebrow": "was du wissen willst",
         "heading": "die fragen, die du vor dem kauf stellst",
         "heading_accent": "",
-        "text_align": "left",
+        "text": "",
+        "open_first": true,
         "single_open": true,
+        "show_topics": true,
         "structured_data": true,
         "footer_text": "Deine Frage ist nicht dabei?",
         "footer_link_label": "Schreib uns.",
         "footer_link": "",
+        "width": "narrow",
+        "text_align": "left",
         "background": "default"
       }
     },
@@ -661,48 +739,6 @@
         "button_label": "Anmelden",
         "legal": "Mit der Anmeldung stimmst du dem Erhalt von E-Mails zu. Abmeldung jederzeit über den Link in jeder Mail. Details in unserer Datenschutzerklärung.",
         "background": "cream"
-      }
-    },
-    "review_summary": {
-      "type": "review-summary",
-      "blocks": {
-        "a1": {
-          "type": "aspect",
-          "settings": {
-            "label": "Weniger Rasierpickel",
-            "value": 0
-          }
-        },
-        "a2": {
-          "type": "aspect",
-          "settings": {
-            "label": "Angenehm auf der Haut",
-            "value": 0
-          }
-        },
-        "a3": {
-          "type": "aspect",
-          "settings": {
-            "label": "Würde es weiterempfehlen",
-            "value": 0
-          }
-        }
-      },
-      "block_order": [
-        "a1",
-        "a2",
-        "a3"
-      ],
-      "settings": {
-        "source": "manual",
-        "eyebrow": "bewertungen",
-        "heading": "was kundinnen nach vier wochen sagen",
-        "total_label": "Bewertungen",
-        "blocks_note": "Werte aus dem Export der Review-Plattform übernehmen, nicht schätzen.",
-        "background": "default",
-        "average": "4.7",
-        "total": "0",
-        "source_label": "Quelle eintragen"
       }
     }
   },
