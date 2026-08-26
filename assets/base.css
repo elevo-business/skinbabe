@@ -144,6 +144,10 @@ h1,h2,h3,h4{
 .btn--full{display:flex;width:100%}
 .btn--sm{min-height:2.5rem;padding:0 1.15rem;font-size:.8125rem}
 .btn--lg{min-height:3.5rem;padding:0 2.25rem;font-size:.9375rem}
+/* Icons in Buttons brauchen eine Groesse. Ein SVG ohne width/height
+   streckt sich im Flex-Container und blaeht den Button auf. */
+.btn svg,
+.badge svg{width:1em;height:1em;flex:none}
 
 /* Text link with arrow — the reference site's signature CTA */
 .link-arrow{

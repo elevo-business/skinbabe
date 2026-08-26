@@ -60,7 +60,10 @@
         "button_label": "Skinbabe ansehen",
         "button_link": "",
         "button_2_label": "warum haare einwachsen",
-        "button_2_link": ""
+        "button_2_link": "",
+        "content_position": "bottom",
+        "content_inset": 48,
+        "content_inset_mobile": 32
       }
     },
     "marquee": {

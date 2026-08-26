@@ -122,11 +122,20 @@ sb-header.header--transparent.is-stuck .header__icon:hover{background:var(--sb-c
    Mindestwert und der Header waechst bei Bedarf mit. */
 sb-header.header--logo-leads .header{height:auto;min-height:var(--header-height,3.5rem);padding-block:.5rem}
 
-/* Liegt der Header transparent ueber dem ersten Abschnitt, braucht ein
-   zweispaltiger Hero oben Luft, damit der Text nicht unter dem Header steht.
-   Der Vollbild-Hero setzt seinen Text ohnehin nach unten. */
+/* Liegt der Header ueber dem ersten Abschnitt, braucht der Hero oben so viel
+   Luft, dass der Text den Header nicht unterlaeuft. Das gilt auch fuer den
+   vollflaechigen Hero: sein Text steht zwar unten, bei langer Headline und
+   niedriger Bildhoehe reicht er aber bis unter den Header hinauf. */
 body:has(sb-header.header--overlap) main > .shopify-section:first-child .hero--split .hero__content{
   padding-top:calc(var(--sb-header-height,4rem) + 1.5rem);
+}
+body:has(sb-header.header--overlap) main > .shopify-section:first-child .hero--overlay .hero__inner{
+  padding-top:max(var(--hero-inset-top-mobile,2.5rem), calc(var(--sb-header-height,4rem) + .75rem));
+}
+@media screen and (min-width:990px){
+  body:has(sb-header.header--overlap) main > .shopify-section:first-child .hero--overlay .hero__inner{
+    padding-top:max(var(--hero-inset-top,3rem), calc(var(--sb-header-height,4rem) + .75rem));
+  }
 }
 
 /* Liegt der Header ueber dem Inhalt, reicht die Flaeche des ersten
@@ -369,12 +378,21 @@ sb-slider{display:block;position:relative}
   box-shadow:0 8px 24px -16px rgba(0,0,0,.4);
 }
 .hero__placeholder-hint svg{width:.9rem;height:.9rem}
-.hero__content{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start}
+.hero__content{display:flex;flex-direction:column;gap:0;align-items:flex-start}
+/* Gestufter Rhythmus: der Vortext klebt an der Headline, der Button
+   bekommt Luft. Ein einheitlicher Abstand liest sich beliebig. */
+.hero__content > * + *{margin-top:1.25rem}
+.hero__content .eyebrow + *{margin-top:.75rem}
+.hero__content .hero__ctas{margin-top:1.75rem}
 .hero__content--center{align-items:center;text-align:center}
 .hero__title{max-width:16ch}
 .hero__content--center .hero__title{max-width:20ch}
 .hero__text{max-width:44ch}
 .hero__ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+@media screen and (max-width:749px){
+  .hero__ctas{width:100%;flex-direction:column;align-items:stretch;gap:.6rem}
+  .hero__ctas .btn{width:100%}
+}
 
 .hero--split{grid-template-columns:1fr;align-items:stretch}
 .hero--split .hero__content{padding:clamp(2.5rem,6vw,5rem) var(--sb-gutter)}
@@ -386,17 +404,35 @@ sb-slider{display:block;position:relative}
   .hero--split.hero--media-left .hero__media{order:-1}
 }
 
-.hero--overlay{min-height:var(--hero-min-height-mobile);align-items:end}
+.hero--overlay{min-height:var(--hero-min-height-mobile);align-items:var(--hero-align,end)}
 .hero--overlay .hero__media{position:absolute;inset:0}
 .hero--overlay .hero__media::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(0,0,0,calc(var(--hero-overlay) * .18)) 0%,rgba(0,0,0,var(--hero-overlay)) 78%);
 }
-.hero--overlay .hero__inner{position:relative;z-index:1;padding-block:clamp(3rem,7vw,5.5rem);color:#fff}
+.hero--overlay .hero__inner{
+  position:relative;z-index:1;color:#fff;
+  padding-top:var(--hero-inset-top-mobile,2.5rem);
+  padding-bottom:var(--hero-inset-mobile,2.5rem);
+}
+/* Steht der Text oben, muss er unter dem ueberlagernden Header beginnen */
+.hero--overlay.hero--align-top .hero__inner{
+  padding-top:calc(var(--sb-header-height,4rem) + var(--hero-inset-top-mobile,2.5rem));
+}
+/* Outline-Button auf dem Bild: dunkle Kontur waere dort unsichtbar */
+.hero--overlay .btn--secondary{--btn-fg:#fff;--btn-bd:rgba(255,255,255,.6)}
+.hero--overlay .btn--secondary:hover{--btn-bg:#fff;--btn-fg:var(--sb-ink);--btn-bd:#fff}
 .hero--overlay .lede,.hero--overlay .eyebrow{color:rgba(255,255,255,.78)}
 .hero--overlay .hero__placeholder-hint{color:var(--sb-muted)}
 @media screen and (min-width:990px){
   .hero--overlay{min-height:var(--hero-min-height)}
+  .hero--overlay .hero__inner{
+    padding-top:var(--hero-inset-top,3rem);
+    padding-bottom:var(--hero-inset,3rem);
+  }
+  .hero--overlay.hero--align-top .hero__inner{
+    padding-top:calc(var(--sb-header-height,4rem) + var(--hero-inset-top,3rem));
+  }
 }
 
 .hero--contained{
