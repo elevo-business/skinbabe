@@ -1,21 +1,58 @@
 {
   "sections": {
-    "main": { "type": "main-page", "settings": { "eyebrow": "versand & rückgabe" } },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "eyebrow": "versand & rückgabe"
+      }
+    },
     "guarantee": {
       "type": "guarantee",
       "blocks": {
-        "g1": { "type": "point", "settings": { "icon": "truck", "title": "Versand in 2–4 Werktagen", "text": "Bestellungen bis 14 Uhr gehen am selben Werktag raus. Versandkostenfrei ab 50 €." } },
-        "g2": { "type": "point", "settings": { "icon": "shield", "title": "30 Tage auf den Rasierer", "text": "Das Ergebnis siehst du sofort. Vier Wochen reichen, um zu entscheiden." } },
-        "g3": { "type": "point", "settings": { "icon": "clock", "title": "90 Tage auf das IPL-Gerät", "text": "Eine sichtbare Haarreduktion braucht etwa zehn Anwendungen. Eine kürzere Frist könntest du gar nicht nutzen." } },
-        "g4": { "type": "point", "settings": { "icon": "return", "title": "Auch geöffnet und benutzt", "text": "Du sollst das Gerät verwenden, bevor du entscheidest. Sonst wäre die Garantie sinnlos." } },
-        "g5": { "type": "point", "settings": { "icon": "box", "title": "Rücksendung", "text": "Schreib uns kurz, du bekommst ein Etikett. Die Erstattung läuft über dasselbe Zahlungsmittel." } }
+        "g1": {
+          "type": "point",
+          "settings": {
+            "icon": "truck",
+            "title": "Versand in 2–4 Werktagen",
+            "text": "Bestellungen bis 14 Uhr gehen am selben Werktag raus. Versandkostenfrei ab 50 €."
+          }
+        },
+        "g2": {
+          "type": "point",
+          "settings": {
+            "icon": "shield",
+            "title": "30 Tage auf den Rasierer",
+            "text": "Das Ergebnis siehst du sofort. Vier Wochen reichen, um zu entscheiden."
+          }
+        },
+        "g4": {
+          "type": "point",
+          "settings": {
+            "icon": "return",
+            "title": "Auch geöffnet und benutzt",
+            "text": "Du sollst das Gerät verwenden, bevor du entscheidest. Sonst wäre die Garantie sinnlos."
+          }
+        },
+        "g5": {
+          "type": "point",
+          "settings": {
+            "icon": "box",
+            "title": "Rücksendung",
+            "text": "Schreib uns kurz, du bekommst ein Etikett. Die Erstattung läuft über dasselbe Zahlungsmittel."
+          }
+        }
       },
-      "block_order": ["g1", "g2", "g3", "g4", "g5"],
+      "block_order": [
+        "g1",
+        "g2",
+        "g4",
+        "g5"
+      ],
       "settings": {
         "eyebrow": "im detail",
         "heading": "was gilt, und warum es so gilt",
         "text": "<p>Erklärte Bedingungen sind mehr wert als behauptete. Deshalb steht hier nicht nur, was gilt, sondern auch warum.</p>",
-        "seal_value": "30 / 90",
+        "seal_value": "30",
         "seal_label": "Tage Garantie",
         "footnote": "Dein gesetzliches Widerrufsrecht bleibt davon unberührt. Die Garantiefristen gelten zusätzlich.",
         "background": "cream"
@@ -23,8 +60,17 @@
     },
     "faq": {
       "type": "faq",
-      "settings": { "eyebrow": "häufig gefragt", "heading": "fragen zu versand und rückgabe", "structured_data": true, "background": "default" }
+      "settings": {
+        "eyebrow": "häufig gefragt",
+        "heading": "fragen zu versand und rückgabe",
+        "structured_data": true,
+        "background": "default"
+      }
     }
   },
-  "order": ["main", "guarantee", "faq"]
+  "order": [
+    "main",
+    "guarantee",
+    "faq"
+  ]
 }

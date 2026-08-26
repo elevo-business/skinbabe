@@ -40,10 +40,10 @@
             "tax_note": "Kostenloser Versand",
             "show_dynamic_checkout": false,
             "show_payment": true,
-            "reassurance": "100 Tage Rückgabe, auch benutzt",
+            "reassurance": "30 Tage Rückgabe, auch benutzt",
             "upsell_product": "skinbabe-beauty-case-kulturtasche-fur-rasierer-skincare",
-            "upsell_label": "Rasierertasche",
-            "upsell_text": "um dein Set aufzubewahren"
+            "upsell_label": "Beauty Case dazulegen",
+            "upsell_text": "Passende Kulturtasche für unterwegs"
           }
         },
         "stockbar": {
@@ -81,7 +81,7 @@
           "disabled": true,
           "settings": {
             "group_title": "Wähle dein Set",
-            "mode": "products",
+            "mode": "quantity",
             "product_1": "skinbabe-prazisions-rasierer-fur-sensible-haut",
             "quantity_1": 1,
             "product_2": "",
@@ -89,9 +89,9 @@
             "product_3": "",
             "quantity_3": 1,
             "quantity": 1,
-            "label": "Skinbabe",
-            "sublabel": "Der Einstieg. Für jetzt sofort glatt.",
-            "badge": "Bestseller",
+            "label": "Einzeln",
+            "sublabel": "Ein Rasierer für dich.",
+            "badge": "",
             "note": "+ Peelinghandschuh, Intim-Aufsatz, Gesicht-Aufsatz , Schutzhülle mit enthalten.",
             "show_contents": true,
             "show_image": true,
@@ -104,16 +104,16 @@
           "disabled": true,
           "settings": {
             "group_title": "Wähle dein Set",
-            "mode": "products",
+            "mode": "quantity",
             "product_1": "",
             "quantity_1": 1,
             "product_2": "",
             "quantity_2": 1,
             "product_3": "",
             "quantity_3": 1,
-            "quantity": 1,
-            "label": "Rasierer + IPL",
-            "sublabel": "Sofort glatt und langfristig weniger. Kein Doppelkauf.",
+            "quantity": 2,
+            "label": "Doppelpack",
+            "sublabel": "Eins fürs Bad, eins für die Reisetasche.",
             "badge": "Beliebteste Wahl",
             "note": "",
             "show_contents": true,
@@ -127,15 +127,15 @@
           "settings": {
             "group_title": "Wähle dein Set",
             "mode": "products",
-            "product_1": "",
+            "product_1": "skinbabe-prazisions-rasierer-fur-sensible-haut",
             "quantity_1": 1,
-            "product_2": "",
+            "product_2": "skinbabe-beauty-case-kulturtasche-fur-rasierer-skincare",
             "quantity_2": 1,
             "product_3": "",
             "quantity_3": 1,
             "quantity": 1,
-            "label": "Komplett-Set",
-            "sublabel": "Mit Pflege und Ersatzköpfen für das ganze Jahr.",
+            "label": "Rasierer + Beauty Case",
+            "sublabel": "Mit passender Kulturtasche für unterwegs.",
             "badge": "",
             "note": "",
             "show_contents": true,
@@ -493,7 +493,7 @@
         "heading": "Wenn es bei dir nicht funktioniert, zahlen wir zurück",
         "heading_accent": "",
         "text": "<p>Du hast schon genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
-        "seal_value": "100",
+        "seal_value": "30",
         "seal_label": "Tage Garantie",
         "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
         "link_label": "versand & rückgabe im detail",
@@ -505,20 +505,78 @@
       "type": "faq",
       "settings": {
         "eyebrow": "vor dem kauf",
-        "heading": "häufige fragen zu diesem produkt",
+        "heading": "Häufige Fragen zum Rasierer",
         "heading_accent": "",
         "text": "",
         "open_first": true,
         "single_open": true,
         "show_topics": true,
-        "structured_data": false,
+        "structured_data": true,
         "footer_text": "Deine Frage ist nicht dabei?",
         "footer_link_label": "Schreib uns.",
         "footer_link": "",
         "width": "narrow",
         "text_align": "left",
         "background": "cream"
-      }
+      },
+      "blocks": {
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "topic": "Preis",
+            "question": "Warum 79,95 € für einen Rasierer?",
+            "answer": "<p>Weil der Vergleich nicht der 12-€-Einwegrasierer ist. Rechne gegen ein Jahr Ersatzklingen oder gegen zweimal Waxing im Studio – dann sieht die Zahl anders aus. Du kaufst einmal, statt jeden Monat nachzukaufen.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "topic": "Wirkung",
+            "question": "Bei mir hat das noch nie funktioniert. Warum jetzt?",
+            "answer": "<p>Weil du bisher immer dieselbe Art Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut – das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, bekommst du dein Geld zurück.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq",
+          "settings": {
+            "topic": "Empfindliche Stellen",
+            "question": "Tut das an Bikinizone, Achseln oder im Gesicht weh?",
+            "answer": "<p>Der Schutzkopf hält die Klinge auf Abstand, deshalb ist er genau für diese Stellen gemacht. Kein Ziepen, kein direkter Schnitt auf der Haut. Für das Gesicht nutzt du den runden Aufsatz.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq",
+          "settings": {
+            "topic": "Anwendung",
+            "question": "Muss ich ihn nass benutzen?",
+            "answer": "<p>Nein. Er funktioniert trocken – ohne Wasser und ohne Schaum, wenn es schnell gehen muss. Er ist wasserdicht, du kannst ihn aber auch unter der Dusche verwenden, wenn du eh schon drin stehst.</p>"
+          }
+        },
+        "q5": {
+          "type": "faq",
+          "settings": {
+            "topic": "Ersatzköpfe",
+            "question": "Wie oft brauche ich Ersatzköpfe?",
+            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist – ohne Abo-Zwang.</p>"
+          }
+        },
+        "q6": {
+          "type": "faq",
+          "settings": {
+            "topic": "Vertrauen",
+            "question": "Ist das nur so ein TikTok-Ding?",
+            "answer": "<p>Wir sind ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wenn du schreibst, antwortet ein Mensch, werktags innerhalb von 24 Stunden. Und du hast 30 Tage Rückgaberecht – auch geöffnet und benutzt.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ]
     }
   },
   "order": [

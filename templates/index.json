@@ -140,11 +140,11 @@
       ],
       "settings": {
         "eyebrow": "Unsere Auswahl",
-        "heading": "Für eine seidenweich glatte Haut",
+        "heading": "Ein Werkzeug, das nicht gegen dich arbeitet",
         "heading_accent": "",
         "link_label": "alle produkte",
         "link_url": "shopify://collections/all",
-        "footnote": "",
+        "footnote": "Ein Rasierer für jetzt sofort glatt – ohne die Pünktchen danach. Ein Kopf hält drei bis sechs Monate.",
         "background": "default"
       }
     },
@@ -236,7 +236,7 @@
         "heading": "Alles dabei, was du brauchst",
         "heading_accent": "",
         "heading_line2": "skinbabe Rasierer-Set",
-        "text": "<p>Kostenlose Premium-Aufsätze im Wert von 50 €.</p>",
+        "text": "<p>Kostenlose Premium-Aufsätze im Wert von 79,95 €.</p>",
         "columns": 4,
         "text_align": "center",
         "free_label": "GRATIS",
@@ -480,7 +480,7 @@
         "text": "<p>Drei Schritte, eine Bestellung. Was du nicht brauchst, lässt du weg.</p>",
         "summary_title": "Dein Set",
         "button_label": "Set in den Warenkorb",
-        "hint": "Versandkostenfrei ab 50 €. 30 Tage Rückgabe auf jede Position.",
+        "hint": "Versandkostenfrei ab 79,95 €. 30 Tage Rückgabe auf jede Position.",
         "text_align": "left",
         "background": "cream"
       }
@@ -686,7 +686,7 @@
         "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
         "heading_accent": "",
         "text": "<p>Du hast genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
-        "seal_value": "100",
+        "seal_value": "30",
         "seal_label": "Tage Garantie",
         "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
         "link_label": "versand & rückgabe im detail",
@@ -700,61 +700,49 @@
         "q1": {
           "type": "faq",
           "settings": {
-            "question": "Warum 50 Euro für einen Rasierer?",
-            "answer": "<p>Weil der Vergleichsrahmen nicht der Einwegrasierer ist. Rechne gegen zweimal Waxing im Studio oder gegen ein Jahr Ersatzklingen — dann ist die Frage eine andere.</p>",
-            "topic": "",
-            "link_label": "",
-            "link": ""
+            "topic": "Preis",
+            "question": "Warum 79,95 € für einen Rasierer?",
+            "answer": "<p>Weil der Vergleich nicht der 12-€-Einwegrasierer ist. Rechne gegen ein Jahr Ersatzklingen oder gegen zweimal Waxing im Studio – dann sieht die Zahl anders aus. Du kaufst einmal, statt jeden Monat nachzukaufen.</p>"
           }
         },
         "q2": {
           "type": "faq",
           "settings": {
-            "question": "Bei mir funktioniert sowas eh nicht. Warum jetzt?",
-            "answer": "<p>Weil du bisher immer dieselbe Art von Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut — das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, zahlen wir zurück.</p>",
-            "topic": "",
-            "link_label": "",
-            "link": ""
+            "topic": "Wirkung",
+            "question": "Bei mir hat das noch nie funktioniert. Warum jetzt?",
+            "answer": "<p>Weil du bisher immer dieselbe Art Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut – das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, bekommst du dein Geld zurück.</p>"
           }
         },
         "q3": {
           "type": "faq",
           "settings": {
-            "question": "Rasierer oder IPL — was brauche ich?",
-            "answer": "<p>Der Rasierer löst „jetzt sofort glatt“. Das IPL-Gerät zielt auf langanhaltende Haarreduktion über mehrere Wochen. Die beiden ersetzen sich nicht, sie lösen unterschiedliche Probleme.</p>",
-            "topic": "",
-            "link_label": "",
-            "link": ""
+            "topic": "Empfindliche Stellen",
+            "question": "Tut das an Bikinizone, Achseln oder im Gesicht weh?",
+            "answer": "<p>Der Schutzkopf hält die Klinge auf Abstand, deshalb ist er genau für diese Stellen gemacht. Kein Ziepen, kein direkter Schnitt auf der Haut. Für das Gesicht nutzt du den runden Aufsatz.</p>"
           }
         },
         "q4": {
           "type": "faq",
           "settings": {
-            "question": "Wie oft brauche ich Ersatzköpfe?",
-            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist — ohne Abo-Zwang.</p>",
-            "topic": "",
-            "link_label": "",
-            "link": ""
+            "topic": "Anwendung",
+            "question": "Muss ich ihn nass benutzen?",
+            "answer": "<p>Nein. Er funktioniert trocken – ohne Wasser und ohne Schaum, wenn es schnell gehen muss. Er ist wasserdicht, du kannst ihn aber auch unter der Dusche verwenden, wenn du eh schon drin stehst.</p>"
           }
         },
         "q5": {
           "type": "faq",
           "settings": {
-            "question": "Funktioniert IPL bei jedem Haut- und Haartyp?",
-            "answer": "<p>Nein. IPL braucht Kontrast zwischen Haar und Haut und wirkt bei sehr hellem, rotem oder grauem Haar sowie bei sehr dunklen Hauttönen nicht zuverlässig. Auf der Produktseite steht die Eignungstabelle über dem Kaufbutton, damit du das vor dem Kauf siehst.</p>",
-            "topic": "",
-            "link_label": "",
-            "link": ""
+            "topic": "Ersatzköpfe",
+            "question": "Wie oft brauche ich Ersatzköpfe?",
+            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist – ohne Abo-Zwang.</p>"
           }
         },
         "q6": {
           "type": "faq",
           "settings": {
-            "question": "Wer steckt hinter skinbabe?",
-            "answer": "<p>Ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wer wir sind, steht auf der Über-uns-Seite — mit Namen und Gesicht.</p>",
-            "topic": "",
-            "link_label": "",
-            "link": ""
+            "topic": "Vertrauen",
+            "question": "Ist das nur so ein TikTok-Ding?",
+            "answer": "<p>Wir sind ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wenn du schreibst, antwortet ein Mensch, werktags innerhalb von 24 Stunden. Und du hast 30 Tage Rückgaberecht – auch geöffnet und benutzt.</p>"
           }
         }
       },
