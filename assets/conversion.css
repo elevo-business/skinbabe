@@ -489,3 +489,49 @@ sb-media-gallery{position:relative;display:flex;flex-direction:column;gap:.75rem
 
 /* Lieferumfang: zweite fette Ueberschriftszeile */
 .included-title2{display:inline-block;margin-top:.15rem;font-weight:700;letter-spacing:-.02em}
+
+/* ---------------- Kauf-Box ---------------- */
+.buy-box{
+  display:flex;flex-direction:column;gap:1.1rem;
+  padding:clamp(1.25rem,2.5vw,1.75rem);
+  border:1px solid var(--sb-line-strong);
+  border-radius:var(--sb-radius-lg);
+  background:var(--sb-bg);
+  box-shadow:0 24px 60px -44px rgba(0,0,0,.4);
+}
+.surface-cream .buy-box{border-color:var(--sb-line)}
+.buy-box__head{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sb-muted)}
+.buy-box__price{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem}
+.buy-box__price .price__current{font-size:1.5rem;font-weight:600}
+.buy-box__tax{font-size:.75rem;color:var(--sb-muted)}
+.buy-box__cta{margin-top:.15rem}
+.buy-box__reassure{display:flex;align-items:center;justify-content:center;gap:.4rem;font-size:.8125rem;color:var(--sb-muted)}
+.buy-box__reassure svg{width:1rem;height:1rem;flex:none;color:var(--sb-accent)}
+.buy-box__pay{margin-top:-.25rem}
+
+/* Upsell */
+.upsell{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.75rem .9rem;
+  border:1px dashed var(--sb-line-strong);border-radius:var(--sb-radius-md);
+  cursor:pointer;transition:border-color .2s var(--sb-ease),background-color .2s;
+}
+.upsell:hover{border-color:var(--sb-ink)}
+.upsell:has(.upsell__check:checked){border-style:solid;border-color:var(--sb-ink);background:var(--sb-cream)}
+.upsell__check{position:absolute;opacity:0;pointer-events:none}
+.upsell__box{
+  display:grid;place-items:center;flex:none;
+  width:1.35rem;height:1.35rem;border-radius:.35rem;
+  border:1px solid var(--sb-line-strong);background:var(--sb-bg);
+  color:#fff;transition:background-color .2s,border-color .2s;
+}
+.upsell__box svg{width:.8rem;height:.8rem;opacity:0;transition:opacity .15s}
+.upsell:has(.upsell__check:checked) .upsell__box{background:var(--sb-ink);border-color:var(--sb-ink)}
+.upsell:has(.upsell__check:checked) .upsell__box svg{opacity:1}
+.upsell__check:focus-visible + .upsell__box{outline:2px solid var(--sb-ink);outline-offset:2px}
+.upsell__media{width:2.5rem;height:2.5rem;border-radius:var(--sb-radius-md);overflow:hidden;background:var(--sb-cream);flex:none}
+.upsell__media img{width:100%;height:100%;object-fit:cover}
+.upsell__body{display:flex;flex-direction:column;gap:.1rem;min-width:0;flex:1}
+.upsell__title{font-size:.8125rem;font-weight:600;line-height:1.25}
+.upsell__sub{font-size:.75rem;color:var(--sb-muted)}
+.upsell__price{font-size:.8125rem;font-weight:600;white-space:nowrap}

@@ -1,0 +1,62 @@
+{%- comment -%}
+  Eigenständige Kauf-Box: Preis, Variante, optionaler Upsell und Kaufbutton
+  in einem klar abgegrenzten Bereich, bewusst nur auf den Kauf ausgerichtet.
+{%- endcomment -%}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign form_id = 'product-form-' | append: section.id
+  assign price_id = 'price-' | append: section.id
+  assign up = block.settings.upsell_product
+  assign up_variant = up.selected_or_first_available_variant
+-%}
+<div class="buy-box" id="buy-anchor-{{ section.id }}">
+  {%- if block.settings.heading != blank -%}
+    <p class="buy-box__head">{{ block.settings.heading }}</p>
+  {%- endif -%}
+
+  <div class="buy-box__price">
+    {% render 'price', product: product, id: price_id %}
+    {%- if block.settings.tax_note != blank -%}<span class="buy-box__tax">{{ block.settings.tax_note }}</span>{%- endif -%}
+  </div>
+
+  {%- unless product.has_only_default_variant -%}
+    {% render 'variant-picker', product: product, section: section %}
+  {%- endunless -%}
+
+  {%- if up != blank and up_variant.available -%}
+    <label class="upsell">
+      <input type="checkbox" class="upsell__check" data-upsell value="{{ up_variant.id }}" data-price="{{ up_variant.price }}">
+      <span class="upsell__box" aria-hidden="true">{% render 'icon', icon: 'check' %}</span>
+      {%- if up.featured_media -%}
+        <span class="upsell__media"><img src="{{ up.featured_media | image_url: width: 120 }}" alt="" width="48" height="48" loading="lazy"></span>
+      {%- endif -%}
+      <span class="upsell__body">
+        <span class="upsell__title">{{ block.settings.upsell_label | default: up.title }}</span>
+        {%- if block.settings.upsell_text != blank -%}<span class="upsell__sub">{{ block.settings.upsell_text }}</span>{%- endif -%}
+      </span>
+      <span class="upsell__price">+ {{ up_variant.price | money }}</span>
+    </label>
+  {%- endif -%}
+
+  <sb-product-form class="product__buy" data-cart-type="{{ settings.cart_type }}">
+    {%- form 'product', product, id: form_id, class: 'product__buy', novalidate: 'novalidate', data-product-form: 'true' -%}
+      <input type="hidden" name="id" value="{{ variant.id }}">
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" name="add" class="btn btn--lg btn--full buy-box__cta" {% unless product.available %}disabled aria-disabled="true"{% endunless %}>
+        <span data-btn-label>{% if product.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+      </button>
+      {%- if block.settings.show_dynamic_checkout and product.available -%}{{ form | payment_button }}{%- endif -%}
+      <p class="form__message form__message--error" data-form-error hidden></p>
+    {%- endform -%}
+  </sb-product-form>
+
+  {%- if block.settings.reassurance != blank -%}
+    <p class="buy-box__reassure">{% render 'icon', icon: 'shield' %} {{ block.settings.reassurance }}</p>
+  {%- endif -%}
+
+  {%- if shop.enabled_payment_types.size > 0 and block.settings.show_payment -%}
+    <div class="payment-row buy-box__pay">
+      {%- for type in shop.enabled_payment_types limit: 8 -%}{{ type | payment_type_svg_tag: class: 'payment-icon' }}{%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>

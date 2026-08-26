@@ -137,6 +137,9 @@
                 </div>
               {%- endif -%}
 
+            {%- when 'buybox' -%}
+              <div {{ block.shopify_attributes }}>{% render 'buy-box', product: product, section: section, block: block %}</div>
+
             {%- when 'buy' -%}
               <div id="buy-anchor-{{ section.id }}" {{ block.shopify_attributes }}>
                 {% render 'buy-buttons', product: product, section: section, show_quantity: block.settings.show_quantity, show_dynamic_checkout: block.settings.show_dynamic_checkout %}
@@ -1645,6 +1648,69 @@
               "label": "return"
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "buybox",
+      "name": "Kauf-Box",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Eigenstaendiger Kaufbereich: Preis, Variante, optionaler Upsell und Kaufbutton in einer Box. Ersetzt die Einzelbloecke Preis, Variante, Kaufbutton und Zahlung."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Ueberschrift",
+          "default": "Dein Set"
+        },
+        {
+          "type": "text",
+          "id": "tax_note",
+          "label": "Steuerhinweis",
+          "default": "inkl. MwSt., zzgl. Versand"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "label": "Express-Zahlungsbuttons",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment",
+          "label": "Zahlungsarten anzeigen",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "reassurance",
+          "label": "Vertrauenssatz",
+          "default": "30 Tage Rueckgabe, auch benutzt"
+        },
+        {
+          "type": "header",
+          "content": "Upsell"
+        },
+        {
+          "type": "product",
+          "id": "upsell_product",
+          "label": "Upsell-Produkt",
+          "info": "Wird als ankreuzbare Zusatzoption angeboten und beim Kauf mitgelegt."
+        },
+        {
+          "type": "text",
+          "id": "upsell_label",
+          "label": "Upsell-Titel",
+          "default": "Ersatzkoepfe dazulegen"
+        },
+        {
+          "type": "text",
+          "id": "upsell_text",
+          "label": "Upsell-Zusatz",
+          "default": "Fuer die naechsten 6 Monate"
         }
       ]
     },

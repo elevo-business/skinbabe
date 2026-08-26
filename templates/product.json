@@ -231,21 +231,31 @@
             "label_6": "Garantie",
             "value_6": ""
           }
+        },
+        "buybox": {
+          "type": "buybox",
+          "settings": {
+            "heading": "Dein Set",
+            "tax_note": "inkl. MwSt., zzgl. Versand",
+            "show_dynamic_checkout": true,
+            "show_payment": true,
+            "reassurance": "30 Tage Rückgabe, auch benutzt",
+            "upsell_label": "Ersatzköpfe dazulegen",
+            "upsell_text": "Für die nächsten 6 Monate"
+          }
         }
       },
       "block_order": [
         "title",
         "rating",
-        "price",
+        "stockbar",
+        "buybox",
+        "cutoff",
         "arguments",
         "gifts",
         "bundle_1",
         "bundle_2",
         "bundle_3",
-        "variants",
-        "stockbar",
-        "buy",
-        "payment",
         "trust",
         "reassure",
         "usp",

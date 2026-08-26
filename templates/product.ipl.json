@@ -212,20 +212,29 @@
             "text": "Weniger als 1 % der Kundinnen nutzen die Geld-zurück-Garantie.",
             "icon": "shield"
           }
+        },
+        "buybox": {
+          "type": "buybox",
+          "settings": {
+            "heading": "Dein Set",
+            "tax_note": "inkl. MwSt., zzgl. Versand",
+            "show_dynamic_checkout": true,
+            "show_payment": true,
+            "reassurance": "90 Tage Rückgabe, auch benutzt",
+            "upsell_label": "Ersatzköpfe dazulegen",
+            "upsell_text": "Für die nächsten 6 Monate"
+          }
         }
       },
       "block_order": [
         "signal",
         "rating",
         "gifts",
-        "stockbar",
         "title",
-        "price",
-        "notice",
-        "variants",
-        "buy",
+        "stockbar",
+        "buybox",
         "cutoff",
-        "payment",
+        "notice",
         "trust",
         "reassure",
         "plan",

@@ -98,7 +98,7 @@
         "type": "font_picker",
         "id": "type_heading_font",
         "label": "Headline-Font",
-        "default": "assistant_n4",
+        "default": "poppins_n6",
         "info": "Im Customizer frei wählbar — für den Handfee-Look eine geometrische Sans wie Poppins oder Jost."
       },
       {
@@ -157,7 +157,7 @@
         "type": "font_picker",
         "id": "type_body_font",
         "label": "Fließtext-Font",
-        "default": "assistant_n4",
+        "default": "poppins_n4",
         "info": "Im Customizer frei wählbar."
       },
       {

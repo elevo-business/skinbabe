@@ -207,9 +207,14 @@
       label.textContent = T.strings.adding;
       if (this.errorEl) { this.errorEl.hidden = true; this.errorEl.textContent = ''; }
 
-      // Mehrteilige Bundles gehen als Positionsliste in den Warenkorb
+      // Upsell-Checkbox: zweite Position mitnehmen
+      const upsell = this.form.querySelector('[data-upsell]:checked');
       let payload;
-      if (this.form.dataset.bundleItems) {
+      if (upsell && !this.form.dataset.bundleItems) {
+        const mainId = this.form.querySelector('[name="id"]').value;
+        const qty = parseInt(this.form.querySelector('[name="quantity"]').value, 10) || 1;
+        payload = { items: [{ id: Number(mainId), quantity: qty }, { id: Number(upsell.value), quantity: 1 }] };
+      } else if (this.form.dataset.bundleItems) {
         try {
           payload = { items: JSON.parse(this.form.dataset.bundleItems) };
         } catch (e) {
