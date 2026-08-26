@@ -39,6 +39,27 @@
             "arg_4": ""
           }
         },
+        "gifts": {
+          "type": "gifts",
+          "settings": {
+            "heading": "Gratis zu deiner ersten Bestellung",
+            "subheading": "im Wert von 50€",
+            "free_label": "GRATIS",
+            "count": 4,
+            "g1_image": "shopify://shop_images/11.png",
+            "g1_title": "Intimaufsatz",
+            "g1_value": "",
+            "g2_image": "shopify://shop_images/10.png",
+            "g2_title": "Peeling-Handschuh",
+            "g2_value": "",
+            "g3_image": "shopify://shop_images/Ueberschrifthinzufuegen_24.png",
+            "g3_title": "10€ Gutschein",
+            "g3_value": "",
+            "g4_image": "shopify://shop_images/Design_ohne_Titel_3.svg",
+            "g4_title": "Mystery Geschenk",
+            "g4_value": ""
+          }
+        },
         "bundle_1": {
           "type": "bundle_option",
           "settings": {
@@ -107,6 +128,15 @@
           "type": "variants",
           "settings": {}
         },
+        "stockbar": {
+          "type": "stockbar",
+          "settings": {
+            "in_label": "Auf Lager",
+            "out_label": "Zurzeit ausverkauft",
+            "ships_text": "Versand in 2–4 Werktagen",
+            "origin": "Versand aus Deutschland"
+          }
+        },
         "buy": {
           "type": "buy",
           "settings": {
@@ -132,6 +162,13 @@
             "icon_3": "card",
             "text_4": "Support auf Deutsch, werktags in 24 h",
             "icon_4": "chat"
+          }
+        },
+        "reassure": {
+          "type": "reassure",
+          "settings": {
+            "text": "Weniger als 1 % der Kundinnen nutzen die Geld-zurück-Garantie.",
+            "icon": "shield"
           }
         },
         "usp": {
@@ -176,6 +213,7 @@
         },
         "specs": {
           "type": "specs",
+          "disabled": true,
           "settings": {
             "label_1": "Lieferumfang",
             "value_1": "",
@@ -190,73 +228,27 @@
             "label_6": "Garantie",
             "value_6": ""
           }
-        },
-        "signal": {
-          "type": "signal",
-          "settings": {
-            "text": "Oft ausverkauft",
-            "tone": "popular",
-            "icon": "sparkle"
-          }
-        },
-        "cutoff": {
-          "type": "cutoff",
-          "settings": {
-            "cutoff_hour": 14,
-            "before": "In %% bestellt, morgen verschickt",
-            "after": "Heute bestellt, übermorgen verschickt"
-          }
-        },
-        "gifts": {
-          "type": "gifts",
-          "settings": {
-            "heading": "Gratis zu deiner ersten Bestellung",
-            "subheading": "Kostenlose Extras",
-            "free_label": "GRATIS",
-            "count": 4,
-            "g1_title": "Intimaufsatz",
-            "g2_title": "Peeling-Handschuh",
-            "g3_title": "Mystery-Geschenk",
-            "g4_title": "Gratis-Versand"
-          }
-        },
-        "stockbar": {
-          "type": "stockbar",
-          "settings": {
-            "in_label": "Auf Lager",
-            "ships_text": "Versand in 2–4 Werktagen",
-            "origin": "Versand aus Deutschland"
-          }
-        },
-        "reassure": {
-          "type": "reassure",
-          "settings": {
-            "text": "Weniger als 1 % der Kundinnen nutzen die Geld-zurück-Garantie.",
-            "icon": "shield"
-          }
         }
       },
       "block_order": [
-        "signal",
-        "rating",
-        "gifts",
-        "stockbar",
         "title",
+        "rating",
         "price",
+        "arguments",
+        "gifts",
+        "bundle_1",
+        "bundle_2",
+        "bundle_3",
         "variants",
+        "stockbar",
         "buy",
-        "cutoff",
         "payment",
         "trust",
         "reassure",
-        "plan",
         "usp",
+        "plan",
         "accordion",
-        "specs",
-        "arguments",
-        "bundle_1",
-        "bundle_2",
-        "bundle_3"
+        "specs"
       ],
       "settings": {
         "gallery_layout": "carousel",
@@ -504,185 +496,17 @@
         "text_align": "left",
         "background": "cream"
       }
-    },
-    "cta": {
-      "type": "cta-banner",
-      "settings": {
-        "eyebrow": "ohne risiko",
-        "heading": "Teste es risikofrei",
-        "text": "<p>Wenn es bei dir nicht funktioniert, bekommst du dein Geld zurück. Ganz einfach.</p>",
-        "button_label": "In den Warenkorb",
-        "background": "cream"
-      },
-      "blocks": {
-        "s1": {
-          "type": "seal",
-          "settings": {
-            "icon": "shield",
-            "title": "30 Tage Garantie",
-            "text": "Geld zurück"
-          }
-        },
-        "s2": {
-          "type": "seal",
-          "settings": {
-            "icon": "return",
-            "title": "Kostenlose Rücksendung",
-            "text": "innerhalb der Frist"
-          }
-        },
-        "s3": {
-          "type": "seal",
-          "settings": {
-            "icon": "chat",
-            "title": "Support auf Deutsch",
-            "text": "werktags in 24 h"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ]
-    },
-    "stats": {
-      "type": "figures",
-      "settings": {
-        "eyebrow": "in zahlen",
-        "heading": "Was Kundinnen berichten",
-        "footnote": "Angaben aus unserer Nachkauf-Befragung. Stand laufend aktualisiert.",
-        "background": "default"
-      },
-      "blocks": {
-        "f1": {
-          "type": "figure",
-          "settings": {
-            "value": "96 %",
-            "label": "weniger Rasierpickel nach 4 Wochen"
-          }
-        },
-        "f2": {
-          "type": "figure",
-          "settings": {
-            "value": "92 %",
-            "label": "würden es weiterempfehlen"
-          }
-        },
-        "f3": {
-          "type": "figure",
-          "settings": {
-            "value": "4,7",
-            "label": "durchschnittliche Bewertung"
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3"
-      ]
-    },
-    "included": {
-      "type": "included-items",
-      "settings": {
-        "eyebrow": "im set enthalten",
-        "heading": "Alles für den perfekten Shave",
-        "columns": 4,
-        "text_align": "center",
-        "free_label": "GRATIS",
-        "background": "cream"
-      },
-      "blocks": {
-        "i1": {
-          "type": "item",
-          "settings": {
-            "title": "SilkGlide Pro 2.0™",
-            "text": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur.",
-            "free": false
-          }
-        },
-        "i2": {
-          "type": "item",
-          "settings": {
-            "title": "BodySmooth™ Scherkopf",
-            "text": "Für sanfte Präzision ohne Nicks. Bleibt bis zu 50 Rasuren scharf.",
-            "free": false
-          }
-        },
-        "i3": {
-          "type": "item",
-          "settings": {
-            "title": "USB-Ladekabel",
-            "text": "Damit dein Gerät immer einsatzbereit ist.",
-            "free": false
-          }
-        },
-        "i4": {
-          "type": "item",
-          "settings": {
-            "title": "Runder Intimaufsatz",
-            "text": "Für Bikinizone, Achseln und Gesicht. Runde Klingen berühren die Haut nie direkt.",
-            "free": true
-          }
-        },
-        "i5": {
-          "type": "item",
-          "settings": {
-            "title": "Schutzkappe",
-            "text": "Schützt empfindliche Haut und reduziert Reizungen im Alltag.",
-            "free": true
-          }
-        },
-        "i6": {
-          "type": "item",
-          "settings": {
-            "title": "Peeling-Handschuh",
-            "text": "Entfernt sanft abgestorbene Haut und beugt eingewachsenen Haaren vor.",
-            "free": true
-          }
-        },
-        "i7": {
-          "type": "item",
-          "settings": {
-            "title": "Reinigungsbürste",
-            "text": "Fegt Haare und Rückstände weg, bevor du den Scherkopf abspülst.",
-            "free": true
-          }
-        }
-      },
-      "block_order": [
-        "i1",
-        "i2",
-        "i3",
-        "i4",
-        "i5",
-        "i6",
-        "i7"
-      ]
-    },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "passt dazu",
-        "limit": 4,
-        "background": "default"
-      }
     }
   },
   "order": [
     "main",
-    "included",
     "steps",
     "mechanism",
     "before_after",
     "comparison",
-    "stats",
-    "cta",
     "review_summary",
     "testimonials",
     "guarantee",
-    "faq",
-    "recommendations"
+    "faq"
   ]
 }
