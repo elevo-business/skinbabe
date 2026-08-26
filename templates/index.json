@@ -43,7 +43,7 @@
         "s3"
       ],
       "settings": {
-        "image_mobile": "shopify://shop_images/4_702e57da-b528-4d5f-9ced-71901715e6f0.png",
+        "image_mobile": "shopify://shop_images/BESTSELLER_9_944ae477-edde-4bd0-8e78-1b4fdd016793.webp",
         "focal_x": 50,
         "focal_y": 50,
         "layout": "overlay",
@@ -61,8 +61,8 @@
         "heading_accent": "",
         "text": "<p>Du hast Jahre lang gedacht, es liegt an deiner Haut. Tut es nicht. Es liegt an dem Ding in deiner Hand.</p>",
         "button_label": "Skinbabe ansehen",
-        "button_link": "",
-        "button_2_label": "warum haare einwachsen",
+        "button_link": "shopify://products/skinbabe-prazisions-rasierer-fur-sensible-haut",
+        "button_2_label": "Warum Haare einwachsen",
         "button_2_link": ""
       }
     },
@@ -146,6 +146,97 @@
         "link_url": "",
         "footnote": "",
         "background": "default"
+      }
+    },
+    "included": {
+      "type": "included-items",
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "title": "SilkGlide Pro 2.0™",
+            "text": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur.",
+            "free": false,
+            "badge": ""
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "title": "BodySmooth™ Scherkopf",
+            "text": "Für sanfte Präzision ohne Nicks. Bleibt bis zu 50 Rasuren scharf.",
+            "free": false,
+            "badge": ""
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "title": "USB-Ladekabel",
+            "text": "Damit dein Gerät immer einsatzbereit ist.",
+            "free": false,
+            "badge": ""
+          }
+        },
+        "i4": {
+          "type": "item",
+          "settings": {
+            "title": "Runder Intimaufsatz",
+            "text": "Für Bikinizone, Achseln und Gesicht. Runde Klingen berühren die Haut nie direkt.",
+            "free": true,
+            "badge": ""
+          }
+        },
+        "i5": {
+          "type": "item",
+          "settings": {
+            "title": "Schutzkappe",
+            "text": "Schützt empfindliche Haut und reduziert Reizungen im Alltag.",
+            "free": true,
+            "badge": ""
+          }
+        },
+        "i6": {
+          "type": "item",
+          "settings": {
+            "title": "Peeling-Handschuh",
+            "text": "Entfernt sanft abgestorbene Haut und beugt eingewachsenen Haaren vor.",
+            "free": true,
+            "badge": ""
+          }
+        },
+        "i7": {
+          "type": "item",
+          "settings": {
+            "title": "Reinigungsbürste",
+            "text": "Fegt Haare und Rückstände weg, bevor du den Scherkopf abspülst.",
+            "free": true,
+            "badge": ""
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6",
+        "i7"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Alles dabei, was du brauchst",
+        "heading_accent": "",
+        "heading_line2": "skinbabe Rasierer-Set",
+        "text": "<p>Kostenlose Premium-Aufsätze im Wert von 50 €.</p>",
+        "columns": 4,
+        "text_align": "center",
+        "free_label": "GRATIS",
+        "value_note": "",
+        "button_label": "",
+        "button_link": "",
+        "background": "cream"
       }
     },
     "diagnosis": {
@@ -691,86 +782,6 @@
         "legal": "Mit der Anmeldung stimmst du dem Erhalt von E-Mails zu. Abmeldung jederzeit über den Link in jeder Mail. Details in unserer Datenschutzerklärung.",
         "background": "cream"
       }
-    },
-    "included": {
-      "type": "included-items",
-      "settings": {
-        "eyebrow": "",
-        "heading": "Alles dabei, was du brauchst",
-        "heading_line2": "skinbabe Rasierer-Set",
-        "text": "<p>Kostenlose Premium-Aufsätze im Wert von 50 €.</p>",
-        "columns": 4,
-        "text_align": "center",
-        "free_label": "GRATIS",
-        "background": "cream"
-      },
-      "blocks": {
-        "i1": {
-          "type": "item",
-          "settings": {
-            "title": "SilkGlide Pro 2.0™",
-            "text": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur.",
-            "free": false
-          }
-        },
-        "i2": {
-          "type": "item",
-          "settings": {
-            "title": "BodySmooth™ Scherkopf",
-            "text": "Für sanfte Präzision ohne Nicks. Bleibt bis zu 50 Rasuren scharf.",
-            "free": false
-          }
-        },
-        "i3": {
-          "type": "item",
-          "settings": {
-            "title": "USB-Ladekabel",
-            "text": "Damit dein Gerät immer einsatzbereit ist.",
-            "free": false
-          }
-        },
-        "i4": {
-          "type": "item",
-          "settings": {
-            "title": "Runder Intimaufsatz",
-            "text": "Für Bikinizone, Achseln und Gesicht. Runde Klingen berühren die Haut nie direkt.",
-            "free": true
-          }
-        },
-        "i5": {
-          "type": "item",
-          "settings": {
-            "title": "Schutzkappe",
-            "text": "Schützt empfindliche Haut und reduziert Reizungen im Alltag.",
-            "free": true
-          }
-        },
-        "i6": {
-          "type": "item",
-          "settings": {
-            "title": "Peeling-Handschuh",
-            "text": "Entfernt sanft abgestorbene Haut und beugt eingewachsenen Haaren vor.",
-            "free": true
-          }
-        },
-        "i7": {
-          "type": "item",
-          "settings": {
-            "title": "Reinigungsbürste",
-            "text": "Fegt Haare und Rückstände weg, bevor du den Scherkopf abspülst.",
-            "free": true
-          }
-        }
-      },
-      "block_order": [
-        "i1",
-        "i2",
-        "i3",
-        "i4",
-        "i5",
-        "i6",
-        "i7"
-      ]
     }
   },
   "order": [
