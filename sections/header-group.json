@@ -53,18 +53,18 @@
       "type": "header",
       "settings": {
         "menu": "main-menu",
+        "logo_height": 40,
+        "logo_height_mobile": 72,
+        "logo_grows_header": false,
+        "height": 64,
+        "height_mobile": 54,
+        "transparent_mode": "all",
+        "overlap_mode": "index",
+        "transparent_text": "auto",
         "hide_on_scroll": true,
         "enable_structured_data": true,
         "drawer_note": "Fragen? Wir antworten werktags innerhalb von 24 Stunden.",
-        "drawer_note_link": "shopify://products/skinbabe-prazisions-rasierer-fur-sensible-haut",
-        "height": 64,
-        "height_mobile": 54,
-        "logo_height": 40,
-        "transparent_mode": "all",
-        "transparent_text": "auto",
-        "logo_height_mobile": 32,
-        "logo_grows_header": false,
-        "overlap_mode": "index"
+        "drawer_note_link": "shopify://products/skinbabe-prazisions-rasierer-fur-sensible-haut"
       }
     }
   },
