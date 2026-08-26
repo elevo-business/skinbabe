@@ -20,7 +20,9 @@
         },
         "rating": {
           "type": "rating",
-          "settings": {}
+          "settings": {
+            "style": "summary"
+          }
         },
         "price": {
           "type": "price",
@@ -34,7 +36,7 @@
             "arg_1": "Kein direkter Klingenkontakt zur Haut",
             "arg_2": "Auch trocken, ohne Wasser und Schaum",
             "arg_3": "Ein Kopf hält drei bis sechs Monate",
-            "arg_4": "30 Tage zurückgeben, auch benutzt"
+            "arg_4": ""
           }
         },
         "bundle_1": {
@@ -208,6 +210,8 @@
       ],
       "settings": {
         "gallery_layout": "carousel",
+        "gallery_ratio": "adapt",
+        "gallery_fit": "contain",
         "enable_sticky_bar": true
       }
     },
@@ -271,56 +275,6 @@
         "background": "default"
       }
     },
-    "testimonials": {
-      "type": "testimonials",
-      "settings": {
-        "eyebrow": "bewertungen",
-        "heading": "die meisten waren vorher skeptisch",
-        "heading_accent": "",
-        "link_label": "alle bewertungen",
-        "link_url": "",
-        "disclaimer": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen.",
-        "background": "cream"
-      }
-    },
-    "guarantee": {
-      "type": "guarantee",
-      "settings": {
-        "eyebrow": "garantie",
-        "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
-        "heading_accent": "",
-        "text": "<p>Du hast schon genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
-        "seal_value": "30",
-        "seal_label": "Tage Garantie",
-        "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
-        "link_label": "versand & rückgabe im detail",
-        "link_url": "",
-        "background": "default"
-      }
-    },
-    "faq": {
-      "type": "faq",
-      "settings": {
-        "eyebrow": "vor dem kauf",
-        "heading": "häufige fragen zu diesem produkt",
-        "heading_accent": "",
-        "text_align": "left",
-        "single_open": true,
-        "structured_data": false,
-        "footer_text": "Deine Frage ist nicht dabei?",
-        "footer_link_label": "Schreib uns.",
-        "footer_link": "",
-        "background": "cream"
-      }
-    },
-    "recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "passt dazu",
-        "limit": 4,
-        "background": "default"
-      }
-    },
     "review_summary": {
       "type": "review-summary",
       "blocks": {
@@ -355,9 +309,74 @@
         "source": "metafield",
         "eyebrow": "bewertungen",
         "heading": "was kundinnen nach vier wochen sagen",
+        "heading_accent": "",
+        "average": "4.7",
+        "total": "0",
         "total_label": "Bewertungen",
+        "source_label": "",
+        "source_url": "",
+        "count_5": "0",
+        "count_4": "0",
+        "count_3": "0",
+        "count_2": "0",
+        "count_1": "0",
         "blocks_note": "Werte aus dem Export der Review-Plattform übernehmen, nicht schätzen.",
         "background": "cream"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "layout": "slider",
+        "eyebrow": "bewertungen",
+        "heading": "die meisten waren vorher skeptisch",
+        "heading_accent": "",
+        "link_label": "alle bewertungen",
+        "link_url": "",
+        "disclaimer": "Alle Bewertungen stammen von verifizierten Bestellungen und sind unverändert übernommen.",
+        "background": "cream"
+      }
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "eyebrow": "garantie",
+        "heading": "wenn es bei dir nicht funktioniert, zahlen wir zurück",
+        "heading_accent": "",
+        "text": "<p>Du hast schon genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
+        "seal_value": "30",
+        "seal_label": "Tage Garantie",
+        "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
+        "link_label": "versand & rückgabe im detail",
+        "link_url": "",
+        "background": "default"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "vor dem kauf",
+        "heading": "häufige fragen zu diesem produkt",
+        "heading_accent": "",
+        "text": "",
+        "open_first": true,
+        "single_open": true,
+        "show_topics": true,
+        "structured_data": false,
+        "footer_text": "Deine Frage ist nicht dabei?",
+        "footer_link_label": "Schreib uns.",
+        "footer_link": "",
+        "width": "narrow",
+        "text_align": "left",
+        "background": "cream"
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "passt dazu",
+        "limit": 4,
+        "background": "default"
       }
     }
   },
