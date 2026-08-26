@@ -340,6 +340,7 @@
     },
     "comparison": {
       "type": "comparison",
+      "disabled": true,
       "settings": {
         "eyebrow": "die rechnung",
         "heading": "einmal kaufen statt jedes mal zahlen",
