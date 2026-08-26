@@ -196,11 +196,11 @@
             "title_1": "Beschreibung",
             "content_1": "",
             "title_2": "So funktioniert es",
-            "content_2": "<p>Trocken oder nass ansetzen – beides geht. In kurzen Zügen über die Haut führen, kein Druck nötig, der Schutzkopf hält die Klinge auf Abstand. Für Bikinizone, Achseln und Gesicht den passenden Aufsatz nutzen. Nach der Rasur den Kopf kurz unter Wasser abspülen und trocknen lassen.</p>",
+            "content_2": "",
             "title_3": "Lieferumfang",
-            "content_3": "<ul><li>skinbabe Rasierer</li><li>Scherkopf (vormontiert)</li><li>USB-Ladekabel</li><li>Reinigungsbürste</li><li>Anleitung auf Deutsch</li></ul>",
+            "content_3": "",
             "title_4": "Versand & Rückgabe",
-            "content_4": "<p>Versand in 2–4 Werktagen, versandkostenfrei ab 79,95 €. 30 Tage Rückgaberecht – auch geöffnet und benutzt. Du schreibst uns kurz, bekommst ein Etikett, die Erstattung läuft über dasselbe Zahlungsmittel.</p>"
+            "content_4": ""
           }
         },
         "specs": {
@@ -208,17 +208,17 @@
           "disabled": true,
           "settings": {
             "label_1": "Lieferumfang",
-            "value_1": "Rasierer, Scherkopf, USB-Kabel, Reinigungsbürste",
-            "label_2": "Stromversorgung",
-            "value_2": "Akku, USB-aufladbar",
-            "label_3": "Anwendung",
-            "value_3": "Nass & trocken, wasserdicht",
-            "label_4": "Standzeit Scherkopf",
-            "value_4": "3–6 Monate je nach Nutzung",
-            "label_5": "",
+            "value_1": "",
+            "label_2": "Akkulaufzeit",
+            "value_2": "",
+            "label_3": "Ladezeit",
+            "value_3": "",
+            "label_4": "Maße",
+            "value_4": "",
+            "label_5": "Gewicht",
             "value_5": "",
             "label_6": "Garantie",
-            "value_6": "30 Tage Geld-zurück"
+            "value_6": ""
           }
         }
       },
@@ -493,7 +493,7 @@
         "heading": "Wenn es bei dir nicht funktioniert, zahlen wir zurück",
         "heading_accent": "",
         "text": "<p>Du hast schon genug Dinge gekauft, die nichts gebracht haben. Deshalb steht hier, unter welchen Bedingungen wir zurückzahlen — und warum die Fristen so sind, wie sie sind.</p>",
-        "seal_value": "30",
+        "seal_value": "100",
         "seal_label": "Tage Garantie",
         "footnote": "Die Fristen unterscheiden sich, weil die Produkte unterschiedlich schnell wirken. Ein Rasierergebnis siehst du sofort, eine Haarreduktion nach etwa zehn Anwendungen.",
         "link_label": "versand & rückgabe im detail",
@@ -503,6 +503,76 @@
     },
     "faq": {
       "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "question": "Warum 79,95 € für einen Rasierer?",
+            "answer": "<p>Weil der Vergleich nicht der 12-€-Einwegrasierer ist. Rechne gegen ein Jahr Ersatzklingen oder gegen zweimal Waxing im Studio – dann sieht die Zahl anders aus. Du kaufst einmal, statt jeden Monat nachzukaufen.</p>",
+            "topic": "Preis",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "question": "Bei mir hat das noch nie funktioniert. Warum jetzt?",
+            "answer": "<p>Weil du bisher immer dieselbe Art Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut – das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, bekommst du dein Geld zurück.</p>",
+            "topic": "Wirkung",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "q3": {
+          "type": "faq",
+          "settings": {
+            "question": "Tut das an Bikinizone, Achseln oder im Gesicht weh?",
+            "answer": "<p>Der Schutzkopf hält die Klinge auf Abstand, deshalb ist er genau für diese Stellen gemacht. Kein Ziepen, kein direkter Schnitt auf der Haut. Für das Gesicht nutzt du den runden Aufsatz.</p>",
+            "topic": "Empfindliche Stellen",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "q4": {
+          "type": "faq",
+          "settings": {
+            "question": "Muss ich ihn nass benutzen?",
+            "answer": "<p>Nein. Er funktioniert trocken – ohne Wasser und ohne Schaum, wenn es schnell gehen muss. Er ist wasserdicht, du kannst ihn aber auch unter der Dusche verwenden, wenn du eh schon drin stehst.</p>",
+            "topic": "Anwendung",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "q5": {
+          "type": "faq",
+          "settings": {
+            "question": "Wie oft brauche ich Ersatzköpfe?",
+            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist – ohne Abo-Zwang.</p>",
+            "topic": "Ersatzköpfe",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "q6": {
+          "type": "faq",
+          "settings": {
+            "question": "Ist das nur so ein TikTok-Ding?",
+            "answer": "<p>Wir sind ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wenn du schreibst, antwortet ein Mensch, werktags innerhalb von 24 Stunden. Und du hast 30 Tage Rückgaberecht – auch geöffnet und benutzt.</p>",
+            "topic": "Vertrauen",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
       "settings": {
         "eyebrow": "vor dem kauf",
         "heading": "Häufige Fragen zum Rasierer",
@@ -518,65 +588,7 @@
         "width": "narrow",
         "text_align": "left",
         "background": "cream"
-      },
-      "blocks": {
-        "q1": {
-          "type": "faq",
-          "settings": {
-            "topic": "Preis",
-            "question": "Warum 79,95 € für einen Rasierer?",
-            "answer": "<p>Weil der Vergleich nicht der 12-€-Einwegrasierer ist. Rechne gegen ein Jahr Ersatzklingen oder gegen zweimal Waxing im Studio – dann sieht die Zahl anders aus. Du kaufst einmal, statt jeden Monat nachzukaufen.</p>"
-          }
-        },
-        "q2": {
-          "type": "faq",
-          "settings": {
-            "topic": "Wirkung",
-            "question": "Bei mir hat das noch nie funktioniert. Warum jetzt?",
-            "answer": "<p>Weil du bisher immer dieselbe Art Werkzeug getestet hast. Ein Schutzkopf hat keinen direkten Klingenkontakt zur Haut – das ist ein anderer Mechanismus, nicht dieselbe Idee in neuer Verpackung. Und wenn es bei dir trotzdem nicht klappt, bekommst du dein Geld zurück.</p>"
-          }
-        },
-        "q3": {
-          "type": "faq",
-          "settings": {
-            "topic": "Empfindliche Stellen",
-            "question": "Tut das an Bikinizone, Achseln oder im Gesicht weh?",
-            "answer": "<p>Der Schutzkopf hält die Klinge auf Abstand, deshalb ist er genau für diese Stellen gemacht. Kein Ziepen, kein direkter Schnitt auf der Haut. Für das Gesicht nutzt du den runden Aufsatz.</p>"
-          }
-        },
-        "q4": {
-          "type": "faq",
-          "settings": {
-            "topic": "Anwendung",
-            "question": "Muss ich ihn nass benutzen?",
-            "answer": "<p>Nein. Er funktioniert trocken – ohne Wasser und ohne Schaum, wenn es schnell gehen muss. Er ist wasserdicht, du kannst ihn aber auch unter der Dusche verwenden, wenn du eh schon drin stehst.</p>"
-          }
-        },
-        "q5": {
-          "type": "faq",
-          "settings": {
-            "topic": "Ersatzköpfe",
-            "question": "Wie oft brauche ich Ersatzköpfe?",
-            "answer": "<p>Je nach Nutzung alle drei bis sechs Monate. Du bekommst eine Erinnerung, wenn es soweit ist – ohne Abo-Zwang.</p>"
-          }
-        },
-        "q6": {
-          "type": "faq",
-          "settings": {
-            "topic": "Vertrauen",
-            "question": "Ist das nur so ein TikTok-Ding?",
-            "answer": "<p>Wir sind ein Team in Deutschland mit Impressum, Adresse und deutschem Support. Wenn du schreibst, antwortet ein Mensch, werktags innerhalb von 24 Stunden. Und du hast 30 Tage Rückgaberecht – auch geöffnet und benutzt.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6"
-      ]
+      }
     }
   },
   "order": [
