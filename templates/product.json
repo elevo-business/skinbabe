@@ -27,7 +27,7 @@
         "price": {
           "type": "price",
           "settings": {
-            "tax_note": "inkl. MwSt., zzgl. Versand"
+            "tax_note": ""
           }
         },
         "arguments": {
