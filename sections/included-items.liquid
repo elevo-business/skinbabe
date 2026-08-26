@@ -12,6 +12,7 @@
           <h2 class="h2">
             {{ section.settings.heading }}
             {%- if section.settings.heading_accent != blank -%}<span class="serif">{{ section.settings.heading_accent }}</span>{%- endif -%}
+            {%- if section.settings.heading_line2 != blank -%}<br><span class="included-title2">{{ section.settings.heading_line2 }}</span>{%- endif -%}
           </h2>
         {%- endif -%}
         {%- if section.settings.text != blank -%}<div class="rte lede">{{ section.settings.text }}</div>{%- endif -%}
@@ -71,24 +72,103 @@
 {
   "name": "Lieferumfang",
   "settings": [
-    { "type": "paragraph", "content": "Zeigt, was im Set steckt. Der FREE-Badge macht den Wert der Zugaben sichtbar. Ein erfundener Streichpreis auf Zugaben schwächt das Angebot — jede Kundin weiß ungefähr, was eine Reinigungsbürste kostet." },
-    { "type": "text", "id": "eyebrow", "label": "Kleiner Vortext", "default": "im set enthalten" },
-    { "type": "text", "id": "heading", "label": "Überschrift", "default": "alles, was du für den perfekten shave brauchst" },
-    { "type": "text", "id": "heading_accent", "label": "Kursiver Serif-Akzent" },
-    { "type": "richtext", "id": "text", "label": "Text" },
-    { "type": "range", "id": "columns", "min": 2, "max": 4, "step": 1, "label": "Spalten (Desktop)", "default": 4 },
     {
-      "type": "select", "id": "text_align", "label": "Ausrichtung der Überschrift", "default": "center",
-      "options": [{ "value": "left", "label": "Links" }, { "value": "center", "label": "Zentriert" }]
+      "type": "paragraph",
+      "content": "Zeigt, was im Set steckt. Der FREE-Badge macht den Wert der Zugaben sichtbar. Ein erfundener Streichpreis auf Zugaben schwächt das Angebot — jede Kundin weiß ungefähr, was eine Reinigungsbürste kostet."
     },
-    { "type": "text", "id": "free_label", "label": "Text des Gratis-Badges", "default": "GRATIS" },
-    { "type": "header", "content": "Abschluss" },
-    { "type": "text", "id": "value_note", "label": "Wert-Hinweis", "info": "z. B. „Zubehör im Wert von 39 €, gratis dazu.“ Nur mit echtem Wert." },
-    { "type": "text", "id": "button_label", "label": "Button" },
-    { "type": "url", "id": "button_link", "label": "Button-Link" },
     {
-      "type": "select", "id": "background", "label": "Hintergrund", "default": "cream",
-      "options": [{ "value": "default", "label": "Weiß" }, { "value": "cream", "label": "Creme" }]
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Kleiner Vortext",
+      "default": "im set enthalten"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "alles, was du für den perfekten shave brauchst"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Kursiver Serif-Akzent"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Zweite Zeile (fett, z. B. Produktname)"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Spalten (Desktop)",
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Ausrichtung der Überschrift",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Links"
+        },
+        {
+          "value": "center",
+          "label": "Zentriert"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "free_label",
+      "label": "Text des Gratis-Badges",
+      "default": "GRATIS"
+    },
+    {
+      "type": "header",
+      "content": "Abschluss"
+    },
+    {
+      "type": "text",
+      "id": "value_note",
+      "label": "Wert-Hinweis",
+      "info": "z. B. „Zubehör im Wert von 39 €, gratis dazu.“ Nur mit echtem Wert."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button-Link"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Hintergrund",
+      "default": "cream",
+      "options": [
+        {
+          "value": "default",
+          "label": "Weiß"
+        },
+        {
+          "value": "cream",
+          "label": "Creme"
+        }
+      ]
     }
   ],
   "blocks": [
@@ -96,11 +176,35 @@
       "type": "item",
       "name": "Komponente",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Bild" },
-        { "type": "text", "id": "title", "label": "Titel", "default": "SilkGlide Pro 2.0™" },
-        { "type": "textarea", "id": "text", "label": "Beschreibung", "default": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur." },
-        { "type": "checkbox", "id": "free", "label": "Als GRATIS markieren", "default": false },
-        { "type": "text", "id": "badge", "label": "Anderer Badge", "info": "Nur ohne Gratis-Markierung. z. B. „Neu“." }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "SilkGlide Pro 2.0™"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Beschreibung",
+          "default": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur."
+        },
+        {
+          "type": "checkbox",
+          "id": "free",
+          "label": "Als GRATIS markieren",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Anderer Badge",
+          "info": "Nur ohne Gratis-Markierung. z. B. „Neu“."
+        }
       ]
     }
   ],
@@ -108,13 +212,59 @@
     {
       "name": "Lieferumfang",
       "blocks": [
-        { "type": "item", "settings": { "title": "SilkGlide Pro 2.0™", "text": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur." } },
-        { "type": "item", "settings": { "title": "BodySmooth™ Scherkopf", "text": "Für sanfte Präzision ohne Nicks. Bleibt bis zu 50 Rasuren scharf." } },
-        { "type": "item", "settings": { "title": "USB-Ladekabel", "text": "Damit dein Gerät immer einsatzbereit ist." } },
-        { "type": "item", "settings": { "free": true, "title": "Runder Intimaufsatz", "text": "Für Bikinizone, Achseln und Gesicht. Runde Klingen berühren die Haut nie direkt." } },
-        { "type": "item", "settings": { "free": true, "title": "Schutzkappe", "text": "Schützt empfindliche Haut und reduziert Reizungen im Alltag." } },
-        { "type": "item", "settings": { "free": true, "title": "Peeling-Handschuh", "text": "Entfernt sanft abgestorbene Haut und beugt eingewachsenen Haaren vor." } },
-        { "type": "item", "settings": { "free": true, "title": "Reinigungsbürste", "text": "Fegt Haare und Rückstände weg, bevor du den Scherkopf abspülst." } }
+        {
+          "type": "item",
+          "settings": {
+            "title": "SilkGlide Pro 2.0™",
+            "text": "Deine All-in-one-Lösung. Gleitet mühelos über jede Kurve, wasserdicht für Dusche und Trockenrasur."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "BodySmooth™ Scherkopf",
+            "text": "Für sanfte Präzision ohne Nicks. Bleibt bis zu 50 Rasuren scharf."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "USB-Ladekabel",
+            "text": "Damit dein Gerät immer einsatzbereit ist."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "free": true,
+            "title": "Runder Intimaufsatz",
+            "text": "Für Bikinizone, Achseln und Gesicht. Runde Klingen berühren die Haut nie direkt."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "free": true,
+            "title": "Schutzkappe",
+            "text": "Schützt empfindliche Haut und reduziert Reizungen im Alltag."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "free": true,
+            "title": "Peeling-Handschuh",
+            "text": "Entfernt sanft abgestorbene Haut und beugt eingewachsenen Haaren vor."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "free": true,
+            "title": "Reinigungsbürste",
+            "text": "Fegt Haare und Rückstände weg, bevor du den Scherkopf abspülst."
+          }
+        }
       ]
     }
   ]
